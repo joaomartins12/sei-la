@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Etc">
+      <UniqueIdentifier>{7deb47bf-3c2e-4974-b400-8cd3e91cc3dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{6a3bf1bb-a2b0-4a64-ae11-0344dac7c09c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{57ee9b0c-f036-44f2-8465-25ee6faacc93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{bf52c863-7241-4b82-9cd5-3ff2d65c93d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Npc">
+      <UniqueIdentifier>{c6320dd8-b53c-42b1-afeb-ceb501c0b238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TalkBalloon">
+      <UniqueIdentifier>{15258975-56f3-4ff7-9f25-be54ae535d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{d872e786-91a7-4aaa-8936-fd3a9bfa2bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{63e444f7-0997-4203-b1f9-84a2d04002c7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildView.cpp">
+      <Filter>Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCall.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="EventScene.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="EventTool.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="NiViewer.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHelper.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcMng.cpp">
+      <Filter>Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="FontCheck.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="String.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="StringAnalysis.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkBalloon.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>TalkBalloon</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundMgr.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgController.cpp" />
+    <ClCompile Include="_DlgEffectList.cpp" />
+    <ClCompile Include="_DlgEventlist.cpp" />
+    <ClCompile Include="_DlgEventLoadList.cpp" />
+    <ClCompile Include="_DlgEventSpeed.cpp" />
+    <ClCompile Include="_DlgEventTalkList.cpp" />
+    <ClCompile Include="_DlgEventTime.cpp" />
+    <ClCompile Include="_DlgMapList.cpp" />
+    <ClCompile Include="_DlgNpcList.cpp" />
+    <ClCompile Include="_DlgSceneLoadList.cpp" />
+    <ClCompile Include="_DlgSoundEvent.cpp" />
+    <ClCompile Include="_DlgTimeChange.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildView.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCall.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="EventScene.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="NiViewer.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHelper.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcMng.h">
+      <Filter>Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="FontCheck.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="stringanalysis.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkBalloon.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>TalkBalloon</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundMgr.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgController.h" />
+    <ClInclude Include="_DlgEffectList.h" />
+    <ClInclude Include="_DlgEventlist.h" />
+    <ClInclude Include="_DlgEventLoadList.h" />
+    <ClInclude Include="_DlgEventSpeed.h" />
+    <ClInclude Include="_DlgEventTalkList.h" />
+    <ClInclude Include="_DlgEventTime.h" />
+    <ClInclude Include="_DlgMapList.h" />
+    <ClInclude Include="_DlgNpcList.h" />
+    <ClInclude Include="_DlgSceneLoadList.h" />
+    <ClInclude Include="_DlgSoundEvent.h" />
+    <ClInclude Include="_DlgTimeChange.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\EventTool.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\EventTool.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EventTool.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

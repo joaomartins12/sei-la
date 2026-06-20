@@ -1,0 +1,58 @@
+Script ("PhysX_Ragdoll_Export","PROCESS")
+{
+	Plugin ("NiSceneGraphOptimizationPlugin","Scene Graph Optimization","2.0","PROCESS")
+	{
+		Parameter ("AnimationKeyReductionTolerance","0.000100");
+		Parameter ("RemoveDupProperties","TRUE");
+		Parameter ("RemoveChildlessNodes","TRUE");
+		Parameter ("RemoveMultiMtlNodes","TRUE");
+		Parameter ("RemoveSingleChildNodes","TRUE");
+		Parameter ("MergeSiblingNodes","TRUE");
+		Parameter ("OptimizeTriShapes","TRUE");
+		Parameter ("MergeSiblingTriShapes","TRUE");
+		Parameter ("NoMergeOnAlpha","TRUE");
+		Parameter ("RemoveExtraUVSets","TRUE");
+		Parameter ("RemoveUnnecessaryNormals","TRUE");
+		Parameter ("RemoveUnnecessaryVisControllers","TRUE");
+		Parameter ("RemoveNames","FALSE");
+		Parameter ("NameUnnamedObjects","FALSE");
+		Parameter ("RemoveBadTexturingProps","TRUE");
+		Parameter ("RemoveUnnecessaryExtraData","TRUE");
+		Parameter ("RemoveSgoKeepTags","TRUE");
+		Parameter ("RemoveUnnecessaryLookAtControllers","TRUE");
+		Parameter ("RemoveHiddenBoneGeometry","TRUE");
+		Parameter ("ReduceAnimationKeys","TRUE");
+		Parameter ("SortByTexturingProp","FALSE");
+		Parameter ("WeldSkin","TRUE");
+		Parameter ("ExportSoftwareSkin","TRUE");
+		Parameter ("ExportHardwareSkin","TRUE");
+		Parameter ("BonesPerPartition","4");
+	}
+	Plugin ("NiPhysXExtractorPlugin","PhysX Extractor Plug-in","1.0","PROCESS")
+	{
+		Parameter ("PhysXExtractorSceneName","PhysX Prop");
+		Parameter ("PhysXExtractorScale","1.000000");
+		Parameter ("PhysXExtractorFluidScene","FALSE");
+		Parameter ("PhysXExtractorMaterialBase","1");
+		Parameter ("PhysXExtractorConvexSkin","0.010000");
+		Parameter ("PhysXExtractorHardware","FALSE");
+		Parameter ("PhysXExtractorKeep","FALSE");
+		Parameter ("PhysXExtractorConvertPSys","FALSE");
+		Parameter ("PhysXExtractorPSysSameSpace","FALSE");
+		Parameter ("PhysXExtractorPSysUseRot","FALSE");
+	}
+	Plugin ("NiPhysXRagdollPlugin","PhysX Rag-doll Plug-in","1.0","PROCESS")
+	{
+		Parameter ("PhysXRagdollSkeletonName","CenterOfMass");
+		Parameter ("PhysXRagdollKeep","FALSE");
+		Parameter ("PhysXRagdollRagdollName","ragdoll");
+		Parameter ("PhysXRagdollPostfix","RigidBody");
+		Parameter ("PhysXRagdollPrefix","");
+	}
+	Plugin ("RemoveHiddenObjectsPlugin","Remove Hidden Objects Plug-in","1.0","PROCESS")
+	{
+	}
+	Plugin ("NifExportPlugin","NIF Exporter","1.2","EXPORT")
+	{
+	}
+}

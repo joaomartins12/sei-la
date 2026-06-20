@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{57f86c58-7de6-4155-8771-ff54cbacb406}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{152d34b4-a685-4700-b250-e7904c64fe90}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Inline Files">
+      <UniqueIdentifier>{2cb8f5c4-a3bf-4dbf-8ddf-64cc96ef48a6}</UniqueIdentifier>
+      <Extensions>inl</Extensions>
+    </Filter>
+    <Filter Include="xbstrip">
+      <UniqueIdentifier>{eec1cf54-35dd-439f-80d3-4d762b010697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nvstrip">
+      <UniqueIdentifier>{4c94fe77-7103-43c1-bd19-10f24bda2c5d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiNeighborManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStripify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStripifyEdge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStripifyInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStripifyTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStripifyVertex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStripMaker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\VertexCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbstrip\xbstrip.cpp">
+      <Filter>xbstrip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NvTriStrip.cpp">
+      <Filter>nvstrip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NvTriStripObjects.cpp">
+      <Filter>nvstrip</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiNeighborManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripify.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripifyEdge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripifyInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripifyLibType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripifyTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripifyVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStripMaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\VertexCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbstrip\xbstrip.h">
+      <Filter>xbstrip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NvTriStrip.h">
+      <Filter>nvstrip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NvTriStripObjects.h">
+      <Filter>nvstrip</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiStripifyInterface.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

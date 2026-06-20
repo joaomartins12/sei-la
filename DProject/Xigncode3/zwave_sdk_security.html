@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="YoungJin Shin">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>XIGNCODE3 전용 보안 코드 지원 가이드</title>
+
+<style>
+.code
+{
+	background-color:#eeeeee; padding:10px; font-size: 9pt; font-family: Consolas; tab-size: 4; -moz-tab-size: 4; -o-tab-size: 4;
+	line-height: 120%;
+}
+
+.page
+{
+	width: 800px;
+	font-size: 9pt; 
+	font-family: Malgun Gothic;
+	line-height: 190%;
+}
+
+h2
+{
+	margin-top: 36px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="page">
+
+<h1>전용 보안 코드 지원을 위한 XIGNCODE3 API</h1>
+<b>Last Updated: 2014-08-21</b>
+
+<p>온라인 게임의 보안성 강화를 위해서 외부 보안 솔루션과는 별도로 게임사에서 직접 보안 코드를 작성하는 경우가 늘어나고 있습니다.
+XIGNCODE3에서는 이렇게 게임에 특화된 전용 보안 코드를 지원하기 위한 API가 준비되어 있습니다.
+이 페이지에서는 전용 보안 코드에서 사용할 수 있는 XIGNCODE3 API에 대한 설명을 담고 있습니다.
+XIGNCODE3 전용 보안 코드 지원 API를 사용하면 다음과 같은 일들을 할 수 있습니다.
+
+<ul>
+<li>전용 보안 코드에서 필요로하는 XIGNCODE3 확장 기능을 사용할 수 있습니다.
+<li>XIGNCODE3에서 전용 보안 코드를 오진하지 않도록 전용 보안 코드의 정보를 XIGNCODE3에 알려줄 수 있습니다.
+<li>전용 보안 코드에서 XIGNCODE3 관련 코드를 오진하지 않도록 탐지 전에 XIGNCODE3 관련 부분인지 체크할 수 있습니다.
+</ul>
+
+<p>전용 보안 코드를 위한 API는 지속적으로 추가되고 있습니다.
+관련 API가 필요한 경우에는 <a href="mailto:service@wellbia.com">service@wellbia.com</a>으로 문의해 주시기 바랍니다.
+
+<h2>전용 보안 코드 지원 시스템 초기화 및 종료 방법</h2>
+
+<p>전용 보안 코드 지원 시스템을 사용하기 위해서는 SDK에 포함된 zwave_sdk_security.h 파일을 사용하면 됩니다.
+초기화 및 종료 코드는 아래 나와 있는 것과 같습니다. 각 부분은 전용 보안 코드 실행 직전, 종료 직전에 한번씩 호출해 주시면 됩니다.
+이후 실질적인 보안 API 기능은 모두 전역 변수인 g_sh를 통해서 참조하게 됩니다.
+
+<pre class="code">#include "xigncode/zwave_sdk_security.h"
+
+// XIGNCODE3 인터페이스 핸들
+xhandle g_sh = NULL;
+
+// XIGNCODE3 보안 인터페이스를 초기화 합니다.
+// 이 코드는 전용 보안 코드의 초기화 직전에 한번만 호출하면 됩니다.
+void
+Init()
+{
+	xstatus s = ZCWAVE_SecurityEnter(&g_sh);
+	if(X_SUCCEEDED(s) || !g_sh)
+	{
+		// 오류 처리 후 종료
+	}
+}
+
+// XIGNCODE3 보안 인터페이스를 제거합니다.
+// 이 코드는 전용 보안 코드 종료 직전에 한번만 호출하면 됩니다.
+void
+Cleanup()
+{
+	if(g_sh)
+		ZCWAVE_SecurityExit(g_sh);
+
+}</pre>
+
+<h2>프로세스 핸들 획득</h2>
+
+<pre class="code">
+프로세스 핸들 = XOPENPROCESS(g_sh, 권한, 상속 여부, 프로세스 ID);
+</pre>
+
+<pre class="code">
+xhandle process = XOPENPROCESS(g_sh, PROCESS_QUERY_INFORMATION, X_FALSE, 960);
+</pre>
+
+<h2>허용 스레드 추가</h2>
+전용 보안 코드에서 생성한 스레드를 XIGNCODE3에서 탐지하지 않도록 허용합니다.
+
+<pre class="code">
+성공 여부 = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_ADD_WHITE_THREAD_ID, 스레드 ID);
+</pre>
+
+<pre class="code">
+xstatus s = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_ADD_WHITE_THREAD_ID, 123);
+if(X_SUCCEEDED(s))
+{
+	// 성공
+}
+else
+{
+	// 지원 안 하는 패치 루트 버전
+}
+</pre>
+
+<h2>허용 스레드 제거</h2>
+전용 보안 코드에서 추가한 허용 스레드 ID를 XIGNCODE3 스레드 허용 목록에서 제거합니다.
+
+<pre class="code">
+성공 여부 = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_DELETE_WHITE_THREAD_ID, 스레드 ID);
+</pre>
+
+<pre class="code">
+xstatus s = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_DELETE_WHITE_THREAD_ID, 123);
+if(X_SUCCEEDED(s))
+{
+	// 성공
+}
+else
+{
+	// 지원 안 하는 패치 루트 버전
+}
+</pre>
+
+<h2>허용 스레드 체크</h2>
+특정 스레드 ID가 XIGNCODE3 스레드 허용 목록에 포함되어 있는지 체크합니다. XIGNCODE3 스레드 허용 목록에는 전용 보안 코드에서 추가한 허용 스레드 ID와 XIGNCODE3에서 생성한 스레드 ID가 포함됩니다.
+
+<pre class="code">
+성공 여부 = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_IS_WHITE_THREAD_ID, 스레드 ID, 허용 여부);
+</pre>
+
+<pre class="code">
+xbool is_white = X_FALSE;
+xstatus s = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_IS_WHITE_THREAD_ID, 123, &is_white);
+if(X_SUCCEEDED(s))
+{
+	if(is_white)
+		// 허용 처리된 스레드
+	else
+		// 알 수 없는 스레드
+}
+else
+{
+	// 지원 안 하는 패치 루트 버전
+}
+</pre>
+
+<h2>프로세스 접근 제어 상태 체크</h2>
+특정 프로세스 ID의 프로세스가 게임 클라이언트 메모리에 접근 가능한지를 체크합니다.
+
+<pre class="code">
+성공 여부 = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_IS_ALLOWED_PROCESS_ID, 프로세스 ID, 허용 여부);
+</pre>
+
+<pre class="code">
+xbool is_allowed = X_FALSE;
+xstatus s = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_IS_ALLOWED_PROCESS_ID, 123, &is_allowed);
+if(X_SUCCEEDED(s))
+{
+	if(is_allowed)
+		// 허용 처리된 프로세스
+	else
+		// 알 수 없는 프로세스
+}
+else
+{
+	// 지원 안 하는 패치 루트 버전
+}
+</pre>
+
+
+<h2>XIGNCODE VM 영역 체크</h2>
+특정 포인터가 XIGNCODE에서 사용하는 VM 영역 내부에 있는지 체크합니다.
+
+<pre class="code">
+성공 여부 = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_IS_XIGNCODE_PTR, ptr, 허용 여부);
+</pre>
+
+<pre class="code">
+xbool is_white = X_FALSE;
+xpvoid ptr = (xpvoid) 0x12345678;
+xstatus s = ZCWAVE_SecuritySendCommand(g_sh, ZCMD_IS_XIGNCODE_PTR, ptr, &is_white);
+if(X_SUCCEEDED(s))
+{
+	if(is_white)
+		// XIGNCODE VM 영역 내에 있는 포인터
+	else
+		// XIGNCODE VM 영역 밖의 포인터
+}
+else
+{
+	// 지원 안 하는 패치 루트 버전
+}
+</pre>
+
+
+
+
+</div>
+
+</body>
+</html>

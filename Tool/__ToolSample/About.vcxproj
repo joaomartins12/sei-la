@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8AC3CCF8-9A15-45F3-96DB-5FCB788433E1}</ProjectGuid>
+    <RootNamespace>About</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.30028.132</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\DM\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\DM\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\Dx200702\Include;..\..\Freetype\include;..\..\Gamebryo2.3\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;NIDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)About_D.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Gamebryo2.3\Lib\DebugLib;..\..\FreeType\lib;..\..\Lib\Debug;..\..\Dx200702\Lib\x86;..\..\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD MSVCRT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/Zm1000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>..\..\Dx200702\Include;..\..\Freetype\include;..\..\Gamebryo2.3\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;NIRELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;CsFilePack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)About_R.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Gamebryo2.3\Lib\ReleaseLib;..\..\FreeType\lib;..\..\Lib\Release;..\..\Dx200702\Lib\x86;..\..\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="About.cpp" />
+    <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="Control\Button.cpp" />
+    <ClCompile Include="Control\Font.cpp" />
+    <ClCompile Include="Control\Sprite.cpp" />
+    <ClCompile Include="Control\String.cpp" />
+    <ClCompile Include="Control\StringAnalysis.cpp" />
+    <ClCompile Include="Control\Text.cpp" />
+    <ClCompile Include="Control\Window.cpp" />
+    <ClCompile Include="Engine\Engine.cpp" />
+    <ClCompile Include="Engine\Proc3D.cpp" />
+    <ClCompile Include="Engine\ShaderHelper.cpp" />
+    <ClCompile Include="Helper.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WinLBottom.cpp" />
+    <ClCompile Include="WinLTop.cpp" />
+    <ClCompile Include="WinRBottom.cpp" />
+    <ClCompile Include="WinRTop.cpp" />
+    <ClCompile Include="__DEFINE.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="About.h" />
+    <ClInclude Include="ChildView.h" />
+    <ClInclude Include="Control\Button.h" />
+    <ClInclude Include="Control\Font.h" />
+    <ClInclude Include="Control\Sprite.h" />
+    <ClInclude Include="Control\String.h" />
+    <ClInclude Include="Control\StringAnalysis.h" />
+    <ClInclude Include="Control\Text.h" />
+    <ClInclude Include="Control\Window.h" />
+    <ClInclude Include="Engine\Engine.h" />
+    <ClInclude Include="Engine\Proc3D.h" />
+    <ClInclude Include="Engine\ShaderHelper.h" />
+    <ClInclude Include="Helper.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="WinLBottom.h" />
+    <ClInclude Include="WinLTop.h" />
+    <ClInclude Include="WinRBottom.h" />
+    <ClInclude Include="WinRTop.h" />
+    <ClInclude Include="__DEFINE.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\About.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="About.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\About.rc2" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="About.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,17 @@
+{
+ 	"version": "0000000e",
+	"adjustments": 
+	[
+		{
+ 			"graph": 
+			{
+			},
+			"index": "0",
+			"def_transition_ms": 833.33313,
+			"distance_scale_end": 0,
+			"def_transition_curve": 0,
+			"distance_scale_curve": 0,
+			"distance_scale_start": 0
+		}
+]
+}

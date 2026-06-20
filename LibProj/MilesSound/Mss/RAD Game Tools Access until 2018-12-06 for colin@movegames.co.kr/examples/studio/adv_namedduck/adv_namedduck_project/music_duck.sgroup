@@ -1,0 +1,11 @@
+{
+ 	"version": "00000001",
+	"targets": 
+	[
+		{
+ 			"bus": "music_bus",
+			"group": "0",
+			"target": "0"
+		}
+]
+}

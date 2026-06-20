@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping DLL|Win32">
+      <Configuration>Shipping DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping|Win32">
+      <Configuration>Shipping</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8C53DECE-0827-4CBC-BBE0-E6D786657CA4}</ProjectGuid>
+    <RootNamespace>NiPhysX</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_PhysX_Link.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_PhysX_Compile.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_PhysX_Compile.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_PhysX_Link.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_PhysX_Link.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_PhysX_Compile.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories);C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Physics\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Foundation\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Physics\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Cooking\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\PhysXLoader\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\NxCharacter\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\NxExtensions\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\sdk\Win32\$(GB_Target_Filename)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIPHYSX_EXPORT;NIANIMATION_IMPORT;NIMAIN_IMPORT;NISYSTEM_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiAnimation$(GB_DLL_Suffix).lib;NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIPHYSX_EXPORT;NIANIMATION_IMPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;NiAnimation$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include\;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Cooking\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Foundation\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Framework\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\NxCharacter\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\NxExtensions\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Physics\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\PhysXLoader\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Foundation\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Physics\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\Cooking\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\PhysXLoader\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\NxCharacter\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK_Core\SDKs\NxExtensions\include;%(AdditionalIncludeDirectories);C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Foundation\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Physics\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\Cooking\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\PhysXLoader\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\NxCharacter\include;C:\Users\joaom\Desktop\client-main\PhysX_2.6.4_SDK\SDKs\NxExtensions\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\sdk\Win32\$(GB_Target_Filename)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\sdk\Win32\$(GB_Target_Filename)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIPHYSX_EXPORT;NIANIMATION_IMPORT;NIMAIN_IMPORT;NISYSTEM_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiAnimation$(GB_DLL_Suffix).lib;NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiPhysXAccumInterpolatorDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXAccumRigidBodyDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXAccumTransformDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXActorDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXAllocator.cpp" />
+    <ClCompile Include="..\..\NiPhysXBodyDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXClothDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXClothDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXClothMesh.cpp" />
+    <ClCompile Include="..\..\NiPhysXConvexMesh.cpp" />
+    <ClCompile Include="..\..\NiPhysXD6JointDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXDynamicSrc.cpp" />
+    <ClCompile Include="..\..\NiPhysXFileStream.cpp" />
+    <ClCompile Include="..\..\NiPhysXInterpolatorDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXJointDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXKinematicSrc.cpp" />
+    <ClCompile Include="..\..\NiPhysXManager.cpp" />
+    <ClCompile Include="..\NiPhysXManager_Win32.cpp" />
+    <ClCompile Include="..\..\NiPhysXMaterialDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXMemStream.cpp" />
+    <ClCompile Include="..\..\NiPhysXMeshDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPhysXProp.cpp" />
+    <ClCompile Include="..\..\NiPhysXPropDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXRigidBodyDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXRigidBodySrc.cpp" />
+    <ClCompile Include="..\..\NiPhysXScene.cpp" />
+    <ClCompile Include="..\..\NiPhysXSceneDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXSDKDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXSDM.cpp" />
+    <ClCompile Include="..\..\NiPhysXSequenceManager.cpp" />
+    <ClCompile Include="..\..\NiPhysXShapeDesc.cpp" />
+    <ClCompile Include="..\..\NiPhysXSrc.cpp" />
+    <ClCompile Include="..\..\NiPhysXTransformDest.cpp" />
+    <ClCompile Include="..\..\NiPhysXTriangleMesh.cpp" />
+    <ClCompile Include="..\..\NiPhysXTypes.cpp" />
+    <ClCompile Include="..\..\NiPhysXUserOutput.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiPhysX.h" />
+    <ClInclude Include="..\..\NiPhysXAccumInterpolatorDest.h" />
+    <ClInclude Include="..\..\NiPhysXAccumRigidBodyDest.h" />
+    <ClInclude Include="..\..\NiPhysXAccumTransformDest.h" />
+    <ClInclude Include="..\..\NiPhysXActorDesc.h" />
+    <ClInclude Include="..\..\NiPhysXAllocator.h" />
+    <ClInclude Include="..\..\NiPhysXBodyDesc.h" />
+    <ClInclude Include="..\..\NiPhysXClothDesc.h" />
+    <ClInclude Include="..\..\NiPhysXClothDest.h" />
+    <ClInclude Include="..\..\NiPhysXClothMesh.h" />
+    <ClInclude Include="..\..\NiPhysXConvexMesh.h" />
+    <ClInclude Include="..\..\NiPhysXD6JointDesc.h" />
+    <ClInclude Include="..\..\NiPhysXDest.h" />
+    <ClInclude Include="..\..\NiPhysXDynamicSrc.h" />
+    <ClInclude Include="..\..\NiPhysXFileStream.h" />
+    <ClInclude Include="..\..\NiPhysXInterpolatorDest.h" />
+    <ClInclude Include="..\..\NiPhysXJointDesc.h" />
+    <ClInclude Include="..\..\NiPhysXKinematicSrc.h" />
+    <ClInclude Include="..\..\NiPhysXLibType.h" />
+    <ClInclude Include="..\..\NiPhysXManager.h" />
+    <ClInclude Include="..\..\NiPhysXMaterialDesc.h" />
+    <ClInclude Include="..\..\NiPhysXMemStream.h" />
+    <ClInclude Include="..\..\NiPhysXMeshDesc.h" />
+    <ClInclude Include="..\..\NiPhysXPCH.h" />
+    <ClInclude Include="..\..\NiPhysXProp.h" />
+    <ClInclude Include="..\..\NiPhysXPropDesc.h" />
+    <ClInclude Include="..\..\NiPhysXRigidBodyDest.h" />
+    <ClInclude Include="..\..\NiPhysXRigidBodySrc.h" />
+    <ClInclude Include="..\..\NiPhysXScene.h" />
+    <ClInclude Include="..\..\NiPhysXSceneDesc.h" />
+    <ClInclude Include="..\..\NiPhysXSDKDesc.h" />
+    <ClInclude Include="..\..\NiPhysXSDM.h" />
+    <ClInclude Include="..\..\NiPhysXSequenceManager.h" />
+    <ClInclude Include="..\..\NiPhysXShapeDesc.h" />
+    <ClInclude Include="..\..\NiPhysXSrc.h" />
+    <ClInclude Include="..\..\NiPhysXTransformDest.h" />
+    <ClInclude Include="..\..\NiPhysXTriangleMesh.h" />
+    <ClInclude Include="..\..\NiPhysXTypes.h" />
+    <ClInclude Include="..\..\NiPhysXUserOutput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiPhysXAccumInterpolatorDest.inl" />
+    <None Include="..\..\NiPhysXAccumRigidBodyDest.inl" />
+    <None Include="..\..\NiPhysXAccumTransformDest.inl" />
+    <None Include="..\..\NiPhysXActorDesc.inl" />
+    <None Include="..\..\NiPhysXBodyDesc.inl" />
+    <None Include="..\..\NiPhysXClothDesc.inl" />
+    <None Include="..\..\NiPhysXClothDest.inl" />
+    <None Include="..\..\NiPhysXClothMesh.inl" />
+    <None Include="..\..\NiPhysXConvexMesh.inl" />
+    <None Include="..\..\NiPhysXDest.inl" />
+    <None Include="..\..\NiPhysXInterpolatorDest.inl" />
+    <None Include="..\..\NiPhysXManager.inl" />
+    <None Include="..\..\NiPhysXMaterialDesc.inl" />
+    <None Include="..\..\NiPhysXMeshDesc.inl" />
+    <None Include="..\..\NiPhysXProp.inl" />
+    <None Include="..\..\NiPhysXPropDesc.inl" />
+    <None Include="..\..\NiPhysXRigidBodyDest.inl" />
+    <None Include="..\..\NiPhysXRigidBodySrc.inl" />
+    <None Include="..\..\NiPhysXScene.inl" />
+    <None Include="..\..\NiPhysXSceneDesc.inl" />
+    <None Include="..\..\NiPhysXSequenceManager.inl" />
+    <None Include="..\..\NiPhysXShapeDesc.inl" />
+    <None Include="..\..\NiPhysXSrc.inl" />
+    <None Include="..\..\NiPhysXTransformDest.inl" />
+    <None Include="..\..\NiPhysXTriangleMesh.inl" />
+    <None Include="..\..\NiPhysXTypes.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

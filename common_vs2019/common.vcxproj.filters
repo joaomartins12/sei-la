@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="3.contents">
+      <UniqueIdentifier>{466744cc-0180-41dd-8b2d-90baadb64c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\func">
+      <UniqueIdentifier>{f010f15e-54cd-4312-991f-1d48b46bf76b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\object">
+      <UniqueIdentifier>{1752834e-64ab-45bb-81e6-ab669c54f988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\object\item">
+      <UniqueIdentifier>{d7a091f3-d64d-4729-ad4b-63d4d8d81158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\object\monster">
+      <UniqueIdentifier>{33af7a9d-35b2-4eee-8b7f-74bdab1e22de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\object\digimon">
+      <UniqueIdentifier>{7260e5ee-7875-4c0a-a90a-f0bb89d1e5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\object\npc">
+      <UniqueIdentifier>{5fbb6207-71b8-49cb-abd6-eebcb579a104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\skill">
+      <UniqueIdentifier>{f9b035ee-d06d-4a14-b390-70053a314133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\evolution">
+      <UniqueIdentifier>{6ff260a8-2efa-41bd-862a-0e4c31c448b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\quest">
+      <UniqueIdentifier>{22ba002a-7b9a-4816-8559-02e665050c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\hatch">
+      <UniqueIdentifier>{7e95d3d6-3ca7-48b5-8350-7db83780aa27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\region">
+      <UniqueIdentifier>{12ff4547-1c74-47f6-9ed2-2dcfc002443e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\community">
+      <UniqueIdentifier>{b3ce296f-a985-4650-aa3e-659491046aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\event">
+      <UniqueIdentifier>{bceda86a-3c1e-4875-88ed-6c767f9d626e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\InsMap">
+      <UniqueIdentifier>{f9068c1a-2fd1-4675-ad72-480c33e46d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\battle">
+      <UniqueIdentifier>{b99a59e4-9c47-47ae-86d6-5a2f16c3fa61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\GotchaMachine">
+      <UniqueIdentifier>{fe88297b-85cd-4752-b0c0-bdd0e3552c91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\Duel">
+      <UniqueIdentifier>{042ccebd-65aa-4378-a25d-05f1ae505b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\Captcha">
+      <UniqueIdentifier>{23557bee-b8e8-4e6c-9623-bf964c53eb9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.contents\Transcendence">
+      <UniqueIdentifier>{b3713761-6a98-4f78-b788-bcf981685cd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1.base">
+      <UniqueIdentifier>{1ca9f098-c52a-43f3-b4fa-8765864a1cd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1.base\tools">
+      <UniqueIdentifier>{295efe82-59c5-4094-a411-d8f851d3b092}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1.base\FileLog">
+      <UniqueIdentifier>{1ad33bbb-6e57-4ea4-a81d-1b33160e5fb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1.base\Lua">
+      <UniqueIdentifier>{dd762782-fc9c-464c-a9b0-98655a875fe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4.packet">
+      <UniqueIdentifier>{2aeb1b82-94d3-4ef9-8960-cb57ecfd739b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4.packet\define">
+      <UniqueIdentifier>{9c971bd8-a3ce-486c-b337-aebf671873b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4.packet\struct">
+      <UniqueIdentifier>{2b04af74-f95b-420b-b032-e1cea2ccdfa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="0.lib">
+      <UniqueIdentifier>{89276a41-6670-48d8-aea3-d2690b04c3f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2.system">
+      <UniqueIdentifier>{6e40b153-f898-4646-a950-dd56b907e592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2.system\Buff">
+      <UniqueIdentifier>{c33a4fde-5a2d-4dc4-bdfc-ea7bb1e95940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2.system\Shutdown">
+      <UniqueIdentifier>{f30b8224-bd4d-406f-b4e2-c37e0a6e75f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5.Protocol">
+      <UniqueIdentifier>{f316d6da-12ac-4b2b-993c-8137c89f27e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6.Define">
+      <UniqueIdentifier>{587e494b-0519-48fd-b3a2-eb7975cb684d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pScanner.h">
+      <Filter>3.contents</Filter>
+    </ClInclude>
+    <ClInclude Include="pMsg.h">
+      <Filter>3.contents\func</Filter>
+    </ClInclude>
+    <ClInclude Include="pTrade.h">
+      <Filter>3.contents\func</Filter>
+    </ClInclude>
+    <ClInclude Include="pDigivice.h">
+      <Filter>3.contents\object</Filter>
+    </ClInclude>
+    <ClInclude Include="pInven.h">
+      <Filter>3.contents\object</Filter>
+    </ClInclude>
+    <ClInclude Include="pParameter.h">
+      <Filter>3.contents\object</Filter>
+    </ClInclude>
+    <ClInclude Include="pSync.h">
+      <Filter>3.contents\object</Filter>
+    </ClInclude>
+    <ClInclude Include="pTamer.h">
+      <Filter>3.contents\object</Filter>
+    </ClInclude>
+    <ClInclude Include="pType.h">
+      <Filter>3.contents\object</Filter>
+    </ClInclude>
+    <ClInclude Include="cItemData.h">
+      <Filter>3.contents\object\item</Filter>
+    </ClInclude>
+    <ClInclude Include="cItemSource.h">
+      <Filter>3.contents\object\item</Filter>
+    </ClInclude>
+    <ClInclude Include="pItem.h">
+      <Filter>3.contents\object\item</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonsterSource.h">
+      <Filter>3.contents\object\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="pMonster.h">
+      <Filter>3.contents\object\monster</Filter>
+    </ClInclude>
+    <ClInclude Include="cDigimonSource.h">
+      <Filter>3.contents\object\digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="cRideSource.h">
+      <Filter>3.contents\object\digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="pDigimon.h">
+      <Filter>3.contents\object\digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="cNpcSource.h">
+      <Filter>3.contents\object\npc</Filter>
+    </ClInclude>
+    <ClInclude Include="pNpc.h">
+      <Filter>3.contents\object\npc</Filter>
+    </ClInclude>
+    <ClInclude Include="cCondition.h">
+      <Filter>3.contents\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkillSource.h">
+      <Filter>3.contents\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="pSkill.h">
+      <Filter>3.contents\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="cEvoSource.h">
+      <Filter>3.contents\evolution</Filter>
+    </ClInclude>
+    <ClInclude Include="cEvoUnit.h">
+      <Filter>3.contents\evolution</Filter>
+    </ClInclude>
+    <ClInclude Include="pQuest.h">
+      <Filter>3.contents\quest</Filter>
+    </ClInclude>
+    <ClInclude Include="cHatchSource.h">
+      <Filter>3.contents\hatch</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapRegion.h">
+      <Filter>3.contents\region</Filter>
+    </ClInclude>
+    <ClInclude Include="pBuddy.h">
+      <Filter>3.contents\community</Filter>
+    </ClInclude>
+    <ClInclude Include="pGuild.h">
+      <Filter>3.contents\community</Filter>
+    </ClInclude>
+    <ClInclude Include="pParty.h">
+      <Filter>3.contents\community</Filter>
+    </ClInclude>
+    <ClInclude Include="pEvent.h">
+      <Filter>3.contents\event</Filter>
+    </ClInclude>
+    <ClInclude Include="pInsMap.h">
+      <Filter>3.contents\InsMap</Filter>
+    </ClInclude>
+    <ClInclude Include="cBattleInfo.h">
+      <Filter>3.contents\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="cGotchaMachine.h">
+      <Filter>3.contents\GotchaMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Captcha\cCaptchaConvert.h">
+      <Filter>3.contents\Captcha</Filter>
+    </ClInclude>
+    <ClInclude Include="Captcha\cCaptchaDefine.h">
+      <Filter>3.contents\Captcha</Filter>
+    </ClInclude>
+    <ClInclude Include="Captcha\cCaptchaGenerator.h">
+      <Filter>3.contents\Captcha</Filter>
+    </ClInclude>
+    <ClInclude Include="Captcha\cCaptFont.h">
+      <Filter>3.contents\Captcha</Filter>
+    </ClInclude>
+    <ClInclude Include="Captcha\QuickLz.h">
+      <Filter>3.contents\Captcha</Filter>
+    </ClInclude>
+    <ClInclude Include="cDigimonTranscendence.h">
+      <Filter>3.contents\Transcendence</Filter>
+    </ClInclude>
+    <ClInclude Include="cManagerVer.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="cVersion.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="nScope.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pHatch.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pLength.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pLimit.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pLog.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pNetwork.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pServer.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="pSession.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="typedef.h">
+      <Filter>1.base</Filter>
+    </ClInclude>
+    <ClInclude Include="cTools.h">
+      <Filter>1.base\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="cLogFile.h">
+      <Filter>1.base\FileLog</Filter>
+    </ClInclude>
+    <ClInclude Include="cLua.h">
+      <Filter>1.base\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="cCertify.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pCore.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pCountry.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pGame.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pGate.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pLoadData.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pLogin.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pMaster.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pRelocate.h">
+      <Filter>4.packet\define</Filter>
+    </ClInclude>
+    <ClInclude Include="pGame_Init.h">
+      <Filter>4.packet\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="st_Relocate.h">
+      <Filter>4.packet\struct</Filter>
+    </ClInclude>
+    <ClInclude Include="cBuffSource.h">
+      <Filter>2.system\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="pBuff.h">
+      <Filter>2.system\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="pShutdown.h">
+      <Filter>2.system\Shutdown</Filter>
+    </ClInclude>
+    <ClInclude Include="sShutdown.h">
+      <Filter>2.system\Shutdown</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Account_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Account_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Account_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\AchieveContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\AchieveContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\BattleMatch_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\BattleMatch_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\BattleMatch_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\CashShop_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\CashShop_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\CashShop_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Challenge_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Challenge_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Challenge_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Channel_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Channel_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Channel_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Chatting_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Chatting_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Community_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Community_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Community_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DataTrade_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DataTrade_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonArchive_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonArchive_protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonArchive_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonEvolution_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonEvolution_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonEvolution_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonSkill_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonSkill_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonSkill_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonTranscendence_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonTranscendence_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigimonTranscendence_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigitamaContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\DigitamaContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\EncyclopediaContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\EncyclopediaContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Event_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Event_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Event_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\FriendList_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\FriendList_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\FriendList_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Inventory_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Inventory_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Inventory_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemDel_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemProduction_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemProduction_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemProduction_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemRewardContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemRewardContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemScan_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemScan_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemScan_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemSort_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ItemSort_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\MacroProtect_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\MacroProtect_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\MacroProtect_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Mail_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Mail_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Mail_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\MakeTacticsContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\MakeTacticsContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Neon_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Neon_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Party_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Party_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Party_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PersonContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PersonContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PlayerInfo_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PlayerInfo_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PlayerInfo_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PortalMove_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\PortalMove_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\RecommendEvent_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\RecommendEvent_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\RelocateTamer_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\RelocateTamer_Protoco.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\RelocateTamer_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceIntegrity_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\SealMaster_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\SealMaster_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\SealMaster_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Store_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Store_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Trade_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Trade_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Trade_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\UnionContents_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\UnionContents_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\VipMemberShip_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\VipMemberShip_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\VipMemberShip_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Xevolution_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Xevolution_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Xevolution_Result.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Xigncode_Define.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\Xigncode_Protocol.h">
+      <Filter>5.Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Define\Define_HK.h">
+      <Filter>6.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Define\Define_KOR.h">
+      <Filter>6.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Define\Define_TH.h">
+      <Filter>6.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Define\Define_TW.h">
+      <Filter>6.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="Define\Define_USA.h">
+      <Filter>6.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="pCashShop.h" />
+    <ClInclude Include="pDebug.h" />
+    <ClInclude Include="pManager.h" />
+    <ClInclude Include="pPass2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pTamer.cpp">
+      <Filter>3.contents\object</Filter>
+    </ClCompile>
+    <ClCompile Include="pType.cpp">
+      <Filter>3.contents\object</Filter>
+    </ClCompile>
+    <ClCompile Include="cItemData.cpp">
+      <Filter>3.contents\object\item</Filter>
+    </ClCompile>
+    <ClCompile Include="cItemSource.cpp">
+      <Filter>3.contents\object\item</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonsterSource.cpp">
+      <Filter>3.contents\object\monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cDigimonSource.cpp">
+      <Filter>3.contents\object\digimon</Filter>
+    </ClCompile>
+    <ClCompile Include="cRideSource.cpp">
+      <Filter>3.contents\object\digimon</Filter>
+    </ClCompile>
+    <ClCompile Include="pDigimon.cpp">
+      <Filter>3.contents\object\digimon</Filter>
+    </ClCompile>
+    <ClCompile Include="cNpcSource.cpp">
+      <Filter>3.contents\object\npc</Filter>
+    </ClCompile>
+    <ClCompile Include="cCondition.cpp">
+      <Filter>3.contents\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkillSource.cpp">
+      <Filter>3.contents\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="pSkill.cpp">
+      <Filter>3.contents\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="cEvoSource.cpp">
+      <Filter>3.contents\evolution</Filter>
+    </ClCompile>
+    <ClCompile Include="pQuest.cpp">
+      <Filter>3.contents\quest</Filter>
+    </ClCompile>
+    <ClCompile Include="cHatchSource.cpp">
+      <Filter>3.contents\hatch</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapRegion.cpp">
+      <Filter>3.contents\region</Filter>
+    </ClCompile>
+    <ClCompile Include="cGotchaMachine.cpp">
+      <Filter>3.contents\GotchaMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Captcha\cCaptchaConvert.cpp">
+      <Filter>3.contents\Captcha</Filter>
+    </ClCompile>
+    <ClCompile Include="Captcha\cCaptchaGenerator.cpp">
+      <Filter>3.contents\Captcha</Filter>
+    </ClCompile>
+    <ClCompile Include="Captcha\cCaptFont.cpp">
+      <Filter>3.contents\Captcha</Filter>
+    </ClCompile>
+    <ClCompile Include="Captcha\QuickLz.cpp">
+      <Filter>3.contents\Captcha</Filter>
+    </ClCompile>
+    <ClCompile Include="cVersion.cpp">
+      <Filter>1.base</Filter>
+    </ClCompile>
+    <ClCompile Include="pLength.cpp">
+      <Filter>1.base</Filter>
+    </ClCompile>
+    <ClCompile Include="cTools.cpp">
+      <Filter>1.base\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="cLogFile.cpp">
+      <Filter>1.base\FileLog</Filter>
+    </ClCompile>
+    <ClCompile Include="cLua.cpp">
+      <Filter>1.base\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="pGame_Init.cpp">
+      <Filter>4.packet\struct</Filter>
+    </ClCompile>
+    <ClCompile Include="sShutdown.cpp">
+      <Filter>2.system\Shutdown</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3 @@
+"" 
+"m:\Gamebryo2.3RC_Win32_Src_Build\ToolLibs\ArtPlugins\MayaPlugin\MayaMELMunger\Win32\Vc71\Release\MayaMelMunger.exe" 
+"m:\Gamebryo2.3RC_Win32_Src_Build\ToolLibs\ArtPlugins\MayaPlugin\MayaMELMunger\Win32\Vc71\" 

@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AEfileTemplate(string $nodeName)
+{
+    AEGamebryoFileTemplate $nodeName;
+    _gb_AEfileTemplate $nodeName;
+}

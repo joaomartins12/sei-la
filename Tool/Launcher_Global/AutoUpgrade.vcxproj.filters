@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="__Attention">
+      <UniqueIdentifier>{acceb4d3-db9c-40de-b749-443280bca7c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__Attention\Thread">
+      <UniqueIdentifier>{8fa38e77-9ad9-44e0-877f-45c16146ce53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DownloadManager">
+      <UniqueIdentifier>{040c8939-9b78-4882-8968-38a3d8c4a8e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VersionInfoStruct">
+      <UniqueIdentifier>{eb875a51-e370-472f-aa19-08db317960d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Version">
+      <UniqueIdentifier>{db69fd31-ad13-4d2a-81dd-4206bc06d395}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BmpButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IniFile.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MyHtmlView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressST.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowVersionChecker.cpp">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="AUD_CallBackFunc.cpp">
+      <Filter>__Attention</Filter>
+    </ClCompile>
+    <ClCompile Include="AUD_Func.cpp">
+      <Filter>__Attention</Filter>
+    </ClCompile>
+    <ClCompile Include="AUD_Pack.cpp">
+      <Filter>__Attention</Filter>
+    </ClCompile>
+    <ClCompile Include="AUD_UI.cpp">
+      <Filter>__Attention</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoUpgrade.cpp">
+      <Filter>__Attention</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoUpgradeDlg.cpp">
+      <Filter>__Attention</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread_Data.cpp">
+      <Filter>__Attention\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadMng.cpp">
+      <Filter>__Attention\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="UseRegistry.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DownloadManager.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>VersionInfoStruct</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BmpButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFile.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyHtmlView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Option.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressST.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowVersionChecker.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="__Define.h">
+      <Filter>__Attention</Filter>
+    </ClInclude>
+    <ClInclude Include="__String.h">
+      <Filter>__Attention</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoUpgrade.h">
+      <Filter>__Attention</Filter>
+    </ClInclude>
+    <ClInclude Include="AutoUpgradeDlg.h">
+      <Filter>__Attention</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread_Data.h">
+      <Filter>__Attention\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadMng.h">
+      <Filter>__Attention\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Aeria.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Hongkong.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Steam.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Taiwan.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_USA.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="UseRegistry.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadManager.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>VersionInfoStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientOAuthKey.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Thai.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\AutoUpgrade.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\AutoUpgrade.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\AutoUpgrader.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\cancle_1.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\cancle_2.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\cancle_3.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\cancle_4.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\icon-game-digimon.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\main3.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Option_C.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Option_D.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Option_N.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Option_O.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\pronow.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\pronow1.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\pronow3.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\start_1.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\start_2.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\start_3.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\start_4.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AutoUpgrade.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

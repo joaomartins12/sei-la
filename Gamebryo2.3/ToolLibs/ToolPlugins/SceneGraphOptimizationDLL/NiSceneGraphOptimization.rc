@@ -1,0 +1,180 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "NiSceneGraphOptimization_resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "NiSceneGraphOptimization_resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OPTIMIZATION_OPTIONS DIALOGEX 0, 0, 395, 265
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Optimization Options"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    LTEXT           "Select the optimizations that you want to be performed on the scene graph:",
+                    IDC_STATIC,10,10,236,8
+    CONTROL         "Remove duplicate properties",
+                    IDC_OPT_CHECK_REMOVEDUPPROPERTIES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,25,106,10
+    CONTROL         "Remove bad NiTexturing properties",
+                    IDC_OPT_CHECK_REMOVEBADTEXTURINGPROPS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,40,127,10
+    CONTROL         "Remove multi-material nodes",
+                    IDC_OPT_CHECK_REMOVEMULTIMTLNODES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,55,106,10
+    CONTROL         "Remove childless nodes",
+                    IDC_OPT_CHECK_REMOVECHILDLESSNODES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,70,93,10
+    CONTROL         "Remove single-child nodes",
+                    IDC_OPT_CHECK_REMOVESINGLECHILDNODES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,85,101,10
+    CONTROL         "Merge sibling nodes",IDC_OPT_CHECK_MERGESIBLINGNODES,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,100,79,10
+    CONTROL         "Merge sibling NiTriShape objects",
+                    IDC_OPT_CHECK_MERGESIBLINGTRISHAPES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,115,119,10
+    CONTROL         "Do not merge alpha-blended NiTriShape objects",
+                    IDC_OPT_CHECK_NOMERGEONALPHA,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,30,130,167,10
+    CONTROL         "Optimize NiTriShape objects",
+                    IDC_OPT_CHECK_OPTIMIZETRISHAPES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,145,105,10
+    CONTROL         "Remove extra texture coordinate sets",
+                    IDC_OPT_CHECK_REMOVEEXTRAUVSETS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,160,133,10
+    CONTROL         "Remove unnecessary normals",
+                    IDC_OPT_CHECK_REMOVEUNNECESSARYNORMALS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,175,111,10
+    CONTROL         "Remove unnecessary NiVisControllers",
+                    IDC_OPT_CHECK_REMOVEUNNECESSARYVISCONTROLLERS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,190,135,10
+    CONTROL         "Remove unnecessary NiLookAtControllers",
+                    IDC_OPT_CHECK_REMOVEUNNECESSARYLOOKATCONTROLLERS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,205,149,10
+    CONTROL         "Remove hidden bone geometry",
+                    IDC_OPT_CHECK_REMOVEHIDDENBONEGEOMETRY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,10,220,115,10
+    CONTROL         "Reduce animation keys",
+                    IDC_OPT_CHECK_REDUCEANIMATIONKEYS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,215,25,90,10
+    LTEXT           "Tolerance:",IDC_STATIC,240,40,35,8
+    EDITTEXT        IDC_OPT_EDIT_ANIMATIONKEYREDUCTIONTOLERANCE,280,38,40,12,
+                    ES_AUTOHSCROLL
+    CONTROL         "Remove unnecessary extra data",
+                    IDC_OPT_CHECK_REMOVEUNNECESSARYEXTRADATA,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,215,53,118,10
+    CONTROL         "Remove ""NiOptimizeKeep"" tags",
+                    IDC_OPT_CHECK_REMOVESGOKEEPTAGS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,240,68,117,10
+    CONTROL         "Sort children of each node by NiTexturingProperty",
+                    IDC_OPT_CHECK_SORTBYTEXTURINGPROP,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,215,83,173,10
+    GROUPBOX        "Object Names",IDC_STATIC,216,95,162,60
+    CONTROL         "Remove all object names",IDC_OPT_RADIO_REMOVENAMES,
+                    "Button",BS_AUTORADIOBUTTON,225,110,95,10
+    CONTROL         "Name all unnamed objects",
+                    IDC_OPT_RADIO_NAMEUNNAMEDOBJECTS,"Button",
+                    BS_AUTORADIOBUTTON,225,125,99,10
+    CONTROL         "Leave object names as they are",
+                    IDC_OPT_RADIO_LEAVENAMES,"Button",BS_AUTORADIOBUTTON,225,
+                    140,117,10
+    DEFPUSHBUTTON   "OK",IDOK,72,240,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,138,240,50,14
+    PUSHBUTTON      "Un-Check All",IDC_OPT_BUTTON_UNCHECKALL,204,240,50,14
+    PUSHBUTTON      "Reset Defaults",IDC_OPT_BUTTON_RESETDEFAULTS,270,240,56,
+                    14
+    GROUPBOX        "Skin and Bones Support",IDC_STATIC,215,156,163,72
+    CONTROL         "Hardware",IDC_OPT_RADIO_SKINHW,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,222,192,47,10
+    CONTROL         "Software",IDC_OPT_RADIO_SKINSW,"Button",
+                    BS_AUTORADIOBUTTON,281,192,44,10
+    CONTROL         "Both",IDC_OPT_RADIO_SKINBOTH,"Button",
+                    BS_AUTORADIOBUTTON,337,192,31,10
+    LTEXT           "Bones per Partition:",IDC_STATIC,239,211,62,8
+    EDITTEXT        IDC_OPT_EDIT_BONESPERPARTITION,305,210,40,12,
+                    ES_AUTOHSCROLL
+    CONTROL         "Weld hardware skin partitions",IDC_OPT_CHECK_WELDSKIN,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,222,174,109,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_OPTIMIZATION_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 388
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 258
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

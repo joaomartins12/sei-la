@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="GB_Target_StaticLib_DX9"
+	OutputDirectory="$(GB_Configuration_Name)$(GB_Target_Suffix)DX9"
+	IntermediateDirectory="$(GB_Configuration_Name)$(GB_Target_Suffix)DX9"
+	InheritedPropertySheets="GB_Target_StaticLib.vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="_DX9"
+	/>
+	<UserMacro
+		Name="GB_Target_Filename"
+		Value="$(GB_Target_Path)\$(ProjectName)DX9.lib"
+	/>
+</VisualStudioPropertySheet>

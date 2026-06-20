@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping DLL|Win32">
+      <Configuration>Shipping DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping|Win32">
+      <Configuration>Shipping</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6583F611-E612-444B-8ED1-2DDA71867C69}</ProjectGuid>
+    <RootNamespace>NiMilesAudio</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>16.0.32002.118</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>D:\DMOPSERVER\CLIENT_DMO\CLIENT\dmoclient-main\Gamebryo2.3\GB_Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <IncludePath>D:\DMOPSERVER\CLIENT_DMO\CLIENT\dmoclient-main\LibProj\MilesSound\include;D:\DMOPSERVER\CLIENT_DMO\CLIENT\dmoclient-main\Gamebryo2.3\GB_Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\;..\..\..\..\NiMain;..\..\..\..\NiMain\Win32;..\..\..\..\NiSystem;..\..\..\..\NiSystem\Win32;..\..\..\..\..\..\LibProj\MilesSound\include;C:\Users\joaom\Desktop\client-main\LibProj\MilesSound\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\..\GB_Lib\ReleaseLib\NiMilesAudio.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\..\Ni*.h ..\..\..\Ni*.inl</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\;..\..\..\..\NiMain;..\..\..\..\NiMain\Win32;..\..\..\..\NiSystem;..\..\..\..\NiSystem\Win32;..\..\..\..\..\..\LibProj\MilesSound\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\..\GB_Lib\ShippingLib\NiMilesAudio.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\..\Ni*.h ..\..\..\Ni*.inl</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\;..\..\..\..\NiMain;..\..\..\..\NiMain\Win32;..\..\..\..\NiSystem;..\..\..\..\NiSystem\Win32;$(MILES_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\Lib\DebugLib\NiMilesAudio.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\..\Ni*.h ..\..\..\Ni*.inl</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\;..\..\..\..\NiMain;..\..\..\..\NiMain\Win32;..\..\..\..\NiSystem;..\..\..\..\NiSystem\Win32;$(MILES_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIAUDIO_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;mss32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <AdditionalLibraryDirectories>$(MILES_PATH)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\..\Ni*.h ..\..\..\Ni*.inl</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\;..\..\..\..\NiMain;..\..\..\..\NiMain\Win32;..\..\..\..\NiSystem;..\..\..\..\NiSystem\Win32;$(MILES_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIAUDIO_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;mss32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <AdditionalLibraryDirectories>$(MILES_PATH)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\..\Ni*.h ..\..\..\Ni*.inl</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\;..\..\..\..\NiMain;..\..\..\..\NiMain\Win32;..\..\..\..\NiSystem;..\..\..\..\NiSystem\Win32;$(MILES_PATH)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIAUDIO_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;mss32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <AdditionalLibraryDirectories>$(MILES_PATH)\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\..\Ni*.h ..\..\..\Ni*.inl</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\NiAudioListener.cpp" />
+    <ClCompile Include="..\..\..\NiAudioMetrics.cpp" />
+    <ClCompile Include="..\..\..\NiAudioSource.cpp" />
+    <ClCompile Include="..\..\..\NiAudioSystem.cpp" />
+    <ClCompile Include="..\..\NiMilesAudioPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\NiMilesAudioSDM.cpp" />
+    <ClCompile Include="..\..\NiMilesAudioSystem.cpp" />
+    <ClCompile Include="..\..\NiMilesListener.cpp" />
+    <ClCompile Include="..\..\NiMilesSource.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\NiAudio.h" />
+    <ClInclude Include="..\..\..\NiAudioLibType.h" />
+    <ClInclude Include="..\..\..\NiAudioListener.h" />
+    <ClInclude Include="..\..\..\NiAudioMetrics.h" />
+    <ClInclude Include="..\..\..\NiAudioSource.h" />
+    <ClInclude Include="..\..\..\NiAudioSystem.h" />
+    <ClInclude Include="..\..\NiMilesAudio.h" />
+    <ClInclude Include="..\..\NiMilesAudioPCH.h" />
+    <ClInclude Include="..\..\NiMilesAudioSDM.h" />
+    <ClInclude Include="..\..\NiMilesAudioSystem.h" />
+    <ClInclude Include="..\..\NiMilesListener.h" />
+    <ClInclude Include="..\..\NiMilesSource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\NiAudioMetrics.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

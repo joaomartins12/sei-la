@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AEpointLightTemplate ( string $nodeName )
+{
+    AEGamebryoLightNodeCommon $nodeName;
+    _gb_AEpointLightTemplate $nodeName;
+}

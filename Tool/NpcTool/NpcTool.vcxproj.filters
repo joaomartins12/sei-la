@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{88fc666a-7c33-4c99-a336-a651f6eba3d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MFC">
+      <UniqueIdentifier>{464c29de-1100-4537-ae41-05043a674335}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog">
+      <UniqueIdentifier>{a0f78405-f9dc-4fa0-a5a6-40e5061af4b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resist">
+      <UniqueIdentifier>{40a99b30-6a75-4c1d-9837-b3460b8c2571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{2544bc47-ece8-4151-bce8-86ad0f725e65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\NpcTool.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\NpcTool.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NpcTool.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_DlgMain.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcTool.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcToolDlg.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="_ControlFunc.cpp">
+      <Filter>MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="_Dlg_Extra_Quest.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="_Dlg_ModelInfo.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="_Dlg_Type_DigiCore.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="_Dlg_Type_Portal.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="_Dlg_Type_Trade.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgModal_List.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Resist.cpp">
+      <Filter>Resist</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NpcTool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcToolDlg.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="_ControlFunc.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="_Dlg_Extra_Quest.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_Dlg_ModelInfo.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_Dlg_Type_DigiCore.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_Dlg_Type_Portal.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_Dlg_Type_Trade.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgHeader.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgModal_List.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Resist.h">
+      <Filter>Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongkongDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

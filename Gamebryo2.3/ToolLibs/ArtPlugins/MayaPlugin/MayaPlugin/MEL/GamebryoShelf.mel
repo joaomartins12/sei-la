@@ -1,0 +1,481 @@
+//
+// MayaNifShelfButtons.mel
+//
+
+// Handles creation of Shelf Buttons for viewing, exporting, etc.
+
+global string $gShelfTopLevel;
+
+global int $g_PortalWallsVisibility;
+
+global proc int MyImmerseShelfButtonExists(string $szLabel)
+{
+    string $szButtons[] = `shelfLayout -q -ca Gamebryo`;
+
+    int $iLoop = 0;
+    for($iLoop = 0; $iLoop < size($szButtons); $iLoop++)
+    {
+        if(`shelfButton -ex $szButtons[$iLoop]` == 1)
+        {
+            if(`shelfButton -q -l $szButtons[$iLoop]` == $szLabel)
+            {
+                return 1;
+            }   
+        }
+    }
+
+    return 0;
+}
+//---------------------------------------------------------------------------
+global proc int MyImmerseDeleteShelfButton(string $szLabel)
+{
+    string $szButtons[] = `shelfLayout -q -ca Gamebryo`;
+
+    int $iLoop = 0;
+    for($iLoop = 0; $iLoop < size($szButtons); $iLoop++)
+    {
+        if(`shelfButton -ex $szButtons[$iLoop]` == 1)
+        {
+            if(`shelfButton -q -l $szButtons[$iLoop]` == $szLabel)
+            {
+                deleteUI $szButtons[$iLoop];
+                return 1;
+            }   
+        }
+    }
+
+    return 0;
+}
+
+
+//---------------------------------------------------------------------------
+global proc GamebryoShelf()
+{
+    global string $gShelfTopLevel;
+    
+
+    //remove the old Gamebryo
+    //7644
+    if(`shelfLayout -ex -p $gShelfTopLevel Gamebryo`)
+    {
+        deleteUI Gamebryo;
+    }
+
+    shelfLayout -p $gShelfTopLevel Gamebryo;
+
+    // Check to see if the button already exists
+
+    if(MyImmerseShelfButtonExists("Export Options") == false)
+    {
+        shelfButton -label "Export Options"
+                    -image1 "MyImmerseExportOptionsIcon.bmp"
+                    -style "iconOnly"
+                    //-command "eval(\"source \\\"GamebryoExporting.mel\\\"\"); GamebryoOptionsWindow"
+                    -command "ExportOptions"
+                    -p "Gamebryo" MayaNifRecursiveViewButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Export Scene") == false)
+    {
+        shelfButton -label "Export Scene"
+                    -image1 "MyImmerseExportIcon.bmp"
+                    -style "iconOnly"
+                    -command "GamebryoExportWithCurrentOptions"
+                    -p "Gamebryo" MayaNifExportButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Export Selected") == false)
+    {
+        shelfButton -label "Export Selected"
+                    -image1 "MyImmerseExportSelectedIcon.bmp"
+                    -style "iconOnly"
+                    -command "GamebryoExportSelectedWithCurrentOptions"
+                    -p "Gamebryo" GamebryoExportSelectedButton;
+    }
+
+    if(MyImmerseShelfButtonExists("View Scene with Gamebryo Maya Viewer") == false)
+    {
+        shelfButton -label "View Scene with Gamebryo Maya Viewer"
+                    -image1 "MyImmerseIcon1.bmp"
+                    -style "iconOnly"
+                    -command "MyImmerseQuickView 0"
+                    -p "Gamebryo" MayaNifViewButton;
+    }
+
+    if(MyImmerseShelfButtonExists("View Selected in Scene with Gamebryo Maya Viewer") == false)
+    {
+        shelfButton -label "View Selected in Scene with Gamebryo Maya Viewer"
+                    -image1 "MyImmerseViewSelectedIcon.bmp"
+                    -style "iconOnly"
+                    -command "MyImmerseQuickView 1"
+                    -p "Gamebryo" MayaNifViewSelectedButton;
+    }
+
+    /*if(MyImmerseShelfButtonExists("Create Point Light") == false)
+    {
+        shelfButton -label "Create Point Light"
+                -image1 "MyImmersePointLightIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateLightWithAttributes(\"pointLight\")"
+                -p "Gamebryo" MayaNifCreatePointLightButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Directional Light") == false)
+    {
+        shelfButton -label "Create Directional Light"
+                -image1 "MyImmerseDirectionalLightIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateLightWithAttributes(\"directionalLight\")"
+                -p "Gamebryo" MayaNifCreateDirectionalLightButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Spot Light") == false)
+    {
+        shelfButton -label "Create Spot Light"
+                -image1 "MyImmerseSpotLightIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateLightWithAttributes(\"spotLight\")"
+                -p "Gamebryo" MayaNifCreateSpotLightButton;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Create Light Attenuation Dialog") == false)
+    {
+        shelfButton -label "Create Light Attenuation Dialog"
+                -image1 "MyImmerseLightAttenuationIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateNiLightAttenuationDialog(\"\")"
+                -p "Gamebryo" MayaNifCreateLightAttenuationDialog;
+    }
+
+    //if(MyImmerseShelfButtonExists("Create Switch Node") == false)
+    //{
+    //    shelfButton -label "Create Switch Node"
+    //            -image1 "MyImmerseSwitchNodeIcon.bmp"
+    //            -style "iconOnly"
+    //            -command "MyImmerseCreateSwitchNode()"
+    //            -p "Gamebryo" MayaNifCreateSwitchNodeButton;
+    //}
+
+    if(MyImmerseShelfButtonExists("Create Billboard Node") == false)
+    {
+        shelfButton -label "Create Billboard Node"
+                -image1 "MyImmerseBillboardIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateBillboardNode(\"\")"
+                -p "Gamebryo" MayaNifCreateBillboardNodeButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Dynamic Texture Light") == false)
+    {
+        shelfButton -label "Create Dynamic Texture Light"
+                -image1 "MyImmerseDynamicTextureIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateDynamicTextureMap()"
+                -p "Gamebryo" MayaNifCreateDynamicTextureButton;
+    }
+
+    //if(MyImmerseShelfButtonExists("Create Double Sided Node") == false)
+    //{
+    //    shelfButton -label "Create Double Sided Node"
+    //            -image1 "MyImmerseDoubleSidedNodeIcon.bmp"
+    //            -style "iconOnly"
+    //            -command "MyImmerseCreateDoubleSidedNode()"
+    //            -p "Gamebryo" MayaNifCreateDoubleSidedButton;
+    //}
+
+    //if(MyImmerseShelfButtonExists("Create Animation Looping Controls") == false)
+    //{
+    //    shelfButton -label "Create Animation Looping Controls"
+    //            -image1 "MyImmerseAnimationLoopingIcon.bmp"
+    //            -style "iconOnly"
+    //            -command "MyImmerseCreateAnimationLoopingControls()"
+    //            -p "Gamebryo" MayaNifCreateAnimationLoopingButton;
+    //}
+
+    if(MyImmerseShelfButtonExists("Create Character Sequence") == false)
+    {
+        shelfButton -label "Create Character Sequence"
+                -image1 "MyImmerseSequenceIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseSequenceEditor()"
+                -p "Gamebryo" MayaNifCreateSequenceButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Key Frame Reduction") == false)
+    {
+        shelfButton -label "Key Frame Reduction"
+                -image1 "MyImmerseKeyFrameReductionIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateKeyFrameReductionDialog()"
+                -p "Gamebryo" MayaNifCreateKeyFrameReductionButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Character Animation Compression") == false)
+    {
+        shelfButton -label "Character Animation Compression"
+                -image1 "MyImmerseCreateCharacterKeyReductionIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateCharacterAnimationCompressionDialog()"
+                -p "Gamebryo" MayaNifCreateCharacterAnimationCompressionButton;
+    }
+
+    /*if(MyImmerseShelfButtonExists("Create Character Morph Tag") == false)
+    {
+        shelfButton -label "Create Character Morph Tag"
+                -image1 "MyImmerseMorphTagIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateMorphTagDialog()"
+                -p "Gamebryo" MayaNifCreateMorphTagButton;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Text Keys") == false)
+    {
+        shelfButton -label "Create Text Keys"
+                -image1 "MyImmerseTextKeyIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateTextKeyDialog()"
+                -p "Gamebryo" MayaNifCreateTextKeyButton;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Toggle NiMultiShader To Base Map") == false)
+    {
+        shelfButton -label "Toggle NiMultiShader To Base Map"
+                -image1 "MyImmerseSetBaseMapOnlyIcon.bmp"
+                -style "iconOnly"
+                -command ("GamebryoToggleBaseMap()")
+                -p "Gamebryo" MayaNifSetAllSelectedBaseMapOnly;
+    }
+
+    /*if(MyImmerseShelfButtonExists("Clear All Select NiMultiShader of Base Map Only") == false)
+    {
+        shelfButton -label "Clear All Select NiMultiShader of Base Map Only"
+                -image1 "MyImmerseClearBaseMapOnlyIcon.bmp"
+                -style "iconOnly"
+                -command "g_BaseMapVisibility = !g_BaseMapVisibility;MyImmerseSetAllSelectedNiMultiShaderBaseMapOnly(g_BaseMapVisibility)"
+                -p "Gamebryo" MayaNifClearAllSelectedBaseMapOnly;
+    }*/
+
+   /* if(MyImmerseShelfButtonExists("Create Platform Texture Properties") == false)
+    {
+        shelfButton -label "Create Platform Texture Properties"
+                -image1 "MyImmerseCreatePlatformTexturePropertiesIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreatePlatformTexturePropertiesDialog"
+                -p "Gamebryo" MayaNifCreatePlatformTextureProperties;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Create Centered LOD Group") == false)
+    {
+        shelfButton -label "Create Centered LOD Group"
+                -image1 "MyImmerseCreateCenteredLODGroupIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateCenteredLODGroup"
+                -p "Gamebryo" MayaNifCreateCenteredLODGroup;
+    }
+
+   /* if(MyImmerseShelfButtonExists("Create Z Buffer Properties") == false)
+    {
+        shelfButton -label "Create Z Buffer Properties"
+                -image1 "MyImmerseZBufferIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateZBufferProperty"
+                -p "Gamebryo" MayaNifCreateZBufferProperties;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Alternate Bounding Volume Properties") == false)
+    {
+        shelfButton -label "Create Alternate Bounding Volume Properties"
+                -image1 "MyImmerseABVIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseAddABVAttributes"
+                -p "Gamebryo" MayaNifCreateABVAttributes;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Create ABV Bounding Box") == false)
+    {
+        shelfButton -label "Create ABV Bounding Box"
+                -image1 "MyImmerseCreateABVBoundingBoxIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateABVAxisAlignedBoundingBox(\"\")"
+                -p "Gamebryo" MayaNifCreateABVBoundingBox;
+    }
+
+    /*if(MyImmerseShelfButtonExists("Create Optimize Keep Object Properties") == false)
+    {
+        shelfButton -label "Create Optimize Keep Object Properties"
+                -image1 "MyImmerseOptimizeKeepNodeIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseAddOptimizeKeepNodeAttribute"
+                -p "Gamebryo" MayaNifCreateOptimizeKeepNodeAttributes;
+    }
+
+    if(MyImmerseShelfButtonExists("Create No Stripify Attribute") == false)
+    {
+        shelfButton -label "Create No Stripify Attribute"
+                -image1 "MyImmerseNoStripifyIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateNoStripifyAttribute"
+                -p "Gamebryo" MayaNifCreateNoStripifyAttributes;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Color Filter Attribute For Maya Materials") == false)
+    {
+        shelfButton -label "Create Color Filter Attribute For Maya Materials"
+                -image1 "MyImmerseMayaTextureFilterIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseAddColorFilterToMayaMaterials"
+                -p "Gamebryo" MayaNifAddColorFilterToMayaMaterialAttributes;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Create Emitter and Particles with Gamebryo Attributes") == false)
+    {
+        shelfButton -label "Create Emitter and Particles with Gamebryo Attributes"
+                -image1 "MyImmerseParticleSystemIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateEmitterWithAttributes"
+                -p "Gamebryo" MayaNifCreateEmitterWithAttributes;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Surface Emitter and Particles with Gamebryo Attributes") == false)
+    {
+        shelfButton -label "Create Surface Emitter and Particles with Gamebryo Attributes"
+                -image1 "MyImmerseSurfaceParticleSystemIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateSurfaceEmitterWithAttributes"
+                -p "Gamebryo" MayaNifCreateSurfaceEmitterWithAttributes;
+    }
+
+    if(MyImmerseShelfButtonExists("Proxy Spherical Collider with Gamebryo Attributes") == false)
+    {
+        shelfButton -label "Proxy Spherical Collider with Gamebryo Attributes"
+                -image1 "MyImmerseCreateProxySphericalColliderIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateProxySphericalCollider(\"\")"
+                -p "Gamebryo" MayaNifCreateProxySphericalCollider;
+    }
+
+    if(MyImmerseShelfButtonExists("Planar Collider with Gamebryo Attributes") == false)
+    {
+        shelfButton -label "Planar Collider with Gamebryo Attributes"
+                -image1 "MyImmerseCreatePlanarColliderIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreatePlanarCollider"
+                -p "Gamebryo" MayaNifCreatePlanarCollider;
+    }
+
+    if(MyImmerseShelfButtonExists("Spherical Collider with Gamebryo Attributes") == false)
+    {
+        shelfButton -label "Spherical Collider with Gamebryo Attributes"
+                -image1 "MyImmerseCreateSphericalColliderIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateSphericalCollider"
+                -p "Gamebryo" MayaNifCreateSphericalCollider;
+    }
+
+    /*if(MyImmerseShelfButtonExists("Geometry Attributes") == false)
+    {
+        shelfButton -label "Geometry Attributes"
+                -image1 "MyImmerseGeometryStabilityAttributeIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateGeometryAttributesDialog"
+                -p "Gamebryo" MayaNifCreateGeometryAttributes;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Setup / Edit Bone LOD") == false)
+    {
+        shelfButton -label "Setup / Edit Bone LOD"
+                -image1 "MyImmerseBoneLODDialogIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseBoneLODDialog(\"\")"
+                -p "Gamebryo" MayaNifBoneLODDialog;
+    }
+
+    if(MyImmerseShelfButtonExists("Setup / Edit Skins with Bone LOD") == false)
+    {
+        shelfButton -label "Setup / Edit Skins with Bone LOD"
+                -image1 "MyImmerseSkinLODDialogIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseSkinLODDialog(\"\")"
+                -p "Gamebryo" MayaNifSkinLODDialog;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Portal Room Group") == false)
+    {
+        shelfButton -label "Create Portal Room Group"
+                -image1 "MyImmerseCreatePortalRoomGroupIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreatePortalSystemRoomGroup"
+                -p "Gamebryo" MayaNifCreatePortalRoomGroup;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Portal Room") == false)
+    {
+        shelfButton -label "Create Portal Room"
+                -image1 "MyImmerseCreatePortalRoomIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreatePortalSystemRoom"
+                -p "Gamebryo" MayaNifCreatePortalRoom;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Portal Room Walls") == false)
+    {
+        shelfButton -label "Create Portal Room Walls"
+                -image1 "MyImmerseCreatePortalWallsIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateAxisAlignedPortalWalls"
+                -p "Gamebryo" MayaNifCreatePortalRoomWalls;
+    }
+
+    if(MyImmerseShelfButtonExists("Create Portal") == false)
+    {
+        shelfButton -label "Create Portal"
+                -image1 "MyImmerseCreatePortalIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateAxisAlignedPortal"
+                -p "Gamebryo" MayaNifCreatePortal;
+    }
+
+    if(MyImmerseShelfButtonExists("Toggle Portal Walls And Portals") == false)
+    {
+        shelfButton -label "Toggle Portal Walls And Portals"
+                -image1 "MyImmersePortalShowWallsAndPortalsIcon.bmp"
+                -style "iconOnly"
+                -command ("GamebryoTogglePortals()")
+                -p "Gamebryo" MayaNifPortalShowWallsAndPortal;
+    }
+
+
+   /* if(MyImmerseShelfButtonExists("Hide Portal Walls And Portals") == false)
+    {
+        shelfButton -label "Hide Portal Walls And Portals"
+                -image1 "MyImmersePortalHideWallsAndPortalsIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmersePortalSetWallAndPortalVisibility 0"
+                -p "Gamebryo" MayaNifPortalHideWallsAndPortal;
+    }*/
+
+    if(MyImmerseShelfButtonExists("Multi-NIF Export") == false)
+    {
+        shelfButton -label "Multi-NIF Export"
+                -image1 "MyImmerseMultiNifExportIcon.bmp"
+                -style "iconOnly"
+                -command "MyImmerseCreateMultiNIFExportAttributesDialog"
+                -p "Gamebryo" MayaNifMultiNIFExport;
+    }
+
+    if(MyImmerseShelfButtonExists("Recursively Export From Selected Diectory") == false)
+    {
+        shelfButton -label "Recursively Export From Selected Diectory"
+                    -image1 "MyImmerseRecursiveExportIcon.bmp"
+                    -style "iconOnly"
+                    -command "fileBrowserDialog -m 4 -fc \"MyImmerseRecursiveExport\" -an \"Export All Maya files as NIF\""
+                    -p "Gamebryo" MayaNifRecursiveExportButton;
+    }
+
+
+    // Delete Old Removed Icons
+    MyImmerseDeleteShelfButton("Create the Geometry Stability Attribute");
+    MyImmerseDeleteShelfButton("Create Cube Map Textures");
+
+}
+

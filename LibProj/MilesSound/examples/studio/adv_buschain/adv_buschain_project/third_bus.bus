@@ -1,0 +1,76 @@
+{
+ 	"version": "00000019",
+	"x": 1838,
+	"y": -83,
+	"senda": "Master",
+	"kill_db": -96,
+	"mute_db": -96,
+	"channels": 0,
+	"is_virtual": 1,
+	"pri_adjust": 0,
+	"limitaction": 1,
+	"pitch_graph": 
+	{
+ 		"transform": 
+		{
+ 			"local_graph": 
+			{
+ 				"is_advanced": 1,
+				"simple_graph": 
+				{
+				},
+				"advanced_graph": 
+				[
+					{
+ 						"x": 0,
+						"y": 0,
+						"curve_type": "1",
+						"curved_theta_0": -0.031989
+					},
+					{
+ 						"x": 250,
+						"y": -8,
+						"curve_type": "1"
+					},
+					{
+ 						"x": 750,
+						"y": 8,
+						"curve_type": "1",
+						"curved_theta_1": 0.031989
+					},
+					{
+ 						"x": 1000,
+						"y": 0
+					}
+			]
+			}
+		},
+		"controller": "Time"
+	},
+	"play_silent": 0,
+	"voice_count": 0,
+	"falloff_bias": 
+	{
+	},
+	"min_interval": 0,
+	"pri_function": "",
+	"mute_pause_db": -96,
+	"distance_scale": 
+	{
+ 		"value": 1
+	},
+	"pri_adjust_amt": 1,
+	"dynroute_fadems": 0,
+	"kill_trigger_on": 0,
+	"mute_trigger_on": 0,
+	"pri_offset_graph": 
+	{
+	},
+	"dynroute_selector": 
+	{
+	},
+	"pri_adjust_custom": 0,
+	"total_voice_count": 0,
+	"play_silent_limit_db": -50,
+	"mute_pause_trigger_on": 0
+}

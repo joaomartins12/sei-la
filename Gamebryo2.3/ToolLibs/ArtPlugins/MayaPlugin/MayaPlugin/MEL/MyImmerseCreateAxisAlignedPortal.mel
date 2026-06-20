@@ -1,0 +1,86 @@
+//
+// MyImmerseCreateAxisAlignedPortal.mel
+//
+//  Examines the selected Portal System Room and auto generates a portal
+//
+
+global proc MyImmerseCreateAxisAlignedPortal()
+{
+    int $intVal;
+
+    string $szTransformNodes[] = `ls -l -sl -typ transform`;
+    
+    // Check for Nothing Selected
+    if(size($szTransformNodes) == 0)
+    {
+        error("MyImmerseCreateABVAxisAlignedPortalWalls:: No Portal System Rooms Were Selected\n");
+        return;
+    }
+
+    if(size($szTransformNodes) != 2)
+    {
+        error("MyImmerseCreateABVAxisAlignedPortalWalls:: Only Select TWO Portal System Rooms\n");
+        return;
+    }
+
+    // Check the First Selected Object is a room
+    string $szShortName[] = `ls -sl -typ transform`;
+    if (`gmatch $szShortName[0] "*_NDLRM*"` == 0)
+    {
+        error ("MyImmerseCreateABVAxisAlignedPortalWalls:: You must select Portal System Room. ie it's name contains '_NDLRM'");
+        return;
+    } 
+
+    // Check the Second Selected Object is a room
+    if (`gmatch $szShortName[1] "*_NDLRM*"` == 0)
+    {
+        error ("MyImmerseCreateABVAxisAlignedPortalWalls:: You must select Portal System Room. ie it's name contains '_NDLRM'");
+        return;
+    } 
+
+
+    // Find the Bound
+    float $afBounds[] = `xform -q -bb $szTransformNodes[0]`;
+
+    float $fWX = ($afBounds[3] - $afBounds[0]) / 2.0;
+    float $fWY = ($afBounds[4] - $afBounds[1]) / 2.0;
+    float $fWZ = ($afBounds[5] - $afBounds[2]) / 2.0;
+
+    float $fCX = ($afBounds[3] + $afBounds[0]) / 2.0;
+    float $fCY = ($afBounds[4] + $afBounds[1]) / 2.0;
+    float $fCZ = ($afBounds[5] + $afBounds[2]) / 2.0;
+
+
+    // **** Create a Default Portal Plane
+
+    //**** +X Plane
+    string $szPlane[] = `polyPlane -w $fWZ -h $fWY -sx 1 -sy 1 -ax 1 0 0 -tx 1 -ch 1`;
+
+    // Position the Plane
+    move -r $afBounds[0] $fCY $fCZ $szPlane[0];
+
+    // Parent the Plane
+    parent -a $szPlane[0] $szTransformNodes[0];
+
+  
+    // Create the Portal Attributes
+    if(`attributeExists "NiData_Portal" $szPlane[0]` == 0)
+    {
+        addAttr -ln NiData_Portal -dt "string" $szPlane[0];
+    }
+
+    setAttr -type "string" ($szPlane[0] + ".NiData_Portal") 
+        ("NDLADJOINER \"" + $szShortName[1] + "\"");
+
+
+    if(`attributeExists "NiData_TwoWay" $szPlane[0]` ==0)
+    {
+        addAttr -ln NiData_TwoWay -dt "string" $szPlane[0];
+
+        setAttr -type "string" ($szPlane[0] + ".NiData_TwoWay") "NDLTWOWAY";
+    }
+
+    // Rename 
+    rename $szPlane[0] "Portal_NDLPR";
+
+}

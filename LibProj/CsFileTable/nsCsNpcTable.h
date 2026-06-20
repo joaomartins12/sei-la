@@ -1,0 +1,47 @@
+
+#pragma once 
+
+namespace nsCsNpcTable
+{
+	enum eNPC_TYPE			// 바뀌면 안된다.
+	{
+		NT_NONE				=	0,
+		NT_TRADE			=	1,
+		NT_DIGITAMA_TRADE	=	2,
+		NT_PORTAL			=	3,
+		NT_MAKE_TACTICS		=	4,
+		NT_ELEMENT_ITEM		=	5,
+		NT_WAREHOUSE		=	6,
+		NT_TACTICSHOUSE		=	7,
+		NT_GUILD			=	8,
+		NT_DIGICORE			=	9,
+		NT_CAPSULE_MACHINE	=	10,
+		NT_SKILL			=	11,
+		NT_EVENT_STORE		=	12,
+		NT_DATS_PORTAL		=	13,
+		NT_PROPERTY_STORE	=	14,
+		NT_GOTCHA_MACHINE	=	15,
+		NT_MASTERS_MATCHING	=	16,
+		NT_MYSTERY_MACHINE	=	17,
+		NT_SPIRIT_EVO		=	18,
+		NT_SPECIAL_EVENT	=	19,
+		NT_ITEM_PRODUCTION_NPC = 20,
+		NT_BATTLE_REGISTRANT_NPC = 21,
+		NT_INFINITEWAR_MANAGER_NPC = 22,		// 무한대전 진행 NPC
+		NT_INFINITEWAR_NOTICEBOARD_NPC = 23,	// 무한대전 게시판 NPC
+		NT_EXTRA_EVOLUTION_NPC = 24,
+	};
+
+	enum eNPC_MOVE
+	{
+		MT_NONE		=	0,
+		MT_MOVE		=	1,
+	};
+
+	enum eNPC_EXTRA
+	{
+		NE_QUEST,
+
+		NE_MAX_CNT,
+	};
+}

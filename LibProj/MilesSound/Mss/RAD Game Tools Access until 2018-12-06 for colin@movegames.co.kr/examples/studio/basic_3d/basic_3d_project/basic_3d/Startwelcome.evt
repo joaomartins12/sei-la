@@ -1,0 +1,306 @@
+{
+ 	"version": "00000026",
+	"mp_pan": 
+	{
+	},
+	"send_a": 
+	{
+ 		"bus": "Master"
+	},
+	"send_b": 
+	{
+	},
+	"send_c": 
+	{
+	},
+	"send_d": 
+	{
+	},
+	"send_e": 
+	{
+	},
+	"send_f": 
+	{
+	},
+	"send_g": 
+	{
+	},
+	"send_h": 
+	{
+	},
+	"actions": 
+	[
+		{
+ 			"type": 0,
+			"label": "",
+			"send_a": 
+			{
+ 				"bus": "Master"
+			},
+			"send_b": 
+			{
+			},
+			"send_c": 
+			{
+			},
+			"send_d": 
+			{
+			},
+			"send_e": 
+			{
+			},
+			"send_f": 
+			{
+			},
+			"send_g": 
+			{
+			},
+			"send_h": 
+			{
+			},
+			"states": 
+			[
+				{
+ 					"x": 0,
+					"y": 0,
+					"name": "State 1",
+					"stop": 
+					{
+ 						"signal_graph": 
+						0,
+						"overlap_entry": 0,
+						"jump_to_exit_cue": 0
+					},
+					"start": 
+					{
+ 						"marker": ""
+					},
+					"layers": 
+					[
+						{
+ 							"name": "",
+							"trim_db": 0,
+							"selectorid": 1,
+							"volume_env": 
+							0,
+							"trim_db_enabled": 0,
+							"volume_env_wall_clock": 0
+						}
+				],
+					"complete": 
+					{
+ 						"signal_graph": 
+						0,
+						"overlap_entry": 0,
+						"jump_to_exit_cue": 0
+					},
+					"loop_end": 
+					{
+ 						"marker": ""
+					},
+					"loop_rng": 0,
+					"loop_begin": 
+					{
+ 						"marker": ""
+					},
+					"loop_count": 
+					{
+					},
+					"repeat_count": 
+					{
+ 						"value": 1
+					},
+					"regen_position": 0,
+					"disable_complete": 0
+				}
+		],
+			"condition": 
+			{
+			},
+			"lfe_delta": 0,
+			"pri_graph": 
+			{
+ 				"value": 128
+			},
+			"filterchain": 
+			{
+			},
+			"link_random": 0,
+			"pitch_delta": 0,
+			"voice_limit": 0,
+			"volume_delta": 0,
+			"override_3d_e": "2",
+			"override_3d_f": "2",
+			"override_3d_g": "2",
+			"override_3d_h": "2",
+			"min_interval_ms": 0,
+			"volume_envelope": 
+			0,
+			"selector_instances": 
+			[
+				{
+ 					"id": 1,
+					"selectors": 
+					[
+						{
+ 							"group": "0",
+							"source": "@basic_3d.bank/welcome.src",
+							"timelock": 0,
+							"timelock_ms": 0
+						}
+				]
+				}
+		],
+			"override_send_mix_e": "SystemDefault",
+			"override_send_mix_f": "SystemDefault",
+			"override_send_mix_g": "SystemDefault",
+			"override_send_mix_h": "SystemDefault"
+		}
+],
+	"mp_dist": 
+	{
+	},
+	"senda_3d": "1",
+	"sendb_3d": "2",
+	"sendc_3d": "2",
+	"sendd_3d": "2",
+	"sende_3d": "2",
+	"sendf_3d": "2",
+	"sendg_3d": "2",
+	"sendh_3d": "2",
+	"sleepable": 0,
+	"manual_pos": 0,
+	"filterchain": 
+	{
+	},
+	"lp_3d_graph": 
+	{
+ 		"transform": 
+		{
+ 			"local_graph": 
+			{
+ 				"is_advanced": 1,
+				"simple_graph": 
+				{
+				},
+				"advanced_graph": 
+				[
+					{
+ 						"x": 0,
+						"y": 24000
+					},
+					{
+ 						"x": 100,
+						"y": 24000
+					}
+			]
+			}
+		},
+		"controller": "AutoDistance"
+	},
+	"senda_delay": 
+	{
+	},
+	"sendb_delay": 
+	{
+	},
+	"sendc_delay": 
+	{
+	},
+	"sendd_delay": 
+	{
+	},
+	"sende_delay": 
+	{
+	},
+	"sendf_delay": 
+	{
+	},
+	"sendg_delay": 
+	{
+	},
+	"sendh_delay": 
+	{
+	},
+	"lfe_variance": 0,
+	"vol_3d_graph": 
+	{
+ 		"transform": 
+		{
+ 			"local_graph": 
+			{
+ 				"is_advanced": 1,
+				"simple_graph": 
+				{
+				},
+				"advanced_graph": 
+				[
+					{
+ 						"x": 0,
+						"y": 0,
+						"curve_type": "14"
+					},
+					{
+ 						"x": 100,
+						"y": -96
+					}
+			]
+			}
+		},
+		"controller": "AutoDistance"
+	},
+	"def_sendb_mix": "SystemDefault",
+	"def_sendc_mix": "SystemDefault",
+	"def_sendd_mix": "SystemDefault",
+	"def_sende_mix": "SystemDefault",
+	"def_sendf_mix": "SystemDefault",
+	"def_sendg_mix": "SystemDefault",
+	"def_sendh_mix": "SystemDefault",
+	"initial_delay": 
+	{
+	},
+	"sync_for_data": 0,
+	"event_pitch_st": 0,
+	"pitch_variance": 0,
+	"event_volume_db": 0,
+	"mp_listener_rel": 0,
+	"spread_3d_graph": 
+	{
+ 		"transform": 
+		{
+ 			"local_graph": 
+			{
+ 				"is_advanced": 1,
+				"simple_graph": 
+				{
+				},
+				"advanced_graph": 
+				[
+					{
+ 						"x": 0,
+						"y": 0.7,
+						"curve_type": "16"
+					},
+					{
+ 						"x": 3.379416,
+						"y": 0
+					},
+					{
+ 						"x": 100,
+						"y": 0
+					}
+			]
+			}
+		},
+		"controller": "AutoDistance"
+	},
+	"volume_envelope": 
+	0,
+	"distance_scaling": 
+	{
+ 		"value": 1
+	},
+	"mp_listener_index": 0,
+	"input_gain_variance": 0,
+	"event_distance_scale": 1
+}

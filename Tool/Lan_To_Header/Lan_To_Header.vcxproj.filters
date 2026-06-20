@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{a96ac774-a00f-4aae-b44f-cb8fd7593bf4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Lan_To_Header.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Lan_To_Header.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Lan_To_Header.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>리소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Lan_To_Header.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Lan_To_HeaderDlg.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Lan_To_Header.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Lan_To_HeaderDlg.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Lan_To_HeaderDlg_SourceCheck.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Lan_To_HeaderDlg_TotalExcel.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

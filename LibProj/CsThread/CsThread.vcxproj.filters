@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="00_Main">
+      <UniqueIdentifier>{cabd0d0d-2f50-45f3-874d-ffe92c39fd33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01_Base">
+      <UniqueIdentifier>{83696f8d-b8cf-4a1e-a302-c007a417b210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Utility">
+      <UniqueIdentifier>{76410970-9c6e-40ef-9227-09377475fa6d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>00_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CsEvent.cpp">
+      <Filter>01_Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CsKernelGlobal.cpp">
+      <Filter>01_Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CsMutex.cpp">
+      <Filter>01_Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CsSemaphore.cpp">
+      <Filter>01_Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CsThreadManager.cpp">
+      <Filter>01_Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CsWaitableCollection.cpp">
+      <Filter>01_Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\CFBackgroundJobProcessor.cpp">
+      <Filter>02_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\CFJobQueueEx.cpp">
+      <Filter>02_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\CFMonitor.cpp">
+      <Filter>02_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\CFReadWriteLock.cpp">
+      <Filter>02_Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\CFReferenceCountEvent.cpp">
+      <Filter>02_Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>00_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="csautolock.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsCriticalSection.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="csevent.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsKernelGlobal.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsKernelObject.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="csmutex.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsSemaphore.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsSpinlock.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsThreadBase.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsThreadManager.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsWaitableCollection.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CsWaitableObject.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CThreadSafeQueue.h">
+      <Filter>01_Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFBackgroundJobProcessor.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFExclusiveLockManager.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFJobQueueEx.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFMonitor.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFMultipleBufferQueue.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFReadWriteLock.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFRefCount.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFReferenceCountEvent.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\CFReferenceCountManager.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\list.h">
+      <Filter>02_Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,7 @@
+Script ("Default KFMViewer Script","Viewer")
+{
+	Plugin ("KFMViewerPlugin","KFM Viewer","1.0","Viewer")
+	{
+		Parameter ("NiPluginToolkit Renderer","0");
+	}
+}

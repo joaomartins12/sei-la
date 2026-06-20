@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{627ef785-c1bf-42b1-b2d8-b26e30c3226a}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{c3af6dce-4588-436e-b0ce-1864b570f412}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Inline Files">
+      <UniqueIdentifier>{e2bb6e0b-6a30-4780-8aee-a0c23212736e}</UniqueIdentifier>
+      <Extensions>inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiNavBaseController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiNavFlyController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiNavInterpToController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiNavManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiNavOrbitController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIAtlasMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIBaseElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUICheckBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIHotkeyImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIImageButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUILabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIManagerRenderClick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUIRenderGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUISlider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiUserInterfacePCH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiNavBaseController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiNavFlyController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiNavInterpToController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiNavManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiNavOrbitController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIAtlasMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIBaseElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUICheckBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIHotkeyImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIImageButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUILabel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIManagerRenderClick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUIRenderGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUISignal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUISignalSlotMacros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUISlider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUISlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUserInterfaceLibType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiUserInterfacePCH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiNavBaseController.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiNavFlyController.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiNavManager.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiNavOrbitController.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIAtlasMap.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIBaseElement.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIButton.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUICheckBox.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIGroup.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIHotkeyImage.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIImage.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIImageButton.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUILabel.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIManager.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUIRenderGroup.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUISignal.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUISlider.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiUISlot.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="04.Engine">
+      <UniqueIdentifier>{cc68851f-48d9-4b61-8cdb-63670120d97f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Engine\Input">
+      <UniqueIdentifier>{9506f63e-5ec0-40dd-b850-cb8aac955f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Engine\Sound">
+      <UniqueIdentifier>{10468dc0-66cc-4a01-b25b-3e902076632f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04.Engine\DirectShow">
+      <UniqueIdentifier>{86f6ad3f-01ba-4c67-abc5-d439cd5bf94a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game">
+      <UniqueIdentifier>{bd9eba0f-7469-44ce-b1a6-468ceb40a7f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Option">
+      <UniqueIdentifier>{89a1cdb6-3ce6-45d1-a2c2-6335235f0e02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Character">
+      <UniqueIdentifier>{31000820-4afb-4d0b-9a97-2dbb44f3909c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Character\User">
+      <UniqueIdentifier>{9280c1a5-9c88-4816-ae37-ccf54d56324f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Character\Monster">
+      <UniqueIdentifier>{fa12dee9-04d7-4b14-86d5-068494dfafc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Character\Pat">
+      <UniqueIdentifier>{48fac38d-823f-4e9b-92bc-fec4a75f65da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Character\Etc">
+      <UniqueIdentifier>{990cba9d-4730-4202-a802-f2c01b22f3eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Character\Employment">
+      <UniqueIdentifier>{7fba24fa-e02d-4bf0-9a55-5c37a532924f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Data">
+      <UniqueIdentifier>{6333f4c2-6868-4505-b38f-839ff028841c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Npc">
+      <UniqueIdentifier>{217f510c-10cb-4c5d-9d94-218a4f6799d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object">
+      <UniqueIdentifier>{bcfe61a5-9c69-4740-82bd-06910bc5c8d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object\Item">
+      <UniqueIdentifier>{3bcf9d7d-df10-4776-9f07-db0cc5466432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object\Effect">
+      <UniqueIdentifier>{98808bd5-b3ab-42c2-9961-adfa5c522473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object\Skill">
+      <UniqueIdentifier>{fb92ebee-9de2-46bc-8b2d-dff8faaf73c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object\Condition">
+      <UniqueIdentifier>{604cdfba-b366-4dc2-a7ef-d2af15a71136}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object\Buff">
+      <UniqueIdentifier>{ce37444f-59c5-4671-afe2-43f6c5f295c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Object\Card">
+      <UniqueIdentifier>{13349200-7987-4f80-8185-5a45a84ccc0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\GameScene">
+      <UniqueIdentifier>{464ba49f-72b5-497f-a024-5f82e01764c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\GameScene\Dats">
+      <UniqueIdentifier>{71559934-8b78-4dfb-b056-c35292666cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\GameScene\Event">
+      <UniqueIdentifier>{3495060a-12eb-4ffe-8180-508a9bf54f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\GameScene\TacticsANI">
+      <UniqueIdentifier>{12f65ea5-3094-4939-a43d-27d0aa011001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\Sort">
+      <UniqueIdentifier>{ad31cbc1-ec01-4e19-a2cb-2fcda91d8112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main">
+      <UniqueIdentifier>{6beb3277-6d7e-48ce-99ce-8ba627682118}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\Resist">
+      <UniqueIdentifier>{8f4fce8b-220d-4307-b1be-7ffc19f4fd61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem">
+      <UniqueIdentifier>{c9501c9c-23ae-4754-94c1-c91db07557cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\FlowMgr">
+      <UniqueIdentifier>{0d65373a-2fbf-4947-84db-eea3c8415187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\01.Logo">
+      <UniqueIdentifier>{70d6702b-a627-43cc-9f88-d2e60b2e82cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\02.Intro">
+      <UniqueIdentifier>{f5c4f984-0006-4d04-8bf8-9298f3908440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\03.Login">
+      <UniqueIdentifier>{c8088b0b-4333-49cc-9b15-fbb005ac55a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\04.SecondPassword">
+      <UniqueIdentifier>{caa33b29-1fa0-4525-b226-e5012fe6ab32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\05.ServerSelect">
+      <UniqueIdentifier>{b0342712-6cbb-4f01-8b70-383ea50ca552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\06.CharacterSelect">
+      <UniqueIdentifier>{61de6639-eabe-42ed-87c7-84955a77e834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\07.CharacterCreate">
+      <UniqueIdentifier>{d6d80415-96de-4969-9cc6-ac043868d149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\08.DigimonCreate">
+      <UniqueIdentifier>{c7b5ec9b-7cac-4634-8539-38230fcee7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\09.Loading">
+      <UniqueIdentifier>{4ed3580b-c357-40b5-a37b-576e680dbfb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\10.InGame">
+      <UniqueIdentifier>{9a5398b5-9e0b-4924-9496-1426602084ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\11.DatsCenter">
+      <UniqueIdentifier>{1eb70ff9-0132-4b0e-beb5-2bd6790bc3fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\12.DataTradeCenter">
+      <UniqueIdentifier>{8e129ab6-46d4-44b8-bb9e-f6e5b2e4e84e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\13.Battle">
+      <UniqueIdentifier>{044309c5-a36e-411c-bc56-632a33f4a293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\14.BattleRegister">
+      <UniqueIdentifier>{2ae3a3aa-93ca-46d2-859e-2bc28c082782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\15.BattleResult">
+      <UniqueIdentifier>{f2e0e4ee-b060-40a4-bc80-b9e729b2684f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\FlowSystem\16.CharactorServerRelocate">
+      <UniqueIdentifier>{829a3fbd-9a70-4daa-976e-015512b66017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\nProtect">
+      <UniqueIdentifier>{e0fc9603-0b08-4114-bb2a-b9827c5b686f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\OtionDocument">
+      <UniqueIdentifier>{89a9bda1-1d2b-4ce8-91bd-ec90f3b113df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\OtionDocument\UIBase">
+      <UniqueIdentifier>{3324c8a2-3935-4fe3-b9db-43738fb3472c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\OtionDocument\UIBase\Chat">
+      <UniqueIdentifier>{0476d043-e53e-41b4-aa6f-bb035a52a491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\OtionDocument\UIPlayerDocument">
+      <UniqueIdentifier>{046b9d68-eb0f-45a6-8c4a-36a42af7db25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\GameApp">
+      <UniqueIdentifier>{0b64a1a5-59c4-48bf-9b4c-00602db6dcbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main\Xigncode3">
+      <UniqueIdentifier>{58dcd071-b038-4611-8b4a-87852345b84a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Network">
+      <UniqueIdentifier>{462c3e90-2115-4a6f-9acb-d9e73bafc7ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Network\1.account">
+      <UniqueIdentifier>{3175d97a-c605-48d2-8d2b-01adc282922d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Network\2.gate">
+      <UniqueIdentifier>{ad3bd323-c2d9-4fb9-b0a7-1e0afcf60538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Network\0.base">
+      <UniqueIdentifier>{c94dc6c8-ed6d-4ad3-b806-cf25f121123d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Network\4.sync">
+      <UniqueIdentifier>{9a955dca-a013-443c-85fb-661295ebe702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05.Network\3.game">
+      <UniqueIdentifier>{19a7dbe5-f85d-4e84-affc-852cae6095fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06.Formula">
+      <UniqueIdentifier>{cd11999a-8589-4b6a-b970-95f5ac318ff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07.DeviceInfo">
+      <UniqueIdentifier>{1849f487-2562-4c14-aca7-9a88bad10259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Manager">
+      <UniqueIdentifier>{969ded55-d38f-46e5-a479-dfe65213dca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Manager\Input">
+      <UniqueIdentifier>{de7630fe-4658-4965-b17e-ed1cf66e959b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08.Barcode">
+      <UniqueIdentifier>{1164e96c-d787-401d-8010-4e673e195b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="10.Define">
+      <UniqueIdentifier>{6ae15282-6783-4a6f-97b8-43a446a0fad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface">
+      <UniqueIdentifier>{309456ac-ddac-4f85-b4df-1c063684c011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Base">
+      <UniqueIdentifier>{090fa023-0163-4f87-9281-ae51feb5ba75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Base\Control">
+      <UniqueIdentifier>{f40779c0-d84f-4917-91a7-5fe03e1a40c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Base\Text">
+      <UniqueIdentifier>{11af0ada-7ff2-4b96-8978-da62c74e5a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Base\Etc">
+      <UniqueIdentifier>{cf4b7580-308d-4633-b932-744f9043b3b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Base\RenderTexture">
+      <UniqueIdentifier>{15f491d3-d6c7-4002-a3bb-467491424a12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Base\Icon">
+      <UniqueIdentifier>{edf31177-7b83-493b-a990-98066d29a9a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game">
+      <UniqueIdentifier>{88868dbb-9dd3-4f3d-99cb-3f6e94a31597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\05_3DUI">
+      <UniqueIdentifier>{57f9d970-0ced-4910-896d-ced9225a5264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\05_3DUI\91_HP바">
+      <UniqueIdentifier>{5beb7142-bd63-4f82-a089-fbb5225a9420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\05_3DUI\87_디지몬대화">
+      <UniqueIdentifier>{48fe851b-bea0-436e-9bcc-3b4455f931ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\05_3DUI\86_팁">
+      <UniqueIdentifier>{7ca3f2c4-3ba9-4729-8f5f-13017dc3cd30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\05_3DUI\85_말풍선">
+      <UniqueIdentifier>{27d2b01c-cb40-4e7e-804e-52b3dd328e5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\05_3DUI\72_위치찾기">
+      <UniqueIdentifier>{deb1656f-d57a-4509-982c-0f1c77080e8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\99_작업중">
+      <UniqueIdentifier>{2bb478e5-ed4c-4a4d-aa3b-bc59d12b2be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\99_작업중\튜토리얼">
+      <UniqueIdentifier>{0f36d29a-013f-4ce8-bef7-99f0572b33ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc">
+      <UniqueIdentifier>{6e80b3e0-e36d-409b-9c13-f81cd86948fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\08_창고">
+      <UniqueIdentifier>{b5e3c1ce-1ba6-44e4-b756-e48845972e06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\08_창고\WareHouse_Adapt">
+      <UniqueIdentifier>{562b3110-2e7f-4f19-9c49-ee0e093f5d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\07_속성아이템">
+      <UniqueIdentifier>{7ec810b6-13fc-4de0-bcb3-4022bed7f709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\06_용병생성">
+      <UniqueIdentifier>{c72058d7-949f-4945-8f7a-3d4363094634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\06_용병생성\미니게임">
+      <UniqueIdentifier>{81acfd48-a934-4688-aadb-e2fbdd8d5b30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\04_퀘스트받기">
+      <UniqueIdentifier>{61464fc2-7600-49aa-8ce9-dd6d633f3b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\02_상점">
+      <UniqueIdentifier>{64b66c73-f4bd-46a9-bee7-4aac5de8a73e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\01_대화">
+      <UniqueIdentifier>{62d5d496-6c2b-4e2e-8c11-1b3f8f972e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\09_용병보관소">
+      <UniqueIdentifier>{e98c7de0-cad2-4906-8f54-10dcb8377465}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\10_용병강화">
+      <UniqueIdentifier>{84da7b3f-65d5-4861-b5bf-48cdb426e9c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\03_디지타마">
+      <UniqueIdentifier>{86a3f303-6bd6-4f05-9b1f-00db9743c5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\11_카드이벤트">
+      <UniqueIdentifier>{c5628efb-4549-45cc-85b6-18dc7f203cda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\12_가챠머신">
+      <UniqueIdentifier>{7d089a2c-9bad-4525-bca9-555e2f1835ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\13_추석이밴트">
+      <UniqueIdentifier>{e4e79313-805a-4aba-8165-779f1ab1ed75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\14_마스터즈매칭">
+      <UniqueIdentifier>{0bfe6bc9-077b-47a1-89ff-b5ca2a3d7b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\16_이벤트타입">
+      <UniqueIdentifier>{4a8d38d5-c309-4ab9-ab0f-91dc4ea691ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\17. 아이템제작">
+      <UniqueIdentifier>{2f91dec2-9dbd-42b4-b9c0-b01171d0d276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\15_스피릿진화">
+      <UniqueIdentifier>{2fea2fbe-4324-4f1f-9e9f-e1af911e188f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\04_Npc\05_퀘스트완료">
+      <UniqueIdentifier>{978a1e66-eadb-4945-a2f8-7c5a93105d75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업">
+      <UniqueIdentifier>{879b9c4b-0e8a-4674-a394-23e9f48154fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\01_맵">
+      <UniqueIdentifier>{b1437d89-4aba-4ca1-b997-356bfd5833b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\02_웹">
+      <UniqueIdentifier>{b0d3b159-5f78-4089-990c-febdb5747971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\03_인벤토리">
+      <UniqueIdentifier>{e4cee403-3fa3-47f2-86a4-b67c24d9d29d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\05_디지몬상태">
+      <UniqueIdentifier>{af380b37-687d-45eb-aba6-5ca6020d5fca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\06_퀘스트리스트">
+      <UniqueIdentifier>{7221ca3a-f48f-480f-8ed8-8e356e70ee90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\06_퀘스트리스트\퀘스트 설명창">
+      <UniqueIdentifier>{6bcdf85e-c2f9-46a2-9273-25da114c5d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\07_옵션">
+      <UniqueIdentifier>{27181e99-f348-440a-8398-f5e72c44127c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\08_거래">
+      <UniqueIdentifier>{8daf614b-1a2b-4b2d-abd9-6317d330b85f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\09_NPC찾기">
+      <UniqueIdentifier>{d5d08856-bba6-4dd5-84c0-723e395ea900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\10_커뮤니티">
+      <UniqueIdentifier>{f3d954dd-26ae-4153-8634-07144e653e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창">
+      <UniqueIdentifier>{f8b12a12-1660-4452-bd55-ab26ed15c5be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\11_케쉬">
+      <UniqueIdentifier>{a2cb6215-0e03-4116-bee3-4ea209aebcd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\11_케쉬\캐시샵 버튼">
+      <UniqueIdentifier>{03a3b0fd-d660-464d-ba99-1621e4899644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop">
+      <UniqueIdentifier>{daa8a7b9-95f6-45ae-9538-8b3ca37d3686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer">
+      <UniqueIdentifier>{99e116c0-7300-4bcf-98b1-0b1b87b3490c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\NewCashWarehouse">
+      <UniqueIdentifier>{39194ef6-a8cb-4fe8-82b7-cab854e8dccf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\Adapt_Cashshop">
+      <UniqueIdentifier>{63ee03f8-ef7d-485c-87fe-7ce6ebe317fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\12_업적">
+      <UniqueIdentifier>{704ebdde-7824-4e1a-b55b-6ef123214216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\16_Pc방인벤">
+      <UniqueIdentifier>{34ee4abf-76b9-4ef6-bd4a-246b08a44cbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\18_개인상점">
+      <UniqueIdentifier>{8a6e7c3c-8a5e-494e-8dc2-df579b4ac6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\20_카드인밴토리">
+      <UniqueIdentifier>{b8236ff6-2134-40ef-bf96-e714a0e6e545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\21_카드봉인해제">
+      <UniqueIdentifier>{1b7bb23c-2a15-4d32-9126-c88934e0a668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\22_데미지미터기">
+      <UniqueIdentifier>{57a3a37c-664a-4f91-ab2f-b8eb24e3b233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\23_아이템지급창고">
+      <UniqueIdentifier>{9ab969fc-348f-43ab-b09f-701ae5c13216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\13_개인메일">
+      <UniqueIdentifier>{b23d957b-9df4-4a86-8bbc-dcfd3ad769ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\13_개인메일\메일 버튼">
+      <UniqueIdentifier>{06fd12b0-8748-4590-b7b7-1474975128e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\02_기본팝업\17_외치기">
+      <UniqueIdentifier>{e35b574f-43a8-48a4-a88c-2b37427f9b4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업">
+      <UniqueIdentifier>{25456504-3d77-465d-8966-43864a1b9d48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\01_광고판">
+      <UniqueIdentifier>{a60db28a-4804-41a3-bc6d-324d40c887bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\02_디지바이스 퀘스트">
+      <UniqueIdentifier>{b03fd976-7a58-4c29-8b54-b23092f97def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\03_전체화면이미지">
+      <UniqueIdentifier>{bb00b5ae-d8de-4244-ba3b-44392a9ee9c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\04_점프부스터">
+      <UniqueIdentifier>{b0279ad1-6e17-45a2-b239-abff6c4557bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\05_보스등장">
+      <UniqueIdentifier>{6047230a-4d88-420d-9b64-f075d86d71bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\06_영역">
+      <UniqueIdentifier>{b390ca99-1566-4aa9-a65b-3369f0da8432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\07_매크로방지">
+      <UniqueIdentifier>{52918bea-51ba-4e42-8725-b3526be04584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\10_인챈트옵션">
+      <UniqueIdentifier>{cd5f68c5-8919-4b00-ac4e-1e469f98cb5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\11_디지몬도감">
+      <UniqueIdentifier>{a54012c5-bd78-4c98-8813-e1f952642117}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\12_글로벌메세지">
+      <UniqueIdentifier>{240d744e-befe-4a47-ab8d-2a62ff5a5bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\13.튜토리얼UI">
+      <UniqueIdentifier>{110b6dff-d631-44ae-8c3e-d59fb0a6683d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\03_동작팝업\08_레이드순위">
+      <UniqueIdentifier>{b8ce398d-83de-42e8-aae1-3ef56729f1f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\98_기타">
+      <UniqueIdentifier>{4c8b6046-b03a-4fcb-b7ca-a83afe47eb2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\98_기타\03_날씨">
+      <UniqueIdentifier>{c41c1f70-0992-43f2-af56-50cbb2b6fe89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI">
+      <UniqueIdentifier>{326aae2b-4409-46f5-a244-707990e75255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\01_메인바">
+      <UniqueIdentifier>{4e105c8d-4b4e-4f18-aa61-8703d937a1dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\02_타겟창">
+      <UniqueIdentifier>{98e3e8f0-2a7d-4f6a-bad9-f839103543f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\03_채팅창">
+      <UniqueIdentifier>{2bd6a879-89fc-4c21-a9e0-a77a7ab0e5b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\03_채팅창\01_채팅옵션">
+      <UniqueIdentifier>{f3fa394f-4a98-4e25-89ba-62041122f20d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\04_시스템창">
+      <UniqueIdentifier>{6d4a9f20-393d-4a75-9d8d-60d1db3e3e7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\05_퀵슬롯">
+      <UniqueIdentifier>{b6221e65-9107-4163-8e72-95287551f9ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\07_파티">
+      <UniqueIdentifier>{4cb5ea68-208a-449e-819f-0e2132201862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\07_파티\15_파티분배">
+      <UniqueIdentifier>{00be4d2b-4134-495c-84da-933df29c030a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅">
+      <UniqueIdentifier>{1540d4e1-061a-4a27-b72d-4ea3253fc1b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\08_버프창">
+      <UniqueIdentifier>{1aeb878f-a7da-4017-ac7c-b5d136528f51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\09_전투로그창">
+      <UniqueIdentifier>{29ebbcf3-195c-422c-97ad-316fd42a9aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\12_채널">
+      <UniqueIdentifier>{04794097-39b9-489c-9cd4-1c924cfe4a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\11_퀘스트도우미">
+      <UniqueIdentifier>{a3bd81b9-83d8-43c5-8185-bc382970e897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\13_플레이타임">
+      <UniqueIdentifier>{ee90ded8-442b-4f85-bf4c-e3c1dbb785a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\15_센터바">
+      <UniqueIdentifier>{88bc055f-39df-4174-9bd9-d6951b80722b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\16_간략화버튼">
+      <UniqueIdentifier>{81d14dca-bc29-4036-90b2-3624e9929d26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\06_퀵진화">
+      <UniqueIdentifier>{9ebfdea1-1102-48a1-a6f3-fb318056995e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\02_MainFrame">
+      <UniqueIdentifier>{bcc05656-93c0-4c55-b0b3-db3f986d525d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창">
+      <UniqueIdentifier>{b99b76a8-f506-4f81-86f0-28a76a8872c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\02_MainFrame\02_디지몬상태창">
+      <UniqueIdentifier>{4fc99b5a-2f12-499b-9832-94e0978843dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\01_메인UI\02_MainFrame\03_타겟창">
+      <UniqueIdentifier>{ca36096a-9442-4e3c-b570-2f93823647e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구">
+      <UniqueIdentifier>{232c2763-7528-42c0-89ac-e780257b8c5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\01_메세지박스">
+      <UniqueIdentifier>{a5a7d960-0a57-41b6-abdc-cca0416a9f50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\02_툴팁">
+      <UniqueIdentifier>{4e1fecca-365c-406a-8f90-ef643f89fa3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\03_팝업">
+      <UniqueIdentifier>{cf1e54fa-eed0-41ca-b265-7cc4d6d9fc0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\09_페이드">
+      <UniqueIdentifier>{aa601ea0-b652-4d0d-ab72-0f879089bf01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\10_이름입력창">
+      <UniqueIdentifier>{f7e39076-da6b-4262-bc50-abe38e435765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\08_돈">
+      <UniqueIdentifier>{507da308-0393-4fba-9371-8c4a49642871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\06_알림">
+      <UniqueIdentifier>{f31c5310-95c0-41e6-a4b6-4eb4b9d8e340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\05_테이머변경">
+      <UniqueIdentifier>{34fb909f-d547-4459-b60e-5cf4acc49397}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\00_도구\07_분할창">
+      <UniqueIdentifier>{d119e860-7257-4b62-8bbc-668cec79e806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\07_친구추천">
+      <UniqueIdentifier>{a9dfe812-27a8-46cb-a070-8884ffeff79f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\09_이벤트">
+      <UniqueIdentifier>{860e9c60-16cd-4f50-a430-9b12ff64a285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\09_이벤트\02.Daily_Event">
+      <UniqueIdentifier>{b72fdbf8-d407-4935-8206-df9664e3aab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\09_이벤트\03.Reward_Event">
+      <UniqueIdentifier>{83122f9f-97a2-4812-91d3-6565ec8a0f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\09_이벤트\01.Exp_Event">
+      <UniqueIdentifier>{dc6205c4-db21-4b1e-b5c3-d9d240140e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\09.DataTrade">
+      <UniqueIdentifier>{52ed6a85-5a84-49df-afa9-a73c3feabc7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\12.InfiniteWar">
+      <UniqueIdentifier>{e424fda6-ab74-4c1f-84f5-1c67c492251f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\12.InfiniteWar\Match">
+      <UniqueIdentifier>{977b7d98-06b6-40aa-bc8e-a229fcd70248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\12.InfiniteWar\NoticeBoard">
+      <UniqueIdentifier>{876900bb-fdc0-4391-84df-7aa123bcdd1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\10.BattleSystem">
+      <UniqueIdentifier>{b3205a03-ccff-4128-9941-45a2f1d2809b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\10.BattleSystem\01.RegistPage">
+      <UniqueIdentifier>{5e8b5069-30f0-4bc3-82e3-e8fe48d9707a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\10.BattleSystem\02.BattlePage">
+      <UniqueIdentifier>{e68a40cb-b480-4cec-b8a4-410335b2fded}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\10.BattleSystem\02.BattlePage\14_배틀진화">
+      <UniqueIdentifier>{82c28935-7792-402e-a574-a2462441e634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\10.BattleSystem\03.ResultPage">
+      <UniqueIdentifier>{03735e2f-6616-47bd-ae0f-a056d625f9a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\10.BattleSystem\04.Wait">
+      <UniqueIdentifier>{55005cbb-b9c9-4e1b-932a-252439cec14e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\11.ServerChangePage">
+      <UniqueIdentifier>{dc9198d8-64c3-420b-9794-6e81abe67f77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\Game\13.VipMemberShip">
+      <UniqueIdentifier>{fd79a235-904f-4246-a43c-ca843c961a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\01.Logo">
+      <UniqueIdentifier>{c0d9dfe2-1f3a-46a1-9e8a-3ac023a2314a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\07.CharacterCreate">
+      <UniqueIdentifier>{fc07f57f-9686-4808-8a4b-9984131fcfaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\02.Intro">
+      <UniqueIdentifier>{73448c41-eaee-4f27-9100-038378bf9f0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\03.Login">
+      <UniqueIdentifier>{54fdd724-9dfd-45d5-a571-42cd306b96d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\04.SecondPassword">
+      <UniqueIdentifier>{9bc8ff23-de48-4c88-8155-12cbddb9d679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\05.ServerSelect">
+      <UniqueIdentifier>{1dc17d8c-c781-4c7d-9718-0cbf1dd6cd0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\06.CharacterSelect">
+      <UniqueIdentifier>{09a99f63-3dbf-4f6c-a9b2-c45c4c589d54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\08.Loading">
+      <UniqueIdentifier>{19b7841d-ca87-4402-9ae5-455a7bb34dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\ShutDownSystem">
+      <UniqueIdentifier>{021d57b0-1750-4323-a269-7785adcb4cbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Interface\00.ResourceIntegrityChecker">
+      <UniqueIdentifier>{e4eae241-de09-4013-8f78-14417926db57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09.Etc Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="09.Etc Files\Language">
+      <UniqueIdentifier>{64288194-2637-4572-9a73-a703d210049d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09.Etc Files\Version">
+      <UniqueIdentifier>{7b3b9916-8b08-4ae4-940d-887315d4d08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11.EventHandler">
+      <UniqueIdentifier>{baa99de4-c469-4e2c-bb87-bf1afde45c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12.ContentsSystem">
+      <UniqueIdentifier>{168a3f92-8e15-4242-b1e8-d3bce35798c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="13.NetProtocol">
+      <UniqueIdentifier>{9462e5d6-2b63-4485-a3b9-5e90ee176d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="14.SimpleSecurity">
+      <UniqueIdentifier>{09e215f9-2ca4-44f2-b94b-8393e35c9867}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="15.Steam">
+      <UniqueIdentifier>{cb5dc0a1-ea66-4136-ba1a-9d1f671eed46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="16.GlobalData">
+      <UniqueIdentifier>{9d8a7a8b-922c-4fe4-9298-d3877940f275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="17.ResourceMng">
+      <UniqueIdentifier>{6a26d0e2-79e4-4c7b-8940-ff908a3e30df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="18.util">
+      <UniqueIdentifier>{aa5f0320-d645-478e-8161-10d2260cd2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="18.util\01.Ftp">
+      <UniqueIdentifier>{25558676-3b96-4094-9111-22f1be3cce86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Game\TutorialCharacter">
+      <UniqueIdentifier>{f6b886cd-50e6-440d-aefb-0796b2b2b18c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine.cpp">
+      <Filter>04.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine_Render.cpp">
+      <Filter>04.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect.cpp">
+      <Filter>04.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect_DOF.cpp">
+      <Filter>04.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect_GB.cpp">
+      <Filter>04.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="_Engine\Shader.cpp">
+      <Filter>04.Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CIme.cpp">
+      <Filter>04.Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>04.Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>04.Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundMgr.cpp">
+      <Filter>04.Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="DShowGrabberCallback.cpp">
+      <Filter>04.Engine\DirectShow</Filter>
+    </ClCompile>
+    <ClCompile Include="CharOption.cpp">
+      <Filter>01.Game\Option</Filter>
+    </ClCompile>
+    <ClCompile Include="CharMng.cpp">
+      <Filter>01.Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Digimon.cpp">
+      <Filter>01.Game\Character\User</Filter>
+    </ClCompile>
+    <ClCompile Include="DigimonUser.cpp">
+      <Filter>01.Game\Character\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Tamer.cpp">
+      <Filter>01.Game\Character\User</Filter>
+    </ClCompile>
+    <ClCompile Include="TamerUser.cpp">
+      <Filter>01.Game\Character\User</Filter>
+    </ClCompile>
+    <ClCompile Include="UserServerMove.cpp">
+      <Filter>01.Game\Character\User</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>01.Game\Character\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Pat.cpp">
+      <Filter>01.Game\Character\Pat</Filter>
+    </ClCompile>
+    <ClCompile Include="Pat_AI_Mng.cpp">
+      <Filter>01.Game\Character\Pat</Filter>
+    </ClCompile>
+    <ClCompile Include="Pat_AI_Mng_Lua.cpp">
+      <Filter>01.Game\Character\Pat</Filter>
+    </ClCompile>
+    <ClCompile Include="Pat_SetAI_Move.cpp">
+      <Filter>01.Game\Character\Pat</Filter>
+    </ClCompile>
+    <ClCompile Include="TacticsObject.cpp">
+      <Filter>01.Game\Character\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Employment.cpp">
+      <Filter>01.Game\Character\Employment</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Attendance.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Cash.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_CoolTime.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Damagemeter.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Digivice.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_GuildMark.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Inven.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Inven_Cross.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_MapObject.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_MapRegion.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_MonsterIcon.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_PCbang.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_PostLoad.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Quest.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_QuestOwner.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_QuestOwner_Digivice.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_QuestOwner_Npc.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_QuickSlot.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_ServerSync.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Tactics.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_Tactics_Cross.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_TacticsHouse.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_TamerIcon.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Data_TEquip.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="DataMng.cpp">
+      <Filter>01.Game\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>01.Game\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcMng.cpp">
+      <Filter>01.Game\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>01.Game\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemInfo.cpp">
+      <Filter>01.Game\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemMng.cpp">
+      <Filter>01.Game\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectMng.cpp">
+      <Filter>01.Game\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>01.Game\Object\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Condition.cpp">
+      <Filter>01.Game\Object\Condition</Filter>
+    </ClCompile>
+    <ClCompile Include="Buff.cpp">
+      <Filter>01.Game\Object\Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>01.Game\Object\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="CardMng.cpp">
+      <Filter>01.Game\Object\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="DatsCenter.cpp">
+      <Filter>01.Game\GameScene\Dats</Filter>
+    </ClCompile>
+    <ClCompile Include="DatsCenterContents.cpp">
+      <Filter>01.Game\GameScene\Dats</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossEvent.cpp">
+      <Filter>01.Game\GameScene\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EventScene.cpp">
+      <Filter>01.Game\GameScene\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEvent.cpp">
+      <Filter>01.Game\GameScene\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="TacticsAni.cpp">
+      <Filter>01.Game\GameScene\TacticsANI</Filter>
+    </ClCompile>
+    <ClCompile Include="cSort.cpp">
+      <Filter>01.Game\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="CFrame.cpp">
+      <Filter>00.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>00.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Splash.cpp">
+      <Filter>00.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DigimonTalk.cpp">
+      <Filter>00.Main\Resist</Filter>
+    </ClCompile>
+    <ClCompile Include="Resist.cpp">
+      <Filter>00.Main\Resist</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\Flow.cpp">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\FlowCmdQueue.cpp">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\FlowFactory.cpp">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\FlowMgr.cpp">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\FlowStack.cpp">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\LogoFlow.cpp">
+      <Filter>00.Main\FlowSystem\01.Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\IntroFlow.cpp">
+      <Filter>00.Main\FlowSystem\02.Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\LoginFlow.cpp">
+      <Filter>00.Main\FlowSystem\03.Login</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\SecondPasswordFlow.cpp">
+      <Filter>00.Main\FlowSystem\04.SecondPassword</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\ServerSelectFlow.cpp">
+      <Filter>00.Main\FlowSystem\05.ServerSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\CharacterSelectFlow.cpp">
+      <Filter>00.Main\FlowSystem\06.CharacterSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\CharacterCreateFlow.cpp">
+      <Filter>00.Main\FlowSystem\07.CharacterCreate</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\DigimonCreateFlow.cpp">
+      <Filter>00.Main\FlowSystem\08.DigimonCreate</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\LoadingFlow.cpp">
+      <Filter>00.Main\FlowSystem\09.Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\InGameFlow.cpp">
+      <Filter>00.Main\FlowSystem\10.InGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\DatsCenterFlow.cpp">
+      <Filter>00.Main\FlowSystem\11.DatsCenter</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\DataTradeCenterFlow.cpp">
+      <Filter>00.Main\FlowSystem\12.DataTradeCenter</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\BattleFlow.cpp">
+      <Filter>00.Main\FlowSystem\13.Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\BattleRegisterFlow.cpp">
+      <Filter>00.Main\FlowSystem\14.BattleRegister</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\BattleResultFlow.cpp">
+      <Filter>00.Main\FlowSystem\15.BattleResult</Filter>
+    </ClCompile>
+    <ClCompile Include="Flow\CharacterServerRelocateFlow.cpp">
+      <Filter>00.Main\FlowSystem\16.CharactorServerRelocate</Filter>
+    </ClCompile>
+    <ClCompile Include="nProtect\Client_nProtect.cpp">
+      <Filter>00.Main\nProtect</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionMng.cpp">
+      <Filter>00.Main\OtionDocument</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionUIBase.cpp">
+      <Filter>00.Main\OtionDocument\UIBase</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUIBattleLog.cpp">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUIChatting.cpp">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUIContents.cpp">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUISystem.cpp">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionUIChat.cpp">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerUIOptionDocument.cpp">
+      <Filter>00.Main\OtionDocument\UIPlayerDocument</Filter>
+    </ClCompile>
+    <ClCompile Include="App\DXVersionChecker.cpp">
+      <Filter>00.Main\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="App\GameApp.cpp">
+      <Filter>00.Main\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="App\Win32App.cpp">
+      <Filter>00.Main\GameApp</Filter>
+    </ClCompile>
+    <ClCompile Include="Xigncode3\Client_Xigncode3.cpp">
+      <Filter>00.Main\Xigncode3</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliAccount.cpp">
+      <Filter>05.Network\1.account</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliAccountReceive.cpp">
+      <Filter>05.Network\1.account</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliAccountSend.cpp">
+      <Filter>05.Network\1.account</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGate.cpp">
+      <Filter>05.Network\2.gate</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGateReceive.cpp">
+      <Filter>05.Network\2.gate</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGateSend.cpp">
+      <Filter>05.Network\2.gate</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cMngName.cpp">
+      <Filter>05.Network\0.base</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cNetwork.cpp">
+      <Filter>05.Network\0.base</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cSyncData.cpp">
+      <Filter>05.Network\4.sync</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGame.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameBattle.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameBuff.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameDebug.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="cCliGameEvent.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameGM.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameGuild.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameInchant.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameInsMap.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameItem.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameParty.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGamePCBang.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameQuest.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameReceive.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameSend.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameShop.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameSkill.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameSync.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="network\cCliGameTrade.cpp">
+      <Filter>05.Network\3.game</Filter>
+    </ClCompile>
+    <ClCompile Include="FmCommon.cpp">
+      <Filter>06.Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="FmDigimon.cpp">
+      <Filter>06.Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="FmTamer.cpp">
+      <Filter>06.Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="_DeviceInfo\DeviceInfo.cpp">
+      <Filter>07.DeviceInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="CharResMng.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MngCollector.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MovieCapture.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectController.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Redefine.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CCursor.cpp">
+      <Filter>02.Manager\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalInput.cpp">
+      <Filter>02.Manager\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="HotKey.cpp">
+      <Filter>02.Manager\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Barcode\BarCodeManager.cpp">
+      <Filter>08.Barcode</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\ScriptUI.cpp">
+      <Filter>03.Interface\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\AniButton.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Billboard.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Button.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\CheckBox.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\ComboBox.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\EditBox.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\GridListBox.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\Image.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\ListBox.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Number3DMng.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\ProgressBar.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\RadioButton.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\ScrollBar.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Slider.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Sprite.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\SpriteAni.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\TreeBox.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\UI_ProgressBar.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\UI_TimerProgressBar.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Window.cpp">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Font.cpp">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\FontCheck.cpp">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\String.cpp">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\StringAnalysis.cpp">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\Text.cpp">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\PopUp.cpp">
+      <Filter>03.Interface\Base\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Base\RenderTex.cpp">
+      <Filter>03.Interface\Base\RenderTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\Icon.cpp">
+      <Filter>03.Interface\Base\Icon</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\base\IconMng.cpp">
+      <Filter>03.Interface\Base\Icon</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\_BaseWindow.cpp">
+      <Filter>03.Interface\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\_GameIF.cpp">
+      <Filter>03.Interface\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\HpBar.cpp">
+      <Filter>03.Interface\Game\05_3DUI\91_HP바</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonTalk.cpp">
+      <Filter>03.Interface\Game\05_3DUI\87_디지몬대화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Tip.cpp">
+      <Filter>03.Interface\Game\05_3DUI\86_팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\TalkBalloon.cpp">
+      <Filter>03.Interface\Game\05_3DUI\85_말풍선</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\HelpArrow.cpp">
+      <Filter>03.Interface\Game\05_3DUI\72_위치찾기</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Tutorial.cpp">
+      <Filter>03.Interface\Game\99_작업중\튜토리얼</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Warehouse.cpp">
+      <Filter>03.Interface\Game\04_Npc\08_창고</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\WareHouseContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\08_창고</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptWareHouse.cpp">
+      <Filter>03.Interface\Game\04_Npc\08_창고\WareHouse_Adapt</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ElementItem_Attach.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ElementItem_Check.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ElementManagement.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EquipmentCharge.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EquipmentChargeQuick.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\EquipSystemContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EquipSystemHelp.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EquipSystemSubViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EquipSystemViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MakeTactics.cpp">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MakeTacticsContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniGame.cpp">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성\미니게임</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestRev.cpp">
+      <Filter>03.Interface\Game\04_Npc\04_퀘스트받기</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Store.cpp">
+      <Filter>03.Interface\Game\04_Npc\02_상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\StoreContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\02_상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Talk.cpp">
+      <Filter>03.Interface\Game\04_Npc\01_대화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptDigimonAchive.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\DigimonArchiveContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonArchiveSubViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonArchiveViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonIncubatorViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonInfoViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonTranscendenceHelp.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigimonTranscendenceViewer.cpp">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\TacticsEnchant.cpp">
+      <Filter>03.Interface\Game\04_Npc\10_용병강화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Digitama_Scan.cpp">
+      <Filter>03.Interface\Game\04_Npc\03_디지타마</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Digitama_Sell.cpp">
+      <Filter>03.Interface\Game\04_Npc\03_디지타마</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigitamaContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\03_디지타마</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\CardEvent.cpp">
+      <Filter>03.Interface\Game\04_Npc\11_카드이벤트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\CardEventContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\11_카드이벤트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptGotchaMachine.cpp">
+      <Filter>03.Interface\Game\04_Npc\12_가챠머신</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\GotchaMachineContents.cpp">
+      <Filter>03.Interface\Game\04_Npc\12_가챠머신</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\NewGotchaMachine.cpp">
+      <Filter>03.Interface\Game\04_Npc\12_가챠머신</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ThanksGivingDay_Event.cpp">
+      <Filter>03.Interface\Game\04_Npc\13_추석이밴트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MastersMatching.cpp">
+      <Filter>03.Interface\Game\04_Npc\14_마스터즈매칭</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Event_Pinokimon.cpp">
+      <Filter>03.Interface\Game\04_Npc\16_이벤트타입</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ItemProduction_Contents.cpp">
+      <Filter>03.Interface\Game\04_Npc\17. 아이템제작</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ItemProductionShop.cpp">
+      <Filter>03.Interface\Game\04_Npc\17. 아이템제작</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\EvolutionStore_Contents.cpp">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\16.EvolutionStore\EvolutionStore_OverlapSeletUI.cpp">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\16.EvolutionStore\EvolutionStore_PasswordUI.cpp">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\16.EvolutionStore\EvolutionStore_Window.cpp">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestComp.cpp">
+      <Filter>03.Interface\Game\04_Npc\05_퀘스트완료</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MapContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MiniMap.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\SmallMap.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ZoneMap.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\LaunchBrowser.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\02_웹</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\WebControl.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\02_웹</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\WebWin.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\02_웹</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\GiftBoxUI.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\03_인벤토리</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Inventory.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\03_인벤토리</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\InventoryContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\03_인벤토리</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\CapsuleEvol.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\05_디지몬상태</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestFindWay.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestList.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestList_Title.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestDiscript.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트\퀘스트 설명창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MainOption.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionBase.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionBase_Op.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionGraphic.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionInterface.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionMacro.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionSound.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\OptionUserGrade.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptTrade.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\08_거래</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Trade.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\08_거래</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\Trade_Contents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\08_거래</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\NpcFind.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\09_NPC찾기</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptCommunity.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptFriendShoutOut.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Community.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\CommunityContent.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\FriendList.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\FriendListContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\GuildInfo.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\GuildMemo.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\GuildSet.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RankView.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\CashShopButton.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\캐시샵 버튼</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopBestViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopCartViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\NewCashshopContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopEquipViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopItem.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopMainViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopSeliingItemViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopWebViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopPresentViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopPurchaseMultiViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopPurchaseSingleViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopPurchaseSubViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopPurchaseViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\15.CashShop\NewCashshopStorageViewer.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\NewCashWarehouse</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptCashshop.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\Adapt_Cashshop</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Achieve.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\12_업적</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\AchieveContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\12_업적</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\PcbangInven.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\16_Pc방인벤</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptUnionStore.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\PersonStore.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\PersonStoreContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\UnionStore.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\UnionStoreContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\SealMaster.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\20_카드인밴토리</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\SealMasterContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\20_카드인밴토리</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Card_Identify.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\21_카드봉인해제</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Card_ReSeal.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\21_카드봉인해제</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DamageMeter.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\22_데미지미터기</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\DamageMeter_Contents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\22_데미지미터기</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ItemRewardContents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\23_아이템지급창고</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Server_Reward.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\23_아이템지급창고</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Letter.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Mail.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\Mail_Contents.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Mail_Button.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일\메일 버튼</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Shout.cpp">
+      <Filter>03.Interface\Game\02_기본팝업\17_외치기</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\NeonDisplayContents.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\01_광고판</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Publicity.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\01_광고판</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DigiviceQuest.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\02_디지바이스 퀘스트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\BGSprite.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\03_전체화면이미지</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\JumpBuster.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\04_점프부스터</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Digimon_Boss.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\05_보스등장</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\AchieveInfo.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\06_영역</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RegionInfo.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\06_영역</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptMacroProtectSystem.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\07_매크로방지</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\MacroProtectContents.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\07_매크로방지</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Protect.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\07_매크로방지</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptEnchantOption.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\10_인챈트옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EnchantOption.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\10_인챈트옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\EnchantOptionContents.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\10_인챈트옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Encyclopedia.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\11_디지몬도감</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Encyclopedia_Statistics.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\11_디지몬도감</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EncyclopediaContents.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\11_디지몬도감</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIslandBless.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalMessage.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelUpMsg.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClCompile>
+    <ClCompile Include="Random_Regen.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptTutorialQuest.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\TutorialContents.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialGuideWindow.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialIndicator.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialQuest.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialTraceWindow.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialUITraceData.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RaidRank.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\08_레이드순위</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Weather.cpp">
+      <Filter>03.Interface\Game\98_기타\03_날씨</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MainBar.cpp">
+      <Filter>03.Interface\Game\01_메인UI\01_메인바</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MainDigimonWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\TacticsWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\TamerWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\TargetWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChatBase.cpp">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChatContents.cpp">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChatMainWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChatOption.cpp">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창\01_채팅옵션</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChatSystemWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\04_시스템창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuickSlot.cpp">
+      <Filter>03.Interface\Game\01_메인UI\05_퀵슬롯</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptPartySystem.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Party_Contents.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\PartyWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Division.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\15_파티분배</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\BaseLootingWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Looting.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MyLooting.cpp">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\BuffInfo.cpp">
+      <Filter>03.Interface\Game\01_메인UI\08_버프창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChatBattleLogWindow.cpp">
+      <Filter>03.Interface\Game\01_메인UI\09_전투로그창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Channel.cpp">
+      <Filter>03.Interface\Game\01_메인UI\12_채널</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\ChannelContents.cpp">
+      <Filter>03.Interface\Game\01_메인UI\12_채널</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuestHelper.cpp">
+      <Filter>03.Interface\Game\01_메인UI\11_퀘스트도우미</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\PlayTime.cpp">
+      <Filter>03.Interface\Game\01_메인UI\13_플레이타임</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Centerbar.cpp">
+      <Filter>03.Interface\Game\01_메인UI\15_센터바</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Simplification.cpp">
+      <Filter>03.Interface\Game\01_메인UI\16_간략화버튼</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\QuickEvol.cpp">
+      <Filter>03.Interface\Game\01_메인UI\06_퀵진화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\ActionKey.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptMainFrame.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\MainFrame_Contents.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_DeleteDigimonUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_DigimonUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_TacticsUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_TamerUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_XaiGuageUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_TamerStatusUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\TamerStatusUI_Cross.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\TamerStatusUI_Digivice.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\TamerStatusUI_Skill.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\TamerStatusUI_SubViewer.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\TamerStatusUI_Tamer.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_DigimonStatusHelpUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\02_디지몬상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_DigimonStatusUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\02_디지몬상태창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\14.MainFrameUI\MainFrame_TargetUI.cpp">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\03_타겟창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MessageBox.cpp">
+      <Filter>03.Interface\Game\00_도구\01_메세지박스</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\PrintMsg.cpp">
+      <Filter>03.Interface\Game\00_도구\01_메세지박스</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\SystemMsg.cpp">
+      <Filter>03.Interface\Game\00_도구\01_메세지박스</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Buff.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Evol.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_GuildUpGrade.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Item.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Tooltip_Mng.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Party.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_PlayTime.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_RightBottom.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Skill.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Stat.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_Tactics.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ToolTip_WorldMap.cpp">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Popup.cpp">
+      <Filter>03.Interface\Game\00_도구\03_팝업</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Popup_Party.cpp">
+      <Filter>03.Interface\Game\00_도구\03_팝업</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Fade.cpp">
+      <Filter>03.Interface\Game\00_도구\09_페이드</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\CreateName.cpp">
+      <Filter>03.Interface\Game\00_도구\10_이름입력창</Filter>
+    </ClCompile>
+    <ClCompile Include="TamerSummon.cpp">
+      <Filter>03.Interface\Game\00_도구\10_이름입력창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MoneyIF.cpp">
+      <Filter>03.Interface\Game\00_도구\08_돈</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Alime.cpp">
+      <Filter>03.Interface\Game\00_도구\06_알림</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ChangeTamer.cpp">
+      <Filter>03.Interface\Game\00_도구\05_테이머변경</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ItemSeparate.cpp">
+      <Filter>03.Interface\Game\00_도구\07_분할창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\MoneySeparate.cpp">
+      <Filter>03.Interface\Game\00_도구\07_분할창</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\Separate.cpp">
+      <Filter>03.Interface\Game\00_도구\07_분할창</Filter>
+    </ClCompile>
+    <ClCompile Include="RecommendEvent.cpp">
+      <Filter>03.Interface\Game\07_친구추천</Filter>
+    </ClCompile>
+    <ClCompile Include="RecommendEvent_Contents.cpp">
+      <Filter>03.Interface\Game\07_친구추천</Filter>
+    </ClCompile>
+    <ClCompile Include="RecommendEventButton.cpp">
+      <Filter>03.Interface\Game\07_친구추천</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EventContents.cpp">
+      <Filter>03.Interface\Game\09_이벤트</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DailyEventUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\02.Daily_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\EventUIViewer.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RewardDailyCheckUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RewardDailyUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RewardEventUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RewardHotTimeUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RewardMonthlyUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\RewardPromotionUI.cpp">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ExpEvent.cpp">
+      <Filter>03.Interface\Game\09_이벤트\01.Exp_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeBase.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeCenter.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeContents.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeDigimonEvolution.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeDigimonScale.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeDigimonUpgrade.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\DataTradeSelect.cpp">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\InfiniteWar_Contents.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\InfiniteWar_RankReward_Contents.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarAllClearWindow.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarGiveupWindow.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNextStageWindow.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarStartTimerWindow.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarStartWindow.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Daily.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_HallOfFame.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Monthly.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_PreRankList.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_RankBase.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_RankReward.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Season.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Week.cpp">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Adapt\AdaptBattleSystem.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\BattleSystemContent.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleDigimonListUI.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleMapInfoUI.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleModeInfoUI.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleRegistBackUI.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleRegisterPage.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleTypeSelectUI.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleEndWindow.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleRoundTimer.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleStartCounterUI.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleEvol.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage\14_배틀진화</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleResultPage.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\03.ResultPage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleWaitingButton.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\04.Wait</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\09.BattleSystem\BattleWaitingWindow.cpp">
+      <Filter>03.Interface\Game\10.BattleSystem\04.Wait</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\10.CharacterServerChange\CautiousUI.cpp">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\ServerRelocateContents.cpp">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\10.CharacterServerChange\ServerRelocatePage.cpp">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\10.CharacterServerChange\ServerRelocateRequestPageUI.cpp">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\10.CharacterServerChange\TermsAndConditionUI.cpp">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\VipMemberShip_Contents.cpp">
+      <Filter>03.Interface\Game\13.VipMemberShip</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\17.VipMemberShip\VipSystemWindow.cpp">
+      <Filter>03.Interface\Game\13.VipMemberShip</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\01.Logo\Logo.cpp">
+      <Filter>03.Interface\01.Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\LogoContents.cpp">
+      <Filter>03.Interface\01.Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\07.CharacterCreate\CharacterCreate.cpp">
+      <Filter>03.Interface\07.CharacterCreate</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\CharacterCreateContents.cpp">
+      <Filter>03.Interface\07.CharacterCreate</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\07.CharacterCreate\DigimonCreate.cpp">
+      <Filter>03.Interface\07.CharacterCreate</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\03.Login\Login.cpp">
+      <Filter>03.Interface\03.Login</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\LoginContents.cpp">
+      <Filter>03.Interface\03.Login</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\04.SecondPassword\SecondPassword.cpp">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\04.SecondPassword\SecondPassword_Ask.cpp">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\04.SecondPassword\SecondPassword_Change.cpp">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\04.SecondPassword\SecondPassword_Regist.cpp">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\SecondPasswordContents.cpp">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\05.ServerSelect\SelectServer.cpp">
+      <Filter>03.Interface\05.ServerSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\ServerSelectContents.cpp">
+      <Filter>03.Interface\05.ServerSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\06.CharacterSelect\CharacterSelect.cpp">
+      <Filter>03.Interface\06.CharacterSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\CharacterSelectContents.cpp">
+      <Filter>03.Interface\06.CharacterSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\08.Loading\Loading.cpp">
+      <Filter>03.Interface\08.Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\LoadingContents.cpp">
+      <Filter>03.Interface\08.Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\ShutDownContents.cpp">
+      <Filter>03.Interface\ShutDownSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\13.ResourceIntegrityChecker\ResourceChecker.cpp">
+      <Filter>03.Interface\00.ResourceIntegrityChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\00.Contents\ResourceIntegrityChecker.cpp">
+      <Filter>03.Interface\00.ResourceIntegrityChecker</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>09.Etc Files</Filter>
+    </ClCompile>
+    <ClCompile Include="_Lan_English.cpp">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="_Lan_HongKong.cpp">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="_Lan_Taiwan.cpp">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="_Lan_Thailand.cpp">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="_LanConvert.cpp">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler\GameEventMng.cpp">
+      <Filter>11.EventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler\UIEventMng.cpp">
+      <Filter>11.EventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsSystem\ContentsStream.cpp">
+      <Filter>12.ContentsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsSystem\ContentsSystem.cpp">
+      <Filter>12.ContentsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsSystem\ContentsSystemFactory.cpp">
+      <Filter>12.ContentsSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SimpleSecurity\SecuritySelf.cpp">
+      <Filter>14.SimpleSecurity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\SteamSDK\Steam_Client.cpp">
+      <Filter>15.Steam</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalData.cpp">
+      <Filter>16.GlobalData</Filter>
+    </ClCompile>
+    <ClCompile Include="_ResourceMng\ResourceMng.cpp">
+      <Filter>17.ResourceMng</Filter>
+    </ClCompile>
+    <ClCompile Include="_ResourceMng\TextureMng.cpp">
+      <Filter>17.ResourceMng</Filter>
+    </ClCompile>
+    <ClCompile Include="_ResourceMng\TextureResource.cpp">
+      <Filter>17.ResourceMng</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FtpClient\BlockingSocket.cpp">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FtpClient\FTPClient.cpp">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FtpClient\FTPDataTypes.cpp">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FtpClient\FTPFileStatus.cpp">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FtpClient\FTPListParse.cpp">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialDigimonUser.cpp">
+      <Filter>01.Game\TutorialCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialMonster.cpp">
+      <Filter>01.Game\TutorialCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="TutorialTamerUser.cpp">
+      <Filter>01.Game\TutorialCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialHelpUI.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\11.Tutorial\TutorialSkipUI.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectShow.cpp">
+      <Filter>04.Engine\DirectShow</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\Game\ScreenOutUI.cpp">
+      <Filter>03.Interface\Game\03_동작팝업\03_전체화면이미지</Filter>
+    </ClCompile>
+    <ClCompile Include="_Interface\18.SeasonPass\SeasonPassWindow.cpp" />
+    <ClCompile Include="_Interface\00.Contents\SeasonPass_Contents.cpp" />
+    <ClCompile Include="_Interface\Game\EventNoticeButton.cpp" />
+    <ClCompile Include="_Interface\00.Contents\EventNotice_Contents.cpp" />
+    <ClCompile Include="_Interface\19.EventNotice\EventNoticeWindow.cpp" />
+    <ClCompile Include="_Interface\Game\SeasonPassButton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>04.Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CIme.h">
+      <Filter>04.Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>04.Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>04.Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundMgr.h">
+      <Filter>04.Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundDefine.h">
+      <Filter>04.Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectShow.h">
+      <Filter>04.Engine\DirectShow</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectShowNeed.h">
+      <Filter>04.Engine\DirectShow</Filter>
+    </ClInclude>
+    <ClInclude Include="DShowGrabberCallback.h">
+      <Filter>04.Engine\DirectShow</Filter>
+    </ClInclude>
+    <ClInclude Include="CharObject_Header.h">
+      <Filter>01.Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CharOption.h">
+      <Filter>01.Game\Option</Filter>
+    </ClInclude>
+    <ClInclude Include="CharMng.h">
+      <Filter>01.Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Digimon.h">
+      <Filter>01.Game\Character\User</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonUser.h">
+      <Filter>01.Game\Character\User</Filter>
+    </ClInclude>
+    <ClInclude Include="Tamer.h">
+      <Filter>01.Game\Character\User</Filter>
+    </ClInclude>
+    <ClInclude Include="TamerUser.h">
+      <Filter>01.Game\Character\User</Filter>
+    </ClInclude>
+    <ClInclude Include="UserServerMove.h">
+      <Filter>01.Game\Character\User</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>01.Game\Character\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Pat.h">
+      <Filter>01.Game\Character\Pat</Filter>
+    </ClInclude>
+    <ClInclude Include="Pat_AI_Mng.h">
+      <Filter>01.Game\Character\Pat</Filter>
+    </ClInclude>
+    <ClInclude Include="TacticsObject.h">
+      <Filter>01.Game\Character\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Employment.h">
+      <Filter>01.Game\Character\Employment</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Attendance.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Cash.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_CoolTime.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Damagemeter.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Digivice.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_GuildMark.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Inven.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Inven_Cross.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_MapObject.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_MapRegion.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_MonsterIcon.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_PCbang.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_PostLoad.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Quest.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_QuestOwner.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_QuickSlot.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_ServerSync.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Tactics.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_Tactics_Cross.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_TacticsHouse.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_TamerIcon.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Data_TEquip.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="DataMng.h">
+      <Filter>01.Game\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>01.Game\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcMng.h">
+      <Filter>01.Game\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="Object_Header.h">
+      <Filter>01.Game\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>01.Game\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemInfo.h">
+      <Filter>01.Game\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMng.h">
+      <Filter>01.Game\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectMng.h">
+      <Filter>01.Game\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>01.Game\Object\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>01.Game\Object\Condition</Filter>
+    </ClInclude>
+    <ClInclude Include="Buff.h">
+      <Filter>01.Game\Object\Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>01.Game\Object\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="CardMng.h">
+      <Filter>01.Game\Object\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="DatsCenter.h">
+      <Filter>01.Game\GameScene\Dats</Filter>
+    </ClInclude>
+    <ClInclude Include="DatsCenterContents.h">
+      <Filter>01.Game\GameScene\Dats</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossEvent.h">
+      <Filter>01.Game\GameScene\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EventScene.h">
+      <Filter>01.Game\GameScene\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEvent.h">
+      <Filter>01.Game\GameScene\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="TacticsAni.h">
+      <Filter>01.Game\GameScene\TacticsANI</Filter>
+    </ClInclude>
+    <ClInclude Include="cSort.h">
+      <Filter>01.Game\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="CFrame.h">
+      <Filter>00.Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>00.Main</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>00.Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Splash.h">
+      <Filter>00.Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonTalk.h">
+      <Filter>00.Main\Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="Resist.h">
+      <Filter>00.Main\Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\Flow.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\FlowCmdQueue.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\FlowFactory.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\FlowMgr.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\FlowStack.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\FlowState.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\InstMgr.h">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\LogoFlow.h">
+      <Filter>00.Main\FlowSystem\01.Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\IntroFlow.h">
+      <Filter>00.Main\FlowSystem\02.Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\LoginFlow.h">
+      <Filter>00.Main\FlowSystem\03.Login</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\SecondPasswordFlow.h">
+      <Filter>00.Main\FlowSystem\04.SecondPassword</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\ServerSelectFlow.h">
+      <Filter>00.Main\FlowSystem\05.ServerSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\CharacterSelectFlow.h">
+      <Filter>00.Main\FlowSystem\06.CharacterSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\CharacterCreateFlow.h">
+      <Filter>00.Main\FlowSystem\07.CharacterCreate</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\DigimonCreateFlow.h">
+      <Filter>00.Main\FlowSystem\08.DigimonCreate</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\LoadingFlow.h">
+      <Filter>00.Main\FlowSystem\09.Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\InGameFlow.h">
+      <Filter>00.Main\FlowSystem\10.InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\DatsCenterFlow.h">
+      <Filter>00.Main\FlowSystem\11.DatsCenter</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\DataTradeCenterFlow.h">
+      <Filter>00.Main\FlowSystem\12.DataTradeCenter</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\BattleFlow.h">
+      <Filter>00.Main\FlowSystem\13.Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\BattleRegisterFlow.h">
+      <Filter>00.Main\FlowSystem\14.BattleRegister</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\BattleResultFlow.h">
+      <Filter>00.Main\FlowSystem\15.BattleResult</Filter>
+    </ClInclude>
+    <ClInclude Include="Flow\CharacterServerRelocateFlow.h">
+      <Filter>00.Main\FlowSystem\16.CharactorServerRelocate</Filter>
+    </ClInclude>
+    <ClInclude Include="nProtect\Client_nProtect.h">
+      <Filter>00.Main\nProtect</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionMng.h">
+      <Filter>00.Main\OtionDocument</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionUIBase.h">
+      <Filter>00.Main\OtionDocument\UIBase</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUIBattleLog.h">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUIChatting.h">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUIContents.h">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUISystem.h">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionUIChat.h">
+      <Filter>00.Main\OtionDocument\UIBase\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerUIOptionDocument.h">
+      <Filter>00.Main\OtionDocument\UIPlayerDocument</Filter>
+    </ClInclude>
+    <ClInclude Include="App\DXVersionChecker.h">
+      <Filter>00.Main\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="App\GameApp.h">
+      <Filter>00.Main\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="App\KillProcess.h">
+      <Filter>00.Main\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="App\Win32App.h">
+      <Filter>00.Main\GameApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Xigncode3\Client_Xigncode3.h">
+      <Filter>00.Main\Xigncode3</Filter>
+    </ClInclude>
+    <ClInclude Include="Xigncode3\xtypes.h">
+      <Filter>00.Main\Xigncode3</Filter>
+    </ClInclude>
+    <ClInclude Include="Xigncode3\zcwave_errors.h">
+      <Filter>00.Main\Xigncode3</Filter>
+    </ClInclude>
+    <ClInclude Include="Xigncode3\zwave_sdk_client.h">
+      <Filter>00.Main\Xigncode3</Filter>
+    </ClInclude>
+    <ClInclude Include="network\cCliAccount.h">
+      <Filter>05.Network\1.account</Filter>
+    </ClInclude>
+    <ClInclude Include="network\cCliGate.h">
+      <Filter>05.Network\2.gate</Filter>
+    </ClInclude>
+    <ClInclude Include="network\cMngName.h">
+      <Filter>05.Network\0.base</Filter>
+    </ClInclude>
+    <ClInclude Include="network\cNetwork.h">
+      <Filter>05.Network\0.base</Filter>
+    </ClInclude>
+    <ClInclude Include="network\cSyncData.h">
+      <Filter>05.Network\4.sync</Filter>
+    </ClInclude>
+    <ClInclude Include="network\cCliGame.h">
+      <Filter>05.Network\3.game</Filter>
+    </ClInclude>
+    <ClInclude Include="FmCommon.h">
+      <Filter>06.Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="FmDigimon.h">
+      <Filter>06.Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="FmTamer.h">
+      <Filter>06.Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="_DeviceInfo\DeviceInfo.h">
+      <Filter>07.DeviceInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="CharResMng.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MngCollector.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieCapture.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectController.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CCursor.h">
+      <Filter>02.Manager\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalInput.h">
+      <Filter>02.Manager\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="HotKey.h">
+      <Filter>02.Manager\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Barcode\BarCodeManager.h">
+      <Filter>08.Barcode</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>10.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>10.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongKongDefine.h">
+      <Filter>10.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>10.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>10.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>10.Define</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\_BaseExpertHeader.h">
+      <Filter>03.Interface\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\_BaseHeader.h">
+      <Filter>03.Interface\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\ScriptUI.h">
+      <Filter>03.Interface\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\AniButton.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Billboard.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Button.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\CheckBox.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\ComboBox.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\EditBox.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\GridListBox.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\Image.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\ListBox.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Number3DMng.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\ProgressBar.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\RadioButton.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\ScrollBar.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Slider.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Sprite.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\SpriteAni.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\TreeBox.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\UI_ProgressBar.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\UI_TimerProgressBar.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Window.h">
+      <Filter>03.Interface\Base\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Font.h">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\FontCheck.h">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\String.h">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\StringAnalysis.h">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\Text.h">
+      <Filter>03.Interface\Base\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\PopUp.h">
+      <Filter>03.Interface\Base\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Base\RenderTex.h">
+      <Filter>03.Interface\Base\RenderTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\Icon.h">
+      <Filter>03.Interface\Base\Icon</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\base\IconMng.h">
+      <Filter>03.Interface\Base\Icon</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\_BaseWindow.h">
+      <Filter>03.Interface\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\_GameIF.h">
+      <Filter>03.Interface\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\HpBar.h">
+      <Filter>03.Interface\Game\05_3DUI\91_HP바</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonTalk.h">
+      <Filter>03.Interface\Game\05_3DUI\87_디지몬대화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Tip.h">
+      <Filter>03.Interface\Game\05_3DUI\86_팁</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\TalkBalloon.h">
+      <Filter>03.Interface\Game\05_3DUI\85_말풍선</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\HelpArrow.h">
+      <Filter>03.Interface\Game\05_3DUI\72_위치찾기</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Tutorial.h">
+      <Filter>03.Interface\Game\99_작업중\튜토리얼</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Warehouse.h">
+      <Filter>03.Interface\Game\04_Npc\08_창고</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\WareHouseContents.h">
+      <Filter>03.Interface\Game\04_Npc\08_창고</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptWareHouse.h">
+      <Filter>03.Interface\Game\04_Npc\08_창고\WareHouse_Adapt</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ElementItem_Attach.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ElementItem_Check.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ElementManagement.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EquipmentCharge.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EquipmentChargeQuick.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\EquipSystemContents.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EquipSystemHelp.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EquipSystemSubViewer.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EquipSystemViewer.h">
+      <Filter>03.Interface\Game\04_Npc\07_속성아이템</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MakeTactics.h">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MakeTacticsContents.h">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniGame.h">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성\미니게임</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuestRev.h">
+      <Filter>03.Interface\Game\04_Npc\04_퀘스트받기</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Store.h">
+      <Filter>03.Interface\Game\04_Npc\02_상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\StoreContents.h">
+      <Filter>03.Interface\Game\04_Npc\02_상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Talk.h">
+      <Filter>03.Interface\Game\04_Npc\01_대화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptDigimonAchive.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\DigimonArchiveContents.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonArchiveSubViewer.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonArchiveViewer.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonIncubatorViewer.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonInfoViewer.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonTranscendenceHelp.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigimonTranscendenceViewer.h">
+      <Filter>03.Interface\Game\04_Npc\09_용병보관소</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\TacticsEnchant.h">
+      <Filter>03.Interface\Game\04_Npc\10_용병강화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Digitama_Scan.h">
+      <Filter>03.Interface\Game\04_Npc\03_디지타마</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Digitama_Sell.h">
+      <Filter>03.Interface\Game\04_Npc\03_디지타마</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigitamaContents.h">
+      <Filter>03.Interface\Game\04_Npc\03_디지타마</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\CardEvent.h">
+      <Filter>03.Interface\Game\04_Npc\11_카드이벤트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\CardEventContents.h">
+      <Filter>03.Interface\Game\04_Npc\11_카드이벤트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptGotchaMachine.h">
+      <Filter>03.Interface\Game\04_Npc\12_가챠머신</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\GotchaMachineContents.h">
+      <Filter>03.Interface\Game\04_Npc\12_가챠머신</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\NewGotchaMachine.h">
+      <Filter>03.Interface\Game\04_Npc\12_가챠머신</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ThanksGivingDay_Event.h">
+      <Filter>03.Interface\Game\04_Npc\13_추석이밴트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MastersMatching.h">
+      <Filter>03.Interface\Game\04_Npc\14_마스터즈매칭</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Event_Pinokimon.h">
+      <Filter>03.Interface\Game\04_Npc\16_이벤트타입</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ItemProduction_Contents.h">
+      <Filter>03.Interface\Game\04_Npc\17. 아이템제작</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ItemProductionShop.h">
+      <Filter>03.Interface\Game\04_Npc\17. 아이템제작</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\EvolutionStore_Contents.h">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\16.EvolutionStore\EvolutionStore_OverlapSeletUI.h">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\16.EvolutionStore\EvolutionStore_PasswordUI.h">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\16.EvolutionStore\EvolutionStore_Window.h">
+      <Filter>03.Interface\Game\04_Npc\15_스피릿진화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuestComp.h">
+      <Filter>03.Interface\Game\04_Npc\05_퀘스트완료</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MapContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MiniMap.h">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\SmallMap.h">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ZoneMap.h">
+      <Filter>03.Interface\Game\02_기본팝업\01_맵</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\WebControl.h">
+      <Filter>03.Interface\Game\02_기본팝업\02_웹</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\WebWin.h">
+      <Filter>03.Interface\Game\02_기본팝업\02_웹</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\GiftBoxUI.h">
+      <Filter>03.Interface\Game\02_기본팝업\03_인벤토리</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Inventory.h">
+      <Filter>03.Interface\Game\02_기본팝업\03_인벤토리</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\InventoryContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\03_인벤토리</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\CapsuleEvol.h">
+      <Filter>03.Interface\Game\02_기본팝업\05_디지몬상태</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuestFindWay.h">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuestList.h">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuestDiscript.h">
+      <Filter>03.Interface\Game\02_기본팝업\06_퀘스트리스트\퀘스트 설명창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MainOption.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\OptionBase.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\OptionGraphic.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\OptionInterface.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\OptionMacro.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\OptionSound.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\OptionUserGrade.h">
+      <Filter>03.Interface\Game\02_기본팝업\07_옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptTrade.h">
+      <Filter>03.Interface\Game\02_기본팝업\08_거래</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Trade.h">
+      <Filter>03.Interface\Game\02_기본팝업\08_거래</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\Trade_Contents.h">
+      <Filter>03.Interface\Game\02_기본팝업\08_거래</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\NpcFind.h">
+      <Filter>03.Interface\Game\02_기본팝업\09_NPC찾기</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptCommunity.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptFriendShoutOut.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Community.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\CommunityContent.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\FriendList.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\FriendListContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\GuildMemo.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\GuildSet.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RankView.h">
+      <Filter>03.Interface\Game\02_기본팝업\10_커뮤니티\추가기능창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\CashShopButton.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\캐시샵 버튼</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopBestViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopCartViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\NewCashshopContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopEquipViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopItem.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopMainViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopSeliingItemViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopWebViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopPresentViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopPurchaseMultiViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopPurchaseSingleViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopPurchaseSubViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopPurchaseViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\PurchaseSubViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\15.CashShop\NewCashshopStorageViewer.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\NewCashWarehouse</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptCashshop.h">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop\Adapt_Cashshop</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Achieve.h">
+      <Filter>03.Interface\Game\02_기본팝업\12_업적</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\AchieveContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\12_업적</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\PcbangInven.h">
+      <Filter>03.Interface\Game\02_기본팝업\16_Pc방인벤</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptUnionStore.h">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\PersonStore.h">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\PersonStoreContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\UnionStore.h">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\UnionStoreContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\18_개인상점</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\SealMaster.h">
+      <Filter>03.Interface\Game\02_기본팝업\20_카드인밴토리</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\SealMasterContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\20_카드인밴토리</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Card_Identify.h">
+      <Filter>03.Interface\Game\02_기본팝업\21_카드봉인해제</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Card_ReSeal.h">
+      <Filter>03.Interface\Game\02_기본팝업\21_카드봉인해제</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DamageMeter.h">
+      <Filter>03.Interface\Game\02_기본팝업\22_데미지미터기</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\DamageMeter_Contents.h">
+      <Filter>03.Interface\Game\02_기본팝업\22_데미지미터기</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ItemRewardContents.h">
+      <Filter>03.Interface\Game\02_기본팝업\23_아이템지급창고</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Server_Reward.h">
+      <Filter>03.Interface\Game\02_기본팝업\23_아이템지급창고</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Letter.h">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Mail.h">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\Mail_Contents.h">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Mail_Button.h">
+      <Filter>03.Interface\Game\02_기본팝업\13_개인메일\메일 버튼</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Shout.h">
+      <Filter>03.Interface\Game\02_기본팝업\17_외치기</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\NeonDisplayContents.h">
+      <Filter>03.Interface\Game\03_동작팝업\01_광고판</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Publicity.h">
+      <Filter>03.Interface\Game\03_동작팝업\01_광고판</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DigiviceQuest.h">
+      <Filter>03.Interface\Game\03_동작팝업\02_디지바이스 퀘스트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\BGSprite.h">
+      <Filter>03.Interface\Game\03_동작팝업\03_전체화면이미지</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\JumpBuster.h">
+      <Filter>03.Interface\Game\03_동작팝업\04_점프부스터</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Digimon_Boss.h">
+      <Filter>03.Interface\Game\03_동작팝업\05_보스등장</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\AchieveInfo.h">
+      <Filter>03.Interface\Game\03_동작팝업\06_영역</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RegionInfo.h">
+      <Filter>03.Interface\Game\03_동작팝업\06_영역</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptMacroProtectSystem.h">
+      <Filter>03.Interface\Game\03_동작팝업\07_매크로방지</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\MacroProtectContents.h">
+      <Filter>03.Interface\Game\03_동작팝업\07_매크로방지</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Protect.h">
+      <Filter>03.Interface\Game\03_동작팝업\07_매크로방지</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptEnchantOption.h">
+      <Filter>03.Interface\Game\03_동작팝업\10_인챈트옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EnchantOption.h">
+      <Filter>03.Interface\Game\03_동작팝업\10_인챈트옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\EnchantOptionContents.h">
+      <Filter>03.Interface\Game\03_동작팝업\10_인챈트옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Encyclopedia.h">
+      <Filter>03.Interface\Game\03_동작팝업\11_디지몬도감</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Encyclopedia_Statistics.h">
+      <Filter>03.Interface\Game\03_동작팝업\11_디지몬도감</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EncyclopediaContents.h">
+      <Filter>03.Interface\Game\03_동작팝업\11_디지몬도감</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIslandBless.h">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalMessage.h">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpMsg.h">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClInclude>
+    <ClInclude Include="Random_Regen.h">
+      <Filter>03.Interface\Game\03_동작팝업\12_글로벌메세지</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptTutorialQuest.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\TutorialContents.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialGuideWindow.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialIndicator.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialQuest.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialTraceWindow.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialUITraceData.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RaidRank.h">
+      <Filter>03.Interface\Game\03_동작팝업\08_레이드순위</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Weather.h">
+      <Filter>03.Interface\Game\98_기타\03_날씨</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MainBar.h">
+      <Filter>03.Interface\Game\01_메인UI\01_메인바</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MainDigimonWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\TacticsWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\TamerWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\TargetWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\02_타겟창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChatBase.h">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChatContents.h">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChatMainWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChatOption.h">
+      <Filter>03.Interface\Game\01_메인UI\03_채팅창\01_채팅옵션</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChatSystemWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\04_시스템창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuickSlot.h">
+      <Filter>03.Interface\Game\01_메인UI\05_퀵슬롯</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptPartySystem.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Party_Contents.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\PartyWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Division.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\15_파티분배</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\BaseLootingWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Looting.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MyLooting.h">
+      <Filter>03.Interface\Game\01_메인UI\07_파티\10_파티아이템루팅</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\BuffInfo.h">
+      <Filter>03.Interface\Game\01_메인UI\08_버프창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChatBattleLogWindow.h">
+      <Filter>03.Interface\Game\01_메인UI\09_전투로그창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Channel.h">
+      <Filter>03.Interface\Game\01_메인UI\12_채널</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\ChannelContents.h">
+      <Filter>03.Interface\Game\01_메인UI\12_채널</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuestHelper.h">
+      <Filter>03.Interface\Game\01_메인UI\11_퀘스트도우미</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\PlayTime.h">
+      <Filter>03.Interface\Game\01_메인UI\13_플레이타임</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Centerbar.h">
+      <Filter>03.Interface\Game\01_메인UI\15_센터바</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Simplification.h">
+      <Filter>03.Interface\Game\01_메인UI\16_간략화버튼</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\QuickEvol.h">
+      <Filter>03.Interface\Game\01_메인UI\06_퀵진화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\ActionKey.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptMainFrame.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\MainFrame_Contents.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_DeleteDigimonUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_DigimonUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_TacticsUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_TamerUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_XaiGuageUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\TamerStatusUI_Cross.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\TamerStatusUI_Digivice.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\TamerStatusUI_Skill.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\TamerStatusUI_Tamer.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_DigimonStatusHelpUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\02_디지몬상태창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_DigimonStatusUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\02_디지몬상태창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\14.MainFrameUI\MainFrame_TargetUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\03_타겟창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MessageBox.h">
+      <Filter>03.Interface\Game\00_도구\01_메세지박스</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\PrintMsg.h">
+      <Filter>03.Interface\Game\00_도구\01_메세지박스</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\SystemMsg.h">
+      <Filter>03.Interface\Game\00_도구\01_메세지박스</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ToolTip.h">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Tooltip_Mng.h">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ToolTip_RightBottom.h">
+      <Filter>03.Interface\Game\00_도구\02_툴팁</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Popup.h">
+      <Filter>03.Interface\Game\00_도구\03_팝업</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Fade.h">
+      <Filter>03.Interface\Game\00_도구\09_페이드</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\CreateName.h">
+      <Filter>03.Interface\Game\00_도구\10_이름입력창</Filter>
+    </ClInclude>
+    <ClInclude Include="TamerSummon.h">
+      <Filter>03.Interface\Game\00_도구\10_이름입력창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MoneyIF.h">
+      <Filter>03.Interface\Game\00_도구\08_돈</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Alime.h">
+      <Filter>03.Interface\Game\00_도구\06_알림</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ChangeTamer.h">
+      <Filter>03.Interface\Game\00_도구\05_테이머변경</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ItemSeparate.h">
+      <Filter>03.Interface\Game\00_도구\07_분할창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\MoneySeparate.h">
+      <Filter>03.Interface\Game\00_도구\07_분할창</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\Separate.h">
+      <Filter>03.Interface\Game\00_도구\07_분할창</Filter>
+    </ClInclude>
+    <ClInclude Include="RecommendEvent.h">
+      <Filter>03.Interface\Game\07_친구추천</Filter>
+    </ClInclude>
+    <ClInclude Include="RecommendEvent_Contents.h">
+      <Filter>03.Interface\Game\07_친구추천</Filter>
+    </ClInclude>
+    <ClInclude Include="RecommendEventButton.h">
+      <Filter>03.Interface\Game\07_친구추천</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EventContents.h">
+      <Filter>03.Interface\Game\09_이벤트</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DailyEventUI.h">
+      <Filter>03.Interface\Game\09_이벤트\02.Daily_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\EventUIViewer.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RewardDailyCheckUI.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RewardDailyUI.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RewardEventUI.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RewardHotTimeUI.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RewardMonthlyUI.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\RewardPromotionUI.h">
+      <Filter>03.Interface\Game\09_이벤트\03.Reward_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ExpEvent.h">
+      <Filter>03.Interface\Game\09_이벤트\01.Exp_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeBase.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeCenter.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeContents.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeDigimonEvolution.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeDigimonScale.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeDigimonUpgrade.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\DataTradeSelect.h">
+      <Filter>03.Interface\Game\09.DataTrade</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\InfiniteWar_Contents.h">
+      <Filter>03.Interface\Game\12.InfiniteWar</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\InfiniteWar_RankReward_Contents.h">
+      <Filter>03.Interface\Game\12.InfiniteWar</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarAllClearWindow.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarGiveupWindow.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNextStageWindow.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarStartTimerWindow.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarStartWindow.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\Match</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Daily.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_HallOfFame.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Monthly.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_PreRankList.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_RankBase.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_RankReward.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Season.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\12.InfiniteWar\InfiniteWarNoticeBoard_Week.h">
+      <Filter>03.Interface\Game\12.InfiniteWar\NoticeBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Adapt\AdaptBattleSystem.h">
+      <Filter>03.Interface\Game\10.BattleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\BattleSystemContent.h">
+      <Filter>03.Interface\Game\10.BattleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleDigimonListUI.h">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleMapInfoUI.h">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleModeInfoUI.h">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleRegistBackUI.h">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleRegisterPage.h">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleTypeSelectUI.h">
+      <Filter>03.Interface\Game\10.BattleSystem\01.RegistPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleEndWindow.h">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleRoundTimer.h">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleStartCounterUI.h">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleEvol.h">
+      <Filter>03.Interface\Game\10.BattleSystem\02.BattlePage\14_배틀진화</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleResultPage.h">
+      <Filter>03.Interface\Game\10.BattleSystem\03.ResultPage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleWaitingButton.h">
+      <Filter>03.Interface\Game\10.BattleSystem\04.Wait</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\09.BattleSystem\BattleWaitingWindow.h">
+      <Filter>03.Interface\Game\10.BattleSystem\04.Wait</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\10.CharacterServerChange\CautiousUI.h">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\ServerRelocateContents.h">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\10.CharacterServerChange\ServerRelocatePage.h">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\10.CharacterServerChange\ServerRelocateRequestPageUI.h">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\10.CharacterServerChange\TermsAndConditionUI.h">
+      <Filter>03.Interface\Game\11.ServerChangePage</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\VipMemberShip_Contents.h">
+      <Filter>03.Interface\Game\13.VipMemberShip</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\17.VipMemberShip\VipSystemWindow.h">
+      <Filter>03.Interface\Game\13.VipMemberShip</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\01.Logo\Logo.h">
+      <Filter>03.Interface\01.Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\LogoContents.h">
+      <Filter>03.Interface\01.Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\07.CharacterCreate\CharacterCreate.h">
+      <Filter>03.Interface\07.CharacterCreate</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\CharacterCreateContents.h">
+      <Filter>03.Interface\07.CharacterCreate</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\07.CharacterCreate\DigimonCreate.h">
+      <Filter>03.Interface\07.CharacterCreate</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\03.Login\Login.h">
+      <Filter>03.Interface\03.Login</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\LoginContents.h">
+      <Filter>03.Interface\03.Login</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\04.SecondPassword\SecondPassword.h">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\SecondPasswordContents.h">
+      <Filter>03.Interface\04.SecondPassword</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\05.ServerSelect\SelectServer.h">
+      <Filter>03.Interface\05.ServerSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\ServerSelectContents.h">
+      <Filter>03.Interface\05.ServerSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\06.CharacterSelect\CharacterSelect.h">
+      <Filter>03.Interface\06.CharacterSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\CharacterSelectContents.h">
+      <Filter>03.Interface\06.CharacterSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\08.Loading\Loading.h">
+      <Filter>03.Interface\08.Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\LoadingContents.h">
+      <Filter>03.Interface\08.Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\ShutDownContents.h">
+      <Filter>03.Interface\ShutDownSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\13.ResourceIntegrityChecker\ResourceChecker.h">
+      <Filter>03.Interface\00.ResourceIntegrityChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\00.Contents\ResourceIntegrityChecker.h">
+      <Filter>03.Interface\00.ResourceIntegrityChecker</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>09.Etc Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>09.Etc Files</Filter>
+    </ClInclude>
+    <ClInclude Include="_Lan_English.h">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="_Lan_HongKong.h">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="_Lan_Korea.h">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="_Lan_Taiwan.h">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="_Lan_Thailand.h">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="_LanConvert.h">
+      <Filter>09.Etc Files\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientVersion\ClientVersion.h">
+      <Filter>09.Etc Files\Version</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler\EventHandler.h">
+      <Filter>11.EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler\GameEventCode.h">
+      <Filter>11.EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler\GameEventMng.h">
+      <Filter>11.EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler\UIEventMng.h">
+      <Filter>11.EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsSystem\ContentsStream.h">
+      <Filter>12.ContentsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsSystem\ContentsSystem.h">
+      <Filter>12.ContentsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsSystem\ContentsSystemDef.h">
+      <Filter>12.ContentsSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="NetProtocol_Include.h">
+      <Filter>13.NetProtocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SimpleSecurity\SecuritySelf.h">
+      <Filter>14.SimpleSecurity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SteamSDK\steam\steam_api.h">
+      <Filter>15.Steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SteamSDK\Steam_Client.h">
+      <Filter>15.Steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\SteamSDK\steam\steam_gameserver.h">
+      <Filter>15.Steam</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalData.h">
+      <Filter>16.GlobalData</Filter>
+    </ClInclude>
+    <ClInclude Include="_ResourceMng\ResourceMng.h">
+      <Filter>17.ResourceMng</Filter>
+    </ClInclude>
+    <ClInclude Include="_ResourceMng\TextureMng.h">
+      <Filter>17.ResourceMng</Filter>
+    </ClInclude>
+    <ClInclude Include="_ResourceMng\TextureResource.h">
+      <Filter>17.ResourceMng</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\BlockingSocket.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\Definements.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\FTPClient.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\FTPDataTypes.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\FTPFileStatus.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\FTPListParse.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\FtpClient\smart_ptr.h">
+      <Filter>18.util\01.Ftp</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="TutorialDigimonUser.h">
+      <Filter>01.Game\TutorialCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialMonster.h">
+      <Filter>01.Game\TutorialCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialTamerUser.h">
+      <Filter>01.Game\TutorialCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialHelpUI.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\11.Tutorial\TutorialSkipUI.h">
+      <Filter>03.Interface\Game\03_동작팝업\13.튜토리얼UI</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\Game\ScreenOutUI.h">
+      <Filter>03.Interface\Game\03_동작팝업\03_전체화면이미지</Filter>
+    </ClInclude>
+    <ClInclude Include="_Interface\18.SeasonPass\SeasonPassWindow.h" />
+    <ClInclude Include="_Interface\00.Contents\SeasonPass_Contents.h" />
+    <ClInclude Include="_Interface\Game\EventNoticeButton.h" />
+    <ClInclude Include="_Interface\00.Contents\EventNotice_Contents.h" />
+    <ClInclude Include="_Interface\19.EventNotice\EventNoticeWindow.h" />
+    <ClInclude Include="_Interface\Game\SeasonPassButton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Flow\Flow.inl">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </None>
+    <None Include="Flow\InstMgr.inl">
+      <Filter>00.Main\FlowSystem\FlowMgr</Filter>
+    </None>
+    <None Include="_Interface\base\IconMng.inl">
+      <Filter>03.Interface\Base\Icon</Filter>
+    </None>
+    <None Include="MakeTacticsContects.inl">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성</Filter>
+    </None>
+    <None Include="Minigame.inl">
+      <Filter>03.Interface\Game\04_Npc\06_용병생성\미니게임</Filter>
+    </None>
+    <None Include="_Interface\00.Contents\NewCashshopContents.inl">
+      <Filter>03.Interface\Game\02_기본팝업\11_케쉬\NewCashshop</Filter>
+    </None>
+    <None Include="resource\attack_cur.cur">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="resource\default.cur">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="Resource\digimon.ico">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="Resource\DIGITAMA.cur">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="resource\HAND_CUR.cur">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="readme.txt">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="Resource\STORE_CUR.cur">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="Resource\TALK.cur">
+      <Filter>09.Etc Files</Filter>
+    </None>
+    <None Include="ClientVersion\Jenkins_Build_VersionFile.txt">
+      <Filter>09.Etc Files\Version</Filter>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DProject.rc">
+      <Filter>09.Etc Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuildStep Include="_Interface\14.MainFrameUI\MainFrame_TamerStatusUI.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </CustomBuildStep>
+    <CustomBuildStep Include="_Interface\14.MainFrameUI\TamerStatusUI_SubViewer.h">
+      <Filter>03.Interface\Game\01_메인UI\02_MainFrame\01_테이머상태창</Filter>
+    </CustomBuildStep>
+  </ItemGroup>
+</Project>

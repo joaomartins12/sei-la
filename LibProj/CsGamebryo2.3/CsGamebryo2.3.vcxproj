@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_English|Win32">
+      <Configuration>Give_English</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_Hong|Win32">
+      <Configuration>Give_Hong</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_Taiwan|Win32">
+      <Configuration>Give_Taiwan</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_Thai|Win32">
+      <Configuration>Give_Thai</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give|Win32">
+      <Configuration>Give</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_English|Win32">
+      <Configuration>Release_English</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Hong|Win32">
+      <Configuration>Release_Hong</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Taiwan|Win32">
+      <Configuration>Release_Taiwan</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Thai|Win32">
+      <Configuration>Release_Thai</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1AAF08BD-8C02-471C-B3CD-49A8035D38FD}</ProjectGuid>
+    <RootNamespace>CsGamebryo23</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\Lib\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">..\..\Lib\Give\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">..\..\Lib\Release_English\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">..\..\Lib\Give_English\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">..\..\Lib\Release_Thai\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">..\..\Lib\Give_Thai\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">..\..\Lib\Release_Taiwan\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">..\..\Lib\Give_Taiwan\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">..\..\Lib\Release_Hong\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">..\..\Lib\Give_Hong\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CsGB2.3</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">CsGB2.3</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;C:\Program Files (x86)\Common Files\System\ado;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">
+    <IncludePath>..\..\Gamebryo2.3\GB_Include\ado;$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;NIDEBUG;IDV_DIRECTX9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Gamebryo2.3\Lib\DebugLib;..\..\Dx200702\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;C:\Program Files (x86)\Common Files\System\ado;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NIRELEASE;IDV_DIRECTX9;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;NISHIPPING;IDV_DIRECTX9;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\shippinglib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include\ado;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NIRELEASE;IDV_DIRECTX9;VERSION_USA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;NISHIPPING;IDV_DIRECTX9;VERSION_USA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\shippinglib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NIRELEASE;IDV_DIRECTX9;VERSION_TH;VERSION_THAI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;NISHIPPING;IDV_DIRECTX9;VERSION_TH;VERSION_THAI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\shippinglib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NIRELEASE;IDV_DIRECTX9;VERSION_TW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;NISHIPPING;IDV_DIRECTX9;VERSION_TW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\shippinglib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NIRELEASE;IDV_DIRECTX9;VERSION_HK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm200 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;NISHIPPING;IDV_DIRECTX9;VERSION_HK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>NiInput.lib;NiMain.lib;NiAnimation.lib;NiDX9Renderer.lib;NiD3D10Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\DirectX_June2010\Lib\x86;..\..\Gamebryo2.3\GB_Lib\shippinglib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CsGBInput.cpp" />
+    <ClCompile Include="CsGBFunc.cpp" />
+    <ClCompile Include="CsGBMemPool.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PathEngine.cpp" />
+    <ClCompile Include="CsGBAttachCamera.cpp" />
+    <ClCompile Include="CsGBCamera.cpp" />
+    <ClCompile Include="CsGBPick.cpp" />
+    <ClCompile Include="CsGBSubCamera.cpp" />
+    <ClCompile Include="CsGBVisible.cpp" />
+    <ClCompile Include="NiOcclusionCuller.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Occluder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PlanarOccluder.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainDefine.cpp" />
+    <ClCompile Include="CsGBTerrainMake.cpp" />
+    <ClCompile Include="CsGBSkyBox.cpp" />
+    <ClCompile Include="CsGBTerrainLeaf.cpp" />
+    <ClCompile Include="CsGBTerrainNode.cpp" />
+    <ClCompile Include="CsGBTerrainRoot.cpp" />
+    <ClCompile Include="CsGBTerrainRoot_Info.cpp" />
+    <ClCompile Include="CsGBTerrainRoot_SaveLoad.cpp" />
+    <ClCompile Include="CsGBTerrainRoot_VersionUp.cpp" />
+    <ClCompile Include="CsGBObjectResMng.cpp" />
+    <ClCompile Include="CsGBTerrainMng.cpp" />
+    <ClCompile Include="CsGBObj_Eff.cpp" />
+    <ClCompile Include="CsGBObj_Portal.cpp" />
+    <ClCompile Include="CsGBObj_Rot.cpp" />
+    <ClCompile Include="CsGBObject.cpp" />
+    <ClCompile Include="CsGBObject_UserDefine.cpp" />
+    <ClCompile Include="CsGBObjProp.cpp" />
+    <ClCompile Include="CsGBObjProp_ABV.cpp" />
+    <ClCompile Include="CsGBObjProp_Actor.cpp" />
+    <ClCompile Include="CsGBObjProp_Alpha.cpp" />
+    <ClCompile Include="CsGBObjProp_AvCap.cpp" />
+    <ClCompile Include="CsGBObjProp_AvTbp.cpp" />
+    <ClCompile Include="CsGBObjProp_Sound.cpp" />
+    <ClCompile Include="CsGBObjPropFactor.cpp" />
+    <ClCompile Include="CsGBObjOpt.cpp" />
+    <ClCompile Include="CsGBObjOpt_DarkMap.cpp" />
+    <ClCompile Include="CsGBObjOptFactor.cpp" />
+    <ClCompile Include="CsGBDX9Renderer.cpp" />
+    <ClCompile Include="CsGBTerrainRenderer.cpp" />
+    <ClCompile Include="CsNiGeometry.cpp" />
+    <ClCompile Include="CsNiNode.cpp" />
+    <ClCompile Include="CsGBLight.cpp" />
+    <ClCompile Include="CsGBLight_Dir.cpp" />
+    <ClCompile Include="CsGBLight_Point.cpp" />
+    <ClCompile Include="CsGBLightMng.cpp" />
+    <ClCompile Include="CsGBShadow.cpp" />
+    <ClCompile Include="CsGBCell.cpp" />
+    <ClCompile Include="CsGBSpeedCell.cpp" />
+    <ClCompile Include="CsGBWeather.cpp" />
+    <ClCompile Include="CsGeomBox.cpp" />
+    <ClCompile Include="GeometryList.cpp" />
+    <ClCompile Include="NodeObj.cpp" />
+    <ClCompile Include="Sorting.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CsGBInput.h" />
+    <ClInclude Include="CsGBFunc.h" />
+    <ClInclude Include="CsGBMemPool.h" />
+    <ClInclude Include="CsGBNiMemPool.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="PathEngine.h" />
+    <ClInclude Include="CsGBAttachCamera.h" />
+    <ClInclude Include="CsGBCamera.h" />
+    <ClInclude Include="CsGBPick.h" />
+    <ClInclude Include="CsGBSubCamera.h" />
+    <ClInclude Include="CsGBVisible.h" />
+    <ClInclude Include="NiOcclusionCuller.h" />
+    <ClInclude Include="Occluder.h" />
+    <ClInclude Include="PlanarOccluder.h" />
+    <ClInclude Include="CsGBTerrainDefine.h" />
+    <ClInclude Include="CsGBTerrainHeader.h" />
+    <ClInclude Include="CsGBTerrainMake.h" />
+    <ClInclude Include="CsGBSkyBox.h" />
+    <ClInclude Include="CsGBTerrainLeaf.h" />
+    <ClInclude Include="CsGBTerrainNode.h" />
+    <ClInclude Include="CsGBTerrainRoot.h" />
+    <ClInclude Include="CsGBTerrainStructVersion.h" />
+    <ClInclude Include="CsGBObjectResMng.h" />
+    <ClInclude Include="CsGBTerrainMng.h" />
+    <ClInclude Include="CsGBObj_Eff.h" />
+    <ClInclude Include="CsGBObj_Portal.h" />
+    <ClInclude Include="CsGBObj_Rot.h" />
+    <ClInclude Include="CsGBObject.h" />
+    <ClInclude Include="CsGBObject_UserDefine.h" />
+    <ClInclude Include="CsGBObjProp.h" />
+    <ClInclude Include="CsGBObjProp_ABV.h" />
+    <ClInclude Include="CsGBObjProp_Actor.h" />
+    <ClInclude Include="CsGBObjProp_Alpha.h" />
+    <ClInclude Include="CsGBObjProp_AvCap.h" />
+    <ClInclude Include="CsGBObjProp_AvTbp.h" />
+    <ClInclude Include="CsGBObjProp_Sound.h" />
+    <ClInclude Include="CsGBObjPropFactor.h" />
+    <ClInclude Include="CsGBObjOpt.h" />
+    <ClInclude Include="CsGBObjOpt_DarkMap.h" />
+    <ClInclude Include="CsGBObjOptFactor.h" />
+    <ClInclude Include="CsGBDX9Renderer.h" />
+    <ClInclude Include="CsGBTerrainRenderer.h" />
+    <ClInclude Include="CsNiGeometry.h" />
+    <ClInclude Include="CsNiNode.h" />
+    <ClInclude Include="CsGBLight.h" />
+    <ClInclude Include="CsGBLight_Dir.h" />
+    <ClInclude Include="CsGBLight_Point.h" />
+    <ClInclude Include="CsGBLightMng.h" />
+    <ClInclude Include="CsGBShadow.h" />
+    <ClInclude Include="CsGBCell.h" />
+    <ClInclude Include="CsGBSpeedCell.h" />
+    <ClInclude Include="CsGBWeather.h" />
+    <ClInclude Include="CsGeomBox.h" />
+    <ClInclude Include="GeometryList.h" />
+    <ClInclude Include="NodeObj.h" />
+    <ClInclude Include="Sorting.h" />
+    <ClInclude Include="CsSoundMng.h" />
+    <ClInclude Include="_TestDefine.h" />
+    <ClInclude Include="EngDefine.h" />
+    <ClInclude Include="HongKongDefine.h" />
+    <ClInclude Include="KorDefine.h" />
+    <ClInclude Include="TaiwanDefine.h" />
+    <ClInclude Include="ThaiDefine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CsGBFunc.inl" />
+    <None Include="CsGBCamera.inl" />
+    <None Include="CsGBPick.inl" />
+    <None Include="CsGBVisible.inl" />
+    <None Include="CsGBTerrainLeaf.inl" />
+    <None Include="CsGBTerrainNode.inl" />
+    <None Include="CsGBTerrainRoot.inl" />
+    <None Include="CsGBObject.inl" />
+    <None Include="CsGBObjProp_Alpha.inl" />
+    <None Include="CsGBObjProp_AvCap.inl" />
+    <None Include="CsGBObjProp_AvTbp.inl" />
+    <None Include="CsGBObjPropFactor.inl" />
+    <None Include="CsGBObjOptFactor.inl" />
+    <None Include="GeometryList.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

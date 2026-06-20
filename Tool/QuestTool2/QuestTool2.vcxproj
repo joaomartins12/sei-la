@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_English|Win32">
+      <Configuration>Release_English</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Hong|Win32">
+      <Configuration>Release_Hong</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Taiwan|Win32">
+      <Configuration>Release_Taiwan</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Thai|Win32">
+      <Configuration>Release_Thai</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EFF06534-6648-464C-9C9D-970165989DBC}</ProjectGuid>
+    <RootNamespace>QuestTool2</RootNamespace>
+    <SccProjectName>Svn</SccProjectName>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\..\digimonmasters_kor\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">..\..\..\..\..\DigimonMasters_GSP\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">..\..\..\..\..\DigimonMasters_TH\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">..\..\..\..\..\DigimonMasters_TW\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">..\..\..\..\..\DigimonMasters_HK\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">false</LinkIncremental>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">QuestTool2_R</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">QuestTool2_R_Eng</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">QuestTool2_R_HK</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">QuestTool2_R_TW</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">QuestTool2_R_Thai</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\libproj\Freetype\include;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;NIRELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsFilePack.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Lib\Common;..\..\Lib\Release;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;..\..\libproj\FreeType\lib;..\..\DirectX_June2010\Lib\x86;..\..\libproj\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;..\;..\..\libproj\Freetype\include;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;NIRELEASE;VERSION_USA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;CsFilePack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Lib\Common;..\..\Lib\Release_English;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;..\..\libproj\FreeType\lib;..\..\DirectX_June2010\Lib\x86;..\..\libproj\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\libproj\Freetype\include;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;NIRELEASE;VERSION_TH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;CsFilePack.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Lib\Common;..\..\Lib\Release_Thai;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;..\..\libproj\FreeType\lib;..\..\DirectX_June2010\Lib\x86;..\..\libproj\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;..\;..\..\libproj\Freetype\include;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;NIRELEASE;VERSION_TW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;CsFilePack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Lib\Common;..\..\Lib\Release_Taiwan;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;..\..\libproj\FreeType\lib;..\..\DirectX_June2010\Lib\x86;..\..\libproj\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;..\;..\..\libproj\Freetype\include;..\..\Gamebryo2.3\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;NIRELEASE;VERSION_HK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>CsFileTable.lib;CsFunc.lib;CsMfc.lib;CsGBChar.lib;CsGB2.3.lib;CsThread.lib;NiDX9Renderer.lib;NiSystem.lib;NiMain.lib;NiAnimation.lib;NiCollision.lib;dxguid.lib;NiBinaryShaderLibDX9.lib;NSBShaderLibDX9.lib;NiD3D10BinaryShaderLibD3D10.lib;NSFParserLibDX9.lib;NiParticle.lib;FreeType239.lib;CsFilePack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\Lib\Common;..\..\Lib\Release_Hong;..\..\Gamebryo2.3\GB_Lib\ReleaseLib;..\..\libproj\FreeType\lib;..\..\DirectX_June2010\Lib\x86;..\..\libproj\MilesSound\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <EnableUAC>false</EnableUAC>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ChildView.cpp" />
+    <ClCompile Include="QuestTool.cpp" />
+    <ClCompile Include="_DEFINE.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="ShaderHelper.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WinViewer.cpp" />
+    <ClCompile Include="QuestMng.cpp" />
+    <ClCompile Include="QuestObj.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeMng.cpp" />
+    <ClCompile Include="MiniMap.cpp" />
+    <ClCompile Include="Popup.cpp" />
+    <ClCompile Include="_DlgViewList.cpp" />
+    <ClCompile Include="_DlgViewSimple.cpp" />
+    <ClCompile Include="WinTop.cpp" />
+    <ClCompile Include="WinDiscript.cpp" />
+    <ClCompile Include="_DlgTab_Setting.cpp" />
+    <ClCompile Include="_DlgTab_Setting_ApplyRequite.cpp" />
+    <ClCompile Include="_DlgTab_Setting_CompRequite.cpp" />
+    <ClCompile Include="_DlgTab_Setting_CompTarget.cpp" />
+    <ClCompile Include="_DlgTab_Setting_PreRequire.cpp" />
+    <ClCompile Include="_DlgTab_Setting_Requite.cpp" />
+    <ClCompile Include="_DlgTab_Setting_StartTarget.cpp" />
+    <ClCompile Include="_DlgTab_Text.cpp" />
+    <ClCompile Include="_DlgTab_Event.cpp" />
+    <ClCompile Include="_DlgModal_Find.cpp" />
+    <ClCompile Include="_DlgModal_List.cpp" />
+    <ClCompile Include="_DlgModal_Simple.cpp" />
+    <ClCompile Include="_DlgModel_Create.cpp" />
+    <ClCompile Include="WinTopMenu.cpp" />
+    <ClCompile Include="Control\Button.cpp" />
+    <ClCompile Include="Control\Sprite.cpp" />
+    <ClCompile Include="Control\Window.cpp" />
+    <ClCompile Include="Control\Font.cpp" />
+    <ClCompile Include="Control\String.cpp" />
+    <ClCompile Include="Control\StringAnalysis.cpp" />
+    <ClCompile Include="Control\Text.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChildView.h" />
+    <ClInclude Include="QuestTool.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="_DEFINE.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="ShaderHelper.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="WinViewer.h" />
+    <ClInclude Include="QuestMng.h" />
+    <ClInclude Include="QuestObj.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeMng.h" />
+    <ClInclude Include="MiniMap.h" />
+    <ClInclude Include="Popup.h" />
+    <ClInclude Include="_DlgViewList.h" />
+    <ClInclude Include="_DlgViewSimple.h" />
+    <ClInclude Include="WinTop.h" />
+    <ClInclude Include="WinDiscript.h" />
+    <ClInclude Include="_DlgTab_Setting.h" />
+    <ClInclude Include="_DlgTab_Text.h" />
+    <ClInclude Include="_DlgTab_Event.h" />
+    <ClInclude Include="_DlgModal_Find.h" />
+    <ClInclude Include="_DlgModal_List.h" />
+    <ClInclude Include="_DlgModal_Simple.h" />
+    <ClInclude Include="_DlgModel_Create.h" />
+    <ClInclude Include="WinTopMenu.h" />
+    <ClInclude Include="Control\Button.h" />
+    <ClInclude Include="Control\Sprite.h" />
+    <ClInclude Include="Control\Window.h" />
+    <ClInclude Include="Control\Font.h" />
+    <ClInclude Include="Control\String.h" />
+    <ClInclude Include="Control\StringAnalysis.h" />
+    <ClInclude Include="Control\Text.h" />
+    <ClInclude Include="_TestDefine.h" />
+    <ClInclude Include="EngDefine.h" />
+    <ClInclude Include="HongkongDefine.h" />
+    <ClInclude Include="KorDefine.h" />
+    <ClInclude Include="TaiwanDefine.h" />
+    <ClInclude Include="ThaiDefine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\curCopy.cur" />
+    <None Include="res\curMove.cur" />
+    <None Include="res\LinkChild.cur" />
+    <None Include="res\LinkParent.cur" />
+    <None Include="res\QuestTool2.ico" />
+    <None Include="res\QuestTool2.rc2" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QuestTool2.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="QuestTool2.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,20 @@
+{
+ 	"version": "00000004",
+	"definitions": 
+	[
+		{
+ 			"matrix": 
+			[
+				{
+				}
+		],
+			"in_chans": 1,
+			"out_chans": 2,
+			"directions": 
+			[
+				"1"
+		]
+		}
+],
+	"description": "Generated From Startwelcome"
+}

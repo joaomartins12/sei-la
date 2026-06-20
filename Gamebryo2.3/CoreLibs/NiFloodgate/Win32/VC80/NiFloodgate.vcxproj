@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping DLL|Win32">
+      <Configuration>Shipping DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping|Win32">
+      <Configuration>Shipping</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0B401BF0-5F2C-4478-8F85-73DA42285355}</ProjectGuid>
+    <RootNamespace>NiFloodgate</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <OutDir>..\..\..\..\GB_Lib\ShippingLib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\..\GB_Lib\ReleaseLib\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>$(PROJECTNAME)PCH.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\Kernels\NiNopKernel\NiNopKernel.h</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>$(PROJECTNAME)PCH.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\Kernels\NiNopKernel\NiNopKernel.h</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>$(PROJECTNAME)PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\Lib\DebugLib\NiFloodgate.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\Kernels\NiNopKernel\NiNopKernel.h</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIFLOODGATE_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>$(PROJECTNAME)PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\Kernels\NiNopKernel\NiNopKernel.h</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIFLOODGATE_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>$(PROJECTNAME)PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\Kernels\NiNopKernel\NiNopKernel.h</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIFLOODGATE_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>$(PROJECTNAME)PCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat ..\..\Kernels\NiNopKernel\NiNopKernel.h</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiFloodgatePCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloodgateSDM.cpp" />
+    <ClCompile Include="..\..\NiSPAnalyzer.cpp" />
+    <ClCompile Include="..\..\NiSPStream.cpp" />
+    <ClCompile Include="..\..\NiSPTask.cpp" />
+    <ClCompile Include="..\..\NiSPWorkflow.cpp" />
+    <ClCompile Include="..\..\NiStreamProcessor.cpp" />
+    <ClCompile Include="..\..\Kernels\NiNopKernel\NiNopKernel.cpp" />
+    <ClCompile Include="..\NiSPJob.cpp" />
+    <ClCompile Include="..\NiSPJobList.cpp" />
+    <ClCompile Include="..\NiSPStreamPartitioner.cpp" />
+    <ClCompile Include="..\NiSPTaskImpl.cpp" />
+    <ClCompile Include="..\NiSPThreadPool.cpp" />
+    <ClCompile Include="..\NiSPWorkflowImpl.cpp" />
+    <ClCompile Include="..\NiStreamProcessor_Win32.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiFloodgateLibType.h" />
+    <ClInclude Include="..\..\NiFloodgatePCH.h" />
+    <ClInclude Include="..\..\NiFloodgateSDM.h" />
+    <ClInclude Include="..\..\NiSPAlgorithms.h" />
+    <ClInclude Include="..\..\NiSPAnalyzer.h" />
+    <ClInclude Include="..\..\NiSPKernel.h" />
+    <ClInclude Include="..\..\NiSPStream.h" />
+    <ClInclude Include="..\..\NiSPTask.h" />
+    <ClInclude Include="..\..\NiSPThreadPool.h" />
+    <ClInclude Include="..\..\NiSPWorkflow.h" />
+    <ClInclude Include="..\..\NiStreamProcessor.h" />
+    <ClInclude Include="..\..\Kernels\NiNopKernel\NiNopKernel.h" />
+    <ClInclude Include="..\NiSPJob.h" />
+    <ClInclude Include="..\NiSPJobList.h" />
+    <ClInclude Include="..\NiSPKernelMacros.h" />
+    <ClInclude Include="..\NiSPStreamPartitioner.h" />
+    <ClInclude Include="..\NiSPTaskImpl.h" />
+    <ClInclude Include="..\NiSPWorkflowImpl.h" />
+    <ClInclude Include="..\NiSPWorkload.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiSPAlgorithms.inl" />
+    <None Include="..\..\NiSPStream.inl" />
+    <None Include="..\..\NiSPTask.inl" />
+    <None Include="..\..\NiSPThreadPool.inl" />
+    <None Include="..\..\NiSPWorkflow.inl" />
+    <None Include="..\..\NiStreamProcessor.inl" />
+    <None Include="..\NiSPJob.inl" />
+    <None Include="..\NiSPJobList.inl" />
+    <None Include="..\NiSPStreamPartitioner.inl" />
+    <None Include="..\NiSPTaskImpl.inl" />
+    <None Include="..\NiSPWorkload.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NiMain\Win32\VC80\NiMain.vcxproj">
+      <Project>{53d03958-dd10-41d6-b4c3-1ed1cc212901}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\NiSystem\Win32\VC80\NiSystem.vcxproj">
+      <Project>{b7581e4b-30ba-4481-a426-3a6d421862ab}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,30 @@
+EXTRA_DIST = vc7/Half/Half.vcproj \
+	     vc7/Half/post-build.cmd \
+             vc7/OpenEXR.sln \
+	     vc7/createDLL.sln \
+             vc7/HalfTest/HalfTest.vcproj \
+             vc7/Half_eLut/Half_eLut.vcproj \
+             vc7/Half_toFloat/Half_toFloat.vcproj \
+             vc7/Iex/Iex.vcproj \
+             vc7/Iex/post-build.cmd \
+             vc7/IexTest/IexTest.vcproj \
+             vc7/IlmImf/IlmImf.vcproj \
+             vc7/IlmImf/post-build.cmd \
+             vc7/IlmImfTest/IlmImfTest.vcproj \
+             vc7/Imath/Imath.vcproj \
+             vc7/Imath/post-build.cmd \
+             vc7/ImathTest/ImathTest.vcproj \
+             vc7/bin/dummy \
+             vc7/createDLL/createDLL.cpp \
+             vc7/createDLL/createDLL.vcproj \
+             vc7/exrdisplay/exrdisplay.vcproj \
+             vc7/exrdisplay_fragshader/exrdisplay_fragshader.vcproj \
+             vc7/exrenvmap/exrenvmap.vcproj \
+             vc7/exrheader/exrheader.vcproj \
+             vc7/exrmakepreview/exrmakepreview.vcproj \
+             vc7/exrmaketiled/exrmaketiled.vcproj \
+             vc7/exrstdattr/exrstdattr.vcproj \
+             vc7/imfexamples/imfexamples.vcproj \
+             vc7/imfexamples/post-build.cmd \
+             vc7/include/dummy \
+             vc7/lib/dummy

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Control">
+      <UniqueIdentifier>{a2f4a79a-b0dd-4cd8-a702-c6126ee6ef97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{28d1b395-51ba-41b1-8565-e1b2ed98bb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Etc">
+      <UniqueIdentifier>{1c7cc818-0d81-4c65-a0df-2a757dcae79d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Main\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{dedda677-6ff2-41d0-aeed-6fc153e535b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\_LTop">
+      <UniqueIdentifier>{81ce245f-1c88-4da9-9678-ebc6def2fe7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\_RTop">
+      <UniqueIdentifier>{55ebc051-b77d-4150-a71b-a45b8daf5c23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\_LBottom">
+      <UniqueIdentifier>{11e0544d-0f00-4703-9a0d-34c14174327a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\_RBottom">
+      <UniqueIdentifier>{29d58f5f-aa65-42d2-8949-b11c50dadf86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\__Proc3D">
+      <UniqueIdentifier>{bae0c5a4-3f68-4449-a41f-cfcff236dfb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\__Proc3D\Helper">
+      <UniqueIdentifier>{93c61095-2430-429e-80ca-4b22f2932624}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Control\Button.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Font.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Sprite.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\String.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\StringAnalysis.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Text.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Window.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="__DEFINE.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Engine.cpp">
+      <Filter>Main\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ShaderHelper.cpp">
+      <Filter>Main\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="About.cpp">
+      <Filter>Main\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildView.cpp">
+      <Filter>Main\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="WinLTop.cpp">
+      <Filter>Window\_LTop</Filter>
+    </ClCompile>
+    <ClCompile Include="WinRTop.cpp">
+      <Filter>Window\_RTop</Filter>
+    </ClCompile>
+    <ClCompile Include="WinLBottom.cpp">
+      <Filter>Window\_LBottom</Filter>
+    </ClCompile>
+    <ClCompile Include="WinRBottom.cpp">
+      <Filter>Window\_RBottom</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Proc3D.cpp">
+      <Filter>Window\__Proc3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Helper.cpp">
+      <Filter>Window\__Proc3D\Helper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Control\Button.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Font.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Sprite.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\String.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\StringAnalysis.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Text.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Window.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="__DEFINE.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Engine.h">
+      <Filter>Main\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ShaderHelper.h">
+      <Filter>Main\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="About.h">
+      <Filter>Main\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildView.h">
+      <Filter>Main\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WinLTop.h">
+      <Filter>Window\_LTop</Filter>
+    </ClInclude>
+    <ClInclude Include="WinRTop.h">
+      <Filter>Window\_RTop</Filter>
+    </ClInclude>
+    <ClInclude Include="WinLBottom.h">
+      <Filter>Window\_LBottom</Filter>
+    </ClInclude>
+    <ClInclude Include="WinRBottom.h">
+      <Filter>Window\_RBottom</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Proc3D.h">
+      <Filter>Window\__Proc3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper.h">
+      <Filter>Window\__Proc3D\Helper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\About.ico">
+      <Filter>Main\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="About.rc">
+      <Filter>Main\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\About.rc2">
+      <Filter>Main\리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+</Project>

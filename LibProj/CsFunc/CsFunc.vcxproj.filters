@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="assert_cs">
+      <UniqueIdentifier>{085ede3d-3501-4f96-b8cd-d70c4a8e0cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Etc">
+      <UniqueIdentifier>{5bc8bbfb-7b1a-40d3-bc75-aa7c654ebdc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File">
+      <UniqueIdentifier>{11480ad9-62e6-42bb-98be-0a1641cbb38b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{813a28b5-87f9-4eb6-ac6b-a6cf0ec25f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Image">
+      <UniqueIdentifier>{fba8e295-187e-4228-9ab3-c4854f0cf3e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{febb1677-ee3f-4ddc-9a55-2a1793568a30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{0e0fd588-cb5f-4304-a234-c84799201b5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="assert_cs.cpp">
+      <Filter>assert_cs</Filter>
+    </ClCompile>
+    <ClCompile Include="CrashLogger.cpp">
+      <Filter>assert_cs</Filter>
+    </ClCompile>
+    <ClCompile Include="Code.cpp">
+      <Filter>Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CsMessageBox.cpp">
+      <Filter>Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="POINT.cpp">
+      <Filter>Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CsChunk.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="CsFile.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="Csini.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="CsLog.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="CsBmp.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="CsImageInterpolation.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="CsTarga.cpp">
+      <Filter>Image</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assert_cs.h">
+      <Filter>assert_cs</Filter>
+    </ClInclude>
+    <ClInclude Include="CrashLogger.h">
+      <Filter>assert_cs</Filter>
+    </ClInclude>
+    <ClInclude Include="Code.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CsMessageBox.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CsTimeSeq.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="POINT.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CsChunk.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="CsFile.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="Csini.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="CsLog.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="MemPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="CsBmp.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="CsImageInterpolation.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="CsTarga.h">
+      <Filter>Image</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="_VectorHeader.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorLink.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorPB.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="VectorLink.inl">
+      <Filter>Vector</Filter>
+    </None>
+    <None Include="VectorPB.inl">
+      <Filter>Vector</Filter>
+    </None>
+  </ItemGroup>
+</Project>

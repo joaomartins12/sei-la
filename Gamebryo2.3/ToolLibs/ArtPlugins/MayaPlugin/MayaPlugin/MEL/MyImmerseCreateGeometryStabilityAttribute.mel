@@ -1,0 +1,75 @@
+//
+// MyImmerseCreateGeometryStabilityAttribute.mel
+//
+// Mel script for applying Net Immerse Attributes to a Group to make it 
+// a Switch Node
+
+
+global proc MyImmerseCreateGeometryStabilityAttribute(string $nodeName)
+{
+    // Return dag objects only
+    string $dagnodes[];
+
+    if($nodeName == "")
+    {
+        $dagnodes = `selectedNodes -dagObjects`;
+    }
+    else
+    {
+        if(size(`selectedNodes -dagObjects`) > 1)
+        {
+            $dagnodes = `selectedNodes -dagObjects`;
+        }
+        else
+        {
+            $dagnodes[0] = $nodeName;
+        }
+    }
+
+    int $iLoop;
+    for($iLoop = 0; $iLoop < size($dagnodes); $iLoop++)
+    {
+        // print($dagnodes[$iLoop] + "\n");
+
+        if( `attributeExists Ni_GeometryStability $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStability -at enum -dv 0 -enumName "Static (Never Changes):Mutable (May Change):Volatile (Always Changing)" $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_GeometryStaticKeepPositions $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStaticKeepPositions -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_GeometryStaticKeepNormals $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStaticKeepNormals -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_GeometryStaticKeepColors $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStaticKeepColors -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_GeometryStaticKeepUVs $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStaticKeepUVs -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_GeometryStaticKeepIndices $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStaticKeepIndices -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_GeometryStaticKeepBoneData $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_GeometryStaticKeepBoneData -at bool -dv 0 $dagnodes[$iLoop];
+
+ 
+        if( `attributeExists Ni_RendererGeometryUseCompressedNormals $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_RendererGeometryUseCompressedNormals -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_RendererGeometryUseCompressedColors $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_RendererGeometryUseCompressedColors -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_RendererGeometryUseCompressedUVs $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_RendererGeometryUseCompressedUVs -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_RendererGeometryUseCompressedWeights $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_RendererGeometryUseCompressedWeights -at bool -dv 0 $dagnodes[$iLoop];
+
+        if( `attributeExists Ni_RendererGeometryUseCompressedPositions $dagnodes[$iLoop]` == 0)
+            addAttr -ln Ni_RendererGeometryUseCompressedPositions -at bool -dv 0 $dagnodes[$iLoop];
+    }
+
+}
+
+
+

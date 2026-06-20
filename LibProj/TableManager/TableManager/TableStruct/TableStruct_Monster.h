@@ -1,0 +1,6 @@
+
+#pragma once 
+
+BEGIN_NAME_TABLE
+
+END_NAME_TABLE

@@ -1,0 +1,62 @@
+source MyImmerseGUI;
+
+global proc GetDefaultExportPath()
+{
+    string $szDefaultFileDir = `file -q -sceneName`;
+
+    $szDefaultFileDir = dirname($szDefaultFileDir);
+
+    string $szDefaultFileName = `file -q -sceneName`;
+    if($szDefaultFileName == "")
+    {
+        $szDefaultFileName = "untitled";
+    }
+
+    $szDefaultFileName = `basename $szDefaultFileName ".ma"`;
+    $szDefaultFileName = `basename $szDefaultFileName ".mb"`;
+
+    string $szDefaultFilePath = $szDefaultFileDir + $szDefaultFileName + ".nif";
+}
+
+global proc EnsureDefault()
+{
+    if(!`optionVar -ex "ExportFilePath"`)
+    {
+        string $defaultExportPath = GetDefaultExportPath();
+        optionVar -sv "ExportFilePath" $defaultExportPath;
+    }
+
+    if(!`optionVar -ex "ShouldPromptOnExport"`)
+    {
+        optionVar -iv "ShouldPromptOnExport" 1;
+    }
+}
+
+
+
+
+
+//---------------------------------------------------------------------------
+global proc GamebryoDoNothingFunction(string $nothing)
+{
+
+}
+
+global proc GamebryoOptionsWindow()
+{
+    //Make the parent window
+    string $parentWindow = `window 
+                            -title  "Nif Options"
+                            -iconName "Nif Options"
+                            -widthHeight 380 800`;
+        
+    string $scrollLayout = `tabLayout -tabsVisible 0 -scrollable 1`;
+            string $currentOptions = MyImmerseGetLastSceneGUIOptions();
+            MyImmerseGUI($scrollLayout, "post", $currentOptions, "GamebryoDoNothingFunction");
+
+        button -label "Save" -c ("MyImmerseGUI( \"" + $scrollLayout + "\", \"query\", \"\", \"GamebryoDoNothingFunction\"); deleteUI -window " + $parentWindow + ";");
+        button -label "Cancel" -c ("deleteUI -window " + $parentWindow);
+    setParent..;
+
+    showWindow $parentWindow;
+}

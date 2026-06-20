@@ -1,0 +1,56 @@
+// DigitalicLauncher.idl : ActiveX 컨트롤 프로젝트의 형식 라이브러리 소스입니다.
+
+// 이 파일은 MIDL 컴파일러 도구에 의해 처리되어
+// Digitalic Launcher.ocx의 리소스가 되는
+// 형식 라이브러리(Digitalic Launcher.tlb)가 생성됩니다.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(0F0A67E4-0A1E-47E0-90D5-A39AA9BCC65E), version(1.0),
+  helpfile("Digitalic Launcher.hlp"),
+  helpstring("DigimonMasters Launcher ActiveX 컨트롤 모듈"),
+  control ]
+library DigitalicLauncherLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CDigitalicLauncherCtrl의 기본 디스패치 인터페이스입니다.
+
+	[ uuid(BAB0F659-9BD9-4272-9F26-D03E1F7EC72D),
+	  helpstring("DigimonMasters Launcher Control의 디스패치 인터페이스")]
+	dispinterface _DDigitalicLauncher
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1), helpstring("메서드 GameLaunching")] VARIANT_BOOL GameLaunching(BSTR szParam);
+			[id(2), helpstring("메서드 IsGameLaunching")] VARIANT_BOOL IsGameLaunching(void);
+			[id(3), helpstring("메서드 GetFileVersion")] BSTR GetFileVersion(void);
+	};
+
+	//  CDigitalicLauncherCtrl의 이벤트 디스패치 인터페이스입니다.
+
+	[ uuid(1A8FBA6E-E596-4607-8167-829D7A6C3BB6),
+	  helpstring("DigimonMasters Launcher Control의 이벤트 인터페이스") ]
+	dispinterface _DDigitalicLauncherEvents
+	{
+		properties:
+			//  이벤트 인터페이스에 속성이 없습니다.
+
+		methods:
+	};
+
+	//  CDigitalicLauncherCtrl의 클래스 정보입니다.
+
+	//[ uuid(60C904ED-C3AD-44a1-A24F-7D7EA86306A4),
+	[ uuid(3FED5059-7AA5-46d9-902B-124C8CD9A106),
+	  helpstring("DigimonMasters Launcher Control"), control ]
+	coclass DigitalicLauncher
+	{
+		[default] dispinterface _DDigitalicLauncher;
+		[default, source] dispinterface _DDigitalicLauncherEvents;
+	};
+
+};

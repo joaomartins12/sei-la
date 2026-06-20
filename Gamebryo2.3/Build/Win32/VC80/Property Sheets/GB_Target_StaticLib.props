@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <GB_Target_Suffix>Lib</GB_Target_Suffix>
+    <GB_Target_Path>Lib\VC80\$(GB_Configuration_Name)$(GB_Target_Suffix)</GB_Target_Path>
+    <GB_Target_Filename>$(GB_Target_Path)\$(ProjectName).lib</GB_Target_Filename>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir>$(GB_Configuration_Name)$(GB_Target_Suffix)\</OutDir>
+    <IntDir>$(GB_Configuration_Name)$(GB_Target_Suffix)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="GB_Target_Suffix">
+      <Value>$(GB_Target_Suffix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GB_Target_Path">
+      <Value>$(GB_Target_Path)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GB_Target_Filename">
+      <Value>$(GB_Target_Filename)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

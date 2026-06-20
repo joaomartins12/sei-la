@@ -1,0 +1,49 @@
+//
+// MyImmerseNiGetMultiShaderGetPluginName.mel
+//
+// Mel script for Getting the Plugin Name for this version of Maya
+
+global proc string MyImmerseGetNiMultiShaderPluginName()
+{
+    string $sPluginName;
+    float $fVersion; 
+    
+    if (catch($fVersion = getApplicationVersionAsFloat()))
+    {
+        $fVersion = `about -v`;
+    }
+
+    if ($fVersion < 4.5)
+    {
+        return "NiMultiShader";
+    }
+    else if ($fVersion < 5.0)
+    {
+        return "NiMultiShader45";
+    }
+    else if ($fVersion < 6.0)
+    {
+        return "NiMultiShader50";
+    }
+    else if ($fVersion < 6.5)
+    {
+        return "NiMultiShader60";
+    }
+    else if ($fVersion < 7.0)
+    {
+        return "NiMultiShader65";
+    }
+	else if ($fVersion < 8.0)
+	{
+		 return "NiMultiShader70";
+	}
+    else if ($fVersion < 8.5)
+    {
+        return "NiMultiShader80";
+    }
+
+    return "NiMultiShader85";
+        
+	
+    
+}

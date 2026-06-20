@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DA6C7FE0-7338-4254-8CB5-77FF014AE5F8}</ProjectGuid>
+    <RootNamespace>NiPluginToolkit</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIPLUGINTOOLKIT_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;NIANIMATION_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\..\GB_Include;..\..\..\..\CoreLibs\NiSystem;..\..\..\..\CoreLibs\NiSystem\Win32;..\..\..\..\CoreLibs\NiMain;..\..\..\..\CoreLibs\NiMain\Win32;..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIPLUGINTOOLKIT_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiDialog.cpp" />
+    <ClCompile Include="..\..\NiFileFinder.cpp" />
+    <ClCompile Include="..\..\NiFramework.cpp" />
+    <ClCompile Include="..\..\NiInfoDialog.cpp" />
+    <ClCompile Include="..\..\NiPluginToolkitSDM.cpp" />
+    <ClCompile Include="..\..\NiProgressDialog.cpp" />
+    <ClCompile Include="..\..\NiRegistry.cpp" />
+    <ClCompile Include="..\..\NiStringTokenizer.cpp" />
+    <ClCompile Include="..\..\NiXMLLogger.cpp" />
+    <ClCompile Include="..\..\NiSharedData.cpp" />
+    <ClCompile Include="..\..\NiSharedDataList.cpp" />
+    <ClCompile Include="..\..\NiDefaultScriptReader.cpp" />
+    <ClCompile Include="..\..\NiDefaultScriptWriter.cpp" />
+    <ClCompile Include="..\..\NiExportPlugin.cpp" />
+    <ClCompile Include="..\..\NiExportPluginInfo.cpp" />
+    <ClCompile Include="..\..\NiImportPlugin.cpp" />
+    <ClCompile Include="..\..\NiImportPluginInfo.cpp" />
+    <ClCompile Include="..\..\NiParameterInfo.cpp" />
+    <ClCompile Include="..\..\NiPlugin.cpp" />
+    <ClCompile Include="..\..\NiPluginHelpers.cpp" />
+    <ClCompile Include="..\..\NiPluginInfo.cpp" />
+    <ClCompile Include="..\..\NiPluginManager.cpp" />
+    <ClCompile Include="..\..\NiScriptInfo.cpp" />
+    <ClCompile Include="..\..\NiScriptInfoDialogs.cpp" />
+    <ClCompile Include="..\..\NiScriptInfoSet.cpp" />
+    <ClCompile Include="..\..\NiScriptTemplateManager.cpp" />
+    <ClCompile Include="..\..\NiViewerPlugin.cpp" />
+    <ClCompile Include="..\..\NiViewerPluginInfo.cpp" />
+    <ClCompile Include="..\..\NiBatchExecutionResult.cpp" />
+    <ClCompile Include="..\..\NiExecutionResult.cpp" />
+    <ClCompile Include="..\..\NiScriptManagementDialog.cpp" />
+    <ClCompile Include="..\..\NiScriptNameChangeDialog.cpp" />
+    <ClCompile Include="..\..\NiScriptNewFromTemplateDialog.cpp" />
+    <ClCompile Include="..\..\NiScriptSelectionDialog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiDialog.h" />
+    <ClInclude Include="..\..\NiFileFinder.h" />
+    <ClInclude Include="..\..\NiFramework.h" />
+    <ClInclude Include="..\..\NiInfoDialog.h" />
+    <ClInclude Include="..\..\NiPluginDLLInterface.h" />
+    <ClInclude Include="..\..\NiPluginToolkit.h" />
+    <ClInclude Include="..\..\NiPluginToolkitDefinitions.h" />
+    <ClInclude Include="..\..\NiPluginToolkitLibType.h" />
+    <ClInclude Include="..\..\NiPluginToolkitSDM.h" />
+    <ClInclude Include="..\..\NiProgressDialog.h" />
+    <ClInclude Include="..\..\NiRegistry.h" />
+    <ClInclude Include="..\..\NiStringTokenizer.h" />
+    <ClInclude Include="..\..\NiXMLLogger.h" />
+    <ClInclude Include="..\..\NiSharedData.h" />
+    <ClInclude Include="..\..\NiSharedDataList.h" />
+    <ClInclude Include="..\..\NiDefaultScriptReader.h" />
+    <ClInclude Include="..\..\NiDefaultScriptWriter.h" />
+    <ClInclude Include="..\..\NiExportPlugin.h" />
+    <ClInclude Include="..\..\NiExportPluginInfo.h" />
+    <ClInclude Include="..\..\NiImportPlugin.h" />
+    <ClInclude Include="..\..\NiImportPluginInfo.h" />
+    <ClInclude Include="..\..\NiParameterInfo.h" />
+    <ClInclude Include="..\..\NiPlugin.h" />
+    <ClInclude Include="..\..\NiPluginHelpers.h" />
+    <ClInclude Include="..\..\NiPluginInfo.h" />
+    <ClInclude Include="..\..\NiPluginManager.h" />
+    <ClInclude Include="..\..\NiScriptInfo.h" />
+    <ClInclude Include="..\..\NiScriptInfoDialogs.h" />
+    <ClInclude Include="..\..\NiScriptInfoSet.h" />
+    <ClInclude Include="..\..\NiScriptReader.h" />
+    <ClInclude Include="..\..\NiScriptTemplateManager.h" />
+    <ClInclude Include="..\..\NiScriptWriter.h" />
+    <ClInclude Include="..\..\NiViewerPlugin.h" />
+    <ClInclude Include="..\..\NiViewerPluginInfo.h" />
+    <ClInclude Include="..\..\NiBatchExecutionResult.h" />
+    <ClInclude Include="..\..\NiExecutionResult.h" />
+    <ClInclude Include="..\..\NiScriptManagementDialog.h" />
+    <ClInclude Include="..\..\NiScriptNameChangeDialog.h" />
+    <ClInclude Include="..\..\NiScriptNewFromTemplateDialog.h" />
+    <ClInclude Include="..\..\NiScriptSelectionDialog.h" />
+    <ClInclude Include="..\..\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\NiPluginToolkit.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

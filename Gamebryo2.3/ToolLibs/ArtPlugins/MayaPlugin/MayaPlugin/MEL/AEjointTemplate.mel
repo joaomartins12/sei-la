@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AEjointTemplate(string $nodeName)
+{
+    AEGamebryoJointTemplate $nodeName;
+    _gb_AEjointTemplate $nodeName;
+}

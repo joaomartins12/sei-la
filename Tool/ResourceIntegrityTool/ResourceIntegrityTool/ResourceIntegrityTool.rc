@@ -1,0 +1,409 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\ResourceIntegrityTool.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\ResourceIntegrityTool.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_INTEGRITY_DIALOG DIALOGEX 0, 0, 611, 455
+STYLE DS_SETFONT | DS_MODALFRAME | DS_NOIDLEMSG | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_ACCEPTFILES
+CAPTION "Dialog"
+FONT 9, "맑은 고딕", 400, 0, 0x81
+BEGIN
+    DEFPUSHBUTTON   "닫기",IDCANCEL,554,434,50,14
+    EDITTEXT        IDC_EDIT_OUTFILENAME,37,262,108,12,ES_AUTOHSCROLL | ES_READONLY
+    CTEXT           "Output",IDC_STATIC,12,264,22,11
+    GROUPBOX        "Make Hash Data",IDC_STATIC,7,235,597,190
+    RTEXT           "Folder",IDC_STATIC,11,246,25,10
+    EDITTEXT        IDC_EDIT_CURRENTDIR,43,245,289,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Change",IDC_BUTTON_ChangeDir,339,243,69,16
+    PUSHBUTTON      "Make Hash Data",IDC_BUTTON_MAKE_HASH,411,243,69,15
+    PUSHBUTTON      "업로드",IDC_UPDATE_HASHDATA,549,243,51,15
+    PUSHBUTTON      "파일 저장",IDC_HASHFILE_SAVE,484,243,60,15
+    GROUPBOX        "FTP(HashInfo)",IDC_STATIC,7,7,597,67
+    EDITTEXT        IDC_EDIT_UPLOADURL,38,17,110,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ID,292,15,109,13,ES_AUTOHSCROLL
+    CTEXT           "PW",IDC_STATIC,409,17,24,8
+    EDITTEXT        IDC_EDIT_PASSWORD,436,15,75,12,ES_AUTOHSCROLL
+    CTEXT           "Host",IDC_STATIC,14,19,19,10
+    CTEXT           "Port",IDC_STATIC,155,18,26,10
+    EDITTEXT        IDC_EDIT_UPLOAD_PORT,186,16,75,12,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           "Path",IDC_STATIC,11,35,23,10
+    EDITTEXT        IDC_EDIT_UPLOADDIRECTORY,38,33,224,12,ES_AUTOHSCROLL
+    CTEXT           "ID",IDC_STATIC,271,17,19,8
+    PUSHBUTTON      "Reload Config",IDC_BUTTON_RELOAD_CONFIG,526,38,72,15
+    EDITTEXT        IDC_EDIT_PATCH_NUMBER,538,290,58,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "FileDownload",IDC_BUTTON_HASHDATA_SAVE,526,55,72,15
+    GROUPBOX        "Server FTP Info",IDC_STATIC,7,77,597,94
+    PUSHBUTTON      "Update Server Hash",IDC_UPDATA_SERVER_HASH,528,85,72,14
+    CTEXT           "PW",IDC_STATIC,410,90,24,8
+    CTEXT           "Port",IDC_STATIC,162,89,26,10
+    CTEXT           "ID",IDC_STATIC,274,89,19,8
+    EDITTEXT        IDC_EDIT_SERVER_ID,293,87,110,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SERVER_pw,439,87,75,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SERVER_PORT,190,87,75,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_SERVER_URL,38,86,112,12,ES_AUTOHSCROLL
+    CTEXT           "Host",IDC_STATIC,14,87,18,10
+    EDITTEXT        IDC_EDIT_SERVER_HASHFILENAME,38,102,114,12,ES_AUTOHSCROLL
+    CTEXT           "Path",IDC_STATIC,9,104,26,10
+    GROUPBOX        "Patch Upload Info",IDC_STATIC,7,173,597,56
+    PUSHBUTTON      "Upload Patch File",IDC_UPDATA_PATCH_DATA,531,181,71,14
+    CTEXT           "PW",IDC_STATIC,411,183,24,8
+    CTEXT           "Port",IDC_STATIC,157,183,26,10
+    CTEXT           "ID",IDC_STATIC,271,184,19,8
+    EDITTEXT        IDC_EDIT_PATCH_UPLOAD_ID,295,181,110,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PATCH_UPLOAD_PW,439,181,75,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PATCH_UPLOAD_PORT,185,181,75,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_PATCH_UPLOAD_HOST,38,182,111,12,ES_AUTOHSCROLL
+    CTEXT           "Host",IDC_STATIC,13,186,22,10
+    EDITTEXT        IDC_EDIT_PATCH_UPLOAD_PATH,38,197,287,12,ES_AUTOHSCROLL
+    CTEXT           "Path",IDC_STATIC,16,200,16,10
+    PUSHBUTTON      "Find",IDC_BUTTON1,330,211,71,14
+    EDITTEXT        IDC_EDIT_PATCH_UPLOAD_FILE,39,212,287,12,ES_AUTOHSCROLL,WS_EX_ACCEPTFILES
+    CTEXT           "File",IDC_STATIC,17,214,14,10
+    EDITTEXT        IDC_EDIT_UPLOAD_FILE,293,33,218,12,ES_AUTOHSCROLL
+    CTEXT           "File",IDC_STATIC,265,35,26,10
+    EDITTEXT        IDC_EDIT_SERVER_UPLOAD_FILE,294,102,221,12,ES_AUTOHSCROLL
+    CTEXT           "File",IDC_STATIC,272,103,21,10
+    LISTBOX         IDC_LIST_HASHRESULT,12,349,405,68,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "추가 폴더",IDC_STATIC,16,285,35,8
+    LTEXT           "추가 확장자",IDC_STATIC,153,286,43,8
+    LTEXT           "추가 파일명(풀패스)",IDC_STATIC,221,285,72,8
+    LISTBOX         IDC_LIST_INCLUDE_FULL_FILENAME,219,295,197,49,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_EXTENSION,146,295,66,49,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_FOLDER,14,295,125,49,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "ChangeConfigFile",IDC_BUTTON2,526,14,72,16
+    EDITTEXT        IDC_EDIT_USER_CONNECTION_ID,39,49,108,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_USER_CONNECTION_PW,193,48,106,12,ES_AUTOHSCROLL
+    LTEXT           "User ID",IDC_STATIC,11,51,24,8
+    LTEXT           "User PW",IDC_STATIC,160,50,27,10
+    EDITTEXT        IDC_EDIT_HASHLOG_HOST,38,137,110,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_HASHLOG_ID,292,135,109,13,ES_AUTOHSCROLL
+    CTEXT           "PW",IDC_STATIC,409,137,24,8
+    EDITTEXT        IDC_EDIT_HASHLOG_PW,436,135,75,12,ES_AUTOHSCROLL
+    CTEXT           "Host",IDC_STATIC,14,139,19,10
+    CTEXT           "Port",IDC_STATIC,155,138,26,10
+    EDITTEXT        IDC_EDIT_HASHLOG_PORT,186,136,75,12,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           "ID",IDC_STATIC,271,137,19,8
+    CTEXT           "Path",IDC_STATIC,13,153,22,10
+    EDITTEXT        IDC_EDIT_HASHLOG_PATH,38,153,224,12,ES_AUTOHSCROLL
+    LTEXT           "User Hash Log FTP Info",IDC_STATIC,14,123,73,8
+    EDITTEXT        IDC_EDIT_HASHLOG_FILENAME,292,151,146,12,ES_RIGHT | ES_AUTOHSCROLL
+    CTEXT           "File",IDC_STATIC,270,152,21,10
+    LTEXT           ".txt",IDC_STATIC,442,153,11,8
+    LTEXT           "ClientExeFileName",IDC_CLIENTEXE_FILENAME,156,265,69,10
+    EDITTEXT        IDC_EDIT_CLIENTEXE_FILENAME,228,263,132,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_ClientHashResult,363,263,237,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Server Data Refresh",IDC_ServerHashData_Ref,527,108,73,21
+    PUSHBUTTON      "리소스 보기",IDC_BUTTON_RESOURCE_EDIT,527,141,73,14
+    EDITTEXT        IDC_EDIT_SERVER_REQUEST_PORT,190,103,75,12,ES_AUTOHSCROLL
+    RTEXT           "Request Port",IDC_STATIC,156,102,27,16
+END
+
+IDD_DIALOG_HASHLIST DIALOGEX 0, 0, 675, 402
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "해쉬 목록"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "확인",IDOK,604,376,64,19
+    PUSHBUTTON      "갱신",ID_HASH_UPDATE,599,7,69,21
+    CONTROL         "",IDC_LIST_DEL,"SysListView32",LVS_REPORT | LVS_EDITLABELS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,359,42,309,334
+    PUSHBUTTON      "되돌리기",IDC_ORG_BTN,299,7,86,18
+    CTEXT           "Static",IDC_STATIC_TOTAL_COUNT,113,25,107,12
+    CTEXT           "Static",IDC_STATIC_CURRENT_COUNT,450,27,132,11
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_EDITLABELS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,17,42,304,334
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "ResourceIntegrityTool.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "ResourceIntegrityTool.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_INTEGRITY_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 604
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 448
+    END
+
+    IDD_DIALOG_HASHLIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 668
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 395
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_INTEGRITY_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "ResourceIntegrityTool"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "ResourceIntegrityTool"
+    AFX_IDS_IDLEMESSAGE     "준비"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "프로그램 정보, 버전 번호, 저작권을 표시합니다.\n정보"
+    ID_APP_EXIT             "문서를 저장할지를 묻고 응용 프로그램을 끝냅니다.\n끝내기"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "다음 창으로 전환합니다.\n다음 창"
+    ID_PREV_PANE            "이전 창으로 전환합니다.\n이전 창"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "활성 창을 여러 개의 창으로 분할합니다.\n분할"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "선택 영역을 지웁니다.\n지우기"
+    ID_EDIT_CLEAR_ALL       "모두 지웁니다.\n모두 지우기"
+    ID_EDIT_COPY            "선택 영역을 복사하여 클립보드에 넣습니다.\n복사"
+    ID_EDIT_CUT             "선택 영역을 잘라내어 클립보드에 넣습니다.\n잘라내기"
+    ID_EDIT_FIND            "지정한 텍스트를 찾습니다.\n찾기"
+    ID_EDIT_PASTE           "클립보드 내용을 삽입합니다.\n붙여넣기"
+    ID_EDIT_REPEAT          "마지막 작업을 반복합니다.\n반복"
+    ID_EDIT_REPLACE         "특정 텍스트를 다른 텍스트로 바꿉니다.\n바꾸기"
+    ID_EDIT_SELECT_ALL      "전체 문서를 선택합니다.\n모두 선택"
+    ID_EDIT_UNDO            "마지막 작업 실행을 취소합니다.\n실행 취소"
+    ID_EDIT_REDO            "이전에 실행 취소된 작업을 다시 실행합니다.\n다시 실행"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "도구 모음을 표시하거나 숨깁니다.\n도구 모음 설정/해제"
+    ID_VIEW_STATUS_BAR      "상태 표시줄을 표시하거나 숨깁니다.\n상태 표시줄 설정/해제"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "창 크기를 변경합니다."
+    AFX_IDS_SCMOVE          "창 위치를 변경합니다."
+    AFX_IDS_SCMINIMIZE      "창을 아이콘으로 축소합니다."
+    AFX_IDS_SCMAXIMIZE      "창을 전체 화면 크기로 확대합니다."
+    AFX_IDS_SCNEXTWINDOW    "다음 문서 창으로 전환합니다."
+    AFX_IDS_SCPREVWINDOW    "이전 문서 창으로 전환합니다."
+    AFX_IDS_SCCLOSE         "문서를 저장할 것인지 확인하고 활성 창을 닫습니다."
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "창을 보통 크기로 복원합니다."
+    AFX_IDS_SCTASKLIST      "작업 목록을 활성화합니다."
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\ResourceIntegrityTool.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"         // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

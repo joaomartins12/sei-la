@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Digitalic Launcher", "Digitalic Launcher\Digitalic Launcher.vcxproj", "{5A1866C4-3585-4702-9EB3-0CC97A7240F3}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Give|Win32 = Give|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A1866C4-3585-4702-9EB3-0CC97A7240F3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A1866C4-3585-4702-9EB3-0CC97A7240F3}.Debug|Win32.Build.0 = Debug|Win32
+		{5A1866C4-3585-4702-9EB3-0CC97A7240F3}.Give|Win32.ActiveCfg = Give|Win32
+		{5A1866C4-3585-4702-9EB3-0CC97A7240F3}.Give|Win32.Build.0 = Give|Win32
+		{5A1866C4-3585-4702-9EB3-0CC97A7240F3}.Release|Win32.ActiveCfg = Release|Win32
+		{5A1866C4-3585-4702-9EB3-0CC97A7240F3}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

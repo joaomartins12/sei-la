@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Table">
+      <UniqueIdentifier>{57325674-cb32-473c-aa86-cafa6d92d8af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Table\LanguagePack">
+      <UniqueIdentifier>{3896e591-f4ae-4dc2-a8b0-7878c8afe5d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Table\Data">
+      <UniqueIdentifier>{cfc45320-c059-4fed-b96a-c8ab8e512387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Table\Data\Class">
+      <UniqueIdentifier>{db92d3e2-92f2-4004-a6db-0857a700b4d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Table\Data\Struct">
+      <UniqueIdentifier>{6e2f5850-ff2e-4a06-a9f7-bf17ea84ecf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TableMgr">
+      <UniqueIdentifier>{cfc5477c-bf30-4d53-b537-810c379af352}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Achieve.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Buff.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Cashshop.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_DigiEvo.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Digimon.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_DigiTalk.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_DigiTip.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Emotion.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_EventTalk.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Item.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_ItemCreation.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Map.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_MapRegion.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Message.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Monster.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Npc.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Quest.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Riding.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Scene.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Seal.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Skill.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Tamer.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Tip.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Tooltip.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_UIText.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Achieve.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Cashshop.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_CoolTime.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_CreateCharacter.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_DBook.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_DEvolution.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Digimon.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_InfiniteWar.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Item.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_ItemCreation.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_ItemExchange.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_ItemRank.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Monster.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Tactics.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Talk.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_UIText.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableFactory.cpp">
+      <Filter>TableMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="TableMgr.cpp">
+      <Filter>TableMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Exp.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_MapsInfo.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_JumpBuster.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Guild.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableString\TableString_Guild.cpp">
+      <Filter>Table\LanguagePack</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_DSkillLevelUp.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Buff.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_BaseStats.cpp">
+      <Filter>Table\Data\Class</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Singleton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TableInclude.h">
+      <Filter>Table</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Achieve.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Buff.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Cashshop.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_DigiEvo.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Digimon.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_DigiTalk.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_DigiTip.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Emotion.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_EventTalk.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Item.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_ItemCreation.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Map.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_MapRegion.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Message.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Monster.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Npc.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Quest.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Riding.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Scene.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Seal.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Skill.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Tamer.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Tip.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Tooltip.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_UIText.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Achieve.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Cashshop.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_CoolTime.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_CreateCharacter.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_DBook.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_DEvolution.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Digimon.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_InfiniteWar.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Item.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_ItemCreation.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_ItemExchange.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_ItemRank.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Monster.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Tactics.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Talk.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_UIText.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Achieve.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Cashshop.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_CoolTime.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_CreateCharacter.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_DBook.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_DEvolution.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Digimon.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_InfiniteWar.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Item.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_ItemCreation.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_ItemExchange.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_ItemRank.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Monster.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Tactics.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Talk.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableDefs.h">
+      <Filter>TableMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TableFactory.h">
+      <Filter>TableMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TableMgr.h">
+      <Filter>TableMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TableTmpl.h">
+      <Filter>TableMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Exp.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_BaseStats.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_MapsInfo.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_MapsInfo.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_JumpBuster.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Guild.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Guild.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableString\TableString_Guild.h">
+      <Filter>Table\LanguagePack</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_DSkillLevelUp.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_DSkillLevelup.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct\TableStruct_Buff.h">
+      <Filter>Table\Data\Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_Buff.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="TableClass\TableClass_BaseStats.h">
+      <Filter>Table\Data\Class</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

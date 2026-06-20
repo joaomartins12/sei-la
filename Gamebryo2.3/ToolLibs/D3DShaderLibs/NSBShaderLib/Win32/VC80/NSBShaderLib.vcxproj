@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping DLL|Win32">
+      <Configuration>Shipping DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping|Win32">
+      <Configuration>Shipping</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9433AE06-3CD4-48D0-9AC9-5A6B8CDBD67F}</ProjectGuid>
+    <RootNamespace>NSBShaderLib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib_DX9.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib_DX9.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib_DX9.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib_DX9.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib_DX9.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib_DX9.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\..\..\..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+    <OutDir>..\..\..\..\..\GB_Lib\ReleaseLib\</OutDir>
+    <TargetName>NSBShaderLib</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <IncludePath>$(WindowsSDK_IncludePath);..\..\..\..\..\..\DirectX_June2010\Include;$(IncludePath)</IncludePath>
+    <OutDir>..\..\..\..\..\GB_Lib\ShippingLib\</OutDir>
+    <TargetName>NSBShaderLib</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiBinaryShaderLib;..\..\..\NiD3D10BinaryShaderLib;..\..\..\..\..\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\..\..\DirectX_June2010\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>:: Custom copy for shader DLLs
+set TMP_ROOT=..\..\..\..\..
+call %TMP_ROOT%\Build\Win32\VC80\CopyToSDK.bat ..\..\NSBShaderLib.h ..\..\NSBShaderLibLibType.h
+if not exist "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80" mkdir "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80"
+if "$(Configuration)"=="Debug DLL"   copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).dl9"
+if "$(Configuration)"=="Release DLL" copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).nl9"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiBinaryShaderLib;..\..\..\NiD3D10BinaryShaderLib;..\..\..\..\..\GB_Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\..\..\DirectX_June2010\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>:: Custom copy for shader DLLs
+set TMP_ROOT=..\..\..\..\..
+call %TMP_ROOT%\Build\Win32\VC80\CopyToSDK.bat ..\..\NSBShaderLib.h ..\..\NSBShaderLibLibType.h
+if not exist "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80" mkdir "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80"
+if "$(Configuration)"=="Debug DLL"   copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).dl9"
+if "$(Configuration)"=="Release DLL" copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).nl9"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)include;..\;..\..\;..\..\..\NiBinaryShaderLib;..\..\..\NiD3D10BinaryShaderLib;..\..\..\..\..\GB_Include;%(AdditionalIncludeDirectories);C:\Users\joaom\Desktop\client-main\DirectX_June2010\Include;C:\Users\joaom\Desktop\client-main\Gamebryo2.3\GB_Include;C:\Users\joaom\Desktop\client-main\Gamebryo2.3\CoreLibs\NiSystem</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>D3D_DEBUG_INFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>..\..\..\..\..\Lib\DebugLib\NSBShaderLib.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>:: Custom copy for shader DLLs
+set TMP_ROOT=..\..\..\..\..
+call %TMP_ROOT%\Build\Win32\VC80\CopyToSDK.bat ..\..\NSBShaderLib.h ..\..\NSBShaderLibLibType.h
+if not exist "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80" mkdir "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80"
+if "$(Configuration)"=="Debug DLL"   copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).dl9"
+if "$(Configuration)"=="Release DLL" copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).nl9"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiBinaryShaderLib;..\..\..\NiD3D10BinaryShaderLib;..\..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NSBSHADERLIB_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;NIBINARYSHADER_IMPORT;NID3D10BINARYSHADER_IMPORT;NIDX9RENDERER_IMPORT;NID3D10RENDERER_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;NiDX9Renderer$(GB_DLL_Suffix).lib;NiD3D10Renderer$(GB_DLL_Suffix).lib;NiBinaryShaderLibDX9$(GB_DLL_Suffix).lib;NiD3D10BinaryShaderLibD3D10$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\..\sdk\Win32\$(GB_Target_Path)\$(ProjectName)DX9$(GB_DLL_Suffix).dll"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers and libs to SDK</Message>
+      <Command>:: Custom copy for shader DLLs
+set TMP_ROOT=..\..\..\..\..
+call %TMP_ROOT%\Build\Win32\VC80\CopyToSDK.bat ..\..\NSBShaderLib.h ..\..\NSBShaderLibLibType.h
+if not exist "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80" mkdir "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80"
+if "$(Configuration)"=="Debug DLL"   copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).dl9"
+if "$(Configuration)"=="Release DLL" copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).nl9"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiBinaryShaderLib;..\..\..\NiD3D10BinaryShaderLib;..\..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NSBSHADERLIB_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;NIBINARYSHADER_IMPORT;NID3D10BINARYSHADER_IMPORT;NIDX9RENDERER_IMPORT;NID3D10RENDERER_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;NiDX9Renderer$(GB_DLL_Suffix).lib;NiD3D10Renderer$(GB_DLL_Suffix).lib;NiBinaryShaderLibDX9$(GB_DLL_Suffix).lib;NiD3D10BinaryShaderLibD3D10$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\..\sdk\Win32\$(GB_Target_Path)\$(ProjectName)DX9$(GB_DLL_Suffix).dll"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers and libs to SDK</Message>
+      <Command>:: Custom copy for shader DLLs
+set TMP_ROOT=..\..\..\..\..
+call %TMP_ROOT%\Build\Win32\VC80\CopyToSDK.bat ..\..\NSBShaderLib.h ..\..\NSBShaderLibLibType.h
+if not exist "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80" mkdir "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80"
+if "$(Configuration)"=="Debug DLL"   copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).dl9"
+if "$(Configuration)"=="Release DLL" copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).nl9"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiBinaryShaderLib;..\..\..\NiD3D10BinaryShaderLib;..\..\..\..\..\sdk\Win32\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>D3D_DEBUG_INFO;NSBSHADERLIB_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;NIBINARYSHADER_IMPORT;NID3D10BINARYSHADER_IMPORT;NIDX9RENDERER_IMPORT;NID3D10RENDERER_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;NiDX9Renderer$(GB_DLL_Suffix).lib;NiD3D10Renderer$(GB_DLL_Suffix).lib;NiBinaryShaderLibDX9$(GB_DLL_Suffix).lib;NiD3D10BinaryShaderLibD3D10$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\..\sdk\Win32\$(GB_Target_Path)\$(ProjectName)DX9$(GB_DLL_Suffix).dll"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers and libs to SDK</Message>
+      <Command>:: Custom copy for shader DLLs
+set TMP_ROOT=..\..\..\..\..
+call %TMP_ROOT%\Build\Win32\VC80\CopyToSDK.bat ..\..\NSBShaderLib.h ..\..\NSBShaderLibLibType.h
+if not exist "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80" mkdir "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80"
+if "$(Configuration)"=="Debug DLL"   copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).dl9"
+if "$(Configuration)"=="Release DLL" copy /Y "$(TargetDir)\$(TargetFileName)" "%TMP_ROOT%\sdk\Win32\Shaders\Lib\VC80\$(ProjectName).nl9"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\NSBD3D10ShaderLibrary.cpp" />
+    <ClCompile Include="..\..\NSBLoader.cpp" />
+    <ClCompile Include="..\NSBLoader_Win32.cpp" />
+    <ClCompile Include="..\..\NSBShaderLib.cpp" />
+    <ClCompile Include="..\..\NSBShaderLibPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\NSBShaderLibrary.cpp" />
+    <ClCompile Include="..\..\NSBShaderLibSDM.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\NSBD3D10ShaderLibrary.h" />
+    <ClInclude Include="..\..\NSBLoader.h" />
+    <ClInclude Include="..\..\NSBShaderLib.h" />
+    <ClInclude Include="..\..\NSBShaderLibLibType.h" />
+    <ClInclude Include="..\..\NSBShaderLibPCH.h" />
+    <ClInclude Include="..\NSBShaderLibrary.h" />
+    <ClInclude Include="..\..\NSBShaderLibSDM.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NiBinaryShaderLib\Win32\VC80\NiBinaryShaderLib.vcxproj">
+      <Project>{654d5107-8d54-42b8-ab2f-987982ae0220}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\NiD3D10BinaryShaderLib\Win32\VC80\NiD3D10BinaryShaderLib.vcxproj">
+      <Project>{ac709fe4-c73f-4fd8-b5e6-cad813334bc2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

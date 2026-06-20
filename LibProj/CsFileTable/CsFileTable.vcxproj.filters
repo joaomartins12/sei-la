@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Main">
+      <UniqueIdentifier>{c829c862-b650-4b8e-b96b-f1eb050e189f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest">
+      <UniqueIdentifier>{8e68dce1-db18-418c-af9e-877dbf334189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest\PreRequire">
+      <UniqueIdentifier>{b4a6c697-df03-40a1-b627-59fce8421115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest\CompRequire">
+      <UniqueIdentifier>{2dd99829-c90e-4263-8cc5-eee947286749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest\Requite">
+      <UniqueIdentifier>{d36ccb21-6ae0-4cec-b509-a961c3c25df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest\ApplyRequite">
+      <UniqueIdentifier>{cce9f009-73fa-490a-bb53-b3661e64fdb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest\ParcingWord">
+      <UniqueIdentifier>{d675f56d-c8f7-44fe-acef-cca2ee0e51e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Digimon">
+      <UniqueIdentifier>{5d2d62c8-a89b-4c94-b3b5-57ace018d3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{5a8cbd7a-133d-447d-b9c8-25c197ae3e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{0ee4aae6-c562-41ec-b789-345a0655e7fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Npc">
+      <UniqueIdentifier>{9d4a36e0-3386-4ae0-96e0-2fd0000c368f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapStart">
+      <UniqueIdentifier>{ec11cc20-a3ff-401a-9aca-cd8c2c199495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapList">
+      <UniqueIdentifier>{e2f81963-ec3f-4e07-8e21-4f18046915df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapPortal">
+      <UniqueIdentifier>{9aca008b-6068-4519-a9ef-08c0699cbe36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapMonster">
+      <UniqueIdentifier>{21fd4188-dc32-4647-886c-ed76d2cced16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapRegion">
+      <UniqueIdentifier>{3ae66fe2-3ee2-4795-ace3-6c1fc105134c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Resurrection">
+      <UniqueIdentifier>{ae0d18d3-b236-472d-afaf-a510a6181d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapCharLight">
+      <UniqueIdentifier>{f8207ed7-1ad9-4186-82a6-530e90133878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Weather">
+      <UniqueIdentifier>{df0677ae-969c-44a7-93f2-a8b03e2037b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapTableObj">
+      <UniqueIdentifier>{4db5accc-6e64-4bbb-a714-7e62a90be81d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\MapObject">
+      <UniqueIdentifier>{f859ae8e-380c-457f-ad6a-ea8aaa85cd23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Skill">
+      <UniqueIdentifier>{6adc02df-9c2a-4de9-8912-1ad7c9930c2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Nature">
+      <UniqueIdentifier>{2080e63c-26e7-4d0c-be4a-2ec0e1ade603}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DigimonEvolve">
+      <UniqueIdentifier>{44cc142c-b3ed-4611-a86c-31d38c4f95d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cuid">
+      <UniqueIdentifier>{416acab2-0c4b-4d0a-89ba-8f1f208a31cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Excel">
+      <UniqueIdentifier>{13acacc0-a6f1-4495-b9df-474c86903eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Talk">
+      <UniqueIdentifier>{3df40723-0dec-43bb-8fa2-5eee6b6b165f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Talk\Info">
+      <UniqueIdentifier>{eacb492a-403d-4ce7-a86b-72eea739e42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tactics">
+      <UniqueIdentifier>{8e4d4522-4677-41cc-981a-d33994569ee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorldMap">
+      <UniqueIdentifier>{d3ce6d6f-d866-4914-8250-d323d0049adf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tamer">
+      <UniqueIdentifier>{2fb189e2-24e9-47bf-8760-5488811c895f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_StringChange">
+      <UniqueIdentifier>{dd0c5f58-f5aa-4b32-941f-11d1a844b76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{df55902a-dd04-4304-a7fe-6221fe753462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Localizing">
+      <UniqueIdentifier>{792c445f-a5b2-4115-add3-2744a29aafdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Help">
+      <UniqueIdentifier>{972f1eae-57e8-4b90-8b6d-cc5989d31e2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MoveObject">
+      <UniqueIdentifier>{ef474d5c-aa74-46d1-bf78-d767f21cc8df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TotalExcel">
+      <UniqueIdentifier>{8629da97-1936-4762-aeb2-6f743e8b7e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CashShop">
+      <UniqueIdentifier>{04058f0d-0aa2-4e10-a870-3e6fe6c39098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{8f5aed8b-646c-426f-8313-538ee5f9e45e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exp">
+      <UniqueIdentifier>{391b0c3d-75ab-4cdc-8b3c-024264e65746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Achieve">
+      <UniqueIdentifier>{8ecfb8c4-0a46-421d-a083-de446c02a78f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{e30a63a4-3e1f-41ad-aec8-9c64e12bbfb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Define">
+      <UniqueIdentifier>{923df413-c548-409d-9d35-0c2a8d2fc5fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gotcha">
+      <UniqueIdentifier>{aa493c71-c718-48c0-a460-4c9cbc672a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Reword">
+      <UniqueIdentifier>{5acdca42-32d4-404e-a3f1-0550896431e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Master_Card">
+      <UniqueIdentifier>{2a180d10-0a4b-4af6-8bf6-68a0dfd7807f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buff">
+      <UniqueIdentifier>{5dae259e-02a3-48b3-9a0e-6e8c553abb2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{448703a0-8bb5-4a7b-9830-2cc98e5211b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{b319d978-a24a-4e18-b338-72b1bd9c120f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle">
+      <UniqueIdentifier>{fc929ba2-f3ae-4718-8460-a86b5baf56cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ServerTransfer">
+      <UniqueIdentifier>{0c3c8f0c-44e8-4bd2-8599-fe6871fc4735}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CharacterCreate">
+      <UniqueIdentifier>{b86ddcc6-ebd0-4ac0-870e-2e852b8cc217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIText">
+      <UniqueIdentifier>{f8d1913d-aa46-47f7-8103-4b0ec7a1c87e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InfiniteWar">
+      <UniqueIdentifier>{5baa58d9-9c93-4dec-9828-edf4ade7546a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DigimonParcel">
+      <UniqueIdentifier>{81707953-f08c-4118-93ad-ebac89835457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ExtraEvolution">
+      <UniqueIdentifier>{83633074-7501-4070-b839-037e4f3cea67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EffectManager">
+      <UniqueIdentifier>{dbccf598-0144-4901-9949-6e2e31d7cb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TimeCharge">
+      <UniqueIdentifier>{eea420a8-9c01-4a61-a64f-f529f55cbb9c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FileTableMng.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="nsCsFileTable.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestMng.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestPreRequire.cpp">
+      <Filter>Quest\PreRequire</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestPreRequireGroup.cpp">
+      <Filter>Quest\PreRequire</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestCompRequire.cpp">
+      <Filter>Quest\CompRequire</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestCompRequireGroup.cpp">
+      <Filter>Quest\CompRequire</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestRequite.cpp">
+      <Filter>Quest\Requite</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestRequiteGroup.cpp">
+      <Filter>Quest\Requite</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestApplyRequite.cpp">
+      <Filter>Quest\ApplyRequite</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestApplyRequiteGroup.cpp">
+      <Filter>Quest\ApplyRequite</Filter>
+    </ClCompile>
+    <ClCompile Include="Digimon.cpp">
+      <Filter>Digimon</Filter>
+    </ClCompile>
+    <ClCompile Include="DigimonMng.cpp">
+      <Filter>Digimon</Filter>
+    </ClCompile>
+    <ClCompile Include="nsCsDigimonTable.cpp">
+      <Filter>Digimon</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterMng.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMng.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="nsCsMapTable.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MapNpcGroup.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="MapNpcMng.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="MapStart.cpp">
+      <Filter>Map\MapStart</Filter>
+    </ClCompile>
+    <ClCompile Include="MapStartGroup.cpp">
+      <Filter>Map\MapStart</Filter>
+    </ClCompile>
+    <ClCompile Include="MapStartMng.cpp">
+      <Filter>Map\MapStart</Filter>
+    </ClCompile>
+    <ClCompile Include="MapList.cpp">
+      <Filter>Map\MapList</Filter>
+    </ClCompile>
+    <ClCompile Include="MapListMng.cpp">
+      <Filter>Map\MapList</Filter>
+    </ClCompile>
+    <ClCompile Include="MapPortal.cpp">
+      <Filter>Map\MapPortal</Filter>
+    </ClCompile>
+    <ClCompile Include="MapPortalGroup.cpp">
+      <Filter>Map\MapPortal</Filter>
+    </ClCompile>
+    <ClCompile Include="MapPortalMng.cpp">
+      <Filter>Map\MapPortal</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMonster.cpp">
+      <Filter>Map\MapMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMonsterGroup.cpp">
+      <Filter>Map\MapMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="MapMonsterMng.cpp">
+      <Filter>Map\MapMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="MapRegion.cpp">
+      <Filter>Map\MapRegion</Filter>
+    </ClCompile>
+    <ClCompile Include="MapRegionGroup.cpp">
+      <Filter>Map\MapRegion</Filter>
+    </ClCompile>
+    <ClCompile Include="MapRegionMng.cpp">
+      <Filter>Map\MapRegion</Filter>
+    </ClCompile>
+    <ClCompile Include="MapResurrection.cpp">
+      <Filter>Map\Resurrection</Filter>
+    </ClCompile>
+    <ClCompile Include="MapResurrectionGroup.cpp">
+      <Filter>Map\Resurrection</Filter>
+    </ClCompile>
+    <ClCompile Include="MapResurrectionMng.cpp">
+      <Filter>Map\Resurrection</Filter>
+    </ClCompile>
+    <ClCompile Include="MapCharLight.cpp">
+      <Filter>Map\MapCharLight</Filter>
+    </ClCompile>
+    <ClCompile Include="MapCharLightGroup.cpp">
+      <Filter>Map\MapCharLight</Filter>
+    </ClCompile>
+    <ClCompile Include="MapCharLightMng.cpp">
+      <Filter>Map\MapCharLight</Filter>
+    </ClCompile>
+    <ClCompile Include="Weather.cpp">
+      <Filter>Map\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="WeatherGroup.cpp">
+      <Filter>Map\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="WeatherMng.cpp">
+      <Filter>Map\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTableObj.cpp">
+      <Filter>Map\MapTableObj</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTableObjGroup.cpp">
+      <Filter>Map\MapTableObj</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTableObjMng.cpp">
+      <Filter>Map\MapTableObj</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObject.cpp">
+      <Filter>Map\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjectGroup.cpp">
+      <Filter>Map\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjectMng.cpp">
+      <Filter>Map\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcExtra.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcGroup.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcMng.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcType.cpp">
+      <Filter>Map\Npc</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillMng.cpp">
+      <Filter>Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="NatureMng.cpp">
+      <Filter>Nature</Filter>
+    </ClCompile>
+    <ClCompile Include="CDigimonEvolution.cpp">
+      <Filter>DigimonEvolve</Filter>
+    </ClCompile>
+    <ClCompile Include="DigimonEvolveInfo.cpp">
+      <Filter>DigimonEvolve</Filter>
+    </ClCompile>
+    <ClCompile Include="DigimonEvolveObj.cpp">
+      <Filter>DigimonEvolve</Filter>
+    </ClCompile>
+    <ClCompile Include="CUID.cpp">
+      <Filter>Cuid</Filter>
+    </ClCompile>
+    <ClCompile Include="CUID_Chat.cpp">
+      <Filter>Cuid</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIDMng.cpp">
+      <Filter>Cuid</Filter>
+    </ClCompile>
+    <ClCompile Include="Excel\BasicExcel.cpp">
+      <Filter>Excel</Filter>
+    </ClCompile>
+    <ClCompile Include="Excel\cExcel.cpp">
+      <Filter>Excel</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkMng.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkMng_Digimon.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkMng_Event.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkMng_Message.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkMng_Tip.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkMng_Tutorial.cpp">
+      <Filter>Talk</Filter>
+    </ClCompile>
+    <ClCompile Include="Talk_Digimon.cpp">
+      <Filter>Talk\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="TacticsMng.cpp">
+      <Filter>Tactics</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldMap.cpp">
+      <Filter>WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldMapMng.cpp">
+      <Filter>WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="TamerMng.cpp">
+      <Filter>Tamer</Filter>
+    </ClCompile>
+    <ClCompile Include="__StringChange.cpp">
+      <Filter>_StringChange</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemMng.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemProductionTable.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemTap.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="nsCsItemTable.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="XAI_Item_Data.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalizingMng.cpp">
+      <Filter>Localizing</Filter>
+    </ClCompile>
+    <ClCompile Include="Help.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpMng.cpp">
+      <Filter>Help</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveObject.cpp">
+      <Filter>MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveObject_Act.cpp">
+      <Filter>MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveObjectMng.cpp">
+      <Filter>MoveObject</Filter>
+    </ClCompile>
+    <ClCompile Include="TotalExcel.cpp">
+      <Filter>TotalExcel</Filter>
+    </ClCompile>
+    <ClCompile Include="TotalExcelMng.cpp">
+      <Filter>TotalExcel</Filter>
+    </ClCompile>
+    <ClCompile Include="CashShop.cpp">
+      <Filter>CashShop</Filter>
+    </ClCompile>
+    <ClCompile Include="CashShopMng.cpp">
+      <Filter>CashShop</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="AddExp.cpp">
+      <Filter>Exp</Filter>
+    </ClCompile>
+    <ClCompile Include="AchieveMng.cpp">
+      <Filter>Achieve</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneData.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneDataMng.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGotchaMng.cpp">
+      <Filter>Gotcha</Filter>
+    </ClCompile>
+    <ClCompile Include="RewardMng.cpp">
+      <Filter>Reword</Filter>
+    </ClCompile>
+    <ClCompile Include="Master_CardMng.cpp">
+      <Filter>Master_Card</Filter>
+    </ClCompile>
+    <ClCompile Include="BuffMng.cpp">
+      <Filter>Buff</Filter>
+    </ClCompile>
+    <ClCompile Include="Base.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMng.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTableMng.cpp">
+      <Filter>Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerRelocateTable.cpp">
+      <Filter>ServerTransfer</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterCreateListInfo.cpp">
+      <Filter>CharacterCreate</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Text.cpp">
+      <Filter>UIText</Filter>
+    </ClCompile>
+    <ClCompile Include="InfiniteWarManager.cpp">
+      <Filter>InfiniteWar</Filter>
+    </ClCompile>
+    <ClCompile Include="DigimonParcelManager.cpp">
+      <Filter>DigimonParcel</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtraEvolutionTable.cpp">
+      <Filter>ExtraEvolution</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectMng.cpp">
+      <Filter>EffectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeChargeMng.cpp">
+      <Filter>TimeCharge</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FileTableMng.h">
+      <Filter>_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="nsCsFileTable.h">
+      <Filter>_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="_QuestDefine.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="_QuestHeader.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestMng.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestPreRequire.h">
+      <Filter>Quest\PreRequire</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestPreRequireGroup.h">
+      <Filter>Quest\PreRequire</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestCompRequire.h">
+      <Filter>Quest\CompRequire</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestCompRequireGroup.h">
+      <Filter>Quest\CompRequire</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestRequite.h">
+      <Filter>Quest\Requite</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestRequiteGroup.h">
+      <Filter>Quest\Requite</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestApplyRequite.h">
+      <Filter>Quest\ApplyRequite</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestApplyRequiteGroup.h">
+      <Filter>Quest\ApplyRequite</Filter>
+    </ClInclude>
+    <ClInclude Include="DEffect.h">
+      <Filter>Digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="Digimon.h">
+      <Filter>Digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonMng.h">
+      <Filter>Digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementUI.h">
+      <Filter>Digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="nsCsDigimonTable.h">
+      <Filter>Digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="Ride.h">
+      <Filter>Digimon</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterMng.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="_MapDefine.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_MapHeader.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMng.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="nsCsMapTable.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapNpc.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="MapNpcGroup.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="MapNpcMng.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="MapStart.h">
+      <Filter>Map\MapStart</Filter>
+    </ClInclude>
+    <ClInclude Include="MapStartGroup.h">
+      <Filter>Map\MapStart</Filter>
+    </ClInclude>
+    <ClInclude Include="MapStartMng.h">
+      <Filter>Map\MapStart</Filter>
+    </ClInclude>
+    <ClInclude Include="MapList.h">
+      <Filter>Map\MapList</Filter>
+    </ClInclude>
+    <ClInclude Include="MapListMng.h">
+      <Filter>Map\MapList</Filter>
+    </ClInclude>
+    <ClInclude Include="MapPortal.h">
+      <Filter>Map\MapPortal</Filter>
+    </ClInclude>
+    <ClInclude Include="MapPortalGroup.h">
+      <Filter>Map\MapPortal</Filter>
+    </ClInclude>
+    <ClInclude Include="MapPortalMng.h">
+      <Filter>Map\MapPortal</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMonster.h">
+      <Filter>Map\MapMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMonsterGroup.h">
+      <Filter>Map\MapMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="MapMonsterMng.h">
+      <Filter>Map\MapMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="MapRegion.h">
+      <Filter>Map\MapRegion</Filter>
+    </ClInclude>
+    <ClInclude Include="MapRegionGroup.h">
+      <Filter>Map\MapRegion</Filter>
+    </ClInclude>
+    <ClInclude Include="MapRegionMng.h">
+      <Filter>Map\MapRegion</Filter>
+    </ClInclude>
+    <ClInclude Include="MapResurrection.h">
+      <Filter>Map\Resurrection</Filter>
+    </ClInclude>
+    <ClInclude Include="MapResurrectionGroup.h">
+      <Filter>Map\Resurrection</Filter>
+    </ClInclude>
+    <ClInclude Include="MapResurrectionMng.h">
+      <Filter>Map\Resurrection</Filter>
+    </ClInclude>
+    <ClInclude Include="MapCharLight.h">
+      <Filter>Map\MapCharLight</Filter>
+    </ClInclude>
+    <ClInclude Include="MapCharLightGroup.h">
+      <Filter>Map\MapCharLight</Filter>
+    </ClInclude>
+    <ClInclude Include="MapCharLightMng.h">
+      <Filter>Map\MapCharLight</Filter>
+    </ClInclude>
+    <ClInclude Include="Weather.h">
+      <Filter>Map\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="WeatherGroup.h">
+      <Filter>Map\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="WeatherMng.h">
+      <Filter>Map\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTableObj.h">
+      <Filter>Map\MapTableObj</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTableObjGroup.h">
+      <Filter>Map\MapTableObj</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTableObjMng.h">
+      <Filter>Map\MapTableObj</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObject.h">
+      <Filter>Map\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjectGroup.h">
+      <Filter>Map\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjectMng.h">
+      <Filter>Map\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="_NpcDefine.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="_NpcHeader.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcExtra.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcGroup.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcMng.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcType.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="nsCsNpcTable.h">
+      <Filter>Map\Npc</Filter>
+    </ClInclude>
+    <ClInclude Include="_SkillDefine.h">
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="_SkillHeader.h">
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMng.h">
+      <Filter>Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseElement.h">
+      <Filter>Nature</Filter>
+    </ClInclude>
+    <ClInclude Include="Nature.h">
+      <Filter>Nature</Filter>
+    </ClInclude>
+    <ClInclude Include="NatureMng.h">
+      <Filter>Nature</Filter>
+    </ClInclude>
+    <ClInclude Include="CDigimonEvolution.h">
+      <Filter>DigimonEvolve</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonEvolveInfo.h">
+      <Filter>DigimonEvolve</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonEvolveObj.h">
+      <Filter>DigimonEvolve</Filter>
+    </ClInclude>
+    <ClInclude Include="_CUIDHeader.h">
+      <Filter>Cuid</Filter>
+    </ClInclude>
+    <ClInclude Include="CUID.h">
+      <Filter>Cuid</Filter>
+    </ClInclude>
+    <ClInclude Include="CUID_Chat.h">
+      <Filter>Cuid</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIDMng.h">
+      <Filter>Cuid</Filter>
+    </ClInclude>
+    <ClInclude Include="Excel\BasicExcel.hpp">
+      <Filter>Excel</Filter>
+    </ClInclude>
+    <ClInclude Include="Excel\cExcel.h">
+      <Filter>Excel</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkMng.h">
+      <Filter>Talk</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Digimon.h">
+      <Filter>Talk\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Event.h">
+      <Filter>Talk\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Message.h">
+      <Filter>Talk\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Tip.h">
+      <Filter>Talk\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Tooltip.h">
+      <Filter>Talk\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Talk_Tutorial.h">
+      <Filter>Talk\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Tactics.h">
+      <Filter>Tactics</Filter>
+    </ClInclude>
+    <ClInclude Include="TacticsEnchant.h">
+      <Filter>Tactics</Filter>
+    </ClInclude>
+    <ClInclude Include="TacticsExplain.h">
+      <Filter>Tactics</Filter>
+    </ClInclude>
+    <ClInclude Include="TacticsMng.h">
+      <Filter>Tactics</Filter>
+    </ClInclude>
+    <ClInclude Include="TacticsTranscend.h">
+      <Filter>Tactics</Filter>
+    </ClInclude>
+    <ClInclude Include="AreaMap.h">
+      <Filter>WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldMap.h">
+      <Filter>WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldMapMng.h">
+      <Filter>WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Tamer.h">
+      <Filter>Tamer</Filter>
+    </ClInclude>
+    <ClInclude Include="TamerMng.h">
+      <Filter>Tamer</Filter>
+    </ClInclude>
+    <ClInclude Include="__StringChange.h">
+      <Filter>_StringChange</Filter>
+    </ClInclude>
+    <ClInclude Include="_ItemDefine.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="_ItemHeader.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemMng.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemProductionTable.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemTap.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="nsCsItemTable.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="XAI_Item_TableStruct.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Localizing.h">
+      <Filter>Localizing</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalizingMng.h">
+      <Filter>Localizing</Filter>
+    </ClInclude>
+    <ClInclude Include="Help.h">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpMng.h">
+      <Filter>Help</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveObject.h">
+      <Filter>MoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveObjectMng.h">
+      <Filter>MoveObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TotalExcel.h">
+      <Filter>TotalExcel</Filter>
+    </ClInclude>
+    <ClInclude Include="TotalExcelMng.h">
+      <Filter>TotalExcel</Filter>
+    </ClInclude>
+    <ClInclude Include="CashShop.h">
+      <Filter>CashShop</Filter>
+    </ClInclude>
+    <ClInclude Include="CashShopMng.h">
+      <Filter>CashShop</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="AddExp.h">
+      <Filter>Exp</Filter>
+    </ClInclude>
+    <ClInclude Include="AchieveMng.h">
+      <Filter>Achieve</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneData.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneDataMng.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongKongDefine.h">
+      <Filter>_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGotcha.h">
+      <Filter>Gotcha</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGotchaMng.h">
+      <Filter>Gotcha</Filter>
+    </ClInclude>
+    <ClInclude Include="Reward.h">
+      <Filter>Reword</Filter>
+    </ClInclude>
+    <ClInclude Include="RewardMng.h">
+      <Filter>Reword</Filter>
+    </ClInclude>
+    <ClInclude Include="Master_Card.h">
+      <Filter>Master_Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Master_CardMng.h">
+      <Filter>Master_Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Buff.h">
+      <Filter>Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="BuffMng.h">
+      <Filter>Buff</Filter>
+    </ClInclude>
+    <ClInclude Include="_BaseHeader.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMng.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonSkillOpenTable.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTableMng.h">
+      <Filter>Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerRelocateTable.h">
+      <Filter>ServerTransfer</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterCreateListInfo.h">
+      <Filter>CharacterCreate</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Text.h">
+      <Filter>UIText</Filter>
+    </ClInclude>
+    <ClInclude Include="InfiniteWarManager.h">
+      <Filter>InfiniteWar</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct_InfiniteWar.h">
+      <Filter>InfiniteWar</Filter>
+    </ClInclude>
+    <ClInclude Include="DigimonParcelManager.h">
+      <Filter>DigimonParcel</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtraEvolutionTable.h">
+      <Filter>ExtraEvolution</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStruct_ExtraEvolution.h">
+      <Filter>ExtraEvolution</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectMng.h">
+      <Filter>EffectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCharge.h">
+      <Filter>TimeCharge</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeChargeMng.h">
+      <Filter>TimeCharge</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QuestCompRequire.inl">
+      <Filter>Quest\CompRequire</Filter>
+    </None>
+  </ItemGroup>
+</Project>

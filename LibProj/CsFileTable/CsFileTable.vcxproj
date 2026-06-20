@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_English|Win32">
+      <Configuration>Give_English</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_Hong|Win32">
+      <Configuration>Give_Hong</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_Taiwan|Win32">
+      <Configuration>Give_Taiwan</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give_Thai|Win32">
+      <Configuration>Give_Thai</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Give|Win32">
+      <Configuration>Give</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_English|Win32">
+      <Configuration>Release_English</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Hong|Win32">
+      <Configuration>Release_Hong</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Taiwan|Win32">
+      <Configuration>Release_Taiwan</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Thai|Win32">
+      <Configuration>Release_Thai</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{183E8E68-7AD0-4602-9E8C-648E048CFD67}</ProjectGuid>
+    <RootNamespace>CsFileTable</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\Lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\Lib\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">..\..\Lib\Give\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">..\..\Lib\Release_English\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">..\..\Lib\Give_English\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">..\..\Lib\Release_Thai\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">..\..\Lib\Give_Thai\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">..\..\Lib\Release_Taiwan\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">..\..\Lib\Give_Taiwan\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">..\..\Lib\Release_Hong\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">..\..\Lib\Give_Hong\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Give|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files (x86)\Common Files\System\ado;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\Program Files %28x86%29\Common Files\System\ado;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">
+    <IncludePath>..\..\Gamebryo2.3\GB_Include\ado;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm120 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories).\;..\;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CsFileTable.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;VERSION_USA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\GB_Include\ado</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;VERSION_USA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm150
+ %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;VERSION_TH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP /Zm150
+ %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;VERSION_TH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;VERSION_TW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;VERSION_TW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;VERSION_HK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP -Zm150 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_GIVE;NDEBUG;_LIB;VERSION_HK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="FileTableMng.cpp" />
+    <ClCompile Include="nsCsFileTable.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Quest.cpp" />
+    <ClCompile Include="QuestMng.cpp" />
+    <ClCompile Include="QuestPreRequire.cpp" />
+    <ClCompile Include="QuestPreRequireGroup.cpp" />
+    <ClCompile Include="QuestCompRequire.cpp" />
+    <ClCompile Include="QuestCompRequireGroup.cpp" />
+    <ClCompile Include="QuestRequite.cpp" />
+    <ClCompile Include="QuestRequiteGroup.cpp" />
+    <ClCompile Include="QuestApplyRequite.cpp" />
+    <ClCompile Include="QuestApplyRequiteGroup.cpp" />
+    <ClCompile Include="Digimon.cpp" />
+    <ClCompile Include="DigimonMng.cpp" />
+    <ClCompile Include="nsCsDigimonTable.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterMng.cpp" />
+    <ClCompile Include="MapMng.cpp" />
+    <ClCompile Include="nsCsMapTable.cpp" />
+    <ClCompile Include="MapNpcGroup.cpp" />
+    <ClCompile Include="MapNpcMng.cpp" />
+    <ClCompile Include="MapStart.cpp" />
+    <ClCompile Include="MapStartGroup.cpp" />
+    <ClCompile Include="MapStartMng.cpp" />
+    <ClCompile Include="MapList.cpp" />
+    <ClCompile Include="MapListMng.cpp" />
+    <ClCompile Include="MapPortal.cpp" />
+    <ClCompile Include="MapPortalGroup.cpp" />
+    <ClCompile Include="MapPortalMng.cpp" />
+    <ClCompile Include="MapMonster.cpp" />
+    <ClCompile Include="MapMonsterGroup.cpp" />
+    <ClCompile Include="MapMonsterMng.cpp" />
+    <ClCompile Include="MapRegion.cpp" />
+    <ClCompile Include="MapRegionGroup.cpp" />
+    <ClCompile Include="MapRegionMng.cpp" />
+    <ClCompile Include="MapResurrection.cpp" />
+    <ClCompile Include="MapResurrectionGroup.cpp" />
+    <ClCompile Include="MapResurrectionMng.cpp" />
+    <ClCompile Include="MapCharLight.cpp" />
+    <ClCompile Include="MapCharLightGroup.cpp" />
+    <ClCompile Include="MapCharLightMng.cpp" />
+    <ClCompile Include="Weather.cpp" />
+    <ClCompile Include="WeatherGroup.cpp" />
+    <ClCompile Include="WeatherMng.cpp" />
+    <ClCompile Include="MapTableObj.cpp" />
+    <ClCompile Include="MapTableObjGroup.cpp" />
+    <ClCompile Include="MapTableObjMng.cpp" />
+    <ClCompile Include="MapObject.cpp" />
+    <ClCompile Include="MapObjectGroup.cpp" />
+    <ClCompile Include="MapObjectMng.cpp" />
+    <ClCompile Include="Npc.cpp" />
+    <ClCompile Include="NpcExtra.cpp" />
+    <ClCompile Include="NpcGroup.cpp" />
+    <ClCompile Include="NpcMng.cpp" />
+    <ClCompile Include="NpcType.cpp" />
+    <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillMng.cpp" />
+    <ClCompile Include="NatureMng.cpp" />
+    <ClCompile Include="CDigimonEvolution.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release_English|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Give_English|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release_Hong|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Give_Hong|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release_Taiwan|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Give_Taiwan|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release_Thai|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Give_Thai|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Give|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="DigimonEvolveInfo.cpp" />
+    <ClCompile Include="DigimonEvolveObj.cpp" />
+    <ClCompile Include="CUID.cpp" />
+    <ClCompile Include="CUID_Chat.cpp" />
+    <ClCompile Include="CUIDMng.cpp" />
+    <ClCompile Include="Excel\BasicExcel.cpp" />
+    <ClCompile Include="Excel\cExcel.cpp" />
+    <ClCompile Include="TalkMng.cpp" />
+    <ClCompile Include="TalkMng_Digimon.cpp" />
+    <ClCompile Include="TalkMng_Event.cpp" />
+    <ClCompile Include="TalkMng_Message.cpp" />
+    <ClCompile Include="TalkMng_Tip.cpp" />
+    <ClCompile Include="TalkMng_Tutorial.cpp" />
+    <ClCompile Include="Talk_Digimon.cpp" />
+    <ClCompile Include="TacticsMng.cpp" />
+    <ClCompile Include="WorldMap.cpp" />
+    <ClCompile Include="WorldMapMng.cpp" />
+    <ClCompile Include="TamerMng.cpp" />
+    <ClCompile Include="__StringChange.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemMng.cpp" />
+    <ClCompile Include="ItemProductionTable.cpp" />
+    <ClCompile Include="ItemTap.cpp" />
+    <ClCompile Include="nsCsItemTable.cpp" />
+    <ClCompile Include="XAI_Item_Data.cpp" />
+    <ClCompile Include="LocalizingMng.cpp" />
+    <ClCompile Include="Help.cpp" />
+    <ClCompile Include="HelpMng.cpp" />
+    <ClCompile Include="MoveObject.cpp" />
+    <ClCompile Include="MoveObject_Act.cpp" />
+    <ClCompile Include="MoveObjectMng.cpp" />
+    <ClCompile Include="TotalExcel.cpp" />
+    <ClCompile Include="TotalExcelMng.cpp" />
+    <ClCompile Include="CashShop.cpp" />
+    <ClCompile Include="CashShopMng.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="AddExp.cpp" />
+    <ClCompile Include="AchieveMng.cpp" />
+    <ClCompile Include="SceneData.cpp" />
+    <ClCompile Include="SceneDataMng.cpp" />
+    <ClCompile Include="CsGotchaMng.cpp" />
+    <ClCompile Include="RewardMng.cpp" />
+    <ClCompile Include="Master_CardMng.cpp" />
+    <ClCompile Include="BuffMng.cpp" />
+    <ClCompile Include="Base.cpp" />
+    <ClCompile Include="BaseMng.cpp" />
+    <ClCompile Include="BattleTableMng.cpp" />
+    <ClCompile Include="ServerRelocateTable.cpp" />
+    <ClCompile Include="CharacterCreateListInfo.cpp" />
+    <ClCompile Include="UI_Text.cpp" />
+    <ClCompile Include="InfiniteWarManager.cpp" />
+    <ClCompile Include="DigimonParcelManager.cpp" />
+    <ClCompile Include="ExtraEvolutionTable.cpp" />
+    <ClCompile Include="EffectMng.cpp" />
+    <ClCompile Include="TimeChargeMng.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FileTableMng.h" />
+    <ClInclude Include="nsCsFileTable.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="_QuestDefine.h" />
+    <ClInclude Include="_QuestHeader.h" />
+    <ClInclude Include="Quest.h" />
+    <ClInclude Include="QuestMng.h" />
+    <ClInclude Include="QuestPreRequire.h" />
+    <ClInclude Include="QuestPreRequireGroup.h" />
+    <ClInclude Include="QuestCompRequire.h" />
+    <ClInclude Include="QuestCompRequireGroup.h" />
+    <ClInclude Include="QuestRequite.h" />
+    <ClInclude Include="QuestRequiteGroup.h" />
+    <ClInclude Include="QuestApplyRequite.h" />
+    <ClInclude Include="QuestApplyRequiteGroup.h" />
+    <ClInclude Include="DEffect.h" />
+    <ClInclude Include="Digimon.h" />
+    <ClInclude Include="DigimonMng.h" />
+    <ClInclude Include="ElementUI.h" />
+    <ClInclude Include="nsCsDigimonTable.h" />
+    <ClInclude Include="Ride.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterMng.h" />
+    <ClInclude Include="_MapDefine.h" />
+    <ClInclude Include="_MapHeader.h" />
+    <ClInclude Include="MapMng.h" />
+    <ClInclude Include="nsCsMapTable.h" />
+    <ClInclude Include="MapNpc.h" />
+    <ClInclude Include="MapNpcGroup.h" />
+    <ClInclude Include="MapNpcMng.h" />
+    <ClInclude Include="MapStart.h" />
+    <ClInclude Include="MapStartGroup.h" />
+    <ClInclude Include="MapStartMng.h" />
+    <ClInclude Include="MapList.h" />
+    <ClInclude Include="MapListMng.h" />
+    <ClInclude Include="MapPortal.h" />
+    <ClInclude Include="MapPortalGroup.h" />
+    <ClInclude Include="MapPortalMng.h" />
+    <ClInclude Include="MapMonster.h" />
+    <ClInclude Include="MapMonsterGroup.h" />
+    <ClInclude Include="MapMonsterMng.h" />
+    <ClInclude Include="MapRegion.h" />
+    <ClInclude Include="MapRegionGroup.h" />
+    <ClInclude Include="MapRegionMng.h" />
+    <ClInclude Include="MapResurrection.h" />
+    <ClInclude Include="MapResurrectionGroup.h" />
+    <ClInclude Include="MapResurrectionMng.h" />
+    <ClInclude Include="MapCharLight.h" />
+    <ClInclude Include="MapCharLightGroup.h" />
+    <ClInclude Include="MapCharLightMng.h" />
+    <ClInclude Include="Weather.h" />
+    <ClInclude Include="WeatherGroup.h" />
+    <ClInclude Include="WeatherMng.h" />
+    <ClInclude Include="MapTableObj.h" />
+    <ClInclude Include="MapTableObjGroup.h" />
+    <ClInclude Include="MapTableObjMng.h" />
+    <ClInclude Include="MapObject.h" />
+    <ClInclude Include="MapObjectGroup.h" />
+    <ClInclude Include="MapObjectMng.h" />
+    <ClInclude Include="_NpcDefine.h" />
+    <ClInclude Include="_NpcHeader.h" />
+    <ClInclude Include="Npc.h" />
+    <ClInclude Include="NpcExtra.h" />
+    <ClInclude Include="NpcGroup.h" />
+    <ClInclude Include="NpcMng.h" />
+    <ClInclude Include="NpcType.h" />
+    <ClInclude Include="nsCsNpcTable.h" />
+    <ClInclude Include="_SkillDefine.h" />
+    <ClInclude Include="_SkillHeader.h" />
+    <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillMng.h" />
+    <ClInclude Include="BaseElement.h" />
+    <ClInclude Include="Nature.h" />
+    <ClInclude Include="NatureMng.h" />
+    <ClInclude Include="CDigimonEvolution.h" />
+    <ClInclude Include="DigimonEvolveInfo.h" />
+    <ClInclude Include="DigimonEvolveObj.h" />
+    <ClInclude Include="_CUIDHeader.h" />
+    <ClInclude Include="CUID.h" />
+    <ClInclude Include="CUID_Chat.h" />
+    <ClInclude Include="CUIDMng.h" />
+    <ClInclude Include="Excel\BasicExcel.hpp" />
+    <ClInclude Include="Excel\cExcel.h" />
+    <ClInclude Include="TalkMng.h" />
+    <ClInclude Include="Talk_Digimon.h" />
+    <ClInclude Include="Talk_Event.h" />
+    <ClInclude Include="Talk_Message.h" />
+    <ClInclude Include="Talk_Tip.h" />
+    <ClInclude Include="Talk_Tooltip.h" />
+    <ClInclude Include="Talk_Tutorial.h" />
+    <ClInclude Include="Tactics.h" />
+    <ClInclude Include="TacticsEnchant.h" />
+    <ClInclude Include="TacticsExplain.h" />
+    <ClInclude Include="TacticsMng.h" />
+    <ClInclude Include="TacticsTranscend.h" />
+    <ClInclude Include="AreaMap.h" />
+    <ClInclude Include="WorldMap.h" />
+    <ClInclude Include="WorldMapMng.h" />
+    <ClInclude Include="Tamer.h" />
+    <ClInclude Include="TamerMng.h" />
+    <ClInclude Include="__StringChange.h" />
+    <ClInclude Include="_ItemDefine.h" />
+    <ClInclude Include="_ItemHeader.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemMng.h" />
+    <ClInclude Include="ItemProductionTable.h" />
+    <ClInclude Include="ItemTap.h" />
+    <ClInclude Include="nsCsItemTable.h" />
+    <ClInclude Include="XAI_Item_TableStruct.h" />
+    <ClInclude Include="Localizing.h" />
+    <ClInclude Include="LocalizingMng.h" />
+    <ClInclude Include="Help.h" />
+    <ClInclude Include="HelpMng.h" />
+    <ClInclude Include="MoveObject.h" />
+    <ClInclude Include="MoveObjectMng.h" />
+    <ClInclude Include="TotalExcel.h" />
+    <ClInclude Include="TotalExcelMng.h" />
+    <ClInclude Include="CashShop.h" />
+    <ClInclude Include="CashShopMng.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="AddExp.h" />
+    <ClInclude Include="AchieveMng.h" />
+    <ClInclude Include="SceneData.h" />
+    <ClInclude Include="SceneDataMng.h" />
+    <ClInclude Include="_TestDefine.h" />
+    <ClInclude Include="EngDefine.h" />
+    <ClInclude Include="HongKongDefine.h" />
+    <ClInclude Include="KorDefine.h" />
+    <ClInclude Include="TaiwanDefine.h" />
+    <ClInclude Include="ThaiDefine.h" />
+    <ClInclude Include="CsGotcha.h" />
+    <ClInclude Include="CsGotchaMng.h" />
+    <ClInclude Include="Reward.h" />
+    <ClInclude Include="RewardMng.h" />
+    <ClInclude Include="Master_Card.h" />
+    <ClInclude Include="Master_CardMng.h" />
+    <ClInclude Include="Buff.h" />
+    <ClInclude Include="BuffMng.h" />
+    <ClInclude Include="_BaseHeader.h" />
+    <ClInclude Include="Base.h" />
+    <ClInclude Include="BaseMng.h" />
+    <ClInclude Include="DigimonSkillOpenTable.h" />
+    <ClInclude Include="CommonUtil.h" />
+    <ClInclude Include="BattleTableMng.h" />
+    <ClInclude Include="ServerRelocateTable.h" />
+    <ClInclude Include="CharacterCreateListInfo.h" />
+    <ClInclude Include="UI_Text.h" />
+    <ClInclude Include="InfiniteWarManager.h" />
+    <ClInclude Include="TableStruct_InfiniteWar.h" />
+    <ClInclude Include="DigimonParcelManager.h" />
+    <ClInclude Include="ExtraEvolutionTable.h" />
+    <ClInclude Include="TableStruct_ExtraEvolution.h" />
+    <ClInclude Include="EffectMng.h" />
+    <ClInclude Include="TimeCharge.h" />
+    <ClInclude Include="TimeChargeMng.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QuestCompRequire.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

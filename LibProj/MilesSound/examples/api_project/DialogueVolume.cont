@@ -1,0 +1,28 @@
+{
+ 	"version": "00000010",
+	"max": 24,
+	"min": -96,
+	"osc_fn": 0,
+	"low_inf": 0,
+	"osc_inv": 0,
+	"function": "",
+	"high_inf": 0,
+	"osc_rate": 1,
+	"data_type": 1,
+	"osc_clock": 0,
+	"osc_phase": 0,
+	"rng_latch": 0,
+	"rng_shape": 0,
+	"rng_voice": 0,
+	"smooth_ms": 0,
+	"transform": 
+	{
+	},
+	"hold_first": 0,
+	"initial_value": 0,
+	"rng_latch_max": 0,
+	"rng_latch_min": 0,
+	"listener_index": "0",
+	"controller_type": "0",
+	"bound_input_type": 0
+}

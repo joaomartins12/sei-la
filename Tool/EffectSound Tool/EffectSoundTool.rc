@@ -1,0 +1,415 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\EffectSoundTool.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\EffectSound Tool.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "파일(&F)"
+    BEGIN
+        MENUITEM "끝내기(&X)",                     ID_APP_EXIT
+    END
+    POPUP "편집(&E)"
+    BEGIN
+        MENUITEM "실행 취소(&U)\tCtrl+Z",           ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "잘라내기(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "복사(&C)\tCtrl+C",              ID_EDIT_COPY
+        MENUITEM "붙여넣기(&P)\tCtrl+V",            ID_EDIT_PASTE
+    END
+    POPUP "보기(&V)"
+    BEGIN
+        MENUITEM "도구 모음(&T)",                   ID_VIEW_TOOLBAR
+        MENUITEM "상태 표시줄(&S)",                  ID_VIEW_STATUS_BAR
+    END
+    POPUP "도움말(&H)"
+    BEGIN
+        MENUITEM "EffectSound Tool 정보(&A)...",  ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "EffectSound Tool 정보"
+FONT 9, "MS 셸 대화 상자", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "EffectSound Tool 버전 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2009",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_DIALOG_EFFECT DIALOGEX 0, 0, 502, 175
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_EFFECTLIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,58,232,110
+    CONTROL         "",IDC_LIST_SOUNDTLIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,253,58,241,110
+    LTEXT           "이펙트 로드",IDC_STATIC,7,38,50,9
+    LTEXT           "사운드 로드",IDC_STATIC,253,38,50,9
+    PUSHBUTTON      "파일지정",IDC_BUTTON_FILEEFFECT,58,38,49,13
+    PUSHBUTTON      "파일지정",IDC_BUTTON_FILESOUND,305,38,49,13
+    EDITTEXT        IDC_EDIT_FIND_EFFECT,53,13,137,13,ES_AUTOHSCROLL
+    LTEXT           "파일검색",IDC_STATIC,10,15,36,11
+    PUSHBUTTON      "검색",IDC_BUTTON_SERCH,203,13,40,14
+END
+
+IDD_DIALOG_CHR DIALOGEX 0, 0, 284, 201
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "캐릭터 로드",IDC_STATIC,7,7,50,9
+    CONTROL         "캐릭터숨기기",IDC_CHECK_CHRLOOK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,56,7,62,10
+    CONTROL         "",IDC_LIST_CHAR,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,22,258,147
+END
+
+IDD_DIALOG_ETC DIALOGEX 0, 0, 271, 386
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,10,7,225,13
+    CONTROL         "반복",IDC_CHECK_LOOP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,62,25,39,11
+    CONTROL         "플레이",IDC_CHECK_PLAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,25,39,11
+    EDITTEXT        IDC_EDIT_TIME,167,22,65,13,ES_AUTOHSCROLL | WS_DISABLED
+    GROUPBOX        "이펙트 옵션",IDC_STATIC,9,62,255,267
+    EDITTEXT        IDC_EDIT1,23,123,44,13,ES_AUTOHSCROLL
+    CONTROL         "캐릭에 비례",IDC_CHECK_MODEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,23,106,66,13
+    CONTROL         "",IDC_SPIN_SCALE,"msctls_updown32",UDS_ARROWKEYS,67,123,11,13
+    COMBOBOX        IDC_COMBO_LIVE,101,78,53,83,CBS_DROPDOWNLIST | CBS_SORT | CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_POS,101,131,53,56,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "반복",IDC_STATIC,101,67,34,9
+    LTEXT           "업데이트 위치",IDC_STATIC,101,121,51,9
+    CONTROL         "오프셋 사용",IDC_CHECK_OFFSETUSE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,173,102,51,13
+    COMBOBOX        IDC_COMBO_STARTPOS,101,104,53,68,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "시작위치",IDC_STATIC,101,94,38,8
+    EDITTEXT        IDC_EDIT_X,173,118,44,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_X,"msctls_updown32",UDS_ARROWKEYS,217,118,11,13
+    EDITTEXT        IDC_EDIT_Y,173,134,44,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_Y,"msctls_updown32",UDS_ARROWKEYS,217,134,11,13
+    EDITTEXT        IDC_EDIT_Z,173,149,44,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_SPIN_Z,"msctls_updown32",UDS_ARROWKEYS,217,149,11,13
+    PUSHBUTTON      "초기화",IDC_BUTTON_REOPTION,23,75,47,13
+    LTEXT           "X",IDC_STATIC,165,121,8,10
+    LTEXT           "Y",IDC_STATIC,165,137,8,10
+    LTEXT           "Z",IDC_STATIC,165,150,8,10
+    PUSHBUTTON      "저장",IDC_BUTTON_SAVE,21,335,78,35
+    PUSHBUTTON      "작업한리스트에서 불러오기",IDC_BUTTON_LOAD,118,336,117,34
+    CONTROL         "",IDC_LIST_SOUNDLIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,18,180,217,134
+    GROUPBOX        "스케일",IDC_STATIC,17,98,68,42
+    LTEXT           "사운드 리스트",IDC_STATIC,22,166,55,9
+    PUSHBUTTON      "사운드삭제",IDC_BUTTON_DELSOUND,82,164,50,13
+    COMBOBOX        IDC_COMBO_DIR,171,78,68,94,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "방향성",IDC_STATIC,171,67,34,9
+    EDITTEXT        IDC_EDIT2,74,41,159,12,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "현재 이펙트",IDC_STATIC,24,43,49,8
+END
+
+IDD_DIALOG_LOAD DIALOGEX 0, 0, 357, 255
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_LOAD,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,343,241
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "EffectSound Tool.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "EffectSound Tool.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DIALOG_EFFECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 495
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+
+    IDD_DIALOG_CHR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 277
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 194
+    END
+
+    IDD_DIALOG_ETC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 378
+    END
+
+    IDD_DIALOG_LOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 350
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 248
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_ETC AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "EffectSound Tool"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "EffectSound Tool"
+    AFX_IDS_IDLEMESSAGE     "준비"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "프로그램 정보, 버전 번호, 저작권을 표시합니다.\n정보"
+    ID_APP_EXIT             "문서를 저장할지를 묻고 응용 프로그램을 끝냅니다.\n끝내기"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "다음 창으로 전환합니다.\n다음 창"
+    ID_PREV_PANE            "이전 창으로 전환합니다.\n이전 창"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "활성 창을 여러 개의 창으로 분할합니다.\n분할"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "선택 영역을 지웁니다.\n지우기"
+    ID_EDIT_CLEAR_ALL       "모두 지웁니다.\n모두 지우기"
+    ID_EDIT_COPY            "선택 영역을 복사하여 클립보드에 넣습니다.\n복사"
+    ID_EDIT_CUT             "선택 영역을 잘라내어 클립보드에 넣습니다.\n잘라내기"
+    ID_EDIT_FIND            "지정한 텍스트를 찾습니다.\n찾기"
+    ID_EDIT_PASTE           "클립보드 내용을 삽입합니다.\n붙여넣기"
+    ID_EDIT_REPEAT          "마지막 작업을 반복합니다.\n반복"
+    ID_EDIT_REPLACE         "특정 텍스트를 다른 텍스트로 바꿉니다.\n바꾸기"
+    ID_EDIT_SELECT_ALL      "전체 문서를 선택합니다.\n모두 선택"
+    ID_EDIT_UNDO            "마지막 작업 실행을 취소합니다.\n실행 취소"
+    ID_EDIT_REDO            "이전에 실행 취소된 작업을 다시 실행합니다.\n다시 실행"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "도구 모음을 표시하거나 숨깁니다.\n도구 모음 설정/해제"
+    ID_VIEW_STATUS_BAR      "상태 표시줄을 표시하거나 숨깁니다.\n상태 표시줄 설정/해제"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "창 크기를 변경합니다."
+    AFX_IDS_SCMOVE          "창 위치를 변경합니다."
+    AFX_IDS_SCMINIMIZE      "창을 아이콘으로 축소합니다."
+    AFX_IDS_SCMAXIMIZE      "창을 전체 화면 크기로 확대합니다."
+    AFX_IDS_SCNEXTWINDOW    "다음 문서 창으로 전환합니다."
+    AFX_IDS_SCPREVWINDOW    "이전 문서 창으로 전환합니다."
+    AFX_IDS_SCCLOSE         "문서를 저장할 것인지 확인하고 활성 창을 닫습니다."
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "창을 보통 크기로 복원합니다."
+    AFX_IDS_SCTASKLIST      "작업 목록을 활성화합니다."
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\EffectSoundTool.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"         // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

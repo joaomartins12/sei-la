@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{75880d37-df90-4615-aa4b-f52273d887b4}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Shared Data - Source">
+      <UniqueIdentifier>{5bb03e0f-9604-463f-81cf-16c3325545e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugins - Source">
+      <UniqueIdentifier>{419bb94b-005b-4848-a2ba-62b116d0ab78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugins - Source\Results - Source">
+      <UniqueIdentifier>{b45224f2-f260-4055-a8d2-9a922d041038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugins - Source\Dialogs - Source">
+      <UniqueIdentifier>{f5506880-f49f-4523-84d0-5025c61fea16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5567b16d-a65b-49c0-998a-085f93baefc8}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Shared Data - Headers">
+      <UniqueIdentifier>{0eaa984b-1999-428c-8536-75fd730cfac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Plugins - Headers">
+      <UniqueIdentifier>{eb3f5ddc-038b-430d-b7d1-5fb45ca3e9b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Plugins - Headers\Results - Headers">
+      <UniqueIdentifier>{6e3e7c04-09c0-40d9-8b67-57f2652cfdfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Plugins - Headers\Dialogs - Headers">
+      <UniqueIdentifier>{a040b47c-bc64-4924-a228-46ceee823eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inline Files">
+      <UniqueIdentifier>{71a6d5d6-f2a7-4c35-82b0-92866f97b7e4}</UniqueIdentifier>
+      <Extensions>inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{684077e4-c239-4847-8f12-fb312dbc6834}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFileFinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFramework.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiInfoDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPluginToolkitSDM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiProgressDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiRegistry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStringTokenizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiXMLLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiSharedData.cpp">
+      <Filter>Source Files\Shared Data - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiSharedDataList.cpp">
+      <Filter>Source Files\Shared Data - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiDefaultScriptReader.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiDefaultScriptWriter.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiExportPlugin.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiExportPluginInfo.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiImportPlugin.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiImportPluginInfo.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiParameterInfo.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPlugin.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPluginHelpers.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPluginInfo.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPluginManager.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptInfo.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptInfoDialogs.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptInfoSet.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptTemplateManager.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiViewerPlugin.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiViewerPluginInfo.cpp">
+      <Filter>Source Files\Plugins - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBatchExecutionResult.cpp">
+      <Filter>Source Files\Plugins - Source\Results - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiExecutionResult.cpp">
+      <Filter>Source Files\Plugins - Source\Results - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptManagementDialog.cpp">
+      <Filter>Source Files\Plugins - Source\Dialogs - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptNameChangeDialog.cpp">
+      <Filter>Source Files\Plugins - Source\Dialogs - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptNewFromTemplateDialog.cpp">
+      <Filter>Source Files\Plugins - Source\Dialogs - Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiScriptSelectionDialog.cpp">
+      <Filter>Source Files\Plugins - Source\Dialogs - Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFileFinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFramework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiInfoDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginDLLInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginToolkit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginToolkitDefinitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginToolkitLibType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginToolkitSDM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiProgressDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiRegistry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStringTokenizer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiXMLLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiSharedData.h">
+      <Filter>Header Files\Shared Data - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiSharedDataList.h">
+      <Filter>Header Files\Shared Data - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiDefaultScriptReader.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiDefaultScriptWriter.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiExportPlugin.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiExportPluginInfo.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiImportPlugin.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiImportPluginInfo.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiParameterInfo.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPlugin.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginHelpers.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginInfo.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPluginManager.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptInfo.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptInfoDialogs.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptInfoSet.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptReader.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptTemplateManager.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptWriter.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiViewerPlugin.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiViewerPluginInfo.h">
+      <Filter>Header Files\Plugins - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBatchExecutionResult.h">
+      <Filter>Header Files\Plugins - Headers\Results - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiExecutionResult.h">
+      <Filter>Header Files\Plugins - Headers\Results - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptManagementDialog.h">
+      <Filter>Header Files\Plugins - Headers\Dialogs - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptNameChangeDialog.h">
+      <Filter>Header Files\Plugins - Headers\Dialogs - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptNewFromTemplateDialog.h">
+      <Filter>Header Files\Plugins - Headers\Dialogs - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiScriptSelectionDialog.h">
+      <Filter>Header Files\Plugins - Headers\Dialogs - Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\NiPluginToolkit.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

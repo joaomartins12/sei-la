@@ -1,0 +1,59 @@
+Script ("Default PhysX Export","PROCESS")
+{
+	Plugin ("NiSceneGraphOptimizationPlugin","Scene Graph Optimization","2.0","PROCESS")
+	{
+		Parameter ("AnimationKeyReductionTolerance","0.000100");
+		Parameter ("RemoveDupProperties","TRUE");
+		Parameter ("RemoveChildlessNodes","TRUE");
+		Parameter ("RemoveMultiMtlNodes","TRUE");
+		Parameter ("RemoveSingleChildNodes","TRUE");
+		Parameter ("MergeSiblingNodes","TRUE");
+		Parameter ("OptimizeTriShapes","TRUE");
+		Parameter ("MergeSiblingTriShapes","TRUE");
+		Parameter ("NoMergeOnAlpha","TRUE");
+		Parameter ("RemoveExtraUVSets","TRUE");
+		Parameter ("RemoveUnnecessaryNormals","TRUE");
+		Parameter ("RemoveUnnecessaryVisControllers","TRUE");
+		Parameter ("RemoveNames","FALSE");
+		Parameter ("NameUnnamedObjects","FALSE");
+		Parameter ("RemoveBadTexturingProps","TRUE");
+		Parameter ("RemoveUnnecessaryExtraData","TRUE");
+		Parameter ("RemoveSgoKeepTags","TRUE");
+		Parameter ("RemoveUnnecessaryLookAtControllers","TRUE");
+		Parameter ("RemoveHiddenBoneGeometry","TRUE");
+		Parameter ("ReduceAnimationKeys","TRUE");
+		Parameter ("SortByTexturingProp","FALSE");
+		Parameter ("WeldSkin","TRUE");
+		Parameter ("ExportSoftwareSkin","TRUE");
+		Parameter ("ExportHardwareSkin","TRUE");
+		Parameter ("BonesPerPartition","4");
+	}
+	Plugin ("NiPhysXExtractorPlugin","PhysX Extractor Plug-in","1.0","PROCESS")
+	{
+		Parameter ("PhysXExtractorSceneName","PhysX Props");
+		Parameter ("PhysXExtractorScale","1.000000");
+		Parameter ("PhysXExtractorGravityX","0.000000");
+		Parameter ("PhysXExtractorGravityY","0.000000");
+		Parameter ("PhysXExtractorGravityZ","-9.800000");
+		Parameter ("PhysXExtractorHardwareScene","FALSE");
+		Parameter ("PhysXExtractorFluidScene","FALSE");
+		Parameter ("PhysXExtractorTimestepFixed","TRUE");
+		Parameter ("PhysXExtractorTimestep","0.016667");
+		Parameter ("PhysXExtractorMaterialBase","1");
+		Parameter ("PhysXExtractorConvexSkin","0.010000");
+		Parameter ("PhysXExtractorHardware","TRUE");
+		Parameter ("PhysXExtractorKeep","FALSE");
+		Parameter ("PhysXExtractorConvertPSys","FALSE");
+		Parameter ("PhysXExtractorPSysSameSpace","FALSE");
+		Parameter ("PhysXExtractorPSysUseRot","FALSE");
+		Parameter ("PhysXExtractorSceneIndex","0.000000");
+		Parameter ("PhysXExtractorInflate","FALSE");
+		Parameter ("PhysXExtractorUncompressed","FALSE");
+	}
+	Plugin ("RemoveHiddenObjectsPlugin","Remove Hidden Objects Plug-in","1.0","PROCESS")
+	{
+	}
+	Plugin ("RemoveTaggedObjectsPlugin","Remove Tagged Objects Plug-in","2.0","PROCESS")
+	{
+	}
+}

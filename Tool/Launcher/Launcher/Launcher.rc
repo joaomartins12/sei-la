@@ -1,0 +1,318 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\Launcher.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""     // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Launcher.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_LAUNCHER_DIALOG DIALOGEX 0, 0, 424, 324
+STYLE DS_SETFONT | DS_CENTER | WS_POPUP | WS_VISIBLE
+EXSTYLE WS_EX_APPWINDOW
+FONT 9, "MS 셸 대화 상자", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_WEB_MAIN,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,7,268,20,20
+    CONTROL         "",IDC_WEB_SUB,"Static",SS_BLACKFRAME | NOT WS_VISIBLE,7,294,20,20
+END
+
+IDD_SERVERCHECK DIALOGEX 0, 0, 412, 295
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_MESSAGEBOX DIALOGEX 0, 0, 166, 72
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_OPTION DIALOGEX 0, 0, 359, 166
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "Option"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "화면",IDC_STATIC,14,8,161,74
+    CONTROL         "Full",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | WS_GROUP,62,17,35,10
+    CONTROL         "Window",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,121,16,48,12
+    COMBOBOX        IDC_COMBO2,58,30,112,94,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "해상도",IDC_STATIC,22,33,34,10
+    LTEXT           "모드",IDC_STATIC,21,19,30,9
+    LTEXT           "밝기",IDC_STATIC,21,49,29,10
+    CONTROL         "사용",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,61,49,36,9
+    CONTROL         "사용 안함",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON,122,49,50,9
+    CONTROL         "",IDC_SLIDER4,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,55,60,118,17
+    GROUPBOX        "사양",IDC_STATIC,15,87,162,24,WS_GROUP
+    CONTROL         "저사양",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON | WS_GROUP,21,97,35,9
+    CONTROL         "일반사양",IDC_RADIO12,"Button",BS_AUTORADIOBUTTON,70,97,46,9
+    CONTROL         "고사양",IDC_RADIO13,"Button",BS_AUTORADIOBUTTON,126,97,39,9
+    GROUPBOX        "배경음",IDC_STATIC,183,8,151,41
+    LTEXT           "소리",IDC_STATIC,190,19,32,9
+    CONTROL         "사용",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,230,18,36,9
+    CONTROL         "사용 안함",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,271,17,50,9
+    CONTROL         "",IDC_SLIDER3,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,213,30,119,17
+    LTEXT           "볼륨",IDC_STATIC,190,33,23,10
+    GROUPBOX        "환경음",IDC_STATIC,183,52,151,41
+    LTEXT           "소리",IDC_STATIC,190,65,32,9
+    CONTROL         "사용",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,230,63,36,9
+    CONTROL         "사용 안함",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,272,63,50,9
+    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,214,75,119,17
+    LTEXT           "볼륨",IDC_STATIC,190,79,23,10
+    GROUPBOX        "효과음",IDC_STATIC,183,96,151,41
+    LTEXT           "소리",IDC_STATIC,189,109,32,9
+    CONTROL         "사용",IDC_RADIO8,"Button",BS_AUTORADIOBUTTON,230,106,36,9
+    CONTROL         "사용 안함",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON,272,106,50,9
+    CONTROL         "",IDC_SLIDER2,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,214,119,119,17
+    LTEXT           "볼륨",IDC_STATIC,189,122,23,10
+    GROUPBOX        "기타",IDC_STATIC,15,115,162,43
+    CONTROL         "사용",IDC_RADIO14,"Button",BS_AUTORADIOBUTTON | WS_GROUP,70,128,41,9
+    CONTROL         "사용 안함",IDC_RADIO15,"Button",BS_AUTORADIOBUTTON,126,126,46,9
+    CONTROL         "사용",IDC_RADIO16,"Button",BS_AUTORADIOBUTTON | WS_GROUP,70,142,41,9
+    CONTROL         "사용 안함",IDC_RADIO17,"Button",BS_AUTORADIOBUTTON,126,142,47,9
+    LTEXT           "3D효과",IDC_STATIC,24,128,35,10
+    LTEXT           "목소리",IDC_STATIC,24,142,35,10
+    PUSHBUTTON      "저장",IDOK,210,139,60,18
+    PUSHBUTTON      "취소",IDCANCEL,276,139,60,18
+    LTEXT           "화면밝기",IDC_STATIC,21,64,37,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_LAUNCHER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 417
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 314
+        HORZGUIDE, 249
+    END
+
+    IDD_SERVERCHECK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 405
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 289
+    END
+
+    IDD_MESSAGEBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 159
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 64
+    END
+
+    IDD_OPTION, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 352
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_MAIN                BITMAP                  "res\\Win.bmp"
+
+IDB_RUN4                BITMAP                  "res\\Play04.bmp"
+
+IDB_RUN3                BITMAP                  "res\\Play03.bmp"
+
+IDB_RUN2                BITMAP                  "res\\Play02.bmp"
+
+IDB_RUN1                BITMAP                  "res\\Play01.bmp"
+
+IDB_PRO1                BITMAP                  "res\\Downbar.bmp"
+
+IDB_PRO2                BITMAP                  "res\\Upbar.bmp"
+
+IDB_CHECK1              BITMAP                  "res\\check01.bmp"
+
+IDB_CHECK2              BITMAP                  "res\\check02.bmp"
+
+IDB_CHECK3              BITMAP                  "res\\check03.bmp"
+
+IDB_CHECK4              BITMAP                  "res\\check04.bmp"
+
+IDB_INST1               BITMAP                  "res\\Inst01.bmp"
+
+IDB_INST2               BITMAP                  "res\\Inst02.bmp"
+
+IDB_INST3               BITMAP                  "res\\Inst03.bmp"
+
+IDB_INST4               BITMAP                  "res\\Inst04.bmp"
+
+IDB_MINI1               BITMAP                  "res\\Min1.bmp"
+
+IDB_MINI2               BITMAP                  "res\\Min2.bmp"
+
+IDB_MINI3               BITMAP                  "res\\Min3.bmp"
+
+IDB_MINI4               BITMAP                  "res\\Min4.bmp"
+
+IDB_CLOSE1              BITMAP                  "res\\Close1.bmp"
+
+IDB_CLOSE2              BITMAP                  "res\\Close2.bmp"
+
+IDB_CLOSE3              BITMAP                  "res\\Close3.bmp"
+
+IDB_CLOSE4              BITMAP                  "res\\Close4.bmp"
+
+IDB_RPG1                BITMAP                  "res\\Rpg01.bmp"
+
+IDB_RPG2                BITMAP                  "res\\Rpg02.bmp"
+
+IDB_RPG3                BITMAP                  "res\\Rpg03.bmp"
+
+IDB_RPG4                BITMAP                  "res\\Rpg04.bmp"
+
+IDB_MASTER1             BITMAP                  "res\\Masters01.bmp"
+
+IDB_MASTER2             BITMAP                  "res\\Masters02.bmp"
+
+IDB_MASTER3             BITMAP                  "res\\Masters03.bmp"
+
+IDB_MASTER4             BITMAP                  "res\\Masters04.bmp"
+
+IDB_NOIR1               BITMAP                  "res\\Noir01.bmp"
+
+IDB_NOIR2               BITMAP                  "res\\Noir02.bmp"
+
+IDB_NOIR3               BITMAP                  "res\\Noir03.bmp"
+
+IDB_NOIR4               BITMAP                  "res\\Noir04.bmp"
+
+IDB_MASTERS_INST        BITMAP                  "res\\Masters_Inst.bmp"
+
+IDB_CHECKBOX1           BITMAP                  "res\\CheckBox02.bmp"
+
+IDB_CHECKBOX2           BITMAP                  "res\\CheckBox01.bmp"
+
+IDB_UPDATE4             BITMAP                  "res\\Update04.bmp"
+
+IDB_UPDATE1             BITMAP                  "res\\Update01.bmp"
+
+IDB_UPDATE2             BITMAP                  "res\\Update02.bmp"
+
+IDB_UPDATE3             BITMAP                  "res\\Update03.bmp"
+
+IDB_MESSAGE             BITMAP                  "res\\MessageBoxBack.bmp"
+
+IDB_BUTTON              BITMAP                  "res\\Button.bmp"
+
+IDB_INSTALLBACK         BITMAP                  "res\\InstallBack.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_OPTION AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\Launcher.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"     // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

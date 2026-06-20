@@ -1,0 +1,80 @@
+{
+ 	"version": "00000019",
+	"x": -124,
+	"y": 60,
+	"senda": "Master",
+	"fxchain": 
+	[
+		{
+ 			"properties": 
+			[
+				{
+ 					"graph": 
+					{
+ 						"value": 0.116
+					},
+					"property": "Damping"
+				},
+				{
+ 					"graph": 
+					{
+ 						"value": 1.499
+					},
+					"property": "DecayTime"
+				},
+				{
+ 					"graph": 
+					{
+					},
+					"property": "Predelay"
+				},
+				{
+ 					"graph": 
+					{
+					},
+					"property": "Wet"
+				},
+				{
+ 					"graph": 
+					{
+ 						"value": -96
+					},
+					"property": "Dry"
+				}
+		],
+			"filter_name": "Reverb"
+		}
+],
+	"kill_db": -96,
+	"mute_db": -96,
+	"channels": 0,
+	"is_virtual": 0,
+	"pri_adjust": 0,
+	"limitaction": 1,
+	"play_silent": 0,
+	"voice_count": 0,
+	"falloff_bias": 
+	{
+	},
+	"min_interval": 0,
+	"pri_function": "",
+	"mute_pause_db": -96,
+	"distance_scale": 
+	{
+ 		"value": 1
+	},
+	"pri_adjust_amt": 1,
+	"dynroute_fadems": 0,
+	"kill_trigger_on": 0,
+	"mute_trigger_on": 0,
+	"pri_offset_graph": 
+	{
+	},
+	"dynroute_selector": 
+	{
+	},
+	"pri_adjust_custom": 0,
+	"total_voice_count": 0,
+	"play_silent_limit_db": -96,
+	"mute_pause_trigger_on": 0
+}

@@ -1,0 +1,18 @@
+// Copyright (c) 2007 - 2018 Wellbia.com Co., Ltd.
+
+#include "zwave_sdk_client_stub_x86_0-inl.h"
+#include "zwave_sdk_client_stub_x86_1-inl.h"
+#include "zwave_sdk_client_stub_x86_2-inl.h"
+#include "zwave_sdk_client_stub_x86_3-inl.h"
+#include "zwave_sdk_client_stub_x86_4-inl.h"
+#include "zwave_sdk_client_stub_x86_5-inl.h"
+#include "zwave_sdk_client_stub_x86_6-inl.h"
+#include "zwave_sdk_client_stub_x86_7-inl.h"
+#include "zwave_sdk_client_stub_x86_8-inl.h"
+#include "zwave_sdk_client_stub_x86_9-inl.h"
+#include "zwave_sdk_client_stub_x86_10-inl.h"
+#include "zwave_sdk_client_stub_x86_11-inl.h"
+#include "zwave_sdk_client_stub_x86_12-inl.h"
+#include "zwave_sdk_client_stub_x86_13-inl.h"
+#include "zwave_sdk_client_stub_x86_14-inl.h"
+#include "zwave_sdk_client_stub_x86_15-inl.h"

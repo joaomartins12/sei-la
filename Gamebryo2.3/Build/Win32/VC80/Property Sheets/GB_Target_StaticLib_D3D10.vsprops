@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="GB_Target_StaticLib_D3D10"
+	OutputDirectory="$(GB_Configuration_Name)$(GB_Target_Suffix)D3D10"
+	IntermediateDirectory="$(GB_Configuration_Name)$(GB_Target_Suffix)D3D10"
+	InheritedPropertySheets="GB_Target_StaticLib.vsprops"
+	>
+	<UserMacro
+		Name="GB_Target_Filename"
+		Value="$(GB_Target_Path)\$(ProjectName)D3D10.lib"
+	/>
+</VisualStudioPropertySheet>

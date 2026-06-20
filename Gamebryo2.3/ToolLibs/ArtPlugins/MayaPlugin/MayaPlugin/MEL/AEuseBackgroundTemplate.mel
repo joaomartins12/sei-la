@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AEuseBackgroundTemplate ( string $nodeName )
+{
+    AEGamebryoMaterialCommon $nodeName;
+    _gb_AEuseBackgroundTemplate $nodeName;
+}

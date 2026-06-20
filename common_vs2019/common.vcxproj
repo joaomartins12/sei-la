@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_DLL|Win32">
+      <Configuration>Debug_DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DLL|Win32">
+      <Configuration>Release_DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{38A8030B-015E-4B4E-825F-95417541BDB6}</ProjectGuid>
+    <RootNamespace>common</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DLL|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>COMMON_D.LIB</OutputFile>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command />
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Lib>
+      <OutputFile>COMMON_R.LIB</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DLL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>COMMON_D.LIB</OutputFile>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DLL|Win32'">
+    <PreBuildEvent>
+      <Command />
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>COMMON_R.LIB</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Captcha\cCaptchaConvert.h" />
+    <ClInclude Include="Captcha\cCaptchaDefine.h" />
+    <ClInclude Include="Captcha\cCaptchaGenerator.h" />
+    <ClInclude Include="Captcha\cCaptFont.h" />
+    <ClInclude Include="Captcha\QuickLz.h" />
+    <ClInclude Include="cBattleInfo.h" />
+    <ClInclude Include="cBuffSource.h" />
+    <ClInclude Include="cCertify.h" />
+    <ClInclude Include="cCondition.h" />
+    <ClInclude Include="cDigimonSource.h" />
+    <ClInclude Include="cDigimonTranscendence.h" />
+    <ClInclude Include="cEvoSource.h" />
+    <ClInclude Include="cEvoUnit.h" />
+    <ClInclude Include="cGotchaMachine.h" />
+    <ClInclude Include="cHatchSource.h" />
+    <ClInclude Include="cItemData.h" />
+    <ClInclude Include="cItemSource.h" />
+    <ClInclude Include="cLogFile.h" />
+    <ClInclude Include="cLua.h" />
+    <ClInclude Include="cManagerVer.h" />
+    <ClInclude Include="cMapRegion.h" />
+    <ClInclude Include="cMonsterSource.h" />
+    <ClInclude Include="cNpcSource.h" />
+    <ClInclude Include="cRideSource.h" />
+    <ClInclude Include="cSkillSource.h" />
+    <ClInclude Include="cTools.h" />
+    <ClInclude Include="cVersion.h" />
+    <ClInclude Include="Define\Define_HK.h" />
+    <ClInclude Include="Define\Define_KOR.h" />
+    <ClInclude Include="Define\Define_TH.h" />
+    <ClInclude Include="Define\Define_TW.h" />
+    <ClInclude Include="Define\Define_USA.h" />
+    <ClInclude Include="nScope.h" />
+    <ClInclude Include="pBuddy.h" />
+    <ClInclude Include="pBuff.h" />
+    <ClInclude Include="pCashShop.h" />
+    <ClInclude Include="pCore.h" />
+    <ClInclude Include="pCountry.h" />
+    <ClInclude Include="pDebug.h" />
+    <ClInclude Include="pDigimon.h" />
+    <ClInclude Include="pDigivice.h" />
+    <ClInclude Include="pEvent.h" />
+    <ClInclude Include="pGame.h" />
+    <ClInclude Include="pGame_Init.h" />
+    <ClInclude Include="pGate.h" />
+    <ClInclude Include="pGuild.h" />
+    <ClInclude Include="pHatch.h" />
+    <ClInclude Include="pInsMap.h" />
+    <ClInclude Include="pInven.h" />
+    <ClInclude Include="pItem.h" />
+    <ClInclude Include="pLength.h" />
+    <ClInclude Include="pLimit.h" />
+    <ClInclude Include="pLoadData.h" />
+    <ClInclude Include="pLog.h" />
+    <ClInclude Include="pLogin.h" />
+    <ClInclude Include="pManager.h" />
+    <ClInclude Include="pMaster.h" />
+    <ClInclude Include="pMonster.h" />
+    <ClInclude Include="pMsg.h" />
+    <ClInclude Include="pNetwork.h" />
+    <ClInclude Include="pNpc.h" />
+    <ClInclude Include="pParameter.h" />
+    <ClInclude Include="pParty.h" />
+    <ClInclude Include="pPass2.h" />
+    <ClInclude Include="pQuest.h" />
+    <ClInclude Include="pRelocate.h" />
+    <ClInclude Include="Protocol\Account_Define.h" />
+    <ClInclude Include="Protocol\Account_Protocol.h" />
+    <ClInclude Include="Protocol\Account_Result.h" />
+    <ClInclude Include="Protocol\AchieveContents_Define.h" />
+    <ClInclude Include="Protocol\AchieveContents_Protocol.h" />
+    <ClInclude Include="Protocol\BattleMatch_Define.h" />
+    <ClInclude Include="Protocol\BattleMatch_Protocol.h" />
+    <ClInclude Include="Protocol\BattleMatch_Result.h" />
+    <ClInclude Include="Protocol\CashShop_Define.h" />
+    <ClInclude Include="Protocol\CashShop_Protocol.h" />
+    <ClInclude Include="Protocol\CashShop_Result.h" />
+    <ClInclude Include="Protocol\Challenge_Define.h" />
+    <ClInclude Include="Protocol\Challenge_Protocol.h" />
+    <ClInclude Include="Protocol\Challenge_Result.h" />
+    <ClInclude Include="Protocol\Channel_Define.h" />
+    <ClInclude Include="Protocol\Channel_Protocol.h" />
+    <ClInclude Include="Protocol\Channel_Result.h" />
+    <ClInclude Include="Protocol\Chatting_Define.h" />
+    <ClInclude Include="Protocol\Chatting_Protocol.h" />
+    <ClInclude Include="Protocol\Community_Define.h" />
+    <ClInclude Include="Protocol\Community_Protocol.h" />
+    <ClInclude Include="Protocol\Community_Result.h" />
+    <ClInclude Include="Protocol\DataTrade_Define.h" />
+    <ClInclude Include="Protocol\DataTrade_Protocol.h" />
+    <ClInclude Include="Protocol\DigimonArchive_Define.h" />
+    <ClInclude Include="Protocol\DigimonArchive_protocol.h" />
+    <ClInclude Include="Protocol\DigimonArchive_Result.h" />
+    <ClInclude Include="Protocol\DigimonEvolution_Define.h" />
+    <ClInclude Include="Protocol\DigimonEvolution_Protocol.h" />
+    <ClInclude Include="Protocol\DigimonEvolution_Result.h" />
+    <ClInclude Include="Protocol\DigimonSkill_Define.h" />
+    <ClInclude Include="Protocol\DigimonSkill_Protocol.h" />
+    <ClInclude Include="Protocol\DigimonSkill_Result.h" />
+    <ClInclude Include="Protocol\DigimonTranscendence_Define.h" />
+    <ClInclude Include="Protocol\DigimonTranscendence_Protocol.h" />
+    <ClInclude Include="Protocol\DigimonTranscendence_Result.h" />
+    <ClInclude Include="Protocol\DigitamaContents_Define.h" />
+    <ClInclude Include="Protocol\DigitamaContents_Protocol.h" />
+    <ClInclude Include="Protocol\EncyclopediaContents_Define.h" />
+    <ClInclude Include="Protocol\EncyclopediaContents_Protocol.h" />
+    <ClInclude Include="Protocol\Event_Define.h" />
+    <ClInclude Include="Protocol\Event_Protocol.h" />
+    <ClInclude Include="Protocol\Event_Result.h" />
+    <ClInclude Include="Protocol\FriendList_Define.h" />
+    <ClInclude Include="Protocol\FriendList_Protocol.h" />
+    <ClInclude Include="Protocol\FriendList_Result.h" />
+    <ClInclude Include="Protocol\Inventory_Define.h" />
+    <ClInclude Include="Protocol\Inventory_Protocol.h" />
+    <ClInclude Include="Protocol\Inventory_Result.h" />
+    <ClInclude Include="Protocol\ItemDel_Define.h" />
+    <ClInclude Include="Protocol\ItemProduction_Define.h" />
+    <ClInclude Include="Protocol\ItemProduction_Protocol.h" />
+    <ClInclude Include="Protocol\ItemProduction_Result.h" />
+    <ClInclude Include="Protocol\ItemRewardContents_Define.h" />
+    <ClInclude Include="Protocol\ItemRewardContents_Protocol.h" />
+    <ClInclude Include="Protocol\ItemScan_Define.h" />
+    <ClInclude Include="Protocol\ItemScan_Protocol.h" />
+    <ClInclude Include="Protocol\ItemScan_Result.h" />
+    <ClInclude Include="Protocol\ItemSort_Protocol.h" />
+    <ClInclude Include="Protocol\ItemSort_Result.h" />
+    <ClInclude Include="Protocol\MacroProtect_Define.h" />
+    <ClInclude Include="Protocol\MacroProtect_Protocol.h" />
+    <ClInclude Include="Protocol\MacroProtect_Result.h" />
+    <ClInclude Include="Protocol\Mail_Define.h" />
+    <ClInclude Include="Protocol\Mail_Protocol.h" />
+    <ClInclude Include="Protocol\Mail_Result.h" />
+    <ClInclude Include="Protocol\MakeTacticsContents_Define.h" />
+    <ClInclude Include="Protocol\MakeTacticsContents_Protocol.h" />
+    <ClInclude Include="Protocol\Neon_Define.h" />
+    <ClInclude Include="Protocol\Neon_Protocol.h" />
+    <ClInclude Include="Protocol\Party_Define.h" />
+    <ClInclude Include="Protocol\Party_Protocol.h" />
+    <ClInclude Include="Protocol\Party_Result.h" />
+    <ClInclude Include="Protocol\PersonContents_Define.h" />
+    <ClInclude Include="Protocol\PersonContents_Protocol.h" />
+    <ClInclude Include="Protocol\PlayerInfo_Define.h" />
+    <ClInclude Include="Protocol\PlayerInfo_Protocol.h" />
+    <ClInclude Include="Protocol\PlayerInfo_Result.h" />
+    <ClInclude Include="Protocol\PortalMove_Define.h" />
+    <ClInclude Include="Protocol\PortalMove_Protocol.h" />
+    <ClInclude Include="Protocol\RecommendEvent_Define.h" />
+    <ClInclude Include="Protocol\RecommendEvent_Protocol.h" />
+    <ClInclude Include="Protocol\RelocateTamer_Define.h" />
+    <ClInclude Include="Protocol\RelocateTamer_Protoco.h" />
+    <ClInclude Include="Protocol\RelocateTamer_Result.h" />
+    <ClInclude Include="Protocol\SealMaster_Define.h" />
+    <ClInclude Include="Protocol\SealMaster_Protocol.h" />
+    <ClInclude Include="Protocol\SealMaster_Result.h" />
+    <ClInclude Include="Protocol\Store_Define.h" />
+    <ClInclude Include="Protocol\Store_Protocol.h" />
+    <ClInclude Include="Protocol\Trade_Define.h" />
+    <ClInclude Include="Protocol\Trade_Protocol.h" />
+    <ClInclude Include="Protocol\Trade_Result.h" />
+    <ClInclude Include="Protocol\UnionContents_Define.h" />
+    <ClInclude Include="Protocol\UnionContents_Protocol.h" />
+    <ClInclude Include="Protocol\VipMemberShip_Define.h" />
+    <ClInclude Include="Protocol\VipMemberShip_Protocol.h" />
+    <ClInclude Include="Protocol\VipMemberShip_Result.h" />
+    <ClInclude Include="Protocol\Xevolution_Define.h" />
+    <ClInclude Include="Protocol\Xevolution_Protocol.h" />
+    <ClInclude Include="Protocol\Xevolution_Result.h" />
+    <ClInclude Include="Protocol\Xigncode_Define.h" />
+    <ClInclude Include="Protocol\Xigncode_Protocol.h" />
+    <ClInclude Include="pScanner.h" />
+    <ClInclude Include="pServer.h" />
+    <ClInclude Include="pSession.h" />
+    <ClInclude Include="pShutdown.h" />
+    <ClInclude Include="pSkill.h" />
+    <ClInclude Include="pSync.h" />
+    <ClInclude Include="pTamer.h" />
+    <ClInclude Include="pTrade.h" />
+    <ClInclude Include="pType.h" />
+    <ClInclude Include="ResourceIntegrity_Protocol.h" />
+    <ClInclude Include="sShutdown.h" />
+    <ClInclude Include="st_Relocate.h" />
+    <ClInclude Include="typedef.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Captcha\cCaptchaConvert.cpp" />
+    <ClCompile Include="Captcha\cCaptchaGenerator.cpp" />
+    <ClCompile Include="Captcha\cCaptFont.cpp" />
+    <ClCompile Include="Captcha\QuickLz.cpp" />
+    <ClCompile Include="cCondition.cpp" />
+    <ClCompile Include="cDigimonSource.cpp" />
+    <ClCompile Include="cEvoSource.cpp" />
+    <ClCompile Include="cGotchaMachine.cpp" />
+    <ClCompile Include="cHatchSource.cpp" />
+    <ClCompile Include="cItemData.cpp" />
+    <ClCompile Include="cItemSource.cpp" />
+    <ClCompile Include="cLogFile.cpp" />
+    <ClCompile Include="cLua.cpp" />
+    <ClCompile Include="cMapRegion.cpp" />
+    <ClCompile Include="cMonsterSource.cpp" />
+    <ClCompile Include="cNpcSource.cpp" />
+    <ClCompile Include="cRideSource.cpp" />
+    <ClCompile Include="cSkillSource.cpp" />
+    <ClCompile Include="cTools.cpp" />
+    <ClCompile Include="cVersion.cpp" />
+    <ClCompile Include="pDigimon.cpp" />
+    <ClCompile Include="pGame_Init.cpp" />
+    <ClCompile Include="pLength.cpp" />
+    <ClCompile Include="pQuest.cpp" />
+    <ClCompile Include="pSkill.cpp" />
+    <ClCompile Include="pTamer.cpp" />
+    <ClCompile Include="pType.cpp" />
+    <ClCompile Include="sShutdown.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

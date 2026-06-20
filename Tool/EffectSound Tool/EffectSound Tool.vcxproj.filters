@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="View">
+      <UniqueIdentifier>{a9f3197c-3619-4531-98f0-2113f5137172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{8da6ffe8-a558-4af6-b382-9595aac8435e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{861f0af6-cd67-44a3-b536-1cd71a3634d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{b4618337-eae0-465e-950a-8b679bfd2256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{5357626b-a19f-494f-bde2-7c257dcff598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{41e683c2-10c1-4a03-85ad-bba47e873ba9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="NiViewer.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound\CSound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound\CSoundMgr.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildView.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectSound Tool.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHelper.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectView.cpp">
+      <Filter>Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgChar.cpp" />
+    <ClCompile Include="_DlgController.cpp" />
+    <ClCompile Include="_DlgEtc.cpp" />
+    <ClCompile Include="_DlgLoad.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NiViewer.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\CSound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound\CSoundMgr.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildView.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectSound Tool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHelper.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectView.h">
+      <Filter>Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgChar.h" />
+    <ClInclude Include="_DlgController.h" />
+    <ClInclude Include="_DlgEtc.h" />
+    <ClInclude Include="_DlgLoad.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\EffectSound Tool.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\EffectSoundTool.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EffectSoundTool.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

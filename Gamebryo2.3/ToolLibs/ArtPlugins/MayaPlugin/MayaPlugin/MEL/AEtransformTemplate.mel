@@ -1,0 +1,10 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+
+global proc AEtransformTemplate (string $nodeName) 
+{	
+    AEGamebryoTransformCommon $nodeName;
+    _gb_AEtransformTemplate $nodeName;
+}
+
+

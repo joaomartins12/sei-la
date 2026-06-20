@@ -1,0 +1,9 @@
+Script ("Default PS3 Viewer Script","VIEWER")
+{
+	Plugin ("NiPS3ViewerPlugin","PS3 Viewer","1.0","Viewer")
+	{
+		Parameter ("NiPluginToolkit Renderer","7");
+		Parameter ("Viewer Type","Nif Viewer");
+		Parameter ("Target","TargetConsoleName");
+	}
+}

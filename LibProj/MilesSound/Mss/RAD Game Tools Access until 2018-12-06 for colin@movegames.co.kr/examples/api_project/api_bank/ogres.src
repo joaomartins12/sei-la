@@ -1,0 +1,41 @@
+{
+ 	"version": "0000000c",
+	"sounds": 
+	[
+		{
+ 			"language": ""
+		}
+],
+	"settings": 
+	{
+ 		"bpm": "64",
+		"ir_4": 0,
+		"time": "4",
+		"localize": 0,
+		"file_name": "../media/en_US/ogres.binka",
+		"ir_offset": "0",
+		"platforms": "0",
+		"compression": 
+		{
+ 			"type": "1",
+			"option1": 0,
+			"option2": 0,
+			"resample": 0,
+			"make_loops": 0
+		},
+		"stream_buffer": 0,
+		"always_compile": 0,
+		"avail_set_name": "",
+		"avail_settings": 
+		{
+ 			"avail": "0",
+			"retain_ms": 1000,
+			"preload_ms": 100
+		},
+		"exit_cue_marker": "",
+		"entry_cue_marker": "",
+		"mix_volume_scalar": 1,
+		"compression_set_name": "",
+		"relative_path_adjustment": 0
+	}
+}

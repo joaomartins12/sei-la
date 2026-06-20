@@ -1,0 +1,16 @@
+
+#pragma once 
+
+#define QUEST_EXCEL_VERSION		9
+
+#define QUEST_TITLE_LEN			80
+#define QUEST_SIMPLE_LEN		128
+#define QUEST_HELPER_LEN		512
+#define QUEST_PROCESS_LEN		320
+#define QUEST_COMPLEATE_LEN		700
+#ifdef VERSION_USA
+#define QUEST_BODY_LEN			2048
+#else
+#define QUEST_BODY_LEN			1024
+#endif
+#define QUEST_WORKSHEET_NAME	"Quest"

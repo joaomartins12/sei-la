@@ -1,0 +1,136 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    ".\\Resource\\digimon.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR              CURSOR                  ".\\resource\\default.cur"
+
+IDC_HAND_CUR            CURSOR                  ".\\resource\\HAND_CUR.cur"
+
+IDC_ATTACK_CUR          CURSOR                  ".\\resource\\attack_cur.cur"
+
+IDC_DIGITAMA_CUR        CURSOR                  ".\\Resource\\DIGITAMA.cur"
+
+IDC_STORE_CUR           CURSOR                  ".\\Resource\\STORE_CUR.cur"
+
+IDC_TALK_CUR            CURSOR                  ".\\Resource\\TALK.cur"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+#include "./ClientVersion/ClientVersion.h"
+#define STR(value) #value
+#define STRINGIZE(value) STR(value)
+#define APS_FULLVERSION_STR \
+	STRINGIZE(COUNTRY_CODE) "." \
+	STRINGIZE(SERVICES_TYPE) "." \
+	STRINGIZE(CHANNELING_TYPE) "." \
+	STRINGIZE(SVN_REVNUMBER)
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION COUNTRY_CODE, SERVICES_TYPE, CHANNELING_TYPE, SVN_REVNUMBER
+PRODUCTVERSION COUNTRY_CODE, SERVICES_TYPE, CHANNELING_TYPE, SVN_REVNUMBER
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204b0"
+        BEGIN
+            VALUE "CompanyName", "MoveGames"
+            VALUE "FileDescription", "Digimon Masters Online"
+            VALUE "FileVersion", APS_FULLVERSION_STR
+            VALUE "InternalName", "Digimon Masters"
+            VALUE "LegalCopyright", "Copyright (C) 2011 MoveGames Co., Ltd. All Rights Reserved."
+            VALUE "OriginalFilename", "DigimonMasters.exe"
+            VALUE "ProductName", "Digimon Masters Online"
+            VALUE "ProductVersion", APS_FULLVERSION_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

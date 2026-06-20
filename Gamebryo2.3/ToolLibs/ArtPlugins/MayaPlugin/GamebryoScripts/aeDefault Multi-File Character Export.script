@@ -1,0 +1,63 @@
+Script ("Default Multi-File Character Export (KF only)","Process")
+{
+	Plugin ("NiCreateABVPlugin","Create ABV","1.0","PROCESS")
+	{
+		Parameter ("CreateABV","TRUE");
+		Parameter ("CreateWireframeABVProxy","FALSE");
+		Parameter ("CreateWireframeABV","FALSE");
+		Parameter ("CreateWireframeSelection","FALSE");
+		Parameter ("RemoveProxyGeometry","TRUE");
+	}
+	Plugin ("NiSceneGraphOptimizationPlugin","Scene Graph Optimization","2.0","PROCESS")
+	{
+		Parameter ("AnimationKeyReductionTolerance","0.000100");
+		Parameter ("RemoveDupProperties","TRUE");
+		Parameter ("RemoveChildlessNodes","TRUE");
+		Parameter ("RemoveMultiMtlNodes","TRUE");
+		Parameter ("RemoveSingleChildNodes","TRUE");
+		Parameter ("MergeSiblingNodes","TRUE");
+		Parameter ("OptimizeTriShapes","TRUE");
+		Parameter ("MergeSiblingTriShapes","TRUE");
+		Parameter ("NoMergeOnAlpha","TRUE");
+		Parameter ("RemoveExtraUVSets","TRUE");
+		Parameter ("RemoveUnnecessaryNormals","TRUE");
+		Parameter ("RemoveUnnecessaryVisControllers","TRUE");
+		Parameter ("RemoveNames","FALSE");
+		Parameter ("NameUnnamedObjects","FALSE");
+		Parameter ("RemoveBadTexturingProps","TRUE");
+		Parameter ("RemoveUnnecessaryExtraData","TRUE");
+		Parameter ("RemoveSgoKeepTags","TRUE");
+		Parameter ("RemoveUnnecessaryLookAtControllers","TRUE");
+		Parameter ("RemoveHiddenBoneGeometry","TRUE");
+		Parameter ("ReduceAnimationKeys","TRUE");
+		Parameter ("SortByTexturingProp","FALSE");
+		Parameter ("WeldSkin","TRUE");
+		Parameter ("ExportSoftwareSkin","TRUE");
+		Parameter ("ExportHardwareSkin","TRUE");
+		Parameter ("BonesPerPartition","4");
+	}
+	Plugin ("NiStripifyGeometryPlugin","Stripify Geometry","1.0","PROCESS")
+	{
+		Parameter ("PC Settings","PC - GeForce 3 & 4");
+		Parameter ("Next-Gen Xbox Settings","Next-GenXbox");
+	}
+	Plugin ("SaveSourceTextureRendererDataPlugin", "Save SourceTextureRendererData", "1.0", "PROCESS")
+	{
+	}
+	Plugin ("NiControllerExtractorPlugin","Controller Extractor","1.2.2","EXPORT")
+	{
+		Parameter ("SingleKF","TRUE");
+		Parameter ("ExportedFileName","TRUE");
+		Parameter ("CharacterName","TRUE");
+		Parameter ("UpperCase","FALSE");
+		Parameter ("Separator","_");
+		Parameter ("CreateKFM","FALSE");
+		Parameter ("CharacterNameInKFMFile","TRUE");
+		Parameter ("StoreControllers","FALSE");
+		Parameter ("SyncTransType","1");
+		Parameter ("NonSyncTransType","2");
+		Parameter ("SyncTransDuration","0.100000");
+		Parameter ("NonSyncTransDuration","0.100000");
+		Parameter ("CompressionAlways","FALSE");
+	}
+}

@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{8f528a62-d748-49f3-a2d6-444636ab61ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{0b02ddea-4083-4aac-a7b7-b71de7cafc35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer">
+      <UniqueIdentifier>{2794a4ee-238a-43e8-8025-74857ae3f177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer\Quest">
+      <UniqueIdentifier>{59305edb-1057-445a-95df-6cf4c9fb2f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer\Node">
+      <UniqueIdentifier>{44a84a28-a1b7-4d11-934c-bd2c3b0059e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer\MiniMap">
+      <UniqueIdentifier>{fcdf770c-2871-4c01-a158-d35f164a7881}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer\Popup">
+      <UniqueIdentifier>{abd74d8d-06fe-4a7a-a2b2-9f6357b999a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer\ViewList">
+      <UniqueIdentifier>{5bb8b5fc-612d-4740-b194-8c41caddf337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Viewer\ViewSimple">
+      <UniqueIdentifier>{9b76e0c3-f3c5-4798-b583-c74740306eac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Top">
+      <UniqueIdentifier>{57e04dfd-13ae-44ba-a5e3-fdf2d050693b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Discript">
+      <UniqueIdentifier>{bd1a5ef6-c101-4dd2-8223-d68f51ff1fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Discript\Setting">
+      <UniqueIdentifier>{fda4b402-3927-4e9c-b1a8-2b9bb7122b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Discript\Text">
+      <UniqueIdentifier>{4ed6183b-06e9-4808-ad7e-adca4cf058cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Discript\Event">
+      <UniqueIdentifier>{674335f2-767d-462c-b15e-f5cfc2f23fda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\_DlgModal">
+      <UniqueIdentifier>{b86888d1-c5c0-476b-9347-9bc741c36c41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\TopMenu">
+      <UniqueIdentifier>{4ea496de-ea2d-444a-9998-4bd107fcceb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control">
+      <UniqueIdentifier>{0c4ceb71-1ea1-4ed1-93d9-af79b38653c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control\Font">
+      <UniqueIdentifier>{4a1f7ac6-d863-419f-bebc-93b8d82084a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{0aae9a5a-098d-441f-94ae-cbc801ab39b7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ChildView.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestTool.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="_DEFINE.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHelper.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="WinViewer.cpp">
+      <Filter>Window\Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestMng.cpp">
+      <Filter>Window\Viewer\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestObj.cpp">
+      <Filter>Window\Viewer\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Window\Viewer\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeMng.cpp">
+      <Filter>Window\Viewer\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniMap.cpp">
+      <Filter>Window\Viewer\MiniMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Popup.cpp">
+      <Filter>Window\Viewer\Popup</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgViewList.cpp">
+      <Filter>Window\Viewer\ViewList</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgViewSimple.cpp">
+      <Filter>Window\Viewer\ViewSimple</Filter>
+    </ClCompile>
+    <ClCompile Include="WinTop.cpp">
+      <Filter>Window\Top</Filter>
+    </ClCompile>
+    <ClCompile Include="WinDiscript.cpp">
+      <Filter>Window\Discript</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting_ApplyRequite.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting_CompRequite.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting_CompTarget.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting_PreRequire.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting_Requite.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Setting_StartTarget.cpp">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Text.cpp">
+      <Filter>Window\Discript\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgTab_Event.cpp">
+      <Filter>Window\Discript\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgModal_Find.cpp">
+      <Filter>Window\_DlgModal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgModal_List.cpp">
+      <Filter>Window\_DlgModal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgModal_Simple.cpp">
+      <Filter>Window\_DlgModal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgModel_Create.cpp">
+      <Filter>Window\_DlgModal</Filter>
+    </ClCompile>
+    <ClCompile Include="WinTopMenu.cpp">
+      <Filter>Window\TopMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Button.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Sprite.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Window.cpp">
+      <Filter>Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Font.cpp">
+      <Filter>Control\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\String.cpp">
+      <Filter>Control\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\StringAnalysis.cpp">
+      <Filter>Control\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Control\Text.cpp">
+      <Filter>Control\Font</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChildView.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestTool.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>리소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_DEFINE.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHelper.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="WinViewer.h">
+      <Filter>Window\Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestMng.h">
+      <Filter>Window\Viewer\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestObj.h">
+      <Filter>Window\Viewer\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Window\Viewer\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeMng.h">
+      <Filter>Window\Viewer\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniMap.h">
+      <Filter>Window\Viewer\MiniMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Popup.h">
+      <Filter>Window\Viewer\Popup</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgViewList.h">
+      <Filter>Window\Viewer\ViewList</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgViewSimple.h">
+      <Filter>Window\Viewer\ViewSimple</Filter>
+    </ClInclude>
+    <ClInclude Include="WinTop.h">
+      <Filter>Window\Top</Filter>
+    </ClInclude>
+    <ClInclude Include="WinDiscript.h">
+      <Filter>Window\Discript</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgTab_Setting.h">
+      <Filter>Window\Discript\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgTab_Text.h">
+      <Filter>Window\Discript\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgTab_Event.h">
+      <Filter>Window\Discript\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgModal_Find.h">
+      <Filter>Window\_DlgModal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgModal_List.h">
+      <Filter>Window\_DlgModal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgModal_Simple.h">
+      <Filter>Window\_DlgModal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgModel_Create.h">
+      <Filter>Window\_DlgModal</Filter>
+    </ClInclude>
+    <ClInclude Include="WinTopMenu.h">
+      <Filter>Window\TopMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Button.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Sprite.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Window.h">
+      <Filter>Control</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Font.h">
+      <Filter>Control\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\String.h">
+      <Filter>Control\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\StringAnalysis.h">
+      <Filter>Control\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Control\Text.h">
+      <Filter>Control\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongkongDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\curCopy.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\curMove.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\LinkChild.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\LinkParent.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\QuestTool2.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\QuestTool2.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="QuestTool2.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

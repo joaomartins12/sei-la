@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Tmpl">
+      <UniqueIdentifier>{ee7106f2-62d5-40ea-875a-ce4eaa9ee78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IDE">
+      <UniqueIdentifier>{b9b7471e-6151-4887-a11f-a7e229b38110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ext">
+      <UniqueIdentifier>{8ac6f5df-c482-403a-b7ec-bdb5367d166c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ext\Loki">
+      <UniqueIdentifier>{e495cb80-f4a6-49e3-9f06-461812632a03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ext\TinyXml">
+      <UniqueIdentifier>{bbcd7274-c2da-4dc0-916e-b355158b1973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Zlib">
+      <UniqueIdentifier>{342d7dfb-cc01-45af-a222-2edc06ee8ea5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DmCSGuard.h">
+      <Filter>Tmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="DmCSMeasure.h">
+      <Filter>Tmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="DmCSRead.h">
+      <Filter>Tmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="DmCSSupport.h">
+      <Filter>Tmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="DmCSWrite.h">
+      <Filter>Tmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>IDE</Filter>
+    </ClInclude>
+    <ClInclude Include="Ext\Loki\LokiExport.h">
+      <Filter>Ext\Loki</Filter>
+    </ClInclude>
+    <ClInclude Include="Ext\Loki\Singleton.h">
+      <Filter>Ext\Loki</Filter>
+    </ClInclude>
+    <ClInclude Include="Ext\Loki\Threads.h">
+      <Filter>Ext\Loki</Filter>
+    </ClInclude>
+    <ClInclude Include="Ext\TinyXml\tinystr.h">
+      <Filter>Ext\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Ext\TinyXml\tinyxml.h">
+      <Filter>Ext\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Dm-PCH.h" />
+    <ClInclude Include="DmCompressZip.h" />
+    <ClInclude Include="DmFileFn.h" />
+    <ClInclude Include="DmSecuritySelf.h" />
+    <ClInclude Include="DmStorageFile.h" />
+    <ClInclude Include="DmStringfn.h" />
+    <ClInclude Include="DmTableData.h" />
+    <ClInclude Include="DmXml.h" />
+    <ClInclude Include="SHA256_Fn.h" />
+    <ClInclude Include="Zipwrapper\Unzipper.h">
+      <Filter>Zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Zipwrapper\Zipper.h">
+      <Filter>Zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Zipwrapper\compress.hpp">
+      <Filter>Zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Zipwrapper\decompress.hpp">
+      <Filter>Zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Zipwrapper\utils.hpp">
+      <Filter>Zlib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>IDE</Filter>
+    </ClCompile>
+    <ClCompile Include="Ext\TinyXml\tinystr.cpp">
+      <Filter>Ext\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Ext\TinyXml\tinyxml.cpp">
+      <Filter>Ext\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Ext\TinyXml\tinyxmlerror.cpp">
+      <Filter>Ext\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Ext\TinyXml\tinyxmlparser.cpp">
+      <Filter>Ext\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="DmCompressZip.cpp" />
+    <ClCompile Include="DmFileFn.cpp" />
+    <ClCompile Include="DmSecuritySelf.cpp" />
+    <ClCompile Include="DmStorageFile.cpp" />
+    <ClCompile Include="DmStringfn.cpp" />
+    <ClCompile Include="DmTableData.cpp" />
+    <ClCompile Include="DmXml.cpp" />
+    <ClCompile Include="SHA256_Fn.cpp" />
+    <ClCompile Include="Zipwrapper\Zipper.cpp">
+      <Filter>Zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Zipwrapper\Unzipper.cpp">
+      <Filter>Zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

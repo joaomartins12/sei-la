@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1d894bf1-388d-4425-998d-72d7fc3b1a13}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{7e0bffb6-924b-4b13-a9ff-7c42b36de4f0}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfBoxAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChannelList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChannelListAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChromaticities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChromaticitiesAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCompressionAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCompressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfConvert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCRgbaFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfDoubleAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfEnvmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfEnvmapAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfFloatAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfFrameBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfHeader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfHuf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfInputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfIntAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfKeyCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfKeyCodeAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfLineOrderAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfLut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfMatrixAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfMisc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfOpaqueAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfOutputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPizCompressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPreviewImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPreviewImageAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPxr24Compressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRgbaFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRgbaYca.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRleCompressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfScanLineInputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfStandardAttributes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfStdIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfStringAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTestFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTileDescriptionAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledInputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledMisc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledOutputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledRgbaFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTileOffsets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTimeCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTimeCodeAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfVecAttribute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfVersion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfWav.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfZipCompressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfAutoArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfBoxAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChannelList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChannelListAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChromaticities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfChromaticitiesAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCompression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCompressionAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCompressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfConvert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfCRgbaFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfDoubleAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfEnvmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfEnvmapAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfFloatAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfFrameBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfHuf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfInputFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfInt64.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfIntAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfKeyCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfKeyCodeAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfLineOrder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfLineOrderAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfLut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfMatrixAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfMisc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfOpaqueAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfOutputFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPixelType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPizCompressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPreviewImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPreviewImageAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfPxr24Compressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRgba.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRgbaFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRgbaYca.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfRleCompressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfScanLineInputFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfStandardAttributes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfStdIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfStringAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTestFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTileDescription.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTileDescriptionAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledInputFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledMisc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledOutputFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTiledRgbaFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTileOffsets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTimeCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfTimeCodeAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfVecAttribute.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfVersion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfWav.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfXdr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OpenEXR-1.2.2\IlmImf\ImfZipCompressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

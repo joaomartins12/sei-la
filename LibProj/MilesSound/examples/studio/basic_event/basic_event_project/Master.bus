@@ -1,0 +1,37 @@
+{
+ 	"version": "00000019",
+	"x": 0,
+	"y": 0,
+	"kill_db": -96,
+	"mute_db": -96,
+	"channels": 0,
+	"is_virtual": 0,
+	"pri_adjust": 0,
+	"limitaction": 1,
+	"play_silent": 1,
+	"voice_count": 0,
+	"falloff_bias": 
+	{
+	},
+	"min_interval": 0,
+	"pri_function": "",
+	"mute_pause_db": -96,
+	"distance_scale": 
+	{
+ 		"value": 1
+	},
+	"pri_adjust_amt": 1,
+	"dynroute_fadems": 0,
+	"kill_trigger_on": 0,
+	"mute_trigger_on": 0,
+	"pri_offset_graph": 
+	{
+	},
+	"dynroute_selector": 
+	{
+	},
+	"pri_adjust_custom": 0,
+	"total_voice_count": 0,
+	"play_silent_limit_db": -50,
+	"mute_pause_trigger_on": 0
+}

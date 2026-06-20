@@ -1,0 +1,39 @@
+
+global proc GamebryoExportSelectedWithCurrentOptions()
+{
+    source GamebryoExporting;
+
+    string $szPluginName = MyImmerseGetPluginName();
+
+    if (MyImmerseCheckAndLoadPlugin($szPluginName))
+    {
+        error("Couldn't load the MyImmerse Plugin!");
+    }
+
+    $szPluginName = MyImmerseGetNiMultiShaderPluginName();
+
+    if (MyImmerseCheckAndLoadPlugin($szPluginName))
+    {
+        error("Couldn't load the NiMultiShader Plugin!");
+    }
+        
+
+    EnsureDefault();
+
+
+    string $fileName = `optionVar -q "ExportFilePath"`;
+    int $shouldPrompt = `optionVar -q "ShouldPromptOnExport"`;
+    print("$fileName = " + $fileName);
+
+    if($shouldPrompt)
+    {
+        string $dirForBrowser = dirname($fileName);
+        print("$dirForBrowser = " + $dirForBrowser);
+        workspace -directory $dirForBrowser;
+        ExportSelection;
+    }
+    else
+    {
+        file -f -typ "Nif" -pmt $shouldPrompt -es $fileName;
+    }
+}

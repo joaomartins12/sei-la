@@ -1,0 +1,8 @@
+Asio code from https://sourceforge.net/projects/asio/
+    Version 1.20.0
+
+md5 implementation from https://github.com/Zunawe/md5-c/blob/main/md5.c
+    Commit 1525b0db1fb608afed8948f3a972d55486e8cb31
+
+ini implementation from https://github.com/mcmtroffaes/inipp/commits/develop
+    Commit c61e699682d3f1091209c2179f1d03f5fc593327

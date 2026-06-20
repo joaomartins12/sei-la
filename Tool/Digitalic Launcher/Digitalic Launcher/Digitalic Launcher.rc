@@ -1,0 +1,187 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""DigitalicLauncher.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 14,8,4,1
+ PRODUCTVERSION 14,8,4,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "Move games"
+            VALUE "FileDescription", "Movegames Launcher OCX"
+            VALUE "FileVersion", "14, 08, 04, 1"
+            VALUE "InternalName", "Digitalic Launcher.ocx"
+            VALUE "LegalCopyright", "ⓒMove Games Co., Ltd. All rights reserved."
+            VALUE "OriginalFilename", "Digitalic Launcher.ocx"
+            VALUE "ProductVersion", "14, 08, 04, 1"
+            VALUE "ProductName", "Movegames Launcher OCX"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ABOUTDLL            ICON                    "Digitalic Launcher.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DIGITALICLAUNCHER   BITMAP                  "Digitalic LauncherCtrl.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX_DIGITALICLAUNCHER DIALOG  34, 22, 260, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "DigimonMasters Launcher Control 정보"
+FONT 9, "MS Sans Serif, 굴림"
+BEGIN
+    ICON            IDI_ABOUTDLL,IDC_STATIC,10,10,20,20
+    LTEXT           "DigimonMasters Launcher Control, 버전 1.0",IDC_STATIC,40,10,170,8
+    LTEXT           "Copyright (C) 2011, ",IDC_STATIC,40,25,170,8
+    DEFPUSHBUTTON   "확인",IDOK,221,7,32,16,WS_GROUP
+END
+
+IDD_PROPPAGE_DIGITALICLAUNCHER DIALOGEX 0, 0, 251, 62
+STYLE DS_ABSALIGN | DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_BORDER
+FONT 9, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "게임런처를 실행중입니다.",IDC_STATIC,78,20,103,11
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",PBS_SMOOTH | WS_BORDER,7,39,237,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX_DIGITALICLAUNCHER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_PROPPAGE_DIGITALICLAUNCHER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 244
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_DIGITALICLAUNCHER   "DigimonMasters Launcher Control"
+    IDS_DIGITALICLAUNCHER_PPG "DigimonMasters Launcher Property Page"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_DIGITALICLAUNCHER_PPG_CAPTION "일반"
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "DigitalicLauncher.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

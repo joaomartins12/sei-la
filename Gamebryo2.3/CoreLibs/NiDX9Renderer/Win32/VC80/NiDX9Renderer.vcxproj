@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping DLL|Win32">
+      <Configuration>Shipping DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping|Win32">
+      <Configuration>Shipping</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4626D119-C4CA-4C17-8C73-846BD978BF1C}</ProjectGuid>
+    <RootNamespace>NiDX9Renderer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <OutDir>..\..\..\..\GB_Lib\ShippingLib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\..\GB_Lib\ReleaseLib\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;..\..\..\..\..\DirectX_June2010\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>D3DXFX_LARGEADDRESS_HANDLE;_DX9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>NiD3DRendererPCH.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\..\..\DirectX_June2010\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\..\..\DirectX_June2010\Include;..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>D3DXFX_LARGEADDRESS_HANDLE;_DX9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>NiD3DRendererPCH.h</PrecompiledHeaderFile>
+      <ProgramDataBaseFileName>$(IntDir)vc80.pdb</ProgramDataBaseFileName>
+      <AdditionalOptions>/EHsc %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\..\..\DirectX_June2010\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)\include;..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;C:\Users\joaom\Desktop\client-main\DirectX_June2010\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DX9;D3D_DEBUG_INFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>NiD3DRendererPCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\Lib\DebugLib\NiDX9Renderer.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\DirectX_June2010\Include;..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DX9;NIDX9RENDERER_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>NiD3DRendererPCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\GB_Lib\$(GB_Target_Filename)"</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\..\..\DirectX_June2010\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DX9;NIDX9RENDERER_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>NiD3DRendererPCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;F:\DigimonMasters_Build_GSP\Source\client\DProject_New\Dx200702\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DX9;D3D_DEBUG_INFO;NIDX9RENDERER_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>NiD3DRendererPCH.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <AdditionalLibraryDirectories>F:\DigimonMasters_Build_GSP\Source\client\DProject_New\Dx200702\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiD3DDefaultShader.cpp" />
+    <ClCompile Include="..\NiD3DDefaultShader_DX9.cpp" />
+    <ClCompile Include="..\..\NiD3DGeometryGroupManager.cpp" />
+    <ClCompile Include="..\..\NiD3DGPUProgramCache.cpp" />
+    <ClCompile Include="..\..\NiD3DHLSLPixelShader.cpp" />
+    <ClCompile Include="..\..\NiD3DHLSLVertexShader.cpp" />
+    <ClCompile Include="..\..\NiD3DPass.cpp" />
+    <ClCompile Include="..\..\NiD3DPixelShader.cpp" />
+    <ClCompile Include="..\..\NiD3DRendererPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\NiD3DRenderStateGroup.cpp" />
+    <ClCompile Include="..\..\NiD3DShader.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderConstantMap.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderDeclaration.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderFactory.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderInterface.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderLibrary.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderProgram.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderProgramCreator.cpp" />
+    <ClCompile Include="..\NiD3DShaderProgramCreator_DX9.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderProgramCreatorAsm.cpp" />
+    <ClCompile Include="..\NiD3DShaderProgramCreatorAsm_DX9.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderProgramCreatorHLSL.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderProgramCreatorObj.cpp" />
+    <ClCompile Include="..\..\NiD3DShaderProgramFactory.cpp" />
+    <ClCompile Include="..\..\NiD3DTextureStage.cpp" />
+    <ClCompile Include="..\..\NiD3DTextureStageGroup.cpp" />
+    <ClCompile Include="..\..\NiD3DUtility.cpp" />
+    <ClCompile Include="..\..\NiD3DVertexShader.cpp" />
+    <ClCompile Include="..\..\NiDX92DBufferData.cpp" />
+    <ClCompile Include="..\..\NiDX9Direct3DTexture.cpp" />
+    <ClCompile Include="..\..\NiDX9Direct3DTextureData.cpp" />
+    <ClCompile Include="..\..\NiDX9DynamicTextureData.cpp" />
+    <ClCompile Include="..\..\NiDX9Error.cpp" />
+    <ClCompile Include="..\..\NiDX9ErrorShader.cpp" />
+    <ClCompile Include="..\..\NiDX9FragmentShader.cpp" />
+    <ClCompile Include="..\..\NiDX9IBManager.cpp" />
+    <ClCompile Include="..\..\NiDX9LightManager.cpp" />
+    <ClCompile Include="..\..\NiDX9MaterialManager.cpp" />
+    <ClCompile Include="..\..\NiDX9PersistentSrcTextureRendererData.cpp" />
+    <ClCompile Include="..\..\NiDX9PixelFormat.cpp" />
+    <ClCompile Include="..\..\NiDX9RenderedCubeMapData.cpp" />
+    <ClCompile Include="..\..\NiDX9RenderedTextureData.cpp" />
+    <ClCompile Include="..\..\NiDX9Renderer.cpp" />
+    <ClCompile Include="..\..\NiDX9RendererMetrics.cpp" />
+    <ClCompile Include="..\..\NiDX9RendererSDM.cpp" />
+    <ClCompile Include="..\..\NiDX9RenderState.cpp" />
+    <ClCompile Include="..\..\NiDX9Resource.cpp" />
+    <ClCompile Include="..\..\NiDX9ShaderConstantManager.cpp" />
+    <ClCompile Include="..\..\NiDX9ShaderDeclaration.cpp" />
+    <ClCompile Include="..\..\NiDX9ShadowWriteShader.cpp" />
+    <ClCompile Include="..\..\NiDX9SourceCubeMapData.cpp" />
+    <ClCompile Include="..\..\NiDX9SourceTextureData.cpp" />
+    <ClCompile Include="..\..\NiDX9SystemDesc.cpp" />
+    <ClCompile Include="..\..\NiDX9TextureData.cpp" />
+    <ClCompile Include="..\..\NiDX9TextureManager.cpp" />
+    <ClCompile Include="..\..\NiDX9VBManager.cpp" />
+    <ClCompile Include="..\..\NiDynamicGeometryGroup.cpp" />
+    <ClCompile Include="..\..\NiGeometryBufferData.cpp" />
+    <ClCompile Include="..\..\NiGeometryGroup.cpp" />
+    <ClCompile Include="..\..\NiStaticGeometryGroup.cpp" />
+    <ClCompile Include="..\..\NiUnsharedGeometryGroup.cpp" />
+    <ClCompile Include="..\..\NiVBBlock.cpp" />
+    <ClCompile Include="..\NiVBDynamicSet_DX9.cpp" />
+    <ClCompile Include="..\..\NiVBSet.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiD3DDefaultShader.h" />
+    <ClInclude Include="..\..\NiD3DDefines.h" />
+    <ClInclude Include="..\..\NiD3DError.h" />
+    <ClInclude Include="..\..\NiD3DGeometryGroupManager.h" />
+    <ClInclude Include="..\..\NiD3DGPUProgramCache.h" />
+    <ClInclude Include="..\..\NiD3DHLSLPixelShader.h" />
+    <ClInclude Include="..\..\NiD3DHLSLVertexShader.h" />
+    <ClInclude Include="..\..\NiD3DMacros.h" />
+    <ClInclude Include="..\..\NiD3DPass.h" />
+    <ClInclude Include="..\..\NiD3DPixelShader.h" />
+    <ClInclude Include="..\..\NiD3DRendererHeaders.h" />
+    <ClInclude Include="..\..\NiD3DRendererPCH.h" />
+    <ClInclude Include="..\..\NiD3DRenderState.h" />
+    <ClInclude Include="..\..\NiD3DRenderStateGroup.h" />
+    <ClInclude Include="..\..\NiD3DShader.h" />
+    <ClInclude Include="..\..\NiD3DShaderConstantManager.h" />
+    <ClInclude Include="..\..\NiD3DShaderConstantMap.h" />
+    <ClInclude Include="..\..\NiD3DShaderDeclaration.h" />
+    <ClInclude Include="..\..\NiD3DShaderFactory.h" />
+    <ClInclude Include="..\..\NiD3DShaderInterface.h" />
+    <ClInclude Include="..\..\NiD3DShaderLibrary.h" />
+    <ClInclude Include="..\..\NiD3DShaderLibraryInterface.h" />
+    <ClInclude Include="..\..\NiD3DShaderLibraryVersion.h" />
+    <ClInclude Include="..\..\NiD3DShaderProgram.h" />
+    <ClInclude Include="..\..\NiD3DShaderProgramCreator.h" />
+    <ClInclude Include="..\..\NiD3DShaderProgramCreatorAsm.h" />
+    <ClInclude Include="..\..\NiD3DShaderProgramCreatorHLSL.h" />
+    <ClInclude Include="..\..\NiD3DShaderProgramCreatorObj.h" />
+    <ClInclude Include="..\..\NiD3DShaderProgramFactory.h" />
+    <ClInclude Include="..\..\NiD3DTextureStage.h" />
+    <ClInclude Include="..\..\NiD3DTextureStageGroup.h" />
+    <ClInclude Include="..\..\NiD3DUtility.h" />
+    <ClInclude Include="..\..\NiD3DUtils.h" />
+    <ClInclude Include="..\..\NiD3DVertexShader.h" />
+    <ClInclude Include="..\..\NiDX92DBufferData.h" />
+    <ClInclude Include="..\NiDX9Defines.h" />
+    <ClInclude Include="..\..\NiDX9Direct3DTexture.h" />
+    <ClInclude Include="..\..\NiDX9Direct3DTextureData.h" />
+    <ClInclude Include="..\..\NiDX9DynamicTextureData.h" />
+    <ClInclude Include="..\..\NiDX9Error.h" />
+    <ClInclude Include="..\..\NiDX9ErrorShader.h" />
+    <ClInclude Include="..\..\NiDX9FragmentShader.h" />
+    <ClInclude Include="..\..\NiDX9Headers.h" />
+    <ClInclude Include="..\..\NiDX9IBManager.h" />
+    <ClInclude Include="..\..\NiDX9LightManager.h" />
+    <ClInclude Include="..\..\NiDX9MaterialManager.h" />
+    <ClInclude Include="..\..\NiDX9PersistentSrcTextureRendererData.h" />
+    <ClInclude Include="..\..\NiDX9PixelFormat.h" />
+    <ClInclude Include="..\..\NiDX9RenderedCubeMapData.h" />
+    <ClInclude Include="..\..\NiDX9RenderedTextureData.h" />
+    <ClInclude Include="..\..\NiDX9Renderer.h" />
+    <ClInclude Include="..\NiDX9RendererHeaders.h" />
+    <ClInclude Include="..\..\NiDX9RendererLibType.h" />
+    <ClInclude Include="..\..\NiDX9RendererMetrics.h" />
+    <ClInclude Include="..\..\NiDX9RendererPCH.h" />
+    <ClInclude Include="..\..\NiDX9RendererSDM.h" />
+    <ClInclude Include="..\..\NiDX9RenderState.h" />
+    <ClInclude Include="..\..\NiDX9Resource.h" />
+    <ClInclude Include="..\..\NiDX9ShaderConstantManager.h" />
+    <ClInclude Include="..\..\NiDX9ShaderDeclaration.h" />
+    <ClInclude Include="..\..\NiDX9ShadowWriteShader.h" />
+    <ClInclude Include="..\..\NiDX9SourceCubeMapData.h" />
+    <ClInclude Include="..\..\NiDX9SourceTextureData.h" />
+    <ClInclude Include="..\..\NiDX9StringMacros.h" />
+    <ClInclude Include="..\..\NiDX9SystemDesc.h" />
+    <ClInclude Include="..\..\NiDX9TextureData.h" />
+    <ClInclude Include="..\..\NiDX9TextureManager.h" />
+    <ClInclude Include="..\..\NiDX9VBManager.h" />
+    <ClInclude Include="..\..\NiDynamicGeometryGroup.h" />
+    <ClInclude Include="..\..\NiGeometryBufferData.h" />
+    <ClInclude Include="..\..\NiGeometryGroup.h" />
+    <ClInclude Include="..\..\NiPackerMacros.h" />
+    <ClInclude Include="..\..\NiStaticGeometryGroup.h" />
+    <ClInclude Include="..\..\NiUnsharedGeometryGroup.h" />
+    <ClInclude Include="..\..\NiVBBlock.h" />
+    <ClInclude Include="..\..\NiVBChip.h" />
+    <ClInclude Include="..\..\NiVBDynamicSet.h" />
+    <ClInclude Include="..\..\NiVBSet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiD3DHLSLPixelShader.inl" />
+    <None Include="..\..\NiD3DHLSLVertexShader.inl" />
+    <None Include="..\..\NiD3DPass.inl" />
+    <None Include="..\..\NiD3DPixelShader.inl" />
+    <None Include="..\..\NiD3DRenderStateGroup.inl" />
+    <None Include="..\..\NiD3DShader.inl" />
+    <None Include="..\..\NiD3DShaderConstantMap.inl" />
+    <None Include="..\..\NiD3DShaderDeclaration.inl" />
+    <None Include="..\..\NiD3DShaderFactory.inl" />
+    <None Include="..\..\NiD3DShaderInterface.inl" />
+    <None Include="..\..\NiD3DShaderLibraryVersion.inl" />
+    <None Include="..\..\NiD3DShaderProgram.inl" />
+    <None Include="..\..\NiD3DShaderProgramCreator.inl" />
+    <None Include="..\..\NiD3DShaderProgramCreatorAsm.inl" />
+    <None Include="..\..\NiD3DShaderProgramCreatorHLSL.inl" />
+    <None Include="..\..\NiD3DShaderProgramCreatorObj.inl" />
+    <None Include="..\..\NiD3DShaderProgramFactory.inl" />
+    <None Include="..\..\NiD3DTextureStage.inl" />
+    <None Include="..\..\NiD3DTextureStageGroup.inl" />
+    <None Include="..\..\NiD3DUtility.inl" />
+    <None Include="..\..\NiD3DVertexShader.inl" />
+    <None Include="..\..\NiDX9Direct3DTexture.inl" />
+    <None Include="..\..\NiDX9DynamicTextureData.inl" />
+    <None Include="..\..\NiDX9LightManager.inl" />
+    <None Include="..\..\NiDX9RenderedTextureData.inl" />
+    <None Include="..\..\NiDX9Renderer.inl" />
+    <None Include="..\..\NiDX9RendererMetrics.inl" />
+    <None Include="..\..\NiDX9RenderState.inl" />
+    <None Include="..\..\NiDX9Resource.inl" />
+    <None Include="..\..\NiDX9ShaderConstantManager.inl" />
+    <None Include="..\..\NiDX9ShadowWriteShader.inl" />
+    <None Include="..\..\NiDX9SourceTextureData.inl" />
+    <None Include="..\..\NiDX9SystemDesc.inl" />
+    <None Include="..\..\NiDX9TextureData.inl" />
+    <None Include="..\..\NiGeometryBufferData.inl" />
+    <None Include="..\..\NiGeometryGroup.inl" />
+    <None Include="..\..\NiVBBlock.inl" />
+    <None Include="..\..\NiVBChip.inl" />
+    <None Include="..\..\NiVBDynamicSet.inl" />
+    <None Include="..\..\NiVBSet.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NiMain\Win32\VC80\NiMain.vcxproj">
+      <Project>{53d03958-dd10-41d6-b4c3-1ed1cc212901}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\NiSystem\Win32\VC80\NiSystem.vcxproj">
+      <Project>{b7581e4b-30ba-4481-a426-3a6d421862ab}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

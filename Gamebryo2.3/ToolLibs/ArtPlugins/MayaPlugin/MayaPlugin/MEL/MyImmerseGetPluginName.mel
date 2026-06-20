@@ -1,0 +1,48 @@
+//
+// MyImmerseGetPluginName.mel
+//
+// Mel script for Getting the Plugin Name for this version of Maya
+
+global proc string MyImmerseGetPluginName()
+{
+    string $sPluginName;
+    float $fVersion;
+
+    if (catch($fVersion = getApplicationVersionAsFloat()))
+    {
+        $fVersion = `about -v`;
+    }
+
+    if ($fVersion < 4.5)
+    {
+        return "MyImmerse";
+    }
+    else if ($fVersion < 5.0)
+    {
+        return "MyImmerse45";
+    }
+    else if ($fVersion < 6.0)
+    {
+        return "MyImmerse50";
+    }
+    else if ($fVersion < 6.5)
+    {
+        return "MyImmerse60";
+    }
+    else if ($fVersion < 7.0)
+    { 
+        return "MyImmerse65";
+    }
+    else if($fVersion < 8.0)
+	{
+		return "MyImmerse70";
+	}   
+    else if($fVersion < 8.5)
+    {
+        return "MyImmerse80";
+    }
+
+    return "MyImmerse85";
+
+    
+}

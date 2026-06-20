@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug DLL|Win32">
+      <Configuration>Debug DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release DLL|Win32">
+      <Configuration>Release DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping DLL|Win32">
+      <Configuration>Shipping DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Shipping|Win32">
+      <Configuration>Shipping</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F0A428BA-6C74-41A2-BAD5-8E21C89A9B39}</ProjectGuid>
+    <RootNamespace>NiAnimation</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_DynamicLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Debug.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Shipping.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Target_StaticLib.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Config_Release.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Language.props" />
+    <Import Project="..\..\..\..\Build\Win32\VC80\Property Sheets\GB_Precompiled_Headers.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <OutDir>..\..\..\..\GB_Lib\ShippingLib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\..\GB_Lib\ReleaseLib\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(IntDir)vc80.pdb</ProgramDataBaseFileName>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"</Command>
+    </PreLinkEvent>
+    <Lib>
+      <OutputFile>..\..\..\..\Lib\DebugLib\NiAnimation.lib</OutputFile>
+    </Lib>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIANIMATION_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\..\..\..\GB_Lib\ReleaseDLL\NiAnimation.lib</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIANIMATION_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\;..\..\;..\..\..\NiMain;..\..\..\NiMain\Win32;..\..\..\NiSystem;..\..\..\NiSystem\Win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NIANIMATION_EXPORT;NISYSTEM_IMPORT;NIMAIN_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <PreLinkEvent>
+      <Message>Creating SDK directories</Message>
+      <Command>if not exist "..\..\..\..\sdk\Win32\$(GB_Target_Path)" mkdir "..\..\..\..\sdk\Win32\$(GB_Target_Path)"
+if not exist "$(GB_Target_Import_Path)" mkdir "$(GB_Target_Import_Path)"
+</Command>
+    </PreLinkEvent>
+    <Link>
+      <AdditionalDependencies>NiSystem$(GB_DLL_Suffix).lib;NiMain$(GB_DLL_Suffix).lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>"..\..\..\..\sdk\Win32\$(GB_Target_Filename)"</OutputFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying $(ProjectName) headers to SDK</Message>
+      <Command>..\..\..\..\Build\Win32\VC80\CopyToSDK.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiActorManager.cpp" />
+    <ClCompile Include="..\..\NiAnimationMetrics.cpp" />
+    <ClCompile Include="..\..\NiAnimationPCH.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Shipping|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\NiAnimationSDM.cpp" />
+    <ClCompile Include="..\..\NiControllerManager.cpp" />
+    <ClCompile Include="..\..\NiControllerSequence.cpp" />
+    <ClCompile Include="..\..\NiGeomMorpherUpdateTask.cpp" />
+    <ClCompile Include="..\..\NiInterpScalar.cpp" />
+    <ClCompile Include="..\..\NiKFMTool.cpp" />
+    <ClCompile Include="..\..\NiOldAnimationConverter.cpp" />
+    <ClCompile Include="..\..\NiQuatTransform.cpp" />
+    <ClCompile Include="..\..\NiStringPalette.cpp" />
+    <ClCompile Include="..\..\NiTextKeyExtraData.cpp" />
+    <ClCompile Include="..\..\NiAnimationKey.cpp" />
+    <ClCompile Include="..\..\NiBezFloatKey.cpp" />
+    <ClCompile Include="..\..\NiBezPosKey.cpp" />
+    <ClCompile Include="..\..\NiBezRotKey.cpp" />
+    <ClCompile Include="..\..\NiBoolKey.cpp" />
+    <ClCompile Include="..\..\NiColorKey.cpp" />
+    <ClCompile Include="..\..\NiEulerRotKey.cpp" />
+    <ClCompile Include="..\..\NiFloatKey.cpp" />
+    <ClCompile Include="..\..\NiLinColorKey.cpp" />
+    <ClCompile Include="..\..\NiLinFloatKey.cpp" />
+    <ClCompile Include="..\..\NiLinPosKey.cpp" />
+    <ClCompile Include="..\..\NiLinRotKey.cpp" />
+    <ClCompile Include="..\..\NiPosKey.cpp" />
+    <ClCompile Include="..\..\NiRotKey.cpp" />
+    <ClCompile Include="..\..\NiStepBoolKey.cpp" />
+    <ClCompile Include="..\..\NiStepColorKey.cpp" />
+    <ClCompile Include="..\..\NiStepFloatKey.cpp" />
+    <ClCompile Include="..\..\NiStepPosKey.cpp" />
+    <ClCompile Include="..\..\NiStepRotKey.cpp" />
+    <ClCompile Include="..\..\NiTCBFloatKey.cpp" />
+    <ClCompile Include="..\..\NiTCBPosKey.cpp" />
+    <ClCompile Include="..\..\NiTCBRotKey.cpp" />
+    <ClCompile Include="..\..\NiTextKey.cpp" />
+    <ClCompile Include="..\..\NiBoolData.cpp" />
+    <ClCompile Include="..\..\NiBSplineBasisData.cpp" />
+    <ClCompile Include="..\..\NiBSplineData.cpp" />
+    <ClCompile Include="..\..\NiColorData.cpp" />
+    <ClCompile Include="..\..\NiFloatData.cpp" />
+    <ClCompile Include="..\..\NiMorphData.cpp" />
+    <ClCompile Include="..\..\NiPosData.cpp" />
+    <ClCompile Include="..\..\NiRotData.cpp" />
+    <ClCompile Include="..\..\NiTransformData.cpp" />
+    <ClCompile Include="..\..\NiBlendAccumTransformInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendBoolInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendColorInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendFloatInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendPoint3Interpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendQuaternionInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBlendTransformInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBoolInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBoolTimelineInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineColorInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineCompColorInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineCompFloatInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineCompPoint3Interpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineCompTransformInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineFloatInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineInterpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplinePoint3Interpolator.cpp" />
+    <ClCompile Include="..\..\NiBSplineTransformInterpolator.cpp" />
+    <ClCompile Include="..\..\NiColorInterpolator.cpp" />
+    <ClCompile Include="..\..\NiFloatInterpolator.cpp" />
+    <ClCompile Include="..\..\NiInterpolator.cpp" />
+    <ClCompile Include="..\..\NiKeyBasedInterpolator.cpp" />
+    <ClCompile Include="..\..\NiLookAtInterpolator.cpp" />
+    <ClCompile Include="..\..\NiPathInterpolator.cpp" />
+    <ClCompile Include="..\..\NiPoint3Interpolator.cpp" />
+    <ClCompile Include="..\..\NiQuaternionInterpolator.cpp" />
+    <ClCompile Include="..\..\NiTransformInterpolator.cpp" />
+    <ClCompile Include="..\..\NiAlphaController.cpp" />
+    <ClCompile Include="..\..\NiBoneLODController.cpp" />
+    <ClCompile Include="..\..\NiBoolInterpController.cpp" />
+    <ClCompile Include="..\..\NiColorExtraDataController.cpp" />
+    <ClCompile Include="..\..\NiColorInterpController.cpp" />
+    <ClCompile Include="..\..\NiExtraDataController.cpp" />
+    <ClCompile Include="..\..\NiFlipController.cpp" />
+    <ClCompile Include="..\..\NiFloatExtraDataController.cpp" />
+    <ClCompile Include="..\..\NiFloatInterpController.cpp" />
+    <ClCompile Include="..\..\NiFloatsExtraDataController.cpp" />
+    <ClCompile Include="..\..\NiFloatsExtraDataPoint3Controller.cpp" />
+    <ClCompile Include="..\..\NiGeomMorpherController.cpp" />
+    <ClCompile Include="..\..\NiInterpController.cpp" />
+    <ClCompile Include="..\..\NiLightColorController.cpp" />
+    <ClCompile Include="..\..\NiLightDimmerController.cpp" />
+    <ClCompile Include="..\..\NiMaterialColorController.cpp" />
+    <ClCompile Include="..\..\NiMultiTargetTransformController.cpp" />
+    <ClCompile Include="..\..\NiPoint3InterpController.cpp" />
+    <ClCompile Include="..\..\NiQuaternionInterpController.cpp" />
+    <ClCompile Include="..\..\NiSingleInterpController.cpp" />
+    <ClCompile Include="..\..\NiTextureTransformController.cpp" />
+    <ClCompile Include="..\..\NiTransformController.cpp" />
+    <ClCompile Include="..\..\NiVisController.cpp" />
+    <ClCompile Include="..\..\NiFloatController.cpp" />
+    <ClCompile Include="..\..\NiLookAtController.cpp" />
+    <ClCompile Include="..\..\NiPathController.cpp" />
+    <ClCompile Include="..\..\NiRollController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiActorManager.h" />
+    <ClInclude Include="..\..\NiAnimation.h" />
+    <ClInclude Include="..\..\NiAnimationLibType.h" />
+    <ClInclude Include="..\..\NiAnimationMetrics.h" />
+    <ClInclude Include="..\..\NiAnimationPCH.h" />
+    <ClInclude Include="..\..\NiAnimationSDM.h" />
+    <ClInclude Include="..\..\NiBSplineBasis.h" />
+    <ClInclude Include="..\..\NiBSplineFit.h" />
+    <ClInclude Include="..\..\NiControllerManager.h" />
+    <ClInclude Include="..\..\NiControllerSequence.h" />
+    <ClInclude Include="..\..\NiGeomMorpherUpdateTask.h" />
+    <ClInclude Include="..\..\NiInterpScalar.h" />
+    <ClInclude Include="..\..\NiKFMTool.h" />
+    <ClInclude Include="..\..\NiOldAnimationConverter.h" />
+    <ClInclude Include="..\..\NiQuatTransform.h" />
+    <ClInclude Include="..\..\NiSpline.h" />
+    <ClInclude Include="..\..\NiStringPalette.h" />
+    <ClInclude Include="..\..\NiTextKeyExtraData.h" />
+    <ClInclude Include="..\..\NiTextKeyMatch.h" />
+    <ClInclude Include="..\..\NiAnimationKey.h" />
+    <ClInclude Include="..\..\NiAnimationKeyMacros.h" />
+    <ClInclude Include="..\..\NiBezFloatKey.h" />
+    <ClInclude Include="..\..\NiBezPosKey.h" />
+    <ClInclude Include="..\..\NiBezRotKey.h" />
+    <ClInclude Include="..\..\NiBoolKey.h" />
+    <ClInclude Include="..\..\NiColorKey.h" />
+    <ClInclude Include="..\..\NiEulerRotKey.h" />
+    <ClInclude Include="..\..\NiFloatKey.h" />
+    <ClInclude Include="..\..\NiLinColorKey.h" />
+    <ClInclude Include="..\..\NiLinFloatKey.h" />
+    <ClInclude Include="..\..\NiLinPosKey.h" />
+    <ClInclude Include="..\..\NiLinRotKey.h" />
+    <ClInclude Include="..\..\NiPosKey.h" />
+    <ClInclude Include="..\..\NiRotKey.h" />
+    <ClInclude Include="..\..\NiStepBoolKey.h" />
+    <ClInclude Include="..\..\NiStepColorKey.h" />
+    <ClInclude Include="..\..\NiStepFloatKey.h" />
+    <ClInclude Include="..\..\NiStepPosKey.h" />
+    <ClInclude Include="..\..\NiStepRotKey.h" />
+    <ClInclude Include="..\..\NiTCBFloatKey.h" />
+    <ClInclude Include="..\..\NiTCBPosKey.h" />
+    <ClInclude Include="..\..\NiTCBRotKey.h" />
+    <ClInclude Include="..\..\NiTextKey.h" />
+    <ClInclude Include="..\..\NiBoolData.h" />
+    <ClInclude Include="..\..\NiBSplineBasisData.h" />
+    <ClInclude Include="..\..\NiBSplineData.h" />
+    <ClInclude Include="..\..\NiColorData.h" />
+    <ClInclude Include="..\..\NiFloatData.h" />
+    <ClInclude Include="..\..\NiMorphData.h" />
+    <ClInclude Include="..\..\NiPosData.h" />
+    <ClInclude Include="..\..\NiRotData.h" />
+    <ClInclude Include="..\..\NiTransformData.h" />
+    <ClInclude Include="..\..\NiAlphaController.h" />
+    <ClInclude Include="..\..\NiBoneLODController.h" />
+    <ClInclude Include="..\..\NiBoolInterpController.h" />
+    <ClInclude Include="..\..\NiColorExtraDataController.h" />
+    <ClInclude Include="..\..\NiColorInterpController.h" />
+    <ClInclude Include="..\..\NiExtraDataController.h" />
+    <ClInclude Include="..\..\NiFlipController.h" />
+    <ClInclude Include="..\..\NiFloatExtraDataController.h" />
+    <ClInclude Include="..\..\NiFloatInterpController.h" />
+    <ClInclude Include="..\..\NiFloatsExtraDataController.h" />
+    <ClInclude Include="..\..\NiFloatsExtraDataPoint3Controller.h" />
+    <ClInclude Include="..\..\NiGeomMorpherController.h" />
+    <ClInclude Include="..\..\NiInterpController.h" />
+    <ClInclude Include="..\..\NiLightColorController.h" />
+    <ClInclude Include="..\..\NiLightDimmerController.h" />
+    <ClInclude Include="..\..\NiMaterialColorController.h" />
+    <ClInclude Include="..\..\NiMultiTargetTransformController.h" />
+    <ClInclude Include="..\..\NiPoint3InterpController.h" />
+    <ClInclude Include="..\..\NiQuaternionInterpController.h" />
+    <ClInclude Include="..\..\NiSingleInterpController.h" />
+    <ClInclude Include="..\..\NiTextureTransformController.h" />
+    <ClInclude Include="..\..\NiTransformController.h" />
+    <ClInclude Include="..\..\NiVisController.h" />
+    <ClInclude Include="..\..\NiFloatController.h" />
+    <ClInclude Include="..\..\NiLookAtController.h" />
+    <ClInclude Include="..\..\NiPathController.h" />
+    <ClInclude Include="..\..\NiRollController.h" />
+    <ClInclude Include="..\..\NiBlendAccumTransformInterpolator.h" />
+    <ClInclude Include="..\..\NiBlendBoolInterpolator.h" />
+    <ClInclude Include="..\..\NiBlendColorInterpolator.h" />
+    <ClInclude Include="..\..\NiBlendFloatInterpolator.h" />
+    <ClInclude Include="..\..\NiBlendInterpolator.h" />
+    <ClInclude Include="..\..\NiBlendPoint3Interpolator.h" />
+    <ClInclude Include="..\..\NiBlendQuaternionInterpolator.h" />
+    <ClInclude Include="..\..\NiBlendTransformInterpolator.h" />
+    <ClInclude Include="..\..\NiBoolInterpolator.h" />
+    <ClInclude Include="..\..\NiBoolTimelineInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplineColorInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplineCompColorInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplineCompFloatInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplineCompPoint3Interpolator.h" />
+    <ClInclude Include="..\..\NiBSplineCompTransformInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplineFloatInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplineInterpolator.h" />
+    <ClInclude Include="..\..\NiBSplinePoint3Interpolator.h" />
+    <ClInclude Include="..\..\NiBSplineTransformInterpolator.h" />
+    <ClInclude Include="..\..\NiColorInterpolator.h" />
+    <ClInclude Include="..\..\NiFloatInterpolator.h" />
+    <ClInclude Include="..\..\NiInterpolator.h" />
+    <ClInclude Include="..\..\NiKeyBasedInterpolator.h" />
+    <ClInclude Include="..\..\NiLookAtInterpolator.h" />
+    <ClInclude Include="..\..\NiPathInterpolator.h" />
+    <ClInclude Include="..\..\NiPoint3Interpolator.h" />
+    <ClInclude Include="..\..\NiQuaternionInterpolator.h" />
+    <ClInclude Include="..\..\NiTransformInterpolator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiActorManager.inl" />
+    <None Include="..\..\NiBSplineBasis.inl" />
+    <None Include="..\..\NiBSplineFit.inl" />
+    <None Include="..\..\NiControllerManager.inl" />
+    <None Include="..\..\NiControllerSequence.inl" />
+    <None Include="..\..\NiKFMTool.inl" />
+    <None Include="..\..\NiQuatTransform.inl" />
+    <None Include="..\..\NiStringPalette.inl" />
+    <None Include="..\..\NiTextKeyExtraData.inl" />
+    <None Include="..\..\NiTextKeyMatch.inl" />
+    <None Include="..\..\NiAnimationKey.inl" />
+    <None Include="..\..\NiBezFloatKey.inl" />
+    <None Include="..\..\NiBezPosKey.inl" />
+    <None Include="..\..\NiBezRotKey.inl" />
+    <None Include="..\..\NiBoolKey.inl" />
+    <None Include="..\..\NiColorKey.inl" />
+    <None Include="..\..\NiEulerRotKey.inl" />
+    <None Include="..\..\NiFloatKey.inl" />
+    <None Include="..\..\NiLinColorKey.inl" />
+    <None Include="..\..\NiLinFloatKey.inl" />
+    <None Include="..\..\NiLinPosKey.inl" />
+    <None Include="..\..\NiLinRotKey.inl" />
+    <None Include="..\..\NiPosKey.inl" />
+    <None Include="..\..\NiRotKey.inl" />
+    <None Include="..\..\NiStepBoolKey.inl" />
+    <None Include="..\..\NiStepColorKey.inl" />
+    <None Include="..\..\NiStepFloatKey.inl" />
+    <None Include="..\..\NiStepPosKey.inl" />
+    <None Include="..\..\NiStepRotKey.inl" />
+    <None Include="..\..\NiTCBFloatKey.inl" />
+    <None Include="..\..\NiTCBPosKey.inl" />
+    <None Include="..\..\NiTCBRotKey.inl" />
+    <None Include="..\..\NiTextKey.inl" />
+    <None Include="..\..\NiBoolData.inl" />
+    <None Include="..\..\NiColorData.inl" />
+    <None Include="..\..\NiCompTransformData.inl" />
+    <None Include="..\..\NiFloatData.inl" />
+    <None Include="..\..\NiMorphData.inl" />
+    <None Include="..\..\NiPosData.inl" />
+    <None Include="..\..\NiRotData.inl" />
+    <None Include="..\..\NiTransformData.inl" />
+    <None Include="..\..\NiBlendAccumTransformInterpolator.inl" />
+    <None Include="..\..\NiBlendInterpolator.inl" />
+    <None Include="..\..\NiBoolInterpolator.inl" />
+    <None Include="..\..\NiColorInterpolator.inl" />
+    <None Include="..\..\NiCompTransformInterpolator.inl" />
+    <None Include="..\..\NiFloatInterpolator.inl" />
+    <None Include="..\..\NiInterpolator.inl" />
+    <None Include="..\..\NiLookAtInterpolator.inl" />
+    <None Include="..\..\NiPathInterpolator.inl" />
+    <None Include="..\..\NiPoint3Interpolator.inl" />
+    <None Include="..\..\NiQuaternionInterpolator.inl" />
+    <None Include="..\..\NiTransformInterpolator.inl" />
+    <None Include="..\..\NiBoneLODController.inl" />
+    <None Include="..\..\NiExtraDataController.inl" />
+    <None Include="..\..\NiFlipController.inl" />
+    <None Include="..\..\NiFloatsExtraDataController.inl" />
+    <None Include="..\..\NiFloatsExtraDataPoint3Controller.inl" />
+    <None Include="..\..\NiGeomMorpherController.inl" />
+    <None Include="..\..\NiInterpController.inl" />
+    <None Include="..\..\NiLightColorController.inl" />
+    <None Include="..\..\NiMaterialColorController.inl" />
+    <None Include="..\..\NiMultiTargetTransformController.inl" />
+    <None Include="..\..\NiTextureTransformController.inl" />
+    <None Include="..\..\NiFloatController.inl" />
+    <None Include="..\..\NiLookAtController.inl" />
+    <None Include="..\..\NiPathController.inl" />
+    <None Include="..\..\NiRollController.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NiMain\Win32\VC80\NiMain.vcxproj">
+      <Project>{53d03958-dd10-41d6-b4c3-1ed1cc212901}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\NiSystem\Win32\VC80\NiSystem.vcxproj">
+      <Project>{b7581e4b-30ba-4481-a426-3a6d421862ab}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

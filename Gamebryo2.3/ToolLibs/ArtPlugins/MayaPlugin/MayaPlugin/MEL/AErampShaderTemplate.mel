@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AErampShaderTemplate ( string $nodeName )
+{
+    AEGamebryoMaterialCommon $nodeName;
+    _gb_AErampShaderTemplate $nodeName;
+}

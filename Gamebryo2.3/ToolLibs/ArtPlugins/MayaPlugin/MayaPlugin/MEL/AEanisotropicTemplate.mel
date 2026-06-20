@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AEanisotropicTemplate ( string $nodeName )
+{
+    AEGamebryoMaterialCommon $nodeName;
+    _gb_AEanisotropicTemplate $nodeName;
+}

@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoUpgrade", "AutoUpgrade.vcxproj", "{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release_GSP_QA|Win32 = Release_GSP_QA|Win32
+		Release_GSP|Win32 = Release_GSP|Win32
+		Release_HK_QA|Win32 = Release_HK_QA|Win32
+		Release_HK|Win32 = Release_HK|Win32
+		Release_Steam_QA|Win32 = Release_Steam_QA|Win32
+		Release_Steam|Win32 = Release_Steam|Win32
+		Release_TH_QA|Win32 = Release_TH_QA|Win32
+		Release_TH|Win32 = Release_TH|Win32
+		Release_TW_QA|Win32 = Release_TW_QA|Win32
+		Release_TW|Win32 = Release_TW|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Debug|Win32.Build.0 = Debug|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_GSP_QA|Win32.ActiveCfg = Release_QA_GSP|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_GSP_QA|Win32.Build.0 = Release_QA_GSP|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_GSP|Win32.ActiveCfg = Release_Live_GSP|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_GSP|Win32.Build.0 = Release_Live_GSP|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_HK_QA|Win32.ActiveCfg = Release_QA_Hk|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_HK_QA|Win32.Build.0 = Release_QA_Hk|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_HK|Win32.ActiveCfg = Release_Live_HK|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_HK|Win32.Build.0 = Release_Live_HK|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_Steam_QA|Win32.ActiveCfg = Release_QA_STEAM|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_Steam_QA|Win32.Build.0 = Release_QA_STEAM|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_Steam|Win32.ActiveCfg = Release_Live_Steam|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_Steam|Win32.Build.0 = Release_Live_Steam|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TH_QA|Win32.ActiveCfg = Release_QA_Th|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TH_QA|Win32.Build.0 = Release_QA_Th|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TH|Win32.ActiveCfg = Release_Live_Th|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TH|Win32.Build.0 = Release_Live_Th|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TW_QA|Win32.ActiveCfg = Release_QA_TW|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TW_QA|Win32.Build.0 = Release_QA_TW|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TW|Win32.ActiveCfg = Release_Live_TW|Win32
+		{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}.Release_TW|Win32.Build.0 = Release_Live_TW|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

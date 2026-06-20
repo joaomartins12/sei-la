@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="NiMultiShader">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug DLL Maya60|Win32"
+			OutputDirectory="DebugDLL60"
+			IntermediateDirectory="DebugDLL60"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH60)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA60;STRICT;NIDEBUG"
+				RuntimeLibrary="3"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader60.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH60)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH60)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH60)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release DLL Maya60|Win32"
+			OutputDirectory="ReleaseDLL60"
+			IntermediateDirectory="ReleaseDLL60"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH60)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA60;STRICT;NIRELEASE"
+				RuntimeLibrary="2"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader60.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH60)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH60)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH60)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug DLL Maya65|Win32"
+			OutputDirectory="DebugDLL65"
+			IntermediateDirectory="DebugDLL65"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH65)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA65;STRICT;NIDEBUG"
+				RuntimeLibrary="3"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader65.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH65)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH65)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH65)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release DLL Maya65|Win32"
+			OutputDirectory="ReleaseDLL65"
+			IntermediateDirectory="ReleaseDLL65"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH65)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA65;STRICT;NIRELEASE"
+				RuntimeLibrary="2"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader65.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH65)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH65)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH65)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug DLL Maya70|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH70)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA70;STRICT;NIDEBUG"
+				RuntimeLibrary="3"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader70.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH70)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH70)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH70)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release DLL Maya70|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH70)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA70;STRICT;NIRELEASE"
+				RuntimeLibrary="2"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader70.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH70)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH70)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH70)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug DLL Maya80|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH80)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA80;STRICT;NIDEBUG"
+				RuntimeLibrary="3"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader80.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH80)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH80)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH80)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release DLL Maya80|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH80)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA80;STRICT;NIRELEASE"
+				RuntimeLibrary="2"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader80.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH80)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH80)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH80)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug DLL Maya85|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH85)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="_DEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA85;REQUIRE_IOSTREAM;STRICT;NIDEBUG"
+				RuntimeLibrary="3"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="4"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader85.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH85)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH80)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH80)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release DLL Maya85|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(MAYAINSTALLPATH85)\include&quot;;..\..\..\..\..\..\sdk\Win32\Include"
+				PreprocessorDefinitions="NDEBUG;WIN32;_WINDOWS;NT_PLUGIN;MAYA85;STRICT;NIRELEASE;REQUIRE_IOSTREAM"
+				RuntimeLibrary="2"
+				ForceConformanceInForLoopScope="TRUE"
+				UsePrecompiledHeader="2"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+				ForcedIncludeFiles="NiBuildConfiguration.h"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalOptions="/export:initializePlugin /export:uninitializePlugin "
+				AdditionalDependencies="odbc32.lib odbccp32.lib Foundation.lib OpenMaya.lib"
+				OutputFile="NiMultiShader85.mll"
+				SuppressStartupBanner="TRUE"
+				AdditionalLibraryDirectories="$(MAYAINSTALLPATH85)\lib"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="$(OutDir)\$(TargetName).lib"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Copy Mel Scripts"
+				CommandLine="copy          &quot;$(ProjectDir)..\..\MEL\*.mel&quot;          &quot;$(MAYAINSTALLPATH85)\scripts\others&quot;
+copy          &quot;$(TargetPath)&quot;          &quot;$(MAYAINSTALLPATH85)\bin\plug-ins\&quot;
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			<File
+				RelativePath="..\..\Src\NiMultiShader.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="MEL Scripts"
+			Filter="">
+			<File
+				RelativePath="..\..\MEL\AENiMultiShaderTemplate.mel">
+			</File>
+			<File
+				RelativePath="..\..\MEL\MyImmerseResetAllNiMultiShaderBaseMapOnly.mel">
+			</File>
+			<File
+				RelativePath="..\..\MEL\MyImmerseResetNiMultiShaderBaseMapOnly.mel">
+			</File>
+			<File
+				RelativePath="..\..\MEL\MyImmerseSetAllSelectedNiMultiShaderBaseMapOnly.mel">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl">
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

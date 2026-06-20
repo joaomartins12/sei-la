@@ -1,0 +1,664 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\QuestTool2.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\QuestTool2.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "파일(&F)"
+    BEGIN
+        MENUITEM "끝내기(&X)",                     ID_APP_EXIT
+    END
+    POPUP "편집(&E)"
+    BEGIN
+        MENUITEM "실행 취소(&U)\tCtrl+Z",           ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "잘라내기(&T)\tCtrl+X",            ID_EDIT_CUT
+        MENUITEM "복사(&C)\tCtrl+C",              ID_EDIT_COPY
+        MENUITEM "붙여넣기(&P)\tCtrl+V",            ID_EDIT_PASTE
+    END
+    POPUP "도움말(&H)"
+    BEGIN
+        MENUITEM "QuestTool2 정보(&A)...",        ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_TARGET MENU
+BEGIN
+    POPUP "NoneTarget"
+    BEGIN
+        POPUP "새로만들기"
+        BEGIN
+            MENUITEM "전역 생성",                       ID_CREATE_GLOBAL
+            POPUP "노드에 생성"
+            BEGIN
+                MENUITEM "현재위치 생성",                     ID_CREATE_NODE_THIS
+                MENUITEM "자동 위치",                       ID_CREATE_NODE_AUTO
+                POPUP "삽입"
+                BEGIN
+                    MENUITEM "아래로 민다",                      ID_CREATE_INSERT_BOTTOM
+                    MENUITEM "오른쪽으로 민다.",                   ID_CREATE_INSERT_RIGHT
+                    MENUITEM "위로 민다.",                      ID_CREATE_INSERT_UP
+                    MENUITEM "왼쪽으로 민다.",                    ID_CREATE_INSERT_LEFT
+                END
+            END
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "행 추가",                        ID_INSERT_COL
+        MENUITEM "열 추가",                        ID_INSERT_ROW
+        MENUITEM SEPARATOR
+        MENUITEM "빈 행 삭제",                      ID_DELETE_COL
+        MENUITEM "빈 열 삭제",                      ID_DELETE_ROW
+    END
+    POPUP "InTarget"
+    BEGIN
+        POPUP "새로만들기"
+        BEGIN
+            MENUITEM "전역 생성",                       ID_CREATE_GLOBAL
+            POPUP "노드에 생성"
+            BEGIN
+                MENUITEM "자동 위치",                       ID_CREATE_NODE_AUTO
+                POPUP "삽입"
+                BEGIN
+                    MENUITEM "아래로 민다",                      ID_CREATE_INSERT_BOTTOM
+                    MENUITEM "오른쪽으로 민다.",                   ID_CREATE_INSERT_RIGHT
+                    MENUITEM "위로 민다.",                      ID_CREATE_INSERT_UP
+                    MENUITEM "왼쪽으로 민다.",                    ID_CREATE_INSERT_LEFT
+                END
+            END
+            MENUITEM "자식 생성",                       ID_CREATE_CHILD
+        END
+        MENUITEM SEPARATOR
+        POPUP "연결 생성"
+        BEGIN
+            MENUITEM "부모 연결",                       ID_LINK_PARENT
+            MENUITEM "자식 연결",                       ID_LINK_CHILD
+        END
+        POPUP "연결 제거"
+        BEGIN
+            MENUITEM "부모 연결 전부 제거",                 ID_UNLINK_PARENT
+            MENUITEM "자식 연결 전부 제거",                 ID_UNLINK_CHILD
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "이동",                          ID_MOVE
+        MENUITEM "복사",                          ID_COPY
+        MENUITEM SEPARATOR
+        MENUITEM "제거",                          ID_DELETE
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "QuestTool2 정보"
+FONT 9, "MS 셸 대화 상자", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "QuestTool2 버전 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2009",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_DIALOG_DISCRIPT DIALOGEX 0, 0, 242, 640
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TAB_MAIN,"SysTabControl32",TCS_MULTILINE | TCS_FOCUSNEVER,4,2,233,14
+END
+
+IDD_DIALOG_TOP DIALOGEX 0, 0, 835, 24
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMBO_MIDDLTTAIL_TYPE,5,4,74,111,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "미니맵 보기",IDC_CHECK_VIEWMINIMAP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,725,5,62,13
+    COMBOBOX        IDC_COMBO_VIEWTYPE,95,4,74,111,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "검색",IDC_BUTTON_FINDWIN,229,3,53,17
+    GROUPBOX        "경험치 배율",IDC_STATIC,303,0,75,23
+    EDITTEXT        IDC_EDIT_EXP_MUL,306,10,70,13,ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_TAB_SETTING DIALOGEX 0, 0, 246, 629
+STYLE DS_ABSALIGN | DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMBO_MAINTYPE,162,31,65,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_UNIQID,14,31,43,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_MNGID,82,31,35,13,ES_AUTOHSCROLL | ES_NUMBER
+    COMBOBOX        IDC_COMBO_START_TARGET,19,92,68,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "시작 타겟",IDC_STATIC,12,78,217,51
+    EDITTEXT        IDC_EDIT_UNIQID2,13,15,140,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 제목",IDC_STATIC,11,4,218,46
+    PUSHBUTTON      "테이블",IDC_BUTTON_ST_TABLE,135,90,44,16
+    EDITTEXT        IDC_EDIT_ST_ID,90,92,44,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ST_CNT,180,92,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ST_DISCRIPT,19,110,205,13,ES_AUTOHSCROLL | ES_READONLY
+    COMBOBOX        IDC_COMBO_AP,20,203,68,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "수행 지급",IDC_STATIC,12,189,217,81
+    PUSHBUTTON      "테이블",IDC_BUTTON_AP_TABLE,135,202,44,16
+    EDITTEXT        IDC_EDIT_AP_ID,90,203,44,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_AP_CNT,180,203,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_AP_DISCRIPT,20,221,164,13,ES_AUTOHSCROLL | ES_READONLY
+    LISTBOX         IDC_LIST_AP,20,237,164,29,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "추가",IDC_BUTTON_AP_ADD,186,220,39,16
+    PUSHBUTTON      "제거",IDC_BUTTON_AP_DEL,186,251,39,16
+    COMBOBOX        IDC_COMBO_PREREQ,20,287,156,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "선행 조건",IDC_STATIC,12,273,217,101
+    PUSHBUTTON      "테이블",IDC_BUTTON_PREREQ_TABLE,181,303,44,16
+    EDITTEXT        IDC_EDIT_PREREQ_ID,180,287,44,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_PREREQ_CNT,181,321,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_PREREQ_DISCRIPT,20,306,156,13,ES_AUTOHSCROLL | ES_READONLY
+    LISTBOX         IDC_LIST_PREREQ,20,323,159,46,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "추가",IDC_BUTTON_PREREQ_ADD,186,337,39,16
+    PUSHBUTTON      "제거",IDC_BUTTON_PREREQ_DEL,186,354,39,16
+    COMBOBOX        IDC_COMBO_COMP_REQU,16,392,117,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "완료 조건",IDC_STATIC,11,378,217,127
+    PUSHBUTTON      "테이블",IDC_BUTTON_COMP_REQU_TABLE,181,391,44,16
+    EDITTEXT        IDC_EDIT_COMP_REQU_ID,136,392,44,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_COMP_REQU_CNT,16,409,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_COMP_REQU_DISCRIPT,16,448,164,13,ES_AUTOHSCROLL | ES_READONLY
+    LISTBOX         IDC_LIST_COMP_REQU,16,463,164,36,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "추가",IDC_BUTTON_COMP_REQU_ADD,181,447,44,16
+    PUSHBUTTON      "제거",IDC_BUTTON_COMP_REQU_DEL,181,484,43,16
+    PUSHBUTTON      "테이블",IDC_BUTTON_COMP_REQU_TARGET_TABLE,181,408,44,16
+    EDITTEXT        IDC_EDIT_COMP_REQU_TARGET_ID,136,409,44,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    COMBOBOX        IDC_COMBO_CT,20,146,104,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "완료 대상",IDC_STATIC,12,132,217,51
+    PUSHBUTTON      "테이블",IDC_BUTTON_CT_TABLE,182,145,44,16
+    EDITTEXT        IDC_EDIT_CT_ID,126,146,54,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CT_DISCRIPT,20,164,205,13,ES_AUTOHSCROLL | ES_READONLY
+    COMBOBOX        IDC_COMBO_REQT_TYPE,95,518,85,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "보상",IDC_STATIC,12,508,218,106
+    PUSHBUTTON      "테이블",IDC_BUTTON_REQT_TABLE2,65,534,44,16
+    EDITTEXT        IDC_EDIT_REQT_ID,20,535,44,13,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_REQT_CNT,116,535,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_REQT_DISCRIPT,20,553,164,13,ES_AUTOHSCROLL | ES_READONLY
+    LISTBOX         IDC_LIST_REQT,20,568,164,38,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "추가",IDC_BUTTON_REQT_ADD,186,552,39,16
+    PUSHBUTTON      "제거",IDC_BUTTON_REQT_DEL,185,590,39,16
+    COMBOBOX        IDC_COMBO_REQT_METHOD,20,518,71,104,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_EXP_LEVEL,119,31,41,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "활성화",IDC_CHECK_ACTIVE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,14,36,14
+    CONTROL         "즉시",IDC_CHECK_IMMEDIATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,197,14,28,14
+    PUSHBUTTON      "적용",IDC_BUTTON_UNIQID_APPLY,57,30,22,14
+    GROUPBOX        "",IDC_STATIC,11,50,218,27
+    EDITTEXT        IDC_EDIT_MODELID_RECV,17,59,49,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_MODELID_COMP,69,59,49,13,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "수정",IDC_BUTTON_QUEST_INFO_EDIT,181,466,44,16
+    EDITTEXT        IDC_EDIT_COMP_REQU_SUBVALUE1,86,428,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_COMP_REQU_SUBVALUE2,136,428,44,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "초기화여부",IDC_CHECK_IS_RESET_QUEST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,150,56,78,17
+END
+
+IDD_DIALOG_LIST DIALOGEX 0, 0, 532, 514
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "파일 테이블 리스트"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_MAIN,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,0,0,531,513
+END
+
+IDD_DIALOG_TAB_TEXT DIALOGEX 0, 0, 242, 574
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "본문",IDC_STATIC,12,55,217,115
+    GROUPBOX        "퀘스트 제목",IDC_STATIC,11,7,218,46
+    EDITTEXT        IDC_EDIT_TITLE,56,18,170,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_UNIQID,14,18,40,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_TAB,14,34,212,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BODY_LEN,148,155,78,13,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_BODY,12,65,217,88,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    GROUPBOX        "퀘스트 중",IDC_STATIC,12,172,217,73
+    EDITTEXT        IDC_EDIT_ING,12,183,217,46,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_ING_LEN,148,230,78,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 완료",IDC_STATIC,12,248,217,73
+    EDITTEXT        IDC_EDIT_COMP,12,258,217,46,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_COMP_LEN,148,306,78,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 확장",IDC_STATIC,12,323,217,73
+    EDITTEXT        IDC_EDIT_EXT,12,333,217,46,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_EXT_LEN,148,381,78,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 간략화",IDC_STATIC,12,400,217,59
+    EDITTEXT        IDC_EDIT_SIMPLE,12,410,217,33,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_SIMPLE_LEN,148,444,78,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 도우미",IDC_STATIC,12,461,217,73
+    EDITTEXT        IDC_EDIT_HELPER,12,471,217,46,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    EDITTEXT        IDC_EDIT_HELPER_LEN,148,519,78,13,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_DIALOG_CREATE DIALOGEX 0, 0, 330, 151
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "퀘스트 생성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_UNIQID,10,17,48,13,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "ID",IDC_STATIC,9,6,49,26
+    COMBOBOX        IDC_COMBO_ST,70,18,74,87,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_ST_ID,147,18,48,13,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "테이블",IDC_BUTTON_ST_TABLE,197,17,33,15
+    GROUPBOX        "시작 타겟",IDC_STATIC,69,6,162,26
+    PUSHBUTTON      "생성",IDC_BUTTON_OK,236,87,46,20
+    EDITTEXT        IDC_EDIT_LEVEL,10,48,48,13,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Level",IDC_STATIC,9,36,49,26
+END
+
+IDD_DIALOG_TOPMENU DIALOGEX 0, 0, 207, 26
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Save",IDC_BUTTON_SAVE,2,2,61,19
+    PUSHBUTTON      "테이블 재로드",IDC_BUTTON_LOAD_TABLE,130,1,67,20
+END
+
+IDD_DIALOG_VIEW_LIST DIALOGEX 0, 0, 852, 584
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_BORDER
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_MAIN,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,0,29,850,534
+    PUSHBUTTON      "제거",IDC_BUTTON_DELETE,781,7,67,18
+END
+
+IDD_DIALOG_VIEW_SIMPLE DIALOGEX 0, 0, 852, 584
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_BORDER
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_MAIN,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,0,46,850,534
+    PUSHBUTTON      "제거",IDC_BUTTON_DELETE,781,18,67,18
+END
+
+IDD_DIALOG_SIMPLE DIALOGEX 0, 0, 330, 151
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "심플 데이터"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_LEVEL,15,18,48,13,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Level",IDC_STATIC,14,7,49,26
+    EDITTEXT        IDC_EDIT_MONEY,74,18,48,13,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Money",IDC_STATIC,73,7,49,26
+    EDITTEXT        IDC_EDIT_EXP,135,18,48,13,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Exp",IDC_STATIC,133,7,49,26
+    PUSHBUTTON      "확인",IDC_BUTTON_OK,265,121,53,18
+END
+
+IDD_DIALOG_FIND DIALOGEX 0, 0, 532, 470
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "파일 테이블 리스트"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_FIND,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,0,82,531,388
+    PUSHBUTTON      "검색",IDC_BUTTON_DOFIND,4,4,57,18
+    COMBOBOX        IDC_COMBO_FIND_TYPE,90,7,74,111,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_FINDSTR,166,7,230,13,ES_AUTOHSCROLL | ES_WANTRETURN
+END
+
+IDD_DIALOG_TAB_EVENT DIALOGEX 0, 0, 242, 574
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_TITLE,13,18,214,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 제목",IDC_STATIC,11,7,218,30
+    GROUPBOX        "퀘스트 시작",IDC_STATIC,12,40,217,51
+    PUSHBUTTON      "테이블",IDC_BUTTON_QS_EI,87,53,44,16
+    EDITTEXT        IDC_EDIT_QS_EI,18,54,68,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_QS_ET,19,72,205,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 진행중",IDC_STATIC,12,96,217,51
+    PUSHBUTTON      "테이블",IDC_BUTTON_QP_EI,87,109,44,16
+    EDITTEXT        IDC_EDIT_QP_EI,18,110,68,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_QP_ET,19,128,205,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 완료",IDC_STATIC,13,152,217,51
+    PUSHBUTTON      "테이블",IDC_BUTTON_QC_EI,89,165,44,16
+    EDITTEXT        IDC_EDIT_QC_EI,19,166,68,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_QC_ET,21,184,205,13,ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "퀘스트 보상",IDC_STATIC,13,208,217,51
+    PUSHBUTTON      "테이블",IDC_BUTTON_QR_EI,89,221,44,16
+    EDITTEXT        IDC_EDIT_QR_EI,19,222,68,13,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_QR_ET,21,240,205,13,ES_AUTOHSCROLL | ES_READONLY
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "QuestTool2.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "QuestTool2.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DIALOG_DISCRIPT, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 574
+    END
+
+    IDD_DIALOG_TOP, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_TAB_SETTING, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 619
+    END
+
+    IDD_DIALOG_LIST, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_TAB_TEXT, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_CREATE, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_TOPMENU, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_VIEW_LIST, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 580
+    END
+
+    IDD_DIALOG_VIEW_SIMPLE, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 580
+    END
+
+    IDD_DIALOG_SIMPLE, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_FIND, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG_TAB_EVENT, DIALOG
+    BEGIN
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CUR_LINK_PARENT     CURSOR                  "res\\LinkParent.cur"
+
+IDC_CUR_LINK_CHILD      CURSOR                  "res\\LinkChild.cur"
+
+IDC_CUR_COPY            CURSOR                  "res\\curCopy.cur"
+
+IDC_CUR_MOVE            CURSOR                  "res\\curMove.cur"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG_CREATE AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG_FIND AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG_TAB_SETTING AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG_TOP AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "QuestTool2"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "QuestTool2"
+    AFX_IDS_IDLEMESSAGE     "준비"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "프로그램 정보, 버전 번호, 저작권을 표시합니다.\n정보"
+    ID_APP_EXIT             "문서를 저장할지를 묻고 응용 프로그램을 끝냅니다.\n끝내기"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "다음 창으로 전환합니다.\n다음 창"
+    ID_PREV_PANE            "이전 창으로 전환합니다.\n이전 창"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "활성 창을 여러 개의 창으로 분할합니다.\n분할"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "선택 영역을 지웁니다.\n지우기"
+    ID_EDIT_CLEAR_ALL       "모두 지웁니다.\n모두 지우기"
+    ID_EDIT_COPY            "선택 영역을 복사하여 클립보드에 넣습니다.\n복사"
+    ID_EDIT_CUT             "선택 영역을 잘라내어 클립보드에 넣습니다.\n잘라내기"
+    ID_EDIT_FIND            "지정한 텍스트를 찾습니다.\n찾기"
+    ID_EDIT_PASTE           "클립보드 내용을 삽입합니다.\n붙여넣기"
+    ID_EDIT_REPEAT          "마지막 작업을 반복합니다.\n반복"
+    ID_EDIT_REPLACE         "특정 텍스트를 다른 텍스트로 바꿉니다.\n바꾸기"
+    ID_EDIT_SELECT_ALL      "전체 문서를 선택합니다.\n모두 선택"
+    ID_EDIT_UNDO            "마지막 작업 실행을 취소합니다.\n실행 취소"
+    ID_EDIT_REDO            "이전에 실행 취소된 작업을 다시 실행합니다.\n다시 실행"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "창 크기를 변경합니다."
+    AFX_IDS_SCMOVE          "창 위치를 변경합니다."
+    AFX_IDS_SCMINIMIZE      "창을 아이콘으로 축소합니다."
+    AFX_IDS_SCMAXIMIZE      "창을 전체 화면 크기로 확대합니다."
+    AFX_IDS_SCNEXTWINDOW    "다음 문서 창으로 전환합니다."
+    AFX_IDS_SCPREVWINDOW    "이전 문서 창으로 전환합니다."
+    AFX_IDS_SCCLOSE         "문서를 저장할 것인지 확인하고 활성 창을 닫습니다."
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "창을 보통 크기로 복원합니다."
+    AFX_IDS_SCTASKLIST      "작업 목록을 활성화합니다."
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\QuestTool2.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "afxres.rc"         // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

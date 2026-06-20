@@ -1,0 +1,69 @@
+
+
+global proc GamebryoMultiBatchExport(string $fileListPath)
+{
+	source GamebryoExporting;
+	
+	float $version =  getApplicationVersionAsFloat();
+	string $versionString;
+	
+	if(6.0 <= $version && $version < 6.5)
+	{
+		loadPlugin MyImmerse60;
+		loadPlugin NiMultiShader60;
+	}
+	else if(6.5 <= $version  && $version < 7.0)
+	{
+		loadPlugin MyImmerse65;
+		loadPlugin NiMultiShader65;
+	}
+	else if(7.0 <= $version && $version < 8.0)
+	{
+		loadPlugin MyImmerse70;
+		loadPlugin NiMultiShader70;
+	}
+	else if(8.0 <= $version && $version < 8.5)
+	{
+		loadPlugin MyImmerse80;
+		loadPlugin NiMultiShader80;
+	}
+	else if(8.5 <= $version && $version < 9.0)
+	{
+		loadPlugin MyImmerse85;
+		loadPlugin NiMultiShader85;
+	}
+	
+	optionVar -iv "GamebryoLastOrDefaultExport" 1;
+	
+	//open the file
+ 	$fileId=`fopen $fileListPath "r"`;
+ 	string $nextLine = `fgetline $fileId`;
+ 	
+	string $buffer[];
+	
+	while ( size( $nextLine ) > 0 ) { 
+ 		tokenize $nextLine ";" $buffer;
+		
+		$filePath = $buffer[0];
+		$exportPath = $buffer[1];
+		
+		if($exportPath == "")
+		{
+			$exportPath = basename($filePath, ".mb");
+			$exportPath = basename($filePath, ".ma");
+			
+		}
+		
+		optionVar -sv "ExportFilePath" $exportPath;
+		
+		$filePath = strip($filePath);
+		
+		catch(`file -o -f $filePath`);
+		
+		GamebryoExportWithCurrentOptions;
+		
+ 		$nextLine = `fgetline $fileId`;
+ 	}	
+	
+ 	fclose $fileId; 
+}

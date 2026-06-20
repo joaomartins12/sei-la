@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Input">
+      <UniqueIdentifier>{cf7cd340-589e-43d8-88fd-366802536b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{559e913a-cedc-421f-b017-4dbafc7640df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\PathEngine">
+      <UniqueIdentifier>{6ee262a8-2ff3-496c-a74c-510f3dd52eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{433a6ec7-efbe-4811-891d-77050eb19f8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\OcclusionCuller">
+      <UniqueIdentifier>{febbe4c2-d1a8-46ca-9a29-b4fd0fb82d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain">
+      <UniqueIdentifier>{ef562916-9992-4b9d-852c-2f8a0a01f3b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Make">
+      <UniqueIdentifier>{faa8d8c9-1708-42ca-b4d8-c5e8565549f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Terrain">
+      <UniqueIdentifier>{83aa1c6e-ae32-4bd7-a0a2-42784177eb6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Manager">
+      <UniqueIdentifier>{98f1ae2c-26f8-466e-891e-726d8e5b9e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Object">
+      <UniqueIdentifier>{37e22c20-7ca5-4b50-af81-8e548f58fed7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Object\Property">
+      <UniqueIdentifier>{a835d238-f88b-4b4c-952f-3e1cbceb4923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Object\Option">
+      <UniqueIdentifier>{d6ca78df-93c7-4bf6-b498-ba305628ce70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\GB Descent">
+      <UniqueIdentifier>{bfd12891-defb-4627-b177-77f15fed6794}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Light">
+      <UniqueIdentifier>{f2cb0384-580c-4ac5-a8fa-c20eaa49d070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Shadow">
+      <UniqueIdentifier>{b4953cd2-b31c-4f1f-b277-8c39883e9ea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\SpeedCell">
+      <UniqueIdentifier>{ba6faae7-3260-4b79-9e85-c500d4a1b9cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Weather">
+      <UniqueIdentifier>{842c1362-37d9-4fac-a750-1963816e0439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{d532931a-98b0-4be3-888f-35a04f721ca3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{14db0a1e-dda8-4183-87d8-8722156d52e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{acf98cfd-01a3-4f8c-a6b1-f075da2ab3d8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CsGBInput.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBFunc.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBMemPool.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="PathEngine.cpp">
+      <Filter>Main\PathEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBAttachCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBPick.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBSubCamera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBVisible.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="NiOcclusionCuller.cpp">
+      <Filter>Camera\OcclusionCuller</Filter>
+    </ClCompile>
+    <ClCompile Include="Occluder.cpp">
+      <Filter>Camera\OcclusionCuller</Filter>
+    </ClCompile>
+    <ClCompile Include="PlanarOccluder.cpp">
+      <Filter>Camera\OcclusionCuller</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainDefine.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainMake.cpp">
+      <Filter>Terrain\Make</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBSkyBox.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainLeaf.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainNode.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainRoot.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainRoot_Info.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainRoot_SaveLoad.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainRoot_VersionUp.cpp">
+      <Filter>Terrain\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjectResMng.cpp">
+      <Filter>Terrain\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainMng.cpp">
+      <Filter>Terrain\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObj_Eff.cpp">
+      <Filter>Terrain\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObj_Portal.cpp">
+      <Filter>Terrain\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObj_Rot.cpp">
+      <Filter>Terrain\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObject.cpp">
+      <Filter>Terrain\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObject_UserDefine.cpp">
+      <Filter>Terrain\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp_ABV.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp_Actor.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp_Alpha.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp_AvCap.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp_AvTbp.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjProp_Sound.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjPropFactor.cpp">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjOpt.cpp">
+      <Filter>Terrain\Object\Option</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjOpt_DarkMap.cpp">
+      <Filter>Terrain\Object\Option</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBObjOptFactor.cpp">
+      <Filter>Terrain\Object\Option</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBDX9Renderer.cpp">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBTerrainRenderer.cpp">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClCompile>
+    <ClCompile Include="CsNiGeometry.cpp">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClCompile>
+    <ClCompile Include="CsNiNode.cpp">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBLight.cpp">
+      <Filter>Terrain\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBLight_Dir.cpp">
+      <Filter>Terrain\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBLight_Point.cpp">
+      <Filter>Terrain\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBLightMng.cpp">
+      <Filter>Terrain\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBShadow.cpp">
+      <Filter>Terrain\Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBCell.cpp">
+      <Filter>Terrain\SpeedCell</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBSpeedCell.cpp">
+      <Filter>Terrain\SpeedCell</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGBWeather.cpp">
+      <Filter>Terrain\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="CsGeomBox.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryList.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeObj.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Sorting.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CsGBInput.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBFunc.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBMemPool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBNiMemPool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="PathEngine.h">
+      <Filter>Main\PathEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBAttachCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBPick.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBSubCamera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBVisible.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="NiOcclusionCuller.h">
+      <Filter>Camera\OcclusionCuller</Filter>
+    </ClInclude>
+    <ClInclude Include="Occluder.h">
+      <Filter>Camera\OcclusionCuller</Filter>
+    </ClInclude>
+    <ClInclude Include="PlanarOccluder.h">
+      <Filter>Camera\OcclusionCuller</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainDefine.h">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainHeader.h">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainMake.h">
+      <Filter>Terrain\Make</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBSkyBox.h">
+      <Filter>Terrain\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainLeaf.h">
+      <Filter>Terrain\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainNode.h">
+      <Filter>Terrain\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainRoot.h">
+      <Filter>Terrain\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainStructVersion.h">
+      <Filter>Terrain\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjectResMng.h">
+      <Filter>Terrain\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainMng.h">
+      <Filter>Terrain\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObj_Eff.h">
+      <Filter>Terrain\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObj_Portal.h">
+      <Filter>Terrain\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObj_Rot.h">
+      <Filter>Terrain\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObject.h">
+      <Filter>Terrain\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObject_UserDefine.h">
+      <Filter>Terrain\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp_ABV.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp_Actor.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp_Alpha.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp_AvCap.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp_AvTbp.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjProp_Sound.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjPropFactor.h">
+      <Filter>Terrain\Object\Property</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjOpt.h">
+      <Filter>Terrain\Object\Option</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjOpt_DarkMap.h">
+      <Filter>Terrain\Object\Option</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBObjOptFactor.h">
+      <Filter>Terrain\Object\Option</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBDX9Renderer.h">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBTerrainRenderer.h">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClInclude>
+    <ClInclude Include="CsNiGeometry.h">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClInclude>
+    <ClInclude Include="CsNiNode.h">
+      <Filter>Terrain\GB Descent</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBLight.h">
+      <Filter>Terrain\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBLight_Dir.h">
+      <Filter>Terrain\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBLight_Point.h">
+      <Filter>Terrain\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBLightMng.h">
+      <Filter>Terrain\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBShadow.h">
+      <Filter>Terrain\Shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBCell.h">
+      <Filter>Terrain\SpeedCell</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBSpeedCell.h">
+      <Filter>Terrain\SpeedCell</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGBWeather.h">
+      <Filter>Terrain\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="CsGeomBox.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryList.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeObj.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Sorting.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="CsSoundMng.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongKongDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CsGBFunc.inl">
+      <Filter>Main</Filter>
+    </None>
+    <None Include="CsGBCamera.inl">
+      <Filter>Camera</Filter>
+    </None>
+    <None Include="CsGBPick.inl">
+      <Filter>Camera</Filter>
+    </None>
+    <None Include="CsGBVisible.inl">
+      <Filter>Camera</Filter>
+    </None>
+    <None Include="CsGBTerrainLeaf.inl">
+      <Filter>Terrain\Terrain</Filter>
+    </None>
+    <None Include="CsGBTerrainNode.inl">
+      <Filter>Terrain\Terrain</Filter>
+    </None>
+    <None Include="CsGBTerrainRoot.inl">
+      <Filter>Terrain\Terrain</Filter>
+    </None>
+    <None Include="CsGBObject.inl">
+      <Filter>Terrain\Object</Filter>
+    </None>
+    <None Include="CsGBObjProp_Alpha.inl">
+      <Filter>Terrain\Object\Property</Filter>
+    </None>
+    <None Include="CsGBObjProp_AvCap.inl">
+      <Filter>Terrain\Object\Property</Filter>
+    </None>
+    <None Include="CsGBObjProp_AvTbp.inl">
+      <Filter>Terrain\Object\Property</Filter>
+    </None>
+    <None Include="CsGBObjPropFactor.inl">
+      <Filter>Terrain\Object\Property</Filter>
+    </None>
+    <None Include="CsGBObjOptFactor.inl">
+      <Filter>Terrain\Object\Option</Filter>
+    </None>
+    <None Include="GeometryList.inl">
+      <Filter>Geometry</Filter>
+    </None>
+  </ItemGroup>
+</Project>

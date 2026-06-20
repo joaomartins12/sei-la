@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_TH_QA|Win32">
+      <Configuration>Release_TH_QA</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_TH|Win32">
+      <Configuration>Release_TH</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1216860D-9AF4-4FB3-92BE-2AE1B8FE1442}</ProjectGuid>
+    <RootNamespace>AutoUpgrade</RootNamespace>
+    <SccProjectName>Svn</SccProjectName>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH_QA|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH_QA|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH|Win32'">
+    <OutDir>..\..\..\Launcher\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>DMLauncher</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH_QA|Win32'">
+    <OutDir>..\..\..\Launcher\$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>DMLauncher</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\Launcher\$(Configuration)\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;THAI_VERSION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\ThirdPartyCode\ZLib\zlib123;..\..\LibProj\CsDM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;VERSION_TH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x041e</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>wininet.lib;version.lib;zlib_mt.lib;CsFilePack_mt.lib;CsFunc_mt.lib;CsThread_mt.lib;CsDM_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>..\..\lib\common;..\..\Gamebryo2.3\GB_Lib\ThirdPartyLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_TH_QA|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;THAI_VERSION;QA_VERSION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>.\;..\;..\..\Gamebryo2.3\ThirdPartyCode\ZLib\zlib123;..\..\LibProj\CsDM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;VERSION_QA;VERSION_TH;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x041e</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>wininet.lib;version.lib;zlib_mt.lib;CsFilePack_mt.lib;CsFunc_mt.lib;CsThread_mt.lib;CsDM_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <AdditionalLibraryDirectories>..\..\lib\common;..\..\Gamebryo2.3\GB_Lib\ThirdPartyLib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AUD_CallBackFunc.cpp" />
+    <ClCompile Include="AUD_Func.cpp" />
+    <ClCompile Include="AUD_Pack.cpp" />
+    <ClCompile Include="AUD_UI.cpp" />
+    <ClCompile Include="AutoUpgrade.cpp" />
+    <ClCompile Include="AutoUpgradeDlg.cpp" />
+    <ClCompile Include="BmpButton.cpp" />
+    <ClCompile Include="DownEngineSDK.cpp" />
+    <ClCompile Include="IniFile.cpp" />
+    <ClCompile Include="MyHtmlView.cpp" />
+    <ClCompile Include="Option.cpp" />
+    <ClCompile Include="ProgressST.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TH_QA|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TH|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ThreadMng.cpp" />
+    <ClCompile Include="Thread_Data.cpp" />
+    <ClCompile Include="UseRegistry.cpp" />
+    <ClCompile Include="WindowVersionChecker.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AutoUpgrade.h" />
+    <ClInclude Include="AutoUpgradeDlg.h" />
+    <ClInclude Include="BmpButton.h" />
+    <ClInclude Include="DownEngineSDK.h" />
+    <ClInclude Include="IniFile.h" />
+    <ClInclude Include="MyHtmlView.h" />
+    <ClInclude Include="Option.h" />
+    <ClInclude Include="ProgressST.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ThreadMng.h" />
+    <ClInclude Include="Thread_Data.h" />
+    <ClInclude Include="UseRegistry.h" />
+    <ClInclude Include="Version\Version_TH.h" />
+    <ClInclude Include="WindowVersionChecker.h" />
+    <ClInclude Include="__Define.h" />
+    <ClInclude Include="__String.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\AutoUpgrade.ico" />
+    <Image Include="res\AutoUpgrader.ico" />
+    <Image Include="res\bitmap3.bmp" />
+    <Image Include="res\cancle_TH_1.bmp" />
+    <Image Include="res\cancle_TH_2.bmp" />
+    <Image Include="res\cancle_TH_3.bmp" />
+    <Image Include="res\cancle_TH_4.bmp" />
+    <Image Include="res\icon-game-digimon.ico" />
+    <Image Include="res\Main_Thai.bmp" />
+    <Image Include="res\Option_C.bmp" />
+    <Image Include="res\Option_D.bmp" />
+    <Image Include="res\Option_N.bmp" />
+    <Image Include="res\Option_O.bmp" />
+    <Image Include="res\pronow.bmp" />
+    <Image Include="res\pronow1.bmp" />
+    <Image Include="res\pronow3.bmp" />
+    <Image Include="res\start_TH_1.bmp" />
+    <Image Include="res\start_TH_2.bmp" />
+    <Image Include="res\start_TH_3.bmp" />
+    <Image Include="res\start_TH_4.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AutoUpgrade.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\AutoUpgrade.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="AutoUpgrade.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

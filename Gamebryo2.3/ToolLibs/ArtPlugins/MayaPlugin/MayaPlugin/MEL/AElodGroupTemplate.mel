@@ -1,0 +1,7 @@
+//Gamebryo Forwarding File DO NOT MODIFY!
+
+global proc AElodGroupTemplate ( string $nodeName ) 
+{
+    AEGamebryoLodCommon $nodeName;
+    _gb_AElodGroupTemplate $nodeName;	
+}

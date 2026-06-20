@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="GB_Config_Release"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		Optimization="2"
+		PreprocessorDefinitions="NDEBUG;NIRELEASE"
+		RuntimeLibrary="2"
+        DebugInformationFormat="3"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		LinkIncremental="1"
+		GenerateDebugInformation="true"
+		ProgramDatabaseFile="$(OutDir)\$(TargetName).pdb"
+		OptimizeReferences="2"
+		EnableCOMDATFolding="2"
+	/>
+	<UserMacro
+		Name="GB_Configuration_Name"
+		Value="Release"
+	/>
+	<UserMacro
+		Name="GB_DLL_Suffix"
+		Value="23VC80R"
+	/>
+	<UserMacro
+		Name="GB_Tool_Plugin_Extension"
+		Value="dll"
+	/>
+    <UserMacro
+        Name="GB_Shader_Library_Extension"
+        Value=".nl9"
+    />
+    <UserMacro
+        Name="GB_Shader_Parser_Extension"
+        Value=".np9"
+    />
+</VisualStudioPropertySheet>

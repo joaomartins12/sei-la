@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lan_To_Header", "Lan_To_Header.vcxproj", "{B859D771-5DBE-46B0-9DA8-FD35849AC068}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_English|Win32 = Debug_English|Win32
+		Debug|Win32 = Debug|Win32
+		Give_English|Win32 = Give_English|Win32
+		Give|Win32 = Give|Win32
+		Release_English|Win32 = Release_English|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Debug_English|Win32.ActiveCfg = Debug|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Debug_English|Win32.Build.0 = Debug|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Debug|Win32.Build.0 = Debug|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Give_English|Win32.ActiveCfg = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Give_English|Win32.Build.0 = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Give|Win32.ActiveCfg = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Give|Win32.Build.0 = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Release_English|Win32.ActiveCfg = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Release_English|Win32.Build.0 = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Release|Win32.ActiveCfg = Release|Win32
+		{B859D771-5DBE-46B0-9DA8-FD35849AC068}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

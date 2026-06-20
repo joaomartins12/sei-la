@@ -1,0 +1,27 @@
+global proc MyImmerseCreateExportOptionsLocator()
+{
+
+    // Create the Locator if it doesn't exists
+    if(`objExists MyImmerseExportOptionsLocator` == 0)
+    {
+        spaceLocator -p 0 0 0 -n MyImmerseExportOptionsLocator;
+
+        // Hide it by default
+        setAttr MyImmerseExportOptionsLocator.visibility false;
+    }
+
+    if(`attributeExists MyImmerseNIFOptionsVar MyImmerseExportOptionsLocator` == 0)
+    {
+        addAttr -dt "string" -ln MyImmerseNIFOptionsVar;
+        setAttr MyImmerseExportOptionsLocator.MyImmerseNIFOptionsVar -type "string" `optionVar -q "NifOptions"`;
+    }
+
+    if(`attributeExists MyImmerseNIFOptimizationVar MyImmerseExportOptionsLocator` == 0)
+    {
+        addAttr -dt "string" -ln MyImmerseNIFOptimizationVar;
+        setAttr MyImmerseExportOptionsLocator.MyImmerseNIFOptimizationVar -type "string" "";
+    }
+
+}
+
+MyImmerseCreateExportOptionsLocator()

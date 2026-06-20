@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <GB_Configuration_Name>Shipping</GB_Configuration_Name>
+    <GB_DLL_Suffix>23VC80S</GB_DLL_Suffix>
+    <GB_Tool_Plugin_Extension>dll</GB_Tool_Plugin_Extension>
+    <GB_Shader_Library_Extension>.sl9</GB_Shader_Library_Extension>
+    <GB_Shader_Parser_Extension>.sp9</GB_Shader_Parser_Extension>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;NISHIPPING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="GB_Configuration_Name">
+      <Value>$(GB_Configuration_Name)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GB_DLL_Suffix">
+      <Value>$(GB_DLL_Suffix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GB_Tool_Plugin_Extension">
+      <Value>$(GB_Tool_Plugin_Extension)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GB_Shader_Library_Extension">
+      <Value>$(GB_Shader_Library_Extension)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GB_Shader_Parser_Extension">
+      <Value>$(GB_Shader_Parser_Extension)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

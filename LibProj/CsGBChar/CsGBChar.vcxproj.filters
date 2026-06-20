@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99_리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="01_Main">
+      <UniqueIdentifier>{4720ded3-1b8b-4851-ae2a-84676a065f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09_Thread">
+      <UniqueIdentifier>{1a7659cb-8546-42be-8b21-e8f87d8f9bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_Property">
+      <UniqueIdentifier>{dd5953e7-5d0f-4a9f-b767-6d8423ae6eb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_ModelData">
+      <UniqueIdentifier>{0d7eca4b-2a94-4560-ac5b-d886f73939d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_EffectSound">
+      <UniqueIdentifier>{49859263-7ca8-4068-9422-c576b1ff2da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_EventObject">
+      <UniqueIdentifier>{bc15bf75-d4c0-4036-8365-4bebba1aa25a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_EventObject\Data">
+      <UniqueIdentifier>{7d224a75-c6e9-4a03-bc19-26db68bbeea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Character">
+      <UniqueIdentifier>{9d63735f-32ae-4b5e-b9b8-d78d229c0257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="10_Define">
+      <UniqueIdentifier>{a45be51a-08c2-4f82-8a6a-8d13f907c56f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>01_Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread.cpp">
+      <Filter>09_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread_ResMng.cpp">
+      <Filter>09_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread_Unit.cpp">
+      <Filter>09_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadProc_Delete.cpp">
+      <Filter>09_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadProc_Load.cpp">
+      <Filter>09_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadProc_RefCheck.cpp">
+      <Filter>09_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="01_Property.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="AlphaProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="AniProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="AniProperty_Sequence.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="AttachProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveControlProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="PathProperty.cpp">
+      <Filter>03_Property</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelData.cpp">
+      <Filter>04_ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelDataMng.cpp">
+      <Filter>04_ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectSound.cpp">
+      <Filter>05_EffectSound</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectSoundMng.cpp">
+      <Filter>05_EffectSound</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCall_Base.cpp">
+      <Filter>06_EventObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EventMng.cpp">
+      <Filter>06_EventObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSceneMng.cpp">
+      <Filter>06_EventObject</Filter>
+    </ClCompile>
+    <ClCompile Include="EventData.cpp">
+      <Filter>06_EventObject\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="EventDataMng.cpp">
+      <Filter>06_EventObject\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="EventSceneData.cpp">
+      <Filter>06_EventObject\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="01_Object.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="02_AvObject.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="02_AvObject_CallBack.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="04_PartObject.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="05_EffectObject.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="06_EventObject.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="07_EventTamerObject.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="10_LoadStruct.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="11_LoadSequence.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="SEffectMgr.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="03_DPartObject.cpp">
+      <Filter>02_Character</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>01_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="00_ThreadHeader.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread_ResMng.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread_Unit.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadProc_Delete.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadProc_Load.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadProc_RefCheck.h">
+      <Filter>09_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="00_PropertyHeader.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="01_Property.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="AlphaProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="AniProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="AniProperty_Sequence.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="AttachProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveControlProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="PathProperty.h">
+      <Filter>03_Property</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelData.h">
+      <Filter>04_ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelDataMng.h">
+      <Filter>04_ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectSound.h">
+      <Filter>05_EffectSound</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectSoundMng.h">
+      <Filter>05_EffectSound</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCall_Base.h">
+      <Filter>06_EventObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EventMng.h">
+      <Filter>06_EventObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSceneMng.h">
+      <Filter>06_EventObject</Filter>
+    </ClInclude>
+    <ClInclude Include="EventData.h">
+      <Filter>06_EventObject\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="EventDataMng.h">
+      <Filter>06_EventObject\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="EventSceneData.h">
+      <Filter>06_EventObject\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="00_CharDefine.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="00_CharHeader.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="01_Object.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="02_AvObject.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="04_PartObject.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="05_EffectObject.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="06_EventObject.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="07_EventTamerObject.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="10_LoadStruct.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="11_LoadSequence.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="SEffectMgr.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>10_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>10_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongKongDefine.h">
+      <Filter>10_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>10_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>10_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>10_Define</Filter>
+    </ClInclude>
+    <ClInclude Include="03_DPartObject.h">
+      <Filter>02_Character</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PathProperty.inl">
+      <Filter>03_Property</Filter>
+    </None>
+    <None Include="02_AvObject.inl">
+      <Filter>02_Character</Filter>
+    </None>
+  </ItemGroup>
+</Project>

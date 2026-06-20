@@ -1,0 +1,1 @@
+C:\Users\joaom\Desktop\client-main\Gamebryo2.3\ThirdPartyCode\TinyXML\NiProject\Win32\VC80\Lib\TinyXML.lib

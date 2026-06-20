@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_QA_Kor|Win32">
+      <Configuration>Release_QA_Kor</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Live_Kor|Win32">
+      <Configuration>Release_Live_Kor</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FC213DC3-93B1-455B-AF65-50DA50B84968}</ProjectGuid>
+    <RootNamespace>Launcher</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>Static</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">..\..\..\..\Launcher\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">true</GenerateManifest>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">true</EmbedManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">..\..\..\..\Launcher\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">true</GenerateManifest>
+    <EmbedManifest Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">true</EmbedManifest>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">D-Player</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">D-Player</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\..\Launcher\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>.\;..\;..\..\..\Gamebryo2.3\ThirdPartyCode\ZLib\zlib123;..\..\..\LibProj\CsDM;..\..\..\LibProj\JsonLib\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>wininet.lib;version.lib;zlib_mt.lib;lib_json_mt.lib;CsThread_mt.lib;CsFunc_mt.lib;CsFilePack_mt.lib;CsDM_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\lib\common;..\..\..\LibProj\JsonLib\Lib;..\..\..\Gamebryo2.3\GB_Lib\ThirdPartyLib;..\..\..\ThemidaSDK\Lib\COFF;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>true</EnableUAC>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AllowIsolation>true</AllowIsolation>
+      <FixedBaseAddress>false</FixedBaseAddress>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>false</ValidateAllParameters>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>.\;..\;..\..\..\Gamebryo2.3\ThirdPartyCode\ZLib\zlib123;..\..\..\LibProj\JsonLib\Include;..\..\..\LibProj\CsDM;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;VERSION_QA;VERSION_KOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;VERSION_QA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>wininet.lib;version.lib;zlib_mt.lib;lib_json_mt.lib;CsThread_mt.lib;CsFunc_mt.lib;CsFilePack_mt.lib;CsDM_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\..\..\LibProj\JsonLib\Lib;..\..\..\lib\common;..\..\..\Gamebryo2.3\GB_Lib\ThirdPartyLib;..\..\..\ThemidaSDK\Lib\COFF;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>true</EnableUAC>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AllowIsolation>true</AllowIsolation>
+      <FixedBaseAddress>false</FixedBaseAddress>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Data">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+    <Reference Include="System.Xml">
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BmpButton.cpp" />
+    <ClCompile Include="Configuration.cpp" />
+    <ClCompile Include="DownloadManager.cpp" />
+    <ClCompile Include="MyMessageBox.cpp" />
+    <ClCompile Include="Option.cpp" />
+    <ClCompile Include="Progressbar.cpp" />
+    <ClCompile Include="ServerCheck.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_QA_Kor|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Live_Kor|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="StrButton.cpp" />
+    <ClCompile Include="StrMng.cpp" />
+    <ClCompile Include="WindowVersionChecker.cpp" />
+    <ClCompile Include="DownEngineSDK.cpp" />
+    <ClCompile Include="IniFile.cpp" />
+    <ClCompile Include="UseRegistry.cpp" />
+    <ClCompile Include="MyHtmlView.cpp" />
+    <ClCompile Include="ThreadMng.cpp" />
+    <ClCompile Include="ThreadProc.cpp" />
+    <ClCompile Include="BmpRender.cpp" />
+    <ClCompile Include="_GameInfo.cpp" />
+    <ClCompile Include="Launcher.cpp" />
+    <ClCompile Include="LauncherDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClientOAuthKey.h" />
+    <ClInclude Include="Configuration.h" />
+    <ClInclude Include="DownloadManager.h" />
+    <ClInclude Include="_Define.h" />
+    <ClInclude Include="_String.h" />
+    <ClInclude Include="BmpButton.h" />
+    <ClInclude Include="CDownloadInfo.h" />
+    <ClInclude Include="MyMessageBox.h" />
+    <ClInclude Include="Option.h" />
+    <ClInclude Include="Progressbar.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ServerCheck.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StrButton.h" />
+    <ClInclude Include="StrMng.h" />
+    <ClInclude Include="WindowVersionChecker.h" />
+    <ClInclude Include="DownEngineSDK.h" />
+    <ClInclude Include="IniFile.h" />
+    <ClInclude Include="UseRegistry.h" />
+    <ClInclude Include="MyHtmlView.h" />
+    <ClInclude Include="ThreadMng.h" />
+    <ClInclude Include="ThreadProc.h" />
+    <ClInclude Include="BmpRender.h" />
+    <ClInclude Include="Version\Version_Kor.h" />
+    <ClInclude Include="_GameInfo.h" />
+    <ClInclude Include="Launcher.h" />
+    <ClInclude Include="LauncherDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button.bmp" />
+    <None Include="res\CheckBox01.bmp" />
+    <None Include="res\CheckBox02.bmp" />
+    <None Include="res\Close1.bmp" />
+    <None Include="res\Close2.bmp" />
+    <None Include="res\Close3.bmp" />
+    <None Include="res\Close4.bmp" />
+    <None Include="res\Downbar.bmp" />
+    <None Include="res\Inst01.bmp" />
+    <None Include="res\Inst02.bmp" />
+    <None Include="res\Inst03.bmp" />
+    <None Include="res\Inst04.bmp" />
+    <None Include="res\InstallBack.bmp" />
+    <None Include="res\Launcher.ico" />
+    <None Include="res\Launcher.rc2" />
+    <None Include="res\Masters01.bmp" />
+    <None Include="res\Masters02.bmp" />
+    <None Include="res\Masters03.bmp" />
+    <None Include="res\Masters04.bmp" />
+    <None Include="res\Masters_Inst.bmp" />
+    <None Include="res\MessageBoxBack.bmp" />
+    <None Include="res\Min1.bmp" />
+    <None Include="res\Min2.bmp" />
+    <None Include="res\Min3.bmp" />
+    <None Include="res\Min4.bmp" />
+    <None Include="res\Noir01.bmp" />
+    <None Include="res\Noir02.bmp" />
+    <None Include="res\Noir03.bmp" />
+    <None Include="res\Noir04.bmp" />
+    <None Include="res\Play01.bmp" />
+    <None Include="res\Play02.bmp" />
+    <None Include="res\Play03.bmp" />
+    <None Include="res\Play04.bmp" />
+    <None Include="res\Rpg01.bmp" />
+    <None Include="res\Rpg02.bmp" />
+    <None Include="res\Rpg03.bmp" />
+    <None Include="res\Rpg04.bmp" />
+    <None Include="res\Upbar.bmp" />
+    <None Include="res\Update01.bmp" />
+    <None Include="res\Update02.bmp" />
+    <None Include="res\Update03.bmp" />
+    <None Include="res\Update04.bmp" />
+    <None Include="res\Win.bmp" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Launcher.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\check01.bmp" />
+    <Image Include="res\check02.bmp" />
+    <Image Include="res\check03.bmp" />
+    <Image Include="res\check04.bmp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Launcher.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

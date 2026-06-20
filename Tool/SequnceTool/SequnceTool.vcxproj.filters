@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="View">
+      <UniqueIdentifier>{151ad371-99dd-4968-ab07-03c002983710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Char">
+      <UniqueIdentifier>{36afec13-7872-4da4-aa52-e55ca12f1f51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{22e82a4b-78a3-44b0-9e20-14561b93f7f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{20d3e2f1-a30e-4385-9c83-fabc787ce1f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{86547a0a-e1ad-43e6-9b98-230b515a303d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dumper">
+      <UniqueIdentifier>{7a831d7d-8709-48fb-b27a-0c97e5ac7fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{97b67709-6f79-487e-8ab6-17008d4f9b08}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_Dlg_Copy_Digimon.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgAnimation.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgController.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgEtc.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="NiViewer.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="FmDigimon.cpp">
+      <Filter>Char</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>Char</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalChar.cpp">
+      <Filter>Char</Filter>
+    </ClCompile>
+    <ClCompile Include="PartChar.cpp">
+      <Filter>Char</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModel.cpp">
+      <Filter>Char</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SequnceTool.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHelper.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="_Sound\CSound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="_Sound\CSoundMgr.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="_Dumper\cDumper.cpp">
+      <Filter>Dumper</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgInsertEvent.cpp" />
+    <ClCompile Include="_DlgInsertShader.cpp" />
+    <ClCompile Include="_DlgPartObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Dlg_Copy_Digimon.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgAnimation.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgController.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgEtc.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="NiViewer.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="FmDigimon.h">
+      <Filter>Char</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>Char</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalChar.h">
+      <Filter>Char</Filter>
+    </ClInclude>
+    <ClInclude Include="PartChar.h">
+      <Filter>Char</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel.h">
+      <Filter>Char</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SequnceTool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHelper.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="_Sound\CSound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="_Sound\CSoundMgr.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="_Dumper\cDumper.hpp">
+      <Filter>Dumper</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongkongDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgInsertEvent.h" />
+    <ClInclude Include="_DlgInsertShader.h" />
+    <ClInclude Include="_DlgPartObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\SequnceTool.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\SequnceTool.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SequnceTool.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7170CABA-5095-430F-989A-264143BCA463}</ProjectGuid>
+    <RootNamespace>TableManager</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\CsDM;..\..\CsFilePack;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>CsDM.lib%3bCsFilePack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib\Release_common;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\;..\;..\..\CsDM;..\..\CsFilePack;..\..\CsFunc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TableClass\TableClass_Buff.cpp" />
+    <ClCompile Include="TableClass\TableClass_DSkillLevelUp.cpp" />
+    <ClCompile Include="TableClass\TableClass_Exp.cpp" />
+    <ClCompile Include="TableClass\TableClass_Guild.cpp" />
+    <ClCompile Include="TableClass\TableClass_JumpBuster.cpp" />
+    <ClCompile Include="TableClass\TableClass_MapsInfo.cpp" />
+    <ClCompile Include="TableClass\TableClass_BaseStats.cpp" />
+    <ClCompile Include="TableString\TableString_Achieve.cpp" />
+    <ClCompile Include="TableString\TableString_Buff.cpp" />
+    <ClCompile Include="TableString\TableString_Cashshop.cpp" />
+    <ClCompile Include="TableString\TableString_DigiEvo.cpp" />
+    <ClCompile Include="TableString\TableString_Digimon.cpp" />
+    <ClCompile Include="TableString\TableString_DigiTalk.cpp" />
+    <ClCompile Include="TableString\TableString_DigiTip.cpp" />
+    <ClCompile Include="TableString\TableString_Emotion.cpp" />
+    <ClCompile Include="TableString\TableString_EventTalk.cpp" />
+    <ClCompile Include="TableString\TableString_Guild.cpp" />
+    <ClCompile Include="TableString\TableString_Item.cpp" />
+    <ClCompile Include="TableString\TableString_ItemCreation.cpp" />
+    <ClCompile Include="TableString\TableString_Map.cpp" />
+    <ClCompile Include="TableString\TableString_MapRegion.cpp" />
+    <ClCompile Include="TableString\TableString_Message.cpp" />
+    <ClCompile Include="TableString\TableString_Monster.cpp" />
+    <ClCompile Include="TableString\TableString_Npc.cpp" />
+    <ClCompile Include="TableString\TableString_Quest.cpp" />
+    <ClCompile Include="TableString\TableString_Riding.cpp" />
+    <ClCompile Include="TableString\TableString_Scene.cpp" />
+    <ClCompile Include="TableString\TableString_Seal.cpp" />
+    <ClCompile Include="TableString\TableString_Skill.cpp" />
+    <ClCompile Include="TableString\TableString_Tamer.cpp" />
+    <ClCompile Include="TableString\TableString_Tip.cpp" />
+    <ClCompile Include="TableString\TableString_Tooltip.cpp" />
+    <ClCompile Include="TableString\TableString_UIText.cpp" />
+    <ClCompile Include="TableClass\TableClass_Achieve.cpp" />
+    <ClCompile Include="TableClass\TableClass_Cashshop.cpp" />
+    <ClCompile Include="TableClass\TableClass_CoolTime.cpp" />
+    <ClCompile Include="TableClass\TableClass_CreateCharacter.cpp" />
+    <ClCompile Include="TableClass\TableClass_DBook.cpp" />
+    <ClCompile Include="TableClass\TableClass_DEvolution.cpp" />
+    <ClCompile Include="TableClass\TableClass_Digimon.cpp" />
+    <ClCompile Include="TableClass\TableClass_InfiniteWar.cpp" />
+    <ClCompile Include="TableClass\TableClass_Item.cpp" />
+    <ClCompile Include="TableClass\TableClass_ItemCreation.cpp" />
+    <ClCompile Include="TableClass\TableClass_ItemExchange.cpp" />
+    <ClCompile Include="TableClass\TableClass_ItemRank.cpp" />
+    <ClCompile Include="TableClass\TableClass_Monster.cpp" />
+    <ClCompile Include="TableClass\TableClass_Tactics.cpp" />
+    <ClCompile Include="TableClass\TableClass_Talk.cpp" />
+    <ClCompile Include="TableClass\TableClass_UIText.cpp" />
+    <ClCompile Include="TableFactory.cpp" />
+    <ClCompile Include="TableMgr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TableClass\TableClass_Buff.h" />
+    <ClInclude Include="TableClass\TableClass_DSkillLevelUp.h" />
+    <ClInclude Include="TableClass\TableClass_Guild.h" />
+    <ClInclude Include="TableClass\TableClass_JumpBuster.h" />
+    <ClInclude Include="TableClass\TableClass_MapsInfo.h" />
+    <ClInclude Include="TableClass\TableClass_Exp.h" />
+    <ClInclude Include="TableClass\TableClass_BaseStats.h" />
+    <ClInclude Include="TableInclude.h" />
+    <ClInclude Include="TableString\TableString_Achieve.h" />
+    <ClInclude Include="TableString\TableString_Buff.h" />
+    <ClInclude Include="TableString\TableString_Cashshop.h" />
+    <ClInclude Include="TableString\TableString_DigiEvo.h" />
+    <ClInclude Include="TableString\TableString_Digimon.h" />
+    <ClInclude Include="TableString\TableString_DigiTalk.h" />
+    <ClInclude Include="TableString\TableString_DigiTip.h" />
+    <ClInclude Include="TableString\TableString_Emotion.h" />
+    <ClInclude Include="TableString\TableString_EventTalk.h" />
+    <ClInclude Include="TableString\TableString_Guild.h" />
+    <ClInclude Include="TableString\TableString_Item.h" />
+    <ClInclude Include="TableString\TableString_ItemCreation.h" />
+    <ClInclude Include="TableString\TableString_Map.h" />
+    <ClInclude Include="TableString\TableString_MapRegion.h" />
+    <ClInclude Include="TableString\TableString_Message.h" />
+    <ClInclude Include="TableString\TableString_Monster.h" />
+    <ClInclude Include="TableString\TableString_Npc.h" />
+    <ClInclude Include="TableString\TableString_Quest.h" />
+    <ClInclude Include="TableString\TableString_Riding.h" />
+    <ClInclude Include="TableString\TableString_Scene.h" />
+    <ClInclude Include="TableString\TableString_Seal.h" />
+    <ClInclude Include="TableString\TableString_Skill.h" />
+    <ClInclude Include="TableString\TableString_Tamer.h" />
+    <ClInclude Include="TableString\TableString_Tip.h" />
+    <ClInclude Include="TableString\TableString_Tooltip.h" />
+    <ClInclude Include="TableString\TableString_UIText.h" />
+    <ClInclude Include="TableClass\TableClass_Achieve.h" />
+    <ClInclude Include="TableClass\TableClass_Cashshop.h" />
+    <ClInclude Include="TableClass\TableClass_CoolTime.h" />
+    <ClInclude Include="TableClass\TableClass_CreateCharacter.h" />
+    <ClInclude Include="TableClass\TableClass_DBook.h" />
+    <ClInclude Include="TableClass\TableClass_DEvolution.h" />
+    <ClInclude Include="TableClass\TableClass_Digimon.h" />
+    <ClInclude Include="TableClass\TableClass_InfiniteWar.h" />
+    <ClInclude Include="TableClass\TableClass_Item.h" />
+    <ClInclude Include="TableClass\TableClass_ItemCreation.h" />
+    <ClInclude Include="TableClass\TableClass_ItemExchange.h" />
+    <ClInclude Include="TableClass\TableClass_ItemRank.h" />
+    <ClInclude Include="TableClass\TableClass_Monster.h" />
+    <ClInclude Include="TableClass\TableClass_Tactics.h" />
+    <ClInclude Include="TableClass\TableClass_Talk.h" />
+    <ClInclude Include="TableClass\TableClass_UIText.h" />
+    <ClInclude Include="TableStruct\TableStruct_Buff.h" />
+    <ClInclude Include="TableStruct\TableStruct_DSkillLevelup.h" />
+    <ClInclude Include="TableStruct\TableStruct_Achieve.h" />
+    <ClInclude Include="TableStruct\TableStruct_BaseStats.h" />
+    <ClInclude Include="TableStruct\TableStruct_Cashshop.h" />
+    <ClInclude Include="TableStruct\TableStruct_CoolTime.h" />
+    <ClInclude Include="TableStruct\TableStruct_CreateCharacter.h" />
+    <ClInclude Include="TableStruct\TableStruct_DBook.h" />
+    <ClInclude Include="TableStruct\TableStruct_DEvolution.h" />
+    <ClInclude Include="TableStruct\TableStruct_Digimon.h" />
+    <ClInclude Include="TableStruct\TableStruct_Guild.h" />
+    <ClInclude Include="TableStruct\TableStruct_InfiniteWar.h" />
+    <ClInclude Include="TableStruct\TableStruct_Item.h" />
+    <ClInclude Include="TableStruct\TableStruct_ItemCreation.h" />
+    <ClInclude Include="TableStruct\TableStruct_ItemExchange.h" />
+    <ClInclude Include="TableStruct\TableStruct_ItemRank.h" />
+    <ClInclude Include="TableStruct\TableStruct_MapsInfo.h" />
+    <ClInclude Include="TableStruct\TableStruct_Monster.h" />
+    <ClInclude Include="TableStruct\TableStruct_Tactics.h" />
+    <ClInclude Include="TableStruct\TableStruct_Talk.h" />
+    <ClInclude Include="TableDefs.h" />
+    <ClInclude Include="TableFactory.h" />
+    <ClInclude Include="TableMgr.h" />
+    <ClInclude Include="TableTmpl.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

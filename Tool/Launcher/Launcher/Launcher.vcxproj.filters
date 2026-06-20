@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Lib">
+      <UniqueIdentifier>{c61df707-e220-40d7-9d0e-54326a567d51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib\Web">
+      <UniqueIdentifier>{c547622a-cbd7-4a69-b865-c9605a5f6536}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib\Thread">
+      <UniqueIdentifier>{27f08043-67e7-48ce-a2b4-8a04de4a307a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lib\BmpRender">
+      <UniqueIdentifier>{534573b3-5b97-4b18-bd1a-38104b067357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DownloadManager">
+      <UniqueIdentifier>{08786dfb-780b-43ef-9037-8bc626729d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Version">
+      <UniqueIdentifier>{47e9c5ad-aa1b-4603-b94e-1e55f521c37c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EnCryption">
+      <UniqueIdentifier>{0dc4e9c9-4963-409a-9afa-b01adbe39dfc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BmpButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMessageBox.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Option.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Progressbar.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerCheck.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StrButton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="StrMng.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowVersionChecker.cpp">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DownEngineSDK.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="IniFile.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="UseRegistry.cpp">
+      <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="MyHtmlView.cpp">
+      <Filter>Lib\Web</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadMng.cpp">
+      <Filter>Lib\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadProc.cpp">
+      <Filter>Lib\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpRender.cpp">
+      <Filter>Lib\BmpRender</Filter>
+    </ClCompile>
+    <ClCompile Include="_GameInfo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Launcher.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LauncherDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DownloadManager.cpp">
+      <Filter>DownloadManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_String.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CDownloadInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMessageBox.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Option.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Progressbar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerCheck.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StrButton.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StrMng.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowVersionChecker.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DownEngineSDK.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFile.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="UseRegistry.h">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="MyHtmlView.h">
+      <Filter>Lib\Web</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadMng.h">
+      <Filter>Lib\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadProc.h">
+      <Filter>Lib\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpRender.h">
+      <Filter>Lib\BmpRender</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Kor.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="_GameInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Launcher.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LauncherDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadManager.h">
+      <Filter>DownloadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientOAuthKey.h">
+      <Filter>EnCryption</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Button.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\CheckBox01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\CheckBox02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Close1.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Close2.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Close3.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Close4.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Downbar.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Inst01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Inst02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Inst03.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Inst04.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\InstallBack.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Launcher.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Launcher.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Masters01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Masters02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Masters03.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Masters04.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Masters_Inst.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\MessageBoxBack.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Min1.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Min2.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Min3.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Min4.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Noir01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Noir02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Noir03.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Noir04.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Play01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Play02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Play03.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Play04.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Rpg01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Rpg02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Rpg03.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Rpg04.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Upbar.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Update01.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Update02.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Update03.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Update04.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Win.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Launcher.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\check01.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\check02.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\check03.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\check04.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

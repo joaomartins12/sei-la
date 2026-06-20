@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7b7f3ac8-ddb7-4a1b-ab42-fe4d47ed0d79}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Source Files\AnimationKeys">
+      <UniqueIdentifier>{98fca670-729c-4739-8d21-f9f2f84a2803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AnimationData">
+      <UniqueIdentifier>{ff1e33cd-9722-4ad6-8b4b-851199ae7ed8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interpolators">
+      <UniqueIdentifier>{57b2ff5c-ef8d-41c0-afa7-ac59862e0342}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{55cdba2f-4ca0-4557-af67-bb787c475386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Deprecated">
+      <UniqueIdentifier>{c3fe294c-aecf-474b-bcba-9a47f5a15208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{af66602f-adc3-45d5-b627-bb0d52e0f156}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Header Files\AnimationKeys">
+      <UniqueIdentifier>{4a74f589-dbe7-40c8-91ab-5f2d44012d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AnimationData">
+      <UniqueIdentifier>{5c19242c-90ac-4132-bbe7-1a40ecb017f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Controllers">
+      <UniqueIdentifier>{77dd120f-9144-47e3-a749-4af6d6da3a76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Deprecated">
+      <UniqueIdentifier>{b4e069e4-df0a-4f0b-b2fd-bd92dc9e3a89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interpolators">
+      <UniqueIdentifier>{c4b61acf-c451-4f50-9cb3-827a9c8aa432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inline Files">
+      <UniqueIdentifier>{f98cc3b6-affb-481e-9eb8-7990a0066bac}</UniqueIdentifier>
+      <Extensions>inl</Extensions>
+    </Filter>
+    <Filter Include="Inline Files\AnimationKeys">
+      <UniqueIdentifier>{92bbf356-6160-4f0d-9d5a-857a4e1dac61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inline Files\AnimationData">
+      <UniqueIdentifier>{317a5477-5dbb-454f-97dd-32fc3cf8b44f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inline Files\Interpolators">
+      <UniqueIdentifier>{0e4f8395-8516-4187-8d6a-f78787412d28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inline Files\Controllers">
+      <UniqueIdentifier>{bd8c6871-cf86-40e6-b1aa-f8414114b432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inline Files\Deprecated">
+      <UniqueIdentifier>{c6e51fba-a266-4d66-a681-6d7c2fbd45d5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\NiActorManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiAnimationMetrics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiAnimationPCH.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiAnimationSDM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiControllerManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiControllerSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiGeomMorpherUpdateTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiInterpScalar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiKFMTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiOldAnimationConverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiQuatTransform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStringPalette.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTextKeyExtraData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiAnimationKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBezFloatKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBezPosKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBezRotKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBoolKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiColorKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiEulerRotKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLinColorKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLinFloatKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLinPosKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLinRotKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPosKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiRotKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStepBoolKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStepColorKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStepFloatKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStepPosKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiStepRotKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTCBFloatKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTCBPosKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTCBRotKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTextKey.cpp">
+      <Filter>Source Files\AnimationKeys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBoolData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineBasisData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiColorData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiMorphData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPosData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiRotData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTransformData.cpp">
+      <Filter>Source Files\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendAccumTransformInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendBoolInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendColorInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendFloatInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendPoint3Interpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendQuaternionInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBlendTransformInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBoolInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBoolTimelineInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineColorInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineCompColorInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineCompFloatInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineCompPoint3Interpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineCompTransformInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineFloatInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplinePoint3Interpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBSplineTransformInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiColorInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiKeyBasedInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLookAtInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPathInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPoint3Interpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiQuaternionInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTransformInterpolator.cpp">
+      <Filter>Source Files\Interpolators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiAlphaController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBoneLODController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiBoolInterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiColorExtraDataController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiColorInterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiExtraDataController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFlipController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatExtraDataController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatInterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatsExtraDataController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatsExtraDataPoint3Controller.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiGeomMorpherController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiInterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLightColorController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLightDimmerController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiMaterialColorController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiMultiTargetTransformController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPoint3InterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiQuaternionInterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiSingleInterpController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTextureTransformController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiTransformController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiVisController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiFloatController.cpp">
+      <Filter>Source Files\Deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiLookAtController.cpp">
+      <Filter>Source Files\Deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiPathController.cpp">
+      <Filter>Source Files\Deprecated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\NiRollController.cpp">
+      <Filter>Source Files\Deprecated</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\NiActorManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimationLibType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimationMetrics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimationPCH.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimationSDM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineBasis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineFit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiControllerManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiControllerSequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiGeomMorpherUpdateTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiInterpScalar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiKFMTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiOldAnimationConverter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiQuatTransform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiSpline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStringPalette.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTextKeyExtraData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTextKeyMatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimationKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAnimationKeyMacros.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBezFloatKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBezPosKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBezRotKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBoolKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiColorKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiEulerRotKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLinColorKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLinFloatKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLinPosKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLinRotKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPosKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiRotKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStepBoolKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStepColorKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStepFloatKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStepPosKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiStepRotKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTCBFloatKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTCBPosKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTCBRotKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTextKey.h">
+      <Filter>Header Files\AnimationKeys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBoolData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineBasisData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiColorData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiMorphData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPosData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiRotData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTransformData.h">
+      <Filter>Header Files\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiAlphaController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBoneLODController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBoolInterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiColorExtraDataController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiColorInterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiExtraDataController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFlipController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatExtraDataController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatInterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatsExtraDataController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatsExtraDataPoint3Controller.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiGeomMorpherController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiInterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLightColorController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLightDimmerController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiMaterialColorController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiMultiTargetTransformController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPoint3InterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiQuaternionInterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiSingleInterpController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTextureTransformController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTransformController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiVisController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatController.h">
+      <Filter>Header Files\Deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLookAtController.h">
+      <Filter>Header Files\Deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPathController.h">
+      <Filter>Header Files\Deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiRollController.h">
+      <Filter>Header Files\Deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendAccumTransformInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendBoolInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendColorInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendFloatInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendPoint3Interpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendQuaternionInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBlendTransformInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBoolInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBoolTimelineInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineColorInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineCompColorInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineCompFloatInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineCompPoint3Interpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineCompTransformInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineFloatInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplinePoint3Interpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiBSplineTransformInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiColorInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiFloatInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiKeyBasedInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiLookAtInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPathInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiPoint3Interpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiQuaternionInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NiTransformInterpolator.h">
+      <Filter>Header Files\Interpolators</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\NiActorManager.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiBSplineBasis.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiBSplineFit.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiControllerManager.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiControllerSequence.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiKFMTool.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiQuatTransform.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiStringPalette.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiTextKeyExtraData.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiTextKeyMatch.inl">
+      <Filter>Inline Files</Filter>
+    </None>
+    <None Include="..\..\NiAnimationKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiBezFloatKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiBezPosKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiBezRotKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiBoolKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiColorKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiEulerRotKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiFloatKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiLinColorKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiLinFloatKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiLinPosKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiLinRotKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiPosKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiRotKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiStepBoolKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiStepColorKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiStepFloatKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiStepPosKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiStepRotKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiTCBFloatKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiTCBPosKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiTCBRotKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiTextKey.inl">
+      <Filter>Inline Files\AnimationKeys</Filter>
+    </None>
+    <None Include="..\..\NiBoolData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiColorData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiCompTransformData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiFloatData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiMorphData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiPosData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiRotData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiTransformData.inl">
+      <Filter>Inline Files\AnimationData</Filter>
+    </None>
+    <None Include="..\..\NiBlendAccumTransformInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiBlendInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiBoolInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiColorInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiCompTransformInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiFloatInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiLookAtInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiPathInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiPoint3Interpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiQuaternionInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiTransformInterpolator.inl">
+      <Filter>Inline Files\Interpolators</Filter>
+    </None>
+    <None Include="..\..\NiBoneLODController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiExtraDataController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiFlipController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiFloatsExtraDataController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiFloatsExtraDataPoint3Controller.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiGeomMorpherController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiInterpController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiLightColorController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiMaterialColorController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiMultiTargetTransformController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiTextureTransformController.inl">
+      <Filter>Inline Files\Controllers</Filter>
+    </None>
+    <None Include="..\..\NiFloatController.inl">
+      <Filter>Inline Files\Deprecated</Filter>
+    </None>
+    <None Include="..\..\NiLookAtController.inl">
+      <Filter>Inline Files\Deprecated</Filter>
+    </None>
+    <None Include="..\..\NiPathController.inl">
+      <Filter>Inline Files\Deprecated</Filter>
+    </None>
+    <None Include="..\..\NiRollController.inl">
+      <Filter>Inline Files\Deprecated</Filter>
+    </None>
+  </ItemGroup>
+</Project>

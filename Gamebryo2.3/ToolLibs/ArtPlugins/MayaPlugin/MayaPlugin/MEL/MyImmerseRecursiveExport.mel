@@ -1,0 +1,270 @@
+//
+// MyImmerseRecursiveExport.mel
+//
+// Mel script for Recursive Export of Maya files as NIF
+
+
+//---------------------------------------------------------------------------
+global proc string[] MyImmerseBuildRecursiveExportFileList(string $directory, string $szFiles[])
+{
+    int     $intVal;
+    int     $index;
+    string  $stringVal;
+
+    //  print ("Directory: " + $directory + "\n");
+
+    // Change the Directory
+    $intVal = `chdir $directory`;
+
+    // If the Change Directory Fails the Return 
+    if($intVal == -1)
+    {
+        return $szFiles;
+    }
+
+    // Get the List of All the Files
+    string $fileList[];
+    $fileList = `getFileList -filespec "*.mb"`;
+
+    //print $fileList;
+
+    // For Each File Open it and Then Export
+    for ($index = 0; $index < size($fileList); $index++) 
+    {
+        // print ("File: " + $fileList[$index] + "\n");
+        // Append each file to the szFileList
+        $szFiles[size($szFiles)] = $directory + "/" + $fileList[$index];
+    }
+
+    // Get the List of All the Files
+    string $directoryList[];
+    $directoryList = `getFileList -filespec "*."`;
+
+    // For each Directory Call the Recursive Export
+                
+    for ($index = 0; $index < size($directoryList); $index++) 
+    {
+        string $fullPathDirectory = $directory + "/" + $directoryList[$index];
+
+        string $szReturn[] = MyImmerseBuildRecursiveExportFileList($fullPathDirectory, $szFiles);
+
+        $szFiles = $szReturn;
+    }
+
+    return $szFiles;
+}
+//---------------------------------------------------------------------------
+global proc string MyImmerseSetOptionsValue(string $szOption, string $szValue)
+{
+    int     $intVal;
+    int     $intVals[];
+    float   $floatVal;
+    string  $currentOptions;
+    string  $optionList[];
+    string  $optionBreakDown[];
+    int     $index;
+
+    string  $szNewOptions;
+
+    if (`optionVar -ex "NifOptions"` == 0)
+        return "";
+
+    string $szCurrentOptions = `optionVar -q "NifOptions"`;
+
+    // Now set to current settings.
+    if (size($szCurrentOptions) > 0) 
+    {
+        tokenize($szCurrentOptions, ";", $optionList);
+        for ($index = 0; $index < size($optionList); $index++) 
+        {
+            tokenize($optionList[$index], "=", $optionBreakDown);
+
+            if ( $optionBreakDown[0] == $szOption) 
+            {
+                $szNewOptions += ($optionBreakDown[0] + "=" + $szValue + ";");
+            }
+            else
+            {
+                $szNewOptions += ($optionList[$index] + ";");
+            }
+
+        }
+    }
+
+    return $szNewOptions;
+}
+//---------------------------------------------------------------------------
+global proc MyImmerseRecursiveExportChangeScene()
+{
+
+    int $iCurrent[] = `textScrollList -q -sii RecursiveExportSceneScrollList`;
+
+    string $szFileNames[] = `textScrollList -q -si RecursiveExportSceneScrollList`;
+
+
+    if( catch(`file -f -open $szFileNames[0]`))
+    {
+        print("Failed to Open::" + $szFileNames[0] + "\n");
+    }
+    else
+    {
+        // print ($szFileNames[0] + "\n");
+        
+        // Get the Current Export Options
+        string $szOptions = `optionVar -q "NifOptions"`;
+
+        // Check for Force Default Export
+        if ((`checkBoxGrp -q -v1 RecursiveExportForceDefaultScriptCheckBox` == 1) &&
+            (`checkBoxGrp -q -v1 RecursiveExportUseLastDefaultScriptCheckBox` == 1))
+        {
+            optionVar -iv "GamebryoForceDefaultExport" 1;
+        }
+        
+        // Check for Silent Export
+        if (`checkBoxGrp -q -v1 RecursiveExportUseLastDefaultScriptCheckBox` == 1)
+        {
+            optionVar -iv "GamebryoLastOrDefaultExport" 1;
+
+            // Get the Options Running Silently
+            $szOptions = MyImmerseSetOptionsValue("SaveDisplayExport", "1");
+        }
+
+        // Prepare the Scene and run all of our scripts
+        MyImmerseOnSceneLoad();
+
+         // Save the File
+        file -ea -typ Nif -f -op $szOptions;
+
+        // Check for Silent Export
+        if (`checkBoxGrp -q -v1 RecursiveExportUseLastDefaultScriptCheckBox` == 1)
+        {
+            optionVar -iv "GamebryoLastOrDefaultExport" 0;
+        }
+
+        // Check for Force Export
+        if (`checkBoxGrp -q -v1 RecursiveExportForceDefaultScriptCheckBox` == 1)
+        {
+            optionVar -iv "GamebryoForceDefaultExport" 0;
+        }
+    }
+
+    // Check for the end of the list    
+    if($iCurrent[0] == `textScrollList -q -numberOfItems RecursiveExportSceneScrollList`)
+    {
+        return;
+    }
+
+    // Increment the Current
+    textScrollList -e -sii ($iCurrent[0] + 1) RecursiveExportSceneScrollList;
+}
+//---------------------------------------------------------------------------
+global proc MyImmerseRecursiveExportAllRemainingScenes()
+{
+    if (`textScrollList -q -numberOfItems RecursiveExportSceneScrollList` == 0)
+        return;
+
+    int $iCurrent[] = `textScrollList -q -sii RecursiveExportSceneScrollList`;
+
+    // Export to the last scene
+    while ($iCurrent[0] != `textScrollList -q -numberOfItems RecursiveExportSceneScrollList`)
+    {
+        MyImmerseRecursiveExportChangeScene();
+
+        $iCurrent = `textScrollList -q -sii RecursiveExportSceneScrollList`;
+    }
+
+    // Export the Last Scene
+    MyImmerseRecursiveExportChangeScene();
+}
+//---------------------------------------------------------------------------
+global proc MyImmerseRecursiveExport(string $directory, string $callType)
+{
+    string $szFileList[];
+    
+    $szFileList =  MyImmerseBuildRecursiveExportFileList($directory, $szFileList);
+
+    if(MyImmerseWindowExists("Ni_RecursiveExportWindow"))
+    {
+        deleteUI Ni_RecursiveExportWindow;
+    }
+
+    window -title "Gamebryo Recursive Export" -rtf true Ni_RecursiveExportWindow;
+
+    columnLayout;
+
+        text -label "";
+
+        textScrollList -nr 10 -ams false RecursiveExportSceneScrollList;
+
+        int $iLoop;
+
+        for($iLoop = 0; $iLoop < size($szFileList); $iLoop++)
+        {
+            print($szFileList[$iLoop] + "\n");
+            textScrollList -e -a $szFileList[$iLoop] RecursiveExportSceneScrollList;
+        }
+        
+        rowLayout 
+            -nc 2
+            -columnWidth2 100 800;
+
+            text -label "";
+
+            textScrollList -e -selectIndexedItem 1 RecursiveExportSceneScrollList;
+
+        setParent ..; // rowLayout
+
+        rowLayout 
+            -nc 2
+            -columnWidth2 25 100;
+
+            text -label "";
+            text -label "Use Last or Default Export Script with No Scene Viewing.";
+
+        setParent ..; // rowLayout
+
+        checkBoxGrp
+            -ncb 1
+            -label "Silent Export"
+            -label1 ""
+            -on1 "button -e -en true RecursiveExportAllRemainingButton; checkBoxGrp -e -en1 true RecursiveExportForceDefaultScriptCheckBox"
+            -of1 "button -e -en false RecursiveExportAllRemainingButton; checkBoxGrp -e -en1 false RecursiveExportForceDefaultScriptCheckBox"
+            RecursiveExportUseLastDefaultScriptCheckBox;
+
+        text -label "";
+
+        checkBoxGrp
+            -ncb 1
+            -en1 false
+            -label "Force Default Export"
+            -label1 ""
+            RecursiveExportForceDefaultScriptCheckBox;
+
+        text -label "";
+
+        rowLayout 
+            -nc 3
+            -columnWidth3 25 120 120;
+
+            text -label "";
+
+            button 
+                -label "Export Next Scene" 
+                -c "MyImmerseRecursiveExportChangeScene"
+                RecursiveExportNextButton;
+
+            button 
+                -label "Export All Remaining" 
+                -en false
+                -c "MyImmerseRecursiveExportAllRemainingScenes"
+                RecursiveExportAllRemainingButton;
+
+       setParent ..; // rowLayout
+
+       text -label "";
+   
+    setParent ..; // columnLayout
+
+    showWindow Ni_RecursiveExportWindow;
+}
+//---------------------------------------------------------------------------

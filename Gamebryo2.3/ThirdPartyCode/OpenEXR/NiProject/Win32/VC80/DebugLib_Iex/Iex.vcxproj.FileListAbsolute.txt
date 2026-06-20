@@ -1,0 +1,1 @@
+C:\Users\joaom\Desktop\client-main\Gamebryo2.3\ThirdPartyCode\OpenEXR\NiProject\Win32\VC80\DebugLib_Iex\Iex.lib

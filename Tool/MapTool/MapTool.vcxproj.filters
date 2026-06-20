@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{18e9efa2-a810-478e-af12-b4e8c8cfb59f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{136c9f5e-e452-4c4d-b47c-2189c118d31a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="View">
+      <UniqueIdentifier>{60c2a3ba-c193-47c5-8163-fc123154c4d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frame">
+      <UniqueIdentifier>{8ff80549-ebf2-4a7e-8a5c-9908f64d9661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog">
+      <UniqueIdentifier>{43939eb6-d109-4c40-85e9-be2699e38686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\Modal">
+      <UniqueIdentifier>{1a0addd4-a885-4eaa-b24d-68bb91e91696}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg">
+      <UniqueIdentifier>{a3be842d-0b32-46b0-85f4-66c411af383f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab">
+      <UniqueIdentifier>{1b9a0e1b-0b91-490c-b0bc-c03369ccedc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\01_MainMenu">
+      <UniqueIdentifier>{026f54de-b567-4809-88e8-3407bdd6e0de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\03_Height">
+      <UniqueIdentifier>{81bb6886-1897-440d-a903-fa25f0ad1599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\05_Object">
+      <UniqueIdentifier>{34632c07-4bd8-4796-bd4c-a0c3fec8dde6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\05_Object\04_Mapping">
+      <UniqueIdentifier>{051fff87-dc9f-4d1f-be4b-a9ef93d4429f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\09_Shadow">
+      <UniqueIdentifier>{6479f605-b79c-48ce-aab0-27d2b6f941de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\11_Player">
+      <UniqueIdentifier>{71cca6fd-1929-4179-92ee-cff1586ebbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\14_Etc">
+      <UniqueIdentifier>{1b47a2eb-c469-4100-b522-66770e0ca7c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\08_Model">
+      <UniqueIdentifier>{48df08ee-493e-48ba-9804-0b364db40bc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\02_Map">
+      <UniqueIdentifier>{a9bcb275-03e2-4372-86c9-90869a3cfd46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\07_Monster">
+      <UniqueIdentifier>{54a62d67-6e8e-42c5-9fed-e6895720ced7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\12_Path">
+      <UniqueIdentifier>{f9cea047-747f-47b4-8732-5fb57c292f87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\10_Light">
+      <UniqueIdentifier>{201090f7-ec9d-4339-8cc6-f4d3724a7ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\06_CellObject">
+      <UniqueIdentifier>{72111b86-4758-4503-a682-5a6dc2606653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\MainTab\13_Weather">
+      <UniqueIdentifier>{43b5cbe7-ea03-4dd0-9f6a-61d8cbce78b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\Node">
+      <UniqueIdentifier>{524adc29-8557-466b-8c9f-8df381db125a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\ObjectControl">
+      <UniqueIdentifier>{81772d87-cef5-4dc8-a7f9-afd313db4af7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dialog\ViewDlg\ObjectList">
+      <UniqueIdentifier>{fe43a6ff-a501-49a5-ac3c-8d4b77a34078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SceneView">
+      <UniqueIdentifier>{fdba9480-c701-4bdc-a9a8-015fb6346ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resist">
+      <UniqueIdentifier>{5b18b938-c138-42bb-af43-b7bcacef98ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{09413982-995f-4d53-a70e-cf0700c87403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Object">
+      <UniqueIdentifier>{8740081d-1549-4a82-8802-a4ae9bfcc678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Model">
+      <UniqueIdentifier>{fac565cf-88e4-4b95-8e33-9f32437aadf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\PreViewer">
+      <UniqueIdentifier>{8e608dca-73bc-48b9-af08-982377d7a7e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\PreViewer\Render">
+      <UniqueIdentifier>{9c1bf1e4-5bd5-4374-9afc-112a4b98fa0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\CellObject">
+      <UniqueIdentifier>{af134e59-987f-437d-9dc3-3f8259267037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ToolNiNode">
+      <UniqueIdentifier>{1431dd31-1b2e-48d7-b321-923026539aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ToolNiNode\Gizmo">
+      <UniqueIdentifier>{db795c00-dabe-4f2f-a511-d5af2078f575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ToolNiNode\UndoManger">
+      <UniqueIdentifier>{a828fa95-01b0-4991-a020-43e14b875d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MFC">
+      <UniqueIdentifier>{ce52a467-c11b-4375-9a21-0c76d338b41a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TempMapMng">
+      <UniqueIdentifier>{eb9e4022-12f9-4dc1-9063-3772fdcfa779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{89b22031-2f22-414f-a545-64b99cb8e351}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{6dbf836a-6f12-4591-abd1-0d4db563de30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Path">
+      <UniqueIdentifier>{8361ddac-bf3a-44ea-9eb7-2e6f5b33601b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\MapTool.ico">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="res\MapTool.rc2">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>Resource</Filter>
+    </None>
+    <None Include="res\icon1.ico" />
+    <None Include="res\Spoid.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MapTool.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="cDumper.hpp">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildView.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTool.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewBase.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewHeader.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewMainTab.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewNode.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewObjectControl.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewObjectList.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewSetUp.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewViewer.h">
+      <Filter>View</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmBase.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmDynamic.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmHeader.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="FrmStatic.h">
+      <Filter>Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgBase.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgHeader.h">
+      <Filter>Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgConfig.h">
+      <Filter>Dialog\Modal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgEdit.h">
+      <Filter>Dialog\Modal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgInputKey.h">
+      <Filter>Dialog\Modal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgNewTerrain.h">
+      <Filter>Dialog\Modal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgNotice.h">
+      <Filter>Dialog\Modal</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgSetup.h">
+      <Filter>Dialog\ViewDlg</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMainTab.h">
+      <Filter>Dialog\ViewDlg\MainTab</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMain.h">
+      <Filter>Dialog\ViewDlg\MainTab\01_MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTHeight.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTHeight_Polygon.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTHeight_Region.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMapping.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTObj_Ani.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTObj_Merge.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTObj_Portal.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTObj_TexType.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTObject.h">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTShadow.h">
+      <Filter>Dialog\ViewDlg\MainTab\09_Shadow</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTPlayer.h">
+      <Filter>Dialog\ViewDlg\MainTab\11_Player</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTEtc.h">
+      <Filter>Dialog\ViewDlg\MainTab\14_Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTModel.h">
+      <Filter>Dialog\ViewDlg\MainTab\08_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTModel_Portal.h">
+      <Filter>Dialog\ViewDlg\MainTab\08_Model</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMap.h">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMap_BuffRegion.h">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMap_LimitEvo.h">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMap_Region.h">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMap_Resurrection.h">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMap_Start.h">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTMonster.h">
+      <Filter>Dialog\ViewDlg\MainTab\07_Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTPath.h">
+      <Filter>Dialog\ViewDlg\MainTab\12_Path</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTLight.h">
+      <Filter>Dialog\ViewDlg\MainTab\10_Light</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTLight_Direction.h">
+      <Filter>Dialog\ViewDlg\MainTab\10_Light</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTLight_Point.h">
+      <Filter>Dialog\ViewDlg\MainTab\10_Light</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTCellObject.h">
+      <Filter>Dialog\ViewDlg\MainTab\06_CellObject</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgMTWeather.h">
+      <Filter>Dialog\ViewDlg\MainTab\13_Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgNode.h">
+      <Filter>Dialog\ViewDlg\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgObjectControl.h">
+      <Filter>Dialog\ViewDlg\ObjectControl</Filter>
+    </ClInclude>
+    <ClInclude Include="_DlgObjectList.h">
+      <Filter>Dialog\ViewDlg\ObjectList</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>SceneView</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor_Char.h">
+      <Filter>SceneView</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePreview.h">
+      <Filter>SceneView</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTool.h">
+      <Filter>SceneView</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="Resist.h">
+      <Filter>Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="RollBack.h">
+      <Filter>Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolResource.h">
+      <Filter>Resist</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectHeader.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolObjectMng.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectMng.h">
+      <Filter>Object\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectModel.h">
+      <Filter>Object\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelBase.h">
+      <Filter>Object\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelMng.h">
+      <Filter>Object\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelNpc.h">
+      <Filter>Object\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelRes.h">
+      <Filter>Object\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>Object\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Preview.h">
+      <Filter>Object\PreViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Preview_Char.h">
+      <Filter>Object\PreViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Preview_Tex.h">
+      <Filter>Object\PreViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Preview_TObj.h">
+      <Filter>Object\PreViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="PreviewObj.h">
+      <Filter>Object\PreViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Object\PreViewer\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="CellObject\CellObjManager.h">
+      <Filter>Object\CellObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AxisRotation.h">
+      <Filter>ToolNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Editable.h">
+      <Filter>ToolNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\GizmoManager.h">
+      <Filter>ToolNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="Region.h">
+      <Filter>ToolNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNodeMng.h">
+      <Filter>ToolNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\UndoManager.h">
+      <Filter>ToolNiNode</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Gizmo\DragRect.h">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Gizmo\Gizmo.h">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Gizmo\RotateGizmo.h">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Gizmo\ScaleGizmo.h">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Gizmo\SnapGizmo.h">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\Gizmo\TranslateGizmo.h">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolNiNode\UndoManager\UndoCommand.h">
+      <Filter>ToolNiNode\UndoManger</Filter>
+    </ClInclude>
+    <ClInclude Include="CsEditFloatOnly.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="CsEditFocus.h">
+      <Filter>MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="TempRoot.h">
+      <Filter>TempMapMng</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongKongDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHelper.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Path\PathController.h">
+      <Filter>Path</Filter>
+    </ClInclude>
+    <ClInclude Include="Path\PathManager.h">
+      <Filter>Path</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cDumper.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildView.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTool.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewBase.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewMainTab.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewNode.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewObjectControl.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewObjectList.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewSetUp.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewViewer.cpp">
+      <Filter>View</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmBase.cpp">
+      <Filter>Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmDynamic.cpp">
+      <Filter>Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="FrmStatic.cpp">
+      <Filter>Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgHeader.cpp">
+      <Filter>Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgConfig.cpp">
+      <Filter>Dialog\Modal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgEdit.cpp">
+      <Filter>Dialog\Modal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgInputKey.cpp">
+      <Filter>Dialog\Modal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgNewTerrain.cpp">
+      <Filter>Dialog\Modal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgNotice.cpp">
+      <Filter>Dialog\Modal</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgSetup.cpp">
+      <Filter>Dialog\ViewDlg</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMainTab.cpp">
+      <Filter>Dialog\ViewDlg\MainTab</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMain.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\01_MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTHeight.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTHeight_Polygon.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTHeight_Region.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMapping.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTObj_Ani.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTObj_Merge.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTObj_Portal.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTObj_TexType.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTObject.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTShadow.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\09_Shadow</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTPlayer.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\11_Player</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTEtc.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\14_Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTModel.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\08_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTModel_Portal.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\08_Model</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMap.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMap_BuffRegion.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMap_LimitEvo.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMap_Region.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMap_Resurrection.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMap_Start.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\02_Map</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTMonster.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\07_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTPath.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\12_Path</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTLight.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\10_Light</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTLight_Direction.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\10_Light</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTLight_Point.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\10_Light</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTCellObject.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\06_CellObject</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgMTWeather.cpp">
+      <Filter>Dialog\ViewDlg\MainTab\13_Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgNode.cpp">
+      <Filter>Dialog\ViewDlg\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgObjectControl.cpp">
+      <Filter>Dialog\ViewDlg\ObjectControl</Filter>
+    </ClCompile>
+    <ClCompile Include="_DlgObjectList.cpp">
+      <Filter>Dialog\ViewDlg\ObjectList</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>SceneView</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor_Char.cpp">
+      <Filter>SceneView</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePreview.cpp">
+      <Filter>SceneView</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTool.cpp">
+      <Filter>SceneView</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Resist</Filter>
+    </ClCompile>
+    <ClCompile Include="Resist.cpp">
+      <Filter>Resist</Filter>
+    </ClCompile>
+    <ClCompile Include="RollBack.cpp">
+      <Filter>Resist</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolResource.cpp">
+      <Filter>Resist</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolObjectMng.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectMng.cpp">
+      <Filter>Object\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectModel.cpp">
+      <Filter>Object\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelBase.cpp">
+      <Filter>Object\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelMng.cpp">
+      <Filter>Object\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelNpc.cpp">
+      <Filter>Object\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelRes.cpp">
+      <Filter>Object\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>Object\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Preview.cpp">
+      <Filter>Object\PreViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Preview_Char.cpp">
+      <Filter>Object\PreViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Preview_Tex.cpp">
+      <Filter>Object\PreViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Preview_TObj.cpp">
+      <Filter>Object\PreViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="PreviewObj.cpp">
+      <Filter>Object\PreViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Object\PreViewer\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="CellObject\CellObjManager.cpp">
+      <Filter>Object\CellObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AxisRotation.cpp">
+      <Filter>ToolNiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Editable.cpp">
+      <Filter>ToolNiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\GizmoManager.cpp">
+      <Filter>ToolNiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="Region.cpp">
+      <Filter>ToolNiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNodeMng.cpp">
+      <Filter>ToolNiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\UndoManager.cpp">
+      <Filter>ToolNiNode</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Gizmo\DragRect.cpp">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Gizmo\Gizmo.cpp">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Gizmo\RotateGizmo.cpp">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Gizmo\ScaleGizmo.cpp">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Gizmo\SnapGizmo.cpp">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\Gizmo\TranslateGizmo.cpp">
+      <Filter>ToolNiNode\Gizmo</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolNiNode\UndoManager\UndoCommand.cpp">
+      <Filter>ToolNiNode\UndoManger</Filter>
+    </ClCompile>
+    <ClCompile Include="CsEditFloatOnly.cpp">
+      <Filter>MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="CsEditFocus.cpp">
+      <Filter>MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="TempRoot.cpp">
+      <Filter>TempMapMng</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHelper.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Path\PathController.cpp">
+      <Filter>Path</Filter>
+    </ClCompile>
+    <ClCompile Include="Path\PathManager.cpp">
+      <Filter>Path</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

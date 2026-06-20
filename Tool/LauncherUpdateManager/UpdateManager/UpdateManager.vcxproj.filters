@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="EnCryption">
+      <UniqueIdentifier>{6d1d3fbb-a86d-4f4c-bab1-684ad38dc822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Version">
+      <UniqueIdentifier>{d223dab1-09f2-41aa-b11e-f94f69c3620c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateManagerDlg.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DownloadManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="_String.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateManagerDlg.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_GSP.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_HK.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Kor.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_Steam.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_TW.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DownloadManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientOAuthKey.h">
+      <Filter>EnCryption</Filter>
+    </ClInclude>
+    <ClInclude Include="Version\Version_TH.h">
+      <Filter>Version</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\SetUpMain.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\Upbar.bmp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\UpdateManager.ico">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="res\UpdateManager.rc2">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="UpdateManager.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,174 @@
+﻿#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+
+#include "afxres.h"
+
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+    #ifdef _WIN32
+        LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+        #pragma code_page(949)
+    #endif //_WIN32
+
+    #ifdef APSTUDIO_INVOKED
+
+        1 TEXTINCLUDE 
+        BEGIN
+            "resource.h\0"
+        END
+
+        2 TEXTINCLUDE 
+        BEGIN
+            "#include ""afxres.h""\r\n"
+            "\0"
+        END
+
+        3 TEXTINCLUDE 
+        BEGIN
+            "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+            "#define _AFX_NO_OLE_RESOURCES\r\n"
+            "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+            "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+            "\r\n"
+            "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+            "LANGUAGE 18, 1\r\n"
+            "#pragma code_page(949)\r\n"
+            "#include ""res\\FullPack.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+            "#include ""afxres.rc""     // 표준 구성 요소입니다.\r\n"
+            "#endif\r\n"
+            "\0"
+        END
+
+    #endif    // APSTUDIO_INVOKED
+
+    // Icon
+    IDR_MAINFRAME           ICON                    "res\\FullPack.ico"
+
+    // Dialog
+    IDD_FULLPACK_DIALOG DIALOGEX 0, 0, 527, 572
+    STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+    EXSTYLE WS_EX_APPWINDOW
+    CAPTION "FullPack"
+    FONT 9, "MS Sans Serif", 400, 0, 0x0
+    BEGIN
+        LISTBOX         IDC_LIST_SRC_DIR,9,23,230,175,LBS_SORT | LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL
+        LISTBOX         IDC_LIST_DEST_DIR,283,24,228,174,LBS_SORT | LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL
+        GROUPBOX        "소스 파일",IDC_STATIC,7,7,235,193
+        GROUPBOX        "대상 파일",IDC_STATIC,279,7,235,193
+        PUSHBUTTON      "=>",IDC_BUTTON_ADD_DIR,248,57,25,29,NOT WS_TABSTOP
+        PUSHBUTTON      "<=",IDC_BUTTON_DEL_DIR,248,95,25,29,NOT WS_TABSTOP
+        PUSHBUTTON      "Kor Table Load",IDC_KOR_TABLE_LOAD,311,224,63,29,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        EDITTEXT        IDC_EDIT_PACK_ID_START,313,496,51,17,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+        GROUPBOX        "팩킹 ID",IDC_STATIC,299,485,211,71
+        LISTBOX         IDC_LIST_PACKFILE,9,260,285,271,LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL
+        GROUPBOX        "팩킹 파일 목록",IDC_STATIC,7,215,290,342
+        PUSHBUTTON      "대상 파일에서 파일추출",IDC_BUTTON_TO_FILE,11,226,99,29,NOT WS_TABSTOP
+        PUSHBUTTON      "제거",IDC_BUTTON_DEL_PACKFILE,119,226,38,29,NOT WS_TABSTOP
+        PUSHBUTTON      "전부제거",IDC_BUTTON_DELALL_PACKFILE,168,226,38,29,NOT WS_TABSTOP
+        LTEXT           "파일갯수 :",IDC_STATIC,14,540,34,9
+        LTEXT           "총 사이즈 :",IDC_STATIC,114,540,36,9
+        LTEXT           "Mega",IDC_STATIC,228,540,26,9
+        EDITTEXT        IDC_EDIT_PACK_ID2,50,538,40,14,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER | NOT WS_TABSTOP,WS_EX_RIGHT
+        EDITTEXT        IDC_EDIT_PACK_ID3,153,538,73,14,ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER | NOT WS_TABSTOP,WS_EX_RIGHT
+        GROUPBOX        "한국",IDC_STATIC,304,215,209,43
+        PUSHBUTTON      "Kor UnPack",IDC_KOR_UNPACKING,455,226,53,27,NOT WS_TABSTOP
+        PUSHBUTTON      "Patch Packing(Patch_)",IDC_BUTTON_DO_PATCHPACK,382,520,67,31,BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "USA Table Load",IDC_USA_TABLE_LOAD,311,268,63,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Taiwan Table Load",IDC_TAI_TABLE_LOAD,309,408,64,28,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Hongkong Table Load",IDC_HK_TABLE_LOAD,307,451,65,28,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Thailand Packing(Pack04)",IDC_THA_PACKING,382,367,64,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "Patch UnPacking",IDC_BUTTON_DO_PATCH_UNPACKING,458,517,50,34,BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "USA UnPack",IDC_USA_UNPACKING,455,268,54,28,NOT WS_TABSTOP
+        //PUSHBUTTON      "Thailand UnPack",IDC_THA_UNPACKING,454,367,54,27,BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Taiwan UnPack",IDC_TAI_UNPACKING,452,408,55,27,NOT WS_TABSTOP
+        //PUSHBUTTON      "Hongkong UnPack",IDC_HK_UNPACKING,452,450,54,27,BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "Kor Packing(Pack02)",IDC_KOR_PACKING,381,225,66,29,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "USA Packing(Pack03)",IDC_USA_PACKING,381,268,66,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        GROUPBOX        "미국",IDC_STATIC,302,259,209,97
+        //GROUPBOX        "태국",IDC_STATIC,302,360,209,39
+        //GROUPBOX        "대만",IDC_STATIC,301,401,209,40
+        //GROUPBOX        "홍콩",IDC_STATIC,300,442,209,40
+        //PUSHBUTTON      "Thailand Table Load",IDC_THA_TABLE_LOAD,310,367,64,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Taiwan Paking(Pack06)",IDC_TAI_PACKING,381,408,64,28,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Hongkong Packing(Pack07)",IDC_HK_PACKING,379,450,65,28,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "초기화",IDC_INIT_DATA,243,145,34,28,NOT WS_TABSTOP
+        //PUSHBUTTON      "Aeria Table Load",IDC_USA_TABLE_LOAD_AERIA,311,298,63,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Aeria UnPack ",IDC_USA_UNPACKING_AERIA,455,298,54,28,BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Aeria Packing(Pack03)",IDC_USA_PACKING_AERIA,381,298,66,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "Patch Data Load",IDC_PATCH_DATA_LOAD,309,520,67,31,BS_MULTILINE | NOT WS_TABSTOP
+        PUSHBUTTON      "ZIP",IDC_DO_ZIP,458,491,49,22,NOT WS_TABSTOP
+        EDITTEXT        IDC_EDIT_PACK_ID_END,393,495,51,17,ES_CENTER | ES_AUTOHSCROLL | ES_NUMBER
+        PUSHBUTTON      "Pack01 UnPack",IDC_RESOURCE_UNPACK,220,226,72,28,NOT WS_TABSTOP
+        PUSHBUTTON      "리소스풀팩",IDC_FULL_PACK,207,199,99,19,NOT WS_TABSTOP
+        //PUSHBUTTON      "Steam Table Load",IDC_USA_TABLE_LOAD_STEAM,310,327,63,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Steam UnPack ",IDC_USA_UNPACKING_STEAM,454,327,54,28,BS_MULTILINE | NOT WS_TABSTOP
+        //PUSHBUTTON      "Steam Packing(Pack03)",IDC_USA_PACKING_STEAM,380,327,66,27,BS_CENTER | BS_MULTILINE | NOT WS_TABSTOP
+    END
+
+// Version
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"  // Mudança feita aqui: "041203b5" para "040904b0" -- 040904B0 (USA)
+        BEGIN
+            VALUE "CompanyName", "----"
+            VALUE "FileDescription", "----"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "FullPack.exe"
+            VALUE "LegalCopyright", "----.  All rights reserved."
+            VALUE "OriginalFilename", "FullPack.exe"
+            VALUE "ProductName", "----"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949  // 0x412, 949 (KOREAN) --- 0x409, 1252 (USA)
+    END
+END
+
+    // DESIGNINFO
+    #ifdef APSTUDIO_INVOKED
+    GUIDELINES DESIGNINFO 
+    BEGIN
+        IDD_FULLPACK_DIALOG, DIALOG
+        BEGIN
+            LEFTMARGIN, 7
+            RIGHTMARGIN, 520
+            TOPMARGIN, 7
+            BOTTOMMARGIN, 565
+        END
+    END
+    #endif    // APSTUDIO_INVOKED
+
+#endif    // 한국어 resources
+
+#ifndef APSTUDIO_INVOKED
+
+    #define _AFX_NO_SPLITTER_RESOURCES
+    #define _AFX_NO_OLE_RESOURCES
+    #define _AFX_NO_TRACKER_RESOURCES
+    #define _AFX_NO_PROPERTY_RESOURCES
+
+    #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+    LANGUAGE 18, 1
+    #pragma code_page(949)
+    #include "res\FullPack.rc2"
+    #include "afxres.rc"
+    #endif
+
+#endif    // APSTUDIO_INVOKED

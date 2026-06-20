@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="GB_Language"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories=""
+		PreprocessorDefinitions="WIN32;STRICT"
+		ExceptionHandling="0"
+		ForceConformanceInForLoopScope="true"
+		RuntimeTypeInfo="false"
+		WarningLevel="3"
+		Detect64BitPortabilityProblems="false"
+		ForcedIncludeFiles="NiBuildConfiguration.h"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		SubSystem="2"
+		TargetMachine="1"
+	/>
+</VisualStudioPropertySheet>

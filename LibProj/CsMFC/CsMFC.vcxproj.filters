@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Func">
+      <UniqueIdentifier>{10fea865-6248-4db5-bb62-bcd53d60c013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control">
+      <UniqueIdentifier>{48506eae-72f9-49a1-9a4f-e37cc77baa5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control\Edit">
+      <UniqueIdentifier>{27cd0b37-fe49-40a6-a88d-c9abdc5b0f21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Control\CsSpinCtrl">
+      <UniqueIdentifier>{5735a68d-dfc3-44d4-9a60-b141ce08f360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{0f0b846c-fee3-409f-a459-a4b6d4d0399b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{88751e1f-013e-4293-b3dc-67dc5f1cf00d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CsMfcFunc.cpp">
+      <Filter>Func</Filter>
+    </ClCompile>
+    <ClCompile Include="CsEdit.cpp">
+      <Filter>Control\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="CsSpinCtrl.cpp">
+      <Filter>Control\CsSpinCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="CsMFC.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CsMfcFunc.h">
+      <Filter>Func</Filter>
+    </ClInclude>
+    <ClInclude Include="CsEdit.h">
+      <Filter>Control\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="CsSpinCtrl.h">
+      <Filter>Control\CsSpinCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="CsMFC.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="_TestDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="EngDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="HongKongDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KorDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="TaiwanDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="ThaiDefine.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
