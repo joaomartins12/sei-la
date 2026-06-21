@@ -9,17 +9,17 @@
 namespace
 {
 	// Posição ideal testada para o mapa 04 / DatsUnderground.
-	// Coordenadas do jogo: X=0, Y=0, Z=0.00
-	// Em NiPoint3/Gamebryo usamos: X=0, Y(altura)=0, Z=0.
+	// Coordenadas do jogo: X=3000, Y=245, Z=18120.00
+	// Em NiPoint3/Gamebryo usamos: X=3000, Y(altura)=18120, Z=245.
 	//
 	// IMPORTANTE:
 	// Estes valores têm de bater com o target da câmera no CharacterCreate.cpp.
-	static float g_fCreateMapPosX = 0.0f;
-	static float g_fCreateMapPosY = 0.0f;
-	static float g_fCreateMapPosZ = 0.0f;
+	static float g_fCreateMapPosX = 3000.0f;
+	static float g_fCreateMapPosY = 18114.0f;
+	static float g_fCreateMapPosZ = 315.0f;
 
-	static float g_fCreateDigimonOffsetX = -420.0f;
-	static float g_fCreateDigimonOffsetZ = 160.0f;
+	static float g_fCreateDigimonOffsetX = 0.0f;
+	static float g_fCreateDigimonOffsetZ = 0.0f;
 
 	static float g_fCreateModelYaw = 0.0f;
 

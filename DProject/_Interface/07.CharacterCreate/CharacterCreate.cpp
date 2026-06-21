@@ -7,12 +7,14 @@
 #include "../../ContentsSystem/ContentsSystemDef.h"
 #include "../../ContentsSystem/ContentsSystem.h"
 #include "../../MngCollector.h"
-#include "../../../LibProj/CsFilePack/CsFilePackSystem.h"
 
-#include <vector>
-#include <list>
-#include <string>
-#include <algorithm>
+namespace CharacterCreateLobbyMapCache
+{
+	bool Load();
+	bool IsLoaded();
+	void Render();
+	void Update();
+}
 
 namespace
 {
@@ -21,342 +23,22 @@ namespace
 	static bool g_bCharacterCreateLobbyMapPreloaded = false;
 	static bool g_bCharacterCreateLobbyMapPreloadTried = false;
 
-	// Carregamento direto do mapa 04 / DatsUnderground:
-	// 1) carrega o NIF principal:
-	//    Data\map\realworld_r\04_datsunderground\04\map_data\04.nif
-	// 2) carrega também todos os .nif dentro de:
-	//    Data\map\realworld_r\04_datsunderground\04\object_data\...
-	//
-	// Esta abordagem segue o mesmo estilo do DatsCenter: NiStream.Load(path exato),
-	// usando o FilePack para resolver os ficheiros.
-#define CHARACTER_CREATE_MAP_UNDERGROUND_ROOT "Data\\map\\realworld_r\\04_datsunderground\\04"
-#define CHARACTER_CREATE_MAIN_MAP_NIF "Data\\map\\realworld_r\\04_datsunderground\\04\\map_data\\04.nif"
-#define CHARACTER_CREATE_OBJECT_DATA_ROOT "Data\\map\\realworld_r\\04_datsunderground\\04\\object_data"
-
-#define CHARACTER_CREATE_RENDER_MAIN_MAP_NIF 1
-#define CHARACTER_CREATE_RENDER_OBJECT_DATA_ONLY 0
-#define CHARACTER_CREATE_SKIP_BACKGROUND_OBJECTS 0
-
-	static CsNodeObj g_CharacterCreateScene;
-	static bool g_bCharacterCreateSceneLoaded = false;
-
-	// Object_data do mapa 04 / DatsUnderground.
-	static std::vector<CsNodeObj*> g_vecCharacterCreateMapObjects;
-
 	// Posição ideal testada para o mapa 04 / DatsUnderground.
-	// Coordenadas do jogo: X=11378, Y=19805, Z=0.00
-	// Em NiPoint3/Gamebryo usamos: X=11378, Y(altura)=0, Z=19805.
 	static const float CHARACTER_CREATE_MAP_START_X = 0.0f;
 	static const float CHARACTER_CREATE_MAP_START_Z = 0.0f;
 
-	// Ajuste temporário da câmera do CharacterCreate.
-	// Usa F1/F2/F3/F4/F5/F6 dentro da tela de criação para encontrar a posição bonita.
-	static float g_fCreateCamDist = 1800.0f;
-	static float g_fCreateCamPitch = -8.0f;
-	static float g_fCreateCamYaw = 0.0f;
-	static float g_fCreateCamHeight = 120.0f;
-
-	// Velocidade dos ajustes em modo debug.
-	static float g_fCreateCamMoveStep = 1000.0f;
-	static float g_fCreateCamHeightStep = 250.0f;
-	static float g_fCreateCamDistStep = 500.0f;
-	static float g_fCreateCamAngleStep = 5.0f;
+	// Câmera final fixa do CharacterCreate no mapa 04 / DatsUnderground.
+	// Sem modo debug: estas coordenadas já não são alteradas por teclado.
+	static const float g_fCreateCamDist = 300.0f;
+	static const float g_fCreateCamPitch = -3.0f;
+	static const float g_fCreateCamYaw = 0.0f;
+	static const float g_fCreateCamHeight = 120.0f;
 
 	// Alvo real da câmera dentro do mapa 04 / DatsUnderground.
 	// Este valor tem de bater com a posição usada em CharacterCreateContents.cpp.
-	static float g_fCreateCamTargetX = CHARACTER_CREATE_MAP_START_X;
-	static float g_fCreateCamTargetY = 120.0f;
-	static float g_fCreateCamTargetZ = CHARACTER_CREATE_MAP_START_Z;
-
-
-
-
-	void CCDeleteMapObjectData()
-	{
-		for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
-		{
-			CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
-			if (pObj)
-			{
-				pObj->Delete();
-				NiDelete pObj;
-			}
-		}
-
-		g_vecCharacterCreateMapObjects.clear();
-	}
-
-	void CCNormalizePackPath(std::string& kPath)
-	{
-		std::replace(kPath.begin(), kPath.end(), '/', '\\');
-
-		for (size_t i = 0; i < kPath.size(); ++i)
-		{
-			if (kPath[i] >= 'A' && kPath[i] <= 'Z')
-				kPath[i] = (char)(kPath[i] - 'A' + 'a');
-		}
-	}
-
-
-	bool CCShouldSkipObjectDataPath(std::string const& kNormalizedPath)
-	{
-#if CHARACTER_CREATE_SKIP_BACKGROUND_OBJECTS
-		// O path já vem normalizado para minúsculas e com '\\'.
-		if (kNormalizedPath.find("\\object_data\\background\\") != std::string::npos)
-			return true;
-#endif
-		return false;
-	}
-
-	bool CCEndsWithNif(std::string const& kPath)
-	{
-		if (kPath.size() < 4)
-			return false;
-
-		std::string kTail = kPath.substr(kPath.size() - 4);
-		CCNormalizePackPath(kTail);
-
-		return kTail == ".nif";
-	}
-
-	bool CCStartsWith(std::string const& kPath, std::string const& kPrefix)
-	{
-		if (kPath.size() < kPrefix.size())
-			return false;
-
-		return kPath.compare(0, kPrefix.size(), kPrefix) == 0;
-	}
-
-	bool CCLoadNifToSceneObject(char const* pszPath, CsNodeObj& kOutObj, NiPoint3 const& kTranslate)
-	{
-		if (!pszPath || pszPath[0] == 0)
-			return false;
-
-		NiStream kStream;
-
-		if (!kStream.Load(pszPath))
-			return false;
-
-		NiNodePtr pNode = (NiNode*)kStream.GetObjectAt(0);
-		if (!pNode)
-			return false;
-
-		nsCSGBFUNC::InitAnimation(pNode, NiTimeController::APP_INIT, NiTimeController::LOOP);
-
-		// IMPORTANTE:
-		// O mapa carregado diretamente não passa pelo shader/lighting normal do terrain.
-		// Sem emittance, muitos NIFs aparecem totalmente pretos nesta tela.
-		nsCSGBFUNC::Set_Emittance(pNode, NiColor(1.0f, 1.0f, 1.0f));
-
-		kOutObj.SetNiObject(pNode, CGeometry::Normal);
-
-		if (kOutObj.m_pNiNode)
-		{
-			kOutObj.m_pNiNode->SetTranslate(kTranslate);
-			NiTimeController::StartAnimations(kOutObj.m_pNiNode, (float)g_fAccumTime);
-			kOutObj.m_pNiNode->UpdateEffects();
-			kOutObj.m_pNiNode->Update(0.0f);
-		}
-
-		return true;
-	}
-
-	bool CCLoadNifToNewSceneObject(char const* pszPath)
-	{
-		if (!pszPath || pszPath[0] == 0)
-			return false;
-
-		CsNodeObj* pObj = NiNew CsNodeObj;
-		if (!pObj)
-			return false;
-
-		if (!CCLoadNifToSceneObject(pszPath, *pObj, NiPoint3::ZERO))
-		{
-			pObj->Delete();
-			NiDelete pObj;
-			return false;
-		}
-
-		g_vecCharacterCreateMapObjects.push_back(pObj);
-		return true;
-	}
-
-	int CCLoadMap04ObjectDataFromPackIndex(int nPackIndex)
-	{
-		std::list<std::string> kFiles;
-		CsFPS::CsFPSystem::GetFileList(nPackIndex, kFiles);
-
-		char szLog[512] = { 0, };
-		sprintf_s(szLog, 512, "[UI][CharacterCreate][MAP04] PackIndex=%d FileList count=%d\n", nPackIndex, (int)kFiles.size());
-		OutputDebugStringA(szLog);
-
-		if (kFiles.empty())
-			return 0;
-
-		std::string kObjectRoot = CHARACTER_CREATE_OBJECT_DATA_ROOT;
-		CCNormalizePackPath(kObjectRoot);
-
-		// Garantir barra final para não apanhar caminhos parecidos.
-		if (!kObjectRoot.empty() && kObjectRoot[kObjectRoot.size() - 1] != '\\')
-			kObjectRoot += "\\";
-
-		int nLoaded = 0;
-		int nFound = 0;
-		int nFailed = 0;
-		int nSampleLogged = 0;
-
-		for (std::list<std::string>::iterator it = kFiles.begin(); it != kFiles.end(); ++it)
-		{
-			std::string kOriginal = *it;
-			std::string kNormalized = kOriginal;
-			CCNormalizePackPath(kNormalized);
-
-			if (!CCStartsWith(kNormalized, kObjectRoot))
-				continue;
-
-			if (!CCEndsWithNif(kNormalized))
-				continue;
-
-			if (CCShouldSkipObjectDataPath(kNormalized))
-			{
-				if (nSampleLogged < 20)
-				{
-					char szSkip[MAX_PATH + 256] = { 0, };
-					sprintf_s(szSkip, sizeof(szSkip), "[UI][CharacterCreate][MAP04] skipped background nif=%s\n", kOriginal.c_str());
-					OutputDebugStringA(szSkip);
-					++nSampleLogged;
-				}
-				continue;
-			}
-
-			++nFound;
-
-			// Usar o path original devolvido pelo pack, porque pode preservar maiúsculas/minúsculas.
-			if (CCLoadNifToNewSceneObject(kOriginal.c_str()))
-			{
-				++nLoaded;
-
-				if (nSampleLogged < 20)
-				{
-					char szSample[MAX_PATH + 256] = { 0, };
-					sprintf_s(szSample, sizeof(szSample), "[UI][CharacterCreate][MAP04] loaded pack nif=%s\n", kOriginal.c_str());
-					OutputDebugStringA(szSample);
-					++nSampleLogged;
-				}
-			}
-			else
-			{
-				++nFailed;
-
-				if (nFailed <= 20)
-				{
-					char szFail[MAX_PATH + 256] = { 0, };
-					sprintf_s(szFail, sizeof(szFail), "[UI][CharacterCreate][MAP04] failed pack nif=%s\n", kOriginal.c_str());
-					OutputDebugStringA(szFail);
-				}
-			}
-		}
-
-		sprintf_s(
-			szLog,
-			512,
-			"[UI][CharacterCreate][MAP04] PackIndex=%d object_data found=%d loaded=%d failed=%d\n",
-			nPackIndex,
-			nFound,
-			nLoaded,
-			nFailed
-		);
-		OutputDebugStringA(szLog);
-
-		return nLoaded;
-	}
-
-	int CCLoadMap04ObjectDataFromPacks()
-	{
-		int nTotalLoaded = 0;
-
-		// IMPORTANTE:
-		// O log mostrou que PackIndex=0 carregou corretamente:
-		//   FileList count=55211
-		//   object_data found=... loaded=... failed=...
-		//
-		// O crash acontece logo depois, ao tentar enumerar PackIndex=1/Pack03.
-		// Como o mapa 04 / DatsUnderground e os object_data já estão todos no Pack01, não precisamos
-		// tocar no Pack03 aqui.
-		nTotalLoaded += CCLoadMap04ObjectDataFromPackIndex(0);
-
-		char szLog[256] = { 0, };
-		sprintf_s(szLog, 256, "[UI][CharacterCreate][MAP04] DatsUnderground object_data pack01-only total loaded=%d\n", nTotalLoaded);
-		OutputDebugStringA(szLog);
-
-		return nTotalLoaded;
-	}
-
-
-	void CCLogObjectDataBoundsSample()
-	{
-		int nLogged = 0;
-
-		for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
-		{
-			CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
-			if (!pObj || !pObj->m_pNiNode)
-				continue;
-
-			NiBound kBound = pObj->m_pNiNode->GetWorldBound();
-
-			char szLog[512] = { 0, };
-			sprintf_s(
-				szLog,
-				512,
-				"[UI][CharacterCreate][MAP04] object sample idx=%d center=(%.2f, %.2f, %.2f) radius=%.2f\n",
-				(int)i,
-				kBound.GetCenter().x,
-				kBound.GetCenter().y,
-				kBound.GetCenter().z,
-				kBound.GetRadius()
-			);
-			OutputDebugStringA(szLog);
-
-			++nLogged;
-			if (nLogged >= 10)
-				break;
-		}
-	}
-
-	void CCLogCamera()
-	{
-		char szBuffer[768] = { 0, };
-		sprintf_s(
-			szBuffer,
-			768,
-			"[UI][CharacterCreate][CAMERA] target=(%.2f, %.2f, %.2f) dist=%.2f pitch=%.2f yaw=%.2f height=%.2f stepMove=%.2f stepY=%.2f\n",
-			g_fCreateCamTargetX,
-			g_fCreateCamTargetY,
-			g_fCreateCamTargetZ,
-			g_fCreateCamDist,
-			g_fCreateCamPitch,
-			g_fCreateCamYaw,
-			g_fCreateCamHeight,
-			g_fCreateCamMoveStep,
-			g_fCreateCamHeightStep
-		);
-		OutputDebugStringA(szBuffer);
-
-		sprintf_s(
-			szBuffer,
-			768,
-			"[UI][CharacterCreate][COPY] CharacterCreate.cpp targetX=%.2ff targetY=%.2ff targetZ=%.2ff dist=%.2ff pitch=%.2ff yaw=%.2ff height=%.2ff\n",
-			g_fCreateCamTargetX,
-			g_fCreateCamTargetY,
-			g_fCreateCamTargetZ,
-			g_fCreateCamDist,
-			g_fCreateCamPitch,
-			g_fCreateCamYaw,
-			g_fCreateCamHeight
-		);
-		OutputDebugStringA(szBuffer);
-	}
+	static const float g_fCreateCamTargetX = 3000.0f;
+	static const float g_fCreateCamTargetY = 17948.0f;
+	static const float g_fCreateCamTargetZ = 425.0f;
 
 	void CCLogMapCenter()
 	{
@@ -389,7 +71,6 @@ namespace
 		OutputDebugStringA(szBuffer);
 	}
 }
-
 CCharacterCreate::CCharacterCreate() :
 	m_pIntroSound(NULL),
 	m_pButtonOK(NULL),
@@ -444,12 +125,12 @@ void CCharacterCreate::Destory()
 
 bool CCharacterCreate::PreloadLobbyMapStatic()
 {
-	CCLog("PreloadLobbyMapStatic skipped - DatsUnderground 04 loads directly in CharacterCreate");
+	CCLog("PreloadLobbyMapStatic - map is loaded by GameApp startup cache");
 
-	g_bCharacterCreateLobbyMapPreloaded = false;
 	g_bCharacterCreateLobbyMapPreloadTried = true;
+	g_bCharacterCreateLobbyMapPreloaded = CharacterCreateLobbyMapCache::IsLoaded();
 
-	return true;
+	return g_bCharacterCreateLobbyMapPreloaded;
 }
 
 bool CCharacterCreate::IsLobbyMapPreloadedStatic()
@@ -467,117 +148,39 @@ void CCharacterCreate::ResetLobbyMapPreloadStatic()
 
 bool CCharacterCreate::LoadLobbyMap()
 {
-	CCLog("LoadLobbyMap begin - DatsUnderground 04 main map NIF + object_data");
+	CCLog("LoadLobbyMap attach - using GameApp startup cache only");
 
-	if (m_bLobbyMapLoaded && g_bCharacterCreateSceneLoaded && !g_vecCharacterCreateMapObjects.empty())
+	if (!CharacterCreateLobbyMapCache::IsLoaded())
 	{
-		CCLog("LoadLobbyMap skipped - map already loaded by this instance");
-		return true;
-	}
-
-	g_CharacterCreateScene.Delete();
-	g_bCharacterCreateSceneLoaded = false;
-	CCDeleteMapObjectData();
-
-	// 1) Carrega o NIF principal do mapa:
-	// Data\map\realworld_r\04_datsunderground\04\map_data\04.nif
-	CCLog("LoadLobbyMap - load main map NIF begin: " CHARACTER_CREATE_MAIN_MAP_NIF);
-
-	if (!CCLoadNifToSceneObject(CHARACTER_CREATE_MAIN_MAP_NIF, g_CharacterCreateScene, NiPoint3::ZERO))
-	{
-		CCLog("LoadLobbyMap failed - could not load main map04 NIF");
-		CsMessageBoxA(MB_OK, "%s 경로\n에서 오브젝트를 찾지 못했습니다.", CHARACTER_CREATE_MAIN_MAP_NIF);
+		CCLog("LoadLobbyMap failed - GameApp startup cache is not loaded");
+		m_bLobbyMapLoaded = false;
 		return false;
-	}
-
-	g_bCharacterCreateSceneLoaded = true;
-	CCLog("LoadLobbyMap - main map NIF loaded");
-
-	// 2) Carrega os objetos do mapa pelo FilePack.
-	// CsFPSystem::GetFileList(0) lista o Pack01; depois filtramos:
-	// Data\map\realworld_r\04_datsunderground\04\object_data\*.nif
-	int nObjectDataLoaded = CCLoadMap04ObjectDataFromPacks();
-
-	char szLog[256] = { 0, };
-	sprintf_s(szLog, 256, "LoadLobbyMap - object_data pack loaded count=%d", nObjectDataLoaded);
-	CCLog(szLog);
-	CCLogObjectDataBoundsSample();
-
-	if (nObjectDataLoaded <= 0)
-	{
-		CCLog("LoadLobbyMap warning - object_data loaded count is 0");
-		// Não falhar aqui: o NIF principal já carregou.
 	}
 
 	m_bLobbyMapLoaded = true;
 	g_bCharacterCreateLobbyMapPreloaded = true;
 	g_bCharacterCreateLobbyMapPreloadTried = true;
 
-	CCLog("LoadLobbyMap ok - DatsUnderground 04 main map NIF + object_data loaded");
-	CCLogCamera();
-
+	CCLog("LoadLobbyMap ok - attached to GameApp startup cache");
 	return true;
 }
 
 void CCharacterCreate::ReleaseLobbyMap()
 {
-	CCLog("ReleaseLobbyMap begin");
+	// O mapa é carregado no GameApp e pertence ao cache global.
+	// Não apagar aqui, para não descarregar o mapa ao sair/voltar do CharacterCreate.
+	if (m_bLobbyMapLoaded)
+		CCLog("ReleaseLobbyMap detach - startup cache kept alive");
 
-	if (!m_bLobbyMapLoaded && g_vecCharacterCreateMapObjects.empty())
-	{
-		CCLog("ReleaseLobbyMap skipped - not loaded");
-		return;
-	}
-
-	g_CharacterCreateScene.Delete();
-	CCDeleteMapObjectData();
-
-	g_bCharacterCreateSceneLoaded = false;
 	m_bLobbyMapLoaded = false;
-
-	CCLog("ReleaseLobbyMap end - DatsUnderground 04 main map NIF/object_data deleted");
 }
 
 void CCharacterCreate::RenderLobbyMap()
 {
-	static int s_nRenderLobbyMapLogCounter = 0;
-
 	if (!m_bLobbyMapLoaded)
-	{
-		if (++s_nRenderLobbyMapLogCounter >= 120)
-		{
-			s_nRenderLobbyMapLogCounter = 0;
-			CCLog("RenderLobbyMap skipped - map not loaded");
-		}
 		return;
-	}
 
-	if (++s_nRenderLobbyMapLogCounter >= 120)
-	{
-		s_nRenderLobbyMapLogCounter = 0;
-
-		char szLog[256] = { 0, };
-		sprintf_s(
-			szLog,
-			256,
-			"RenderLobbyMap - main=%d object_data count=%d",
-			CHARACTER_CREATE_RENDER_MAIN_MAP_NIF,
-			(int)g_vecCharacterCreateMapObjects.size()
-		);
-		CCLog(szLog);
-	}
-
-#if CHARACTER_CREATE_RENDER_MAIN_MAP_NIF
-	if (g_bCharacterCreateSceneLoaded && g_CharacterCreateScene.m_pNiNode)
-		g_CharacterCreateScene.Render();
-#endif
-
-	for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
-	{
-		CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
-		if (pObj && pObj->m_pNiNode)
-			pObj->Render();
-	}
+	CharacterCreateLobbyMapCache::Render();
 }
 
 bool CCharacterCreate::Init()
@@ -1015,234 +618,7 @@ BOOL CCharacterCreate::UpdateKeyboard(const MSG& p_kMsg)
 		}
 		break;
 
-		// ==============================================================
-		// MODO DEBUG DA CÂMERA DO CHARACTER CREATE
-		//
-		// Movimento do alvo:
-		//   W / S        = target Z + / -
-		//   A / D        = target X - / +
-		//   Q / E        = target Y - / +
-		//
-		// Câmera:
-		//   F1 / F2      = distância - / +
-		//   F3 / F4      = pitch - / +
-		//   F5 / F6      = delta height - / +
-		//   F7 / F8      = yaw - / +
-		//
-		// Velocidade:
-		//   F9 / F10     = reduzir/aumentar passo de movimento
-		//   PageUp/Down  = target Y + / - com passo maior
-		//
-		// Output:
-		//   F11          = imprimir coordenadas atuais para copiar
-		// ==============================================================
 
-		case 'W':
-		{
-			g_fCreateCamTargetZ += g_fCreateCamMoveStep;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case 'S':
-		{
-			g_fCreateCamTargetZ -= g_fCreateCamMoveStep;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case 'A':
-		{
-			g_fCreateCamTargetX -= g_fCreateCamMoveStep;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case 'D':
-		{
-			g_fCreateCamTargetX += g_fCreateCamMoveStep;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case 'Q':
-		{
-			g_fCreateCamTargetY -= g_fCreateCamHeightStep;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case 'E':
-		{
-			g_fCreateCamTargetY += g_fCreateCamHeightStep;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_PRIOR: // PageUp
-		{
-			g_fCreateCamTargetY += g_fCreateCamHeightStep * 4.0f;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_NEXT: // PageDown
-		{
-			g_fCreateCamTargetY -= g_fCreateCamHeightStep * 4.0f;
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F1:
-		{
-			g_fCreateCamDist -= g_fCreateCamDistStep;
-			if (g_fCreateCamDist < 100.0f)
-				g_fCreateCamDist = 100.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F2:
-		{
-			g_fCreateCamDist += g_fCreateCamDistStep;
-			if (g_fCreateCamDist > 50000.0f)
-				g_fCreateCamDist = 50000.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F3:
-		{
-			g_fCreateCamPitch -= g_fCreateCamAngleStep;
-			if (g_fCreateCamPitch < -89.0f)
-				g_fCreateCamPitch = -89.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F4:
-		{
-			g_fCreateCamPitch += g_fCreateCamAngleStep;
-			if (g_fCreateCamPitch > 89.0f)
-				g_fCreateCamPitch = 89.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F5:
-		{
-			g_fCreateCamHeight -= g_fCreateCamHeightStep;
-			if (g_fCreateCamHeight < -3000.0f)
-				g_fCreateCamHeight = -3000.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F6:
-		{
-			g_fCreateCamHeight += g_fCreateCamHeightStep;
-			if (g_fCreateCamHeight > 3000.0f)
-				g_fCreateCamHeight = 3000.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F7:
-		{
-			g_fCreateCamYaw -= g_fCreateCamAngleStep;
-			if (g_fCreateCamYaw < -360.0f)
-				g_fCreateCamYaw += 360.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F8:
-		{
-			g_fCreateCamYaw += g_fCreateCamAngleStep;
-			if (g_fCreateCamYaw > 360.0f)
-				g_fCreateCamYaw -= 360.0f;
-
-			SetCameraInfo();
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F9:
-		{
-			g_fCreateCamMoveStep *= 0.5f;
-			g_fCreateCamHeightStep *= 0.5f;
-
-			if (g_fCreateCamMoveStep < 5.0f)
-				g_fCreateCamMoveStep = 5.0f;
-
-			if (g_fCreateCamHeightStep < 2.0f)
-				g_fCreateCamHeightStep = 2.0f;
-
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F10:
-		{
-			g_fCreateCamMoveStep *= 2.0f;
-			g_fCreateCamHeightStep *= 2.0f;
-
-			if (g_fCreateCamMoveStep > 20000.0f)
-				g_fCreateCamMoveStep = 20000.0f;
-
-			if (g_fCreateCamHeightStep > 10000.0f)
-				g_fCreateCamHeightStep = 10000.0f;
-
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
-
-		case VK_F11:
-		{
-			CCLogCamera();
-			return TRUE;
-		}
-		break;
 		}
 		break;
 	}
@@ -1299,15 +675,8 @@ BOOL CCharacterCreate::UpdateKeyboard(const MSG& p_kMsg)
 
 void CCharacterCreate::Update(float fDeltaTime)
 {
-	if (g_bCharacterCreateSceneLoaded && g_CharacterCreateScene.m_pNiNode)
-		g_CharacterCreateScene.m_pNiNode->Update((float)g_fAccumTime);
-
-	for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
-	{
-		CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
-		if (pObj && pObj->m_pNiNode)
-			pObj->m_pNiNode->Update((float)g_fAccumTime);
-	}
+	if (m_bLobbyMapLoaded)
+		CharacterCreateLobbyMapCache::Update();
 
 	Update3DModel(fDeltaTime);
 	UpdateSound();
@@ -1503,16 +872,8 @@ void CCharacterCreate::_SelectedTamer(void* pSender, void* pData)
 
 void CCharacterCreate::SetCameraInfo()
 {
-	static int s_nCameraLogCounter = 0;
-
-	if (++s_nCameraLogCounter >= 120)
-	{
-		s_nCameraLogCounter = 0;
-		CCLogCamera();
-	}
-
 	// A câmera do CsGBCamera segue um target node interno.
-	// Aqui movemos esse target livremente em X/Y/Z com WASD/QE.
+	// Aqui aplicamos a posição final fixa do CharacterCreate.
 	sCAMERAINFO ci;
 	ci.s_fDist = g_fCreateCamDist;
 	ci.s_fFarPlane = 100000.0f;

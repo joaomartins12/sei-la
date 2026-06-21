@@ -9,9 +9,20 @@
 #include "../../ContentsSystem/ContentsSystem.h"
 #include "../../MngCollector.h"
 
+
+// Cache global carregado no GameApp.cpp.
+// O CharacterSelect apenas usa Render/Update; não faz load do mapa aqui.
+namespace CharacterCreateLobbyMapCache
+{
+	bool IsLoaded();
+	bool Load();
+	void Update();
+	void Render();
+}
+
 namespace
 {
-	static const DWORD CHARACTER_SELECT_LOBBY_MAP_ID = 105;
+	static const DWORD CHARACTER_SELECT_LOBBY_MAP_ID = 4;
 }
 
 CCharacterSelect::sCharUIControls::sCharUIControls()
@@ -138,7 +149,8 @@ CCharacterSelect::~CCharacterSelect()
 
 void CCharacterSelect::Destory()
 {
-	//ReleaseLobbyMap();
+	// O mapa/cache é global e pertence ao GameApp.cpp.
+	// Não fazer Release aqui, senão o CharacterCreate também perde o mapa.
 
 	m_mapUIControls.clear();
 	DeleteScript();
@@ -151,6 +163,8 @@ void CCharacterSelect::Destory()
 void CCharacterSelect::Init()
 {
 	MakeBackGroundUI();
+
+	LoadLobbyMap();
 
 	MakeMainButtonUI();
 
@@ -172,26 +186,31 @@ bool CCharacterSelect::LoadLobbyMap()
 	if (m_bLobbyMapLoaded)
 		return true;
 
-	if (!g_pMngCollector)
-		return false;
-
 	m_dwLobbyMapID = CHARACTER_SELECT_LOBBY_MAP_ID;
 
-	g_pMngCollector->LoadTerrain(m_dwLobbyMapID);
+	// O normal é já estar carregado pelo GameApp.cpp no startup.
+	// Se por algum motivo ainda não estiver, tentamos carregar aqui como fallback.
+	if (!CharacterCreateLobbyMapCache::IsLoaded())
+	{
+		OutputDebugStringA("[UI][CharacterSelect] lobby map cache not loaded, fallback Load()\n");
+
+		if (!CharacterCreateLobbyMapCache::Load())
+		{
+			OutputDebugStringA("[UI][CharacterSelect] lobby map cache Load() failed\n");
+			return false;
+		}
+	}
 
 	m_bLobbyMapLoaded = true;
+	OutputDebugStringA("[UI][CharacterSelect] attached to startup lobby map cache\n");
 
 	return true;
 }
 
 void CCharacterSelect::ReleaseLobbyMap()
 {
-	if (!m_bLobbyMapLoaded)
-		return;
-
-	if (g_pMngCollector)
-		g_pMngCollector->ResetMap();
-
+	// O cache é global e fica vivo para CharacterSelect + CharacterCreate.
+	// O release real acontece em GameApp::OnTerminate().
 	m_bLobbyMapLoaded = false;
 }
 
@@ -200,13 +219,13 @@ void CCharacterSelect::RenderLobbyMap()
 	if (!m_bLobbyMapLoaded)
 		return;
 
-	if (g_pMngCollector)
-		g_pMngCollector->Render(true);
+	CharacterCreateLobbyMapCache::Render();
 }
 
 void CCharacterSelect::MakeBackGroundUI()
 {
-	InitScript("Lobby\\CharacterSelect\\Background.dds", CsPoint::ZERO, CsPoint(g_nScreenWidth, g_nScreenHeight), false);
+	// Fundo transparente: o cenário 3D vem do cache carregado no GameApp.cpp.
+	InitScript(NULL, CsPoint::ZERO, CsPoint(g_nScreenWidth, g_nScreenHeight), false);
 }
 
 void CCharacterSelect::MakeMainButtonUI()
@@ -693,6 +712,9 @@ void CCharacterSelect::Update(float const& fAccumTime, float const& fDeltaTime)
 	m_MainButtonUI.UpdateScript(fDeltaTime);
 	m_CharListUI.UpdateScript(fDeltaTime);
 
+	if (m_bLobbyMapLoaded)
+		CharacterCreateLobbyMapCache::Update();
+
 	if (GetSystem())
 		GetSystem()->UpdateModel(fAccumTime, fDeltaTime);
 }
@@ -710,6 +732,14 @@ void CCharacterSelect::RenderScreenUI()
 
 void CCharacterSelect::Render3DModel()
 {
+	// O Flow faz ResetRendererCamera antes deste render.
+	// Aplicamos a câmera antes do mapa e antes do Tamer para manter o mesmo enquadramento.
+	SetCameraInfo();
+
+	RenderLobbyMap();
+
+	SetCameraInfo();
+
 	if (GetSystem())
 		GetSystem()->RenderModel();
 }
@@ -918,13 +948,27 @@ void CCharacterSelect::CheckEditBoxText(void* pSender, void* pData)
 void CCharacterSelect::SetCameraInfo()
 {
 	sCAMERAINFO ci;
-	ci.s_fDist = 380.0f;
+	ci.s_fDist = 300.0f;
 	ci.s_fFarPlane = 100000.0f;
-	ci.s_fInitPitch = 0.0f;
+	ci.s_fInitPitch = CsD2R(-3.0f);
+	ci.s_fInitRoll = 0.0f;
+	ci.s_ptInitPos = NiPoint3(3000.0f, 17948.0f, 425.0f);
+
+	NiPoint3 kTarget(3000.0f, 17948.0f, 425.0f);
+
 	CAMERA_ST.Reset(&ci);
 	CAMERA_ST.ReleaseDistRange();
 	CAMERA_ST.ReleaseRotationLimit();
-	CAMERA_ST.SetDeltaHeight(0.0f);
+	CAMERA_ST.SetUsingTerrainCollition(false);
+
+	CAMERA_ST.SetTranslate(kTarget);
+
+	if (CAMERA_ST.GetTargetObj())
+		CAMERA_ST.GetTargetObj()->SetTranslate(kTarget);
+
+	CAMERA_ST.SetDeltaHeight(120.0f);
+	CAMERA_ST.SetDist(300.0f, true);
+	CAMERA_ST.SetRotation(CsD2R(0.0f), CsD2R(-3.0f));
 	CAMERA_ST._UpdateCamera();
 }
 

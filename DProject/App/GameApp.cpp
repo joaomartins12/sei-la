@@ -17,6 +17,12 @@
 #include "../ContentsSystem/ContentsSystem.h"
 
 #include "../MngCollector.h"
+#include "../../../LibProj/CsFilePack/CsFilePackSystem.h"
+
+#include <vector>
+#include <list>
+#include <string>
+#include <algorithm>
 
 #ifdef DEF_CORE_NPROTECT
 #include "../nProtect/Client_nProtect.h"
@@ -186,9 +192,319 @@ bool CsFilePackFileAccessFunc(const char* pcName, NiFile::OpenMode eMode)
 	return (strnicmp(pcName, "data\\", 5) == 0);
 }
 
+namespace CharacterCreateLobbyMapCache
+{
+#define CHARACTER_CREATE_STARTUP_MAIN_MAP_NIF "Data\\map\\realworld_r\\04_datsunderground\\04\\map_data\\04.nif"
+#define CHARACTER_CREATE_STARTUP_MAIN_MAP_NIF_FALLBACK "Data\\map\\realworld_r\\04_datsunderground\\04\\04.nif"
+#define CHARACTER_CREATE_STARTUP_OBJECT_DATA_ROOT "Data\\map\\realworld_r\\04_datsunderground\\04\\object_data"
+#define CHARACTER_CREATE_STARTUP_DECORATION_ROOT "Data\\map\\realworld_r\\04_datsunderground\\04\\object_data\\decoration"
+
+	static CsNodeObj g_StartupScene;
+	static bool g_bStartupSceneLoaded = false;
+	static bool g_bStartupTried = false;
+	static std::vector<CsNodeObj*> g_vecStartupObjects;
+
+	void Log(const char* pszText)
+	{
+		if (pszText)
+		{
+			OutputDebugStringA("[STARTUP][CharacterCreateMap] ");
+			OutputDebugStringA(pszText);
+			OutputDebugStringA("\n");
+		}
+	}
+
+	void NormalizePackPath(std::string& kPath)
+	{
+		std::replace(kPath.begin(), kPath.end(), '/', '\\');
+
+		for (size_t i = 0; i < kPath.size(); ++i)
+		{
+			if (kPath[i] >= 'A' && kPath[i] <= 'Z')
+				kPath[i] = (char)(kPath[i] - 'A' + 'a');
+		}
+	}
+
+	bool StartsWith(std::string const& kPath, std::string const& kPrefix)
+	{
+		if (kPath.size() < kPrefix.size())
+			return false;
+
+		return kPath.compare(0, kPrefix.size(), kPrefix) == 0;
+	}
+
+	bool EndsWithNif(std::string const& kPath)
+	{
+		if (kPath.size() < 4)
+			return false;
+
+		std::string kTail = kPath.substr(kPath.size() - 4);
+		NormalizePackPath(kTail);
+
+		return kTail == ".nif";
+	}
+
+	bool IsSelectedDecorationNif(std::string const& kNormalizedPath)
+	{
+		static char const* s_szAllowed[] =
+		{
+			"tutorial_decoration_1.nif",
+			"tutorial_decoration_ani_1.nif",
+			"tutorial_floor_1.nif",
+			"tutorial_floor_1_1.nif",
+			"tutorial_floor_1_g.nif",
+			"tutorial_floor_2.nif",
+			"tutorial_floor_2_g.nif",
+			"tutorial_pipe_1.nif",
+			"tutorial_wall_1.nif",
+			"tutorial_wall_1_1.nif"
+		};
+
+		std::string kDecorationRoot = CHARACTER_CREATE_STARTUP_DECORATION_ROOT;
+		NormalizePackPath(kDecorationRoot);
+
+		if (!kDecorationRoot.empty() && kDecorationRoot[kDecorationRoot.size() - 1] != '\\')
+			kDecorationRoot += "\\";
+
+		if (!StartsWith(kNormalizedPath, kDecorationRoot))
+			return false;
+
+		for (int i = 0; i < (int)(sizeof(s_szAllowed) / sizeof(s_szAllowed[0])); ++i)
+		{
+			std::string kExpected = kDecorationRoot + s_szAllowed[i];
+			NormalizePackPath(kExpected);
+
+			if (kNormalizedPath == kExpected)
+				return true;
+		}
+
+		return false;
+	}
+
+	bool LoadNifToSceneObject(char const* pszPath, CsNodeObj& kOutObj, NiPoint3 const& kTranslate)
+	{
+		if (!pszPath || pszPath[0] == 0)
+			return false;
+
+		NiStream kStream;
+
+		if (!kStream.Load(pszPath))
+			return false;
+
+		NiNodePtr pNode = (NiNode*)kStream.GetObjectAt(0);
+		if (!pNode)
+			return false;
+
+		nsCSGBFUNC::InitAnimation(pNode, NiTimeController::APP_INIT, NiTimeController::LOOP);
+		nsCSGBFUNC::Set_Emittance(pNode, NiColor(1.0f, 1.0f, 1.0f));
+
+		kOutObj.SetNiObject(pNode, CGeometry::Normal);
+
+		if (kOutObj.m_pNiNode)
+		{
+			kOutObj.m_pNiNode->SetTranslate(kTranslate);
+			NiTimeController::StartAnimations(kOutObj.m_pNiNode, (float)g_fAccumTime);
+			kOutObj.m_pNiNode->UpdateEffects();
+			kOutObj.m_pNiNode->Update(0.0f);
+		}
+
+		return true;
+	}
+
+	bool LoadNifToNewSceneObject(char const* pszPath)
+	{
+		if (!pszPath || pszPath[0] == 0)
+			return false;
+
+		CsNodeObj* pObj = NiNew CsNodeObj;
+		if (!pObj)
+			return false;
+
+		if (!LoadNifToSceneObject(pszPath, *pObj, NiPoint3::ZERO))
+		{
+			pObj->Delete();
+			NiDelete pObj;
+			return false;
+		}
+
+		g_vecStartupObjects.push_back(pObj);
+		return true;
+	}
+
+	void Release()
+	{
+		g_StartupScene.Delete();
+
+		for (size_t i = 0; i < g_vecStartupObjects.size(); ++i)
+		{
+			CsNodeObj* pObj = g_vecStartupObjects[i];
+			if (pObj)
+			{
+				pObj->Delete();
+				NiDelete pObj;
+			}
+		}
+
+		g_vecStartupObjects.clear();
+		g_bStartupSceneLoaded = false;
+	}
+
+	int LoadSelectedDecorationFromPackIndex(int nPackIndex)
+	{
+		std::list<std::string> kFiles;
+		CsFPS::CsFPSystem::GetFileList(nPackIndex, kFiles);
+
+		char szLog[512] = { 0, };
+		sprintf_s(szLog, 512, "PackIndex=%d FileList count=%d", nPackIndex, (int)kFiles.size());
+		Log(szLog);
+
+		if (kFiles.empty())
+			return 0;
+
+		std::string kObjectRoot = CHARACTER_CREATE_STARTUP_OBJECT_DATA_ROOT;
+		NormalizePackPath(kObjectRoot);
+
+		if (!kObjectRoot.empty() && kObjectRoot[kObjectRoot.size() - 1] != '\\')
+			kObjectRoot += "\\";
+
+		int nFound = 0;
+		int nLoaded = 0;
+		int nFailed = 0;
+		int nSampleLogged = 0;
+
+		for (std::list<std::string>::iterator it = kFiles.begin(); it != kFiles.end(); ++it)
+		{
+			std::string kOriginal = *it;
+			std::string kNormalized = kOriginal;
+			NormalizePackPath(kNormalized);
+
+			if (!StartsWith(kNormalized, kObjectRoot))
+				continue;
+
+			if (!EndsWithNif(kNormalized))
+				continue;
+
+			if (!IsSelectedDecorationNif(kNormalized))
+				continue;
+
+			++nFound;
+
+			if (LoadNifToNewSceneObject(kOriginal.c_str()))
+			{
+				++nLoaded;
+
+				if (nSampleLogged < 20)
+				{
+					char szSample[MAX_PATH + 256] = { 0, };
+					sprintf_s(szSample, sizeof(szSample), "loaded pack nif=%s", kOriginal.c_str());
+					Log(szSample);
+					++nSampleLogged;
+				}
+			}
+			else
+			{
+				++nFailed;
+
+				if (nFailed <= 20)
+				{
+					char szFail[MAX_PATH + 256] = { 0, };
+					sprintf_s(szFail, sizeof(szFail), "failed pack nif=%s", kOriginal.c_str());
+					Log(szFail);
+				}
+			}
+		}
+
+		sprintf_s(
+			szLog,
+			512,
+			"PackIndex=%d selected decoration found=%d loaded=%d failed=%d",
+			nPackIndex,
+			nFound,
+			nLoaded,
+			nFailed
+		);
+		Log(szLog);
+
+		return nLoaded;
+	}
+
+	bool Load()
+	{
+		if (g_bStartupSceneLoaded && !g_vecStartupObjects.empty())
+		{
+			Log("Load skipped - already loaded");
+			return true;
+		}
+
+		g_bStartupTried = true;
+
+		Release();
+
+		Log("Load begin - DatsUnderground 04 main map NIF + selected decoration NIFs");
+		Log("Load main map NIF begin: " CHARACTER_CREATE_STARTUP_MAIN_MAP_NIF);
+
+		if (!LoadNifToSceneObject(CHARACTER_CREATE_STARTUP_MAIN_MAP_NIF, g_StartupScene, NiPoint3::ZERO))
+		{
+			Log("map_data\\04.nif failed, trying fallback root\\04.nif");
+			Log("Fallback main map NIF begin: " CHARACTER_CREATE_STARTUP_MAIN_MAP_NIF_FALLBACK);
+
+			if (!LoadNifToSceneObject(CHARACTER_CREATE_STARTUP_MAIN_MAP_NIF_FALLBACK, g_StartupScene, NiPoint3::ZERO))
+			{
+				Log("Load failed - could not load main map04 NIF from both paths");
+				Release();
+				return false;
+			}
+		}
+
+		g_bStartupSceneLoaded = true;
+		Log("main map NIF loaded");
+
+		int nObjectLoaded = LoadSelectedDecorationFromPackIndex(0);
+
+		char szLog[256] = { 0, };
+		sprintf_s(szLog, 256, "selected decoration pack01 total loaded=%d", nObjectLoaded);
+		Log(szLog);
+
+		Log("Load ok - startup cache ready");
+		return true;
+	}
+
+	bool IsLoaded()
+	{
+		return (g_bStartupSceneLoaded && !g_vecStartupObjects.empty());
+	}
+
+	void Update()
+	{
+		if (g_bStartupSceneLoaded && g_StartupScene.m_pNiNode)
+			g_StartupScene.m_pNiNode->Update((float)g_fAccumTime);
+
+		for (size_t i = 0; i < g_vecStartupObjects.size(); ++i)
+		{
+			CsNodeObj* pObj = g_vecStartupObjects[i];
+			if (pObj && pObj->m_pNiNode)
+				pObj->m_pNiNode->Update((float)g_fAccumTime);
+		}
+	}
+
+	void Render()
+	{
+		if (g_bStartupSceneLoaded && g_StartupScene.m_pNiNode)
+			g_StartupScene.Render();
+
+		for (size_t i = 0; i < g_vecStartupObjects.size(); ++i)
+		{
+			CsNodeObj* pObj = g_vecStartupObjects[i];
+			if (pObj && pObj->m_pNiNode)
+				pObj->Render();
+		}
+	}
+}
+
+
 namespace
 {
-	static const DWORD STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID = 105;
+	static const DWORD STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID = 4;
 	static bool g_bStartupCharacterCreateLobbyMapLoaded = false;
 
 	void StartupLobbyLog(const char* pszText)
@@ -210,16 +526,14 @@ namespace
 
 	void StartupPreloadCharacterCreateLobbyMap()
 	{
-		// Desativado de propósito.
-		//
-		// O preload no GameApp::OnInitialize() acontece cedo demais:
-		// - cGameInterface::GlobalInit() aqui rebenta em HotKey.cpp;
-		// - sem GameInterface/flow carregado, o terrain 105 fica só com skybox/fundo branco.
-		//
-		// A solução segura é fazer o preload completo alguns frames depois de entrar no
-		// CharacterSelectFlow, antes do jogador clicar em Create.
-		OutputDebugStringA("[STARTUP][LobbyMap] skipped - preload moved to CharacterSelectFlow\n");
-		g_bStartupCharacterCreateLobbyMapLoaded = false;
+		StartupLobbyLog("preload begin - GameApp startup cache");
+
+		g_bStartupCharacterCreateLobbyMapLoaded = CharacterCreateLobbyMapCache::Load();
+
+		if (g_bStartupCharacterCreateLobbyMapLoaded)
+			StartupLobbyLog("preload ok - DatsUnderground 04 cache ready");
+		else
+			StartupLobbyLog("preload failed - CharacterCreate will fallback to Background.dds");
 	}
 }
 
@@ -354,9 +668,8 @@ namespace App
 		g_pWeather->SetPerformance(g_pResist->m_Global.s_nWeather);
 		CsC_AvObject::g_bEnableVoice = g_pResist->m_Global.s_bEnableVoice;
 
-		// O preload real do mapa 105 foi movido para CharacterSelectFlow.
-		// Aqui fica apenas um log/no-op para garantir que o GameApp já não tenta
-		// carregar mundo cedo demais no ciclo do client.
+		// Pré-carrega o cenário do CharacterCreate no startup, depois do Pack/FileTable
+		// já estarem prontos. O CharacterCreate apenas usa este cache, sem carregar mapa.
 		StartupPreloadCharacterCreateLobbyMap();
 
 		CREATE_SINGLETON(CToolTipMng);
@@ -410,6 +723,9 @@ namespace App
 	//---------------------------------------------------------------------------
 	void CGameApp::OnTerminate()
 	{
+		CharacterCreateLobbyMapCache::Release();
+		BHPRT("CharacterCreateLobbyMapCache::Release()");
+
 		//	SAFE_NIDELETE( g_pLoading );
 
 		if (TOOLTIPMNG_STPTR)
