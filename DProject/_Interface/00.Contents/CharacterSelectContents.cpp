@@ -22,6 +22,9 @@ namespace
 
 	static const float CHARACTER_SELECT_PAT_OFFSET_X = 130.0f;
 	static const float CHARACTER_SELECT_PAT_OFFSET_Z = 0.0f;
+
+	// Limite final de criação/seleção nesta tela.
+	static const int CHARACTER_SELECT_MAX_SLOT = 3;
 }
 
 
@@ -591,6 +594,9 @@ bool CharacterSelectContents::IsHaveEmptySlot() const
 	LIST_CHARLIST_CIT it = m_listCharInfo.begin();
 	for (; it != m_listCharInfo.end(); ++it)
 	{
+		if ((*it).m_nSlotNumber >= CHARACTER_SELECT_MAX_SLOT)
+			continue;
+
 		if (!(*it).IsHaveCharInfo() && !(*it).IsLockSlot())
 			return true;
 	}
@@ -651,7 +657,11 @@ CharacterSelectContents::LIST_CHARLIST const& CharacterSelectContents::GetCharac
 void CharacterSelectContents::makeEmptyCharSlotInfo(int const& nOpenSlotCount, int const& nLockSlotCount)
 {
 	m_listCharInfo.clear();
-	for (int n = 0; n < nOpenSlotCount + nLockSlotCount; ++n)
+
+	const int nServerTotalSlotCount = nOpenSlotCount + nLockSlotCount;
+	const int nTotalSlotCount = (nServerTotalSlotCount > CHARACTER_SELECT_MAX_SLOT) ? CHARACTER_SELECT_MAX_SLOT : nServerTotalSlotCount;
+
+	for (int n = 0; n < nTotalSlotCount; ++n)
 	{
 		if (n < nOpenSlotCount)
 			m_listCharInfo.push_back(sCharacterInfo(n, false));
@@ -729,7 +739,10 @@ int CharacterSelectContents::GetEmptySlotNumber() const
 	LIST_CHARLIST_CIT it = m_listCharInfo.begin();
 	for (; it != m_listCharInfo.end(); ++it)
 	{
-		if (!(*it).IsHaveCharInfo())
+		if ((*it).m_nSlotNumber >= CHARACTER_SELECT_MAX_SLOT)
+			continue;
+
+		if (!(*it).IsHaveCharInfo() && !(*it).IsLockSlot())
 			return (*it).m_nSlotNumber;
 	}
 
@@ -836,8 +849,10 @@ void CharacterSelectContents::RecvCharList(void* pData)
 		FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_CHARCREATE);
 	else
 	{
-		if (g_pResist->m_AccountServer.s_nLastSelChar == -1)
+		if (g_pResist->m_AccountServer.s_nLastSelChar == -1 ||
+			g_pResist->m_AccountServer.s_nLastSelChar >= CHARACTER_SELECT_MAX_SLOT)
 			m_nSelectCharIdx = 0;
+
 		FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_CHARSEL);
 	}
 }

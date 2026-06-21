@@ -6,233 +6,31 @@ namespace
 {
 	static const size_t TEXT_INPUT_MAX_CHARS = 4096;
 
-	static int ClampInt(int v, int minv, int maxv)
+	static bool IsFaceReady( FT_Face face )
 	{
-		if (v < minv) return minv;
-		if (v > maxv) return maxv;
-		return v;
+		return ( face != NULL && face->glyph != NULL );
 	}
 
-	static int FallbackCharWidthFromHeight(int height, wchar_t ch)
+	static bool LoadGlyphSafe( FT_Face face, FT_ULong charcode, FT_Int32 flags )
 	{
-		if (height <= 0)
-			height = 12;
-
-		if (ch == L'\r')
-			return 0;
-
-		if (ch == L'\n')
-			return 0;
-
-		if (ch == L'\t')
-			return height * 2;
-
-		if (ch == L' ')
-			return CsMax(3, height / 3);
-
-		// CJK/Hangul/Thai e caracteres largos.
-		if (ch >= 0x2E80)
-			return CsMax(8, height);
-
-		// Letras estreitas.
-		if (ch == L'i' || ch == L'I' || ch == L'l' || ch == L'!' || ch == L'.' || ch == L',' || ch == L':' || ch == L';' || ch == L'|' || ch == L'\'')
-			return CsMax(3, height / 3);
-
-		// Letras largas.
-		if (ch == L'W' || ch == L'M' || ch == L'w' || ch == L'm')
-			return CsMax(7, (height * 3) / 4);
-
-		return CsMax(6, (height * 55) / 100);
-	}
-
-	static int FallbackStringWidth(const wchar_t* text, int height)
-	{
-		if (text == NULL)
-			return 0;
-
-		int width = 0;
-		int maxWidth = 0;
-
-		for (const wchar_t* p = text; *p; ++p)
-		{
-			if (*p == L'\n' || *p == L'\r')
-			{
-				if (width > maxWidth)
-					maxWidth = width;
-				width = 0;
-				continue;
-			}
-
-			width += FallbackCharWidthFromHeight(height, *p);
-		}
-
-		if (width > maxWidth)
-			maxWidth = width;
-
-		return maxWidth;
-	}
-
-	static void BuildMarkedText(std::wstring& outText, const wchar_t* srcText, wchar_t mark)
-	{
-		outText.clear();
-
-		if (srcText == NULL)
-			return;
-
-		for (const wchar_t* p = srcText; *p; ++p)
-		{
-			if (*p == L'\r' || *p == L'\n')
-				outText += *p;
-			else
-				outText += mark;
-		}
-	}
-
-	static HFONT CreateFallbackFont(int fontHeight, bool bold)
-	{
-		if (fontHeight <= 0)
-			fontHeight = 12;
-
-		return CreateFontW(
-			-fontHeight,
-			0,
-			0,
-			0,
-			bold ? FW_BOLD : FW_NORMAL,
-			FALSE,
-			FALSE,
-			FALSE,
-			DEFAULT_CHARSET,
-			OUT_DEFAULT_PRECIS,
-			CLIP_DEFAULT_PRECIS,
-			ANTIALIASED_QUALITY,
-			DEFAULT_PITCH | FF_DONTCARE,
-			L"Tahoma"
-		);
-	}
-
-	static bool RenderTextToAlphaBuffer(const wchar_t* text, int width, int height, int fontHeight, bool bold, bool multiLine, BYTE* outAlpha)
-	{
-		if (text == NULL)
+		if( !IsFaceReady( face ) )
 			return false;
-
-		if (outAlpha == NULL)
+		FT_UInt glyphIndex = FT_Get_Char_Index( face, charcode );
+		if( glyphIndex == 0 )
 			return false;
-
-		if (width <= 0 || height <= 0)
-			return false;
-
-		memset(outAlpha, 0, sizeof(BYTE) * width * height);
-
-		BITMAPINFO bmi;
-		ZeroMemory(&bmi, sizeof(bmi));
-		bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-		bmi.bmiHeader.biWidth = width;
-		bmi.bmiHeader.biHeight = -height;
-		bmi.bmiHeader.biPlanes = 1;
-		bmi.bmiHeader.biBitCount = 32;
-		bmi.bmiHeader.biCompression = BI_RGB;
-
-		void* pBits = NULL;
-		HDC hdc = CreateCompatibleDC(NULL);
-		if (hdc == NULL)
-			return false;
-
-		HBITMAP hBmp = CreateDIBSection(hdc, &bmi, DIB_RGB_COLORS, &pBits, NULL, 0);
-		if (hBmp == NULL || pBits == NULL)
-		{
-			DeleteDC(hdc);
-			return false;
-		}
-
-		HGDIOBJ hOldBmp = SelectObject(hdc, hBmp);
-		HFONT hFont = CreateFallbackFont(fontHeight, bold);
-		HGDIOBJ hOldFont = NULL;
-
-		if (hFont)
-			hOldFont = SelectObject(hdc, hFont);
-
-		RECT rc;
-		rc.left = 0;
-		rc.top = 0;
-		rc.right = width;
-		rc.bottom = height;
-
-		HBRUSH hBrush = (HBRUSH)GetStockObject(BLACK_BRUSH);
-		FillRect(hdc, &rc, hBrush);
-
-		SetBkMode(hdc, TRANSPARENT);
-		SetTextColor(hdc, RGB(255, 255, 255));
-
-		UINT flags = DT_LEFT | DT_TOP | DT_NOPREFIX;
-		if (multiLine)
-			flags |= DT_WORDBREAK;
-		else
-			flags |= DT_SINGLELINE;
-
-		DrawTextW(hdc, text, -1, &rc, flags);
-
-		DWORD* pixels = (DWORD*)pBits;
-		int total = width * height;
-
-		for (int i = 0; i < total; ++i)
-		{
-			DWORD c = pixels[i];
-			BYTE b = (BYTE)(c & 0xff);
-			BYTE g = (BYTE)((c >> 8) & 0xff);
-			BYTE r = (BYTE)((c >> 16) & 0xff);
-			outAlpha[i] = (BYTE)CsMin(255, ((int)r + (int)g + (int)b) / 3);
-		}
-
-		if (hOldFont)
-			SelectObject(hdc, hOldFont);
-
-		if (hFont)
-			DeleteObject(hFont);
-
-		SelectObject(hdc, hOldBmp);
-		DeleteObject(hBmp);
-		DeleteDC(hdc);
-
-		return true;
+		return FT_Load_Glyph( face, glyphIndex, flags ) == 0;
 	}
 
-	static bool IsFaceReady(FT_Face face)
+	static bool RenderGlyphSafe( FT_Face face )
 	{
-		return (face != NULL && face->glyph != NULL && face->size != NULL);
-	}
-
-	static bool LoadGlyphSafe(FT_Face face, FT_ULong charcode, FT_Int32 flags)
-	{
-		// Sistema antigo mantido só por compatibilidade com chamadas que ainda consultem largura.
-		// A renderização real foi movida para GDI em _FTBmpToFTData para evitar crashes do FreeType.
-		if (!IsFaceReady(face))
-			return false;
-
-		FT_UInt glyphIndex = FT_Get_Char_Index(face, charcode);
-		if (glyphIndex == 0)
-			return false;
-
-		return FT_Load_Glyph(face, glyphIndex, FT_LOAD_DEFAULT | FT_LOAD_NO_AUTOHINT) == 0;
-	}
-
-	static bool RenderGlyphSafe(FT_Face face)
-	{
-		// Não chamar FT_Render_Glyph nesta build.
-		// Ele estava a lançar 0x80000026 long jump dentro da FreeType.
-		return false;
+		return IsFaceReady( face ) && ( FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) == 0 );
 	}
 }
 
-
-// A partir daqui, qualquer chamada direta antiga neste ficheiro passa automaticamente
-// pela versão protegida. Assim não precisas substituir manualmente todas as chamadas.
-
-
-cText::sTEXTINFO::sTEXTINFO() :
-	s_pFont(NULL), s_eFontSize(CFont::FS_10), s_Color(FONT_WHITE),
-	s_bOutLine(true), s_eBoldLevel(BL_NONE), s_eTextAlign(DT_LEFT),
-	s_nLineGabHeight(0)
+cText::sTEXTINFO::sTEXTINFO():
+s_pFont(NULL),s_eFontSize(CFont::FS_10),s_Color(FONT_WHITE),
+s_bOutLine(true),s_eBoldLevel(BL_NONE),s_eTextAlign(DT_LEFT),
+s_nLineGabHeight(0)
 {
 }
 
@@ -241,32 +39,32 @@ cText::sTEXTINFO::~sTEXTINFO()
 	s_pFont = NULL;
 }
 
-void cText::sTEXTINFO::Init(CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/)
+void cText::sTEXTINFO::Init( CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/ )
 {
-	Init(&g_pEngine->m_FontSystem, eFontSize, color);
+	Init( &g_pEngine->m_FontSystem, eFontSize, color );
 }
 
-void cText::sTEXTINFO::Init(CFont* pFont, CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/)
+void cText::sTEXTINFO::Init( CFont* pFont, CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/ )
 {
 	s_pFont = pFont;
 	s_eFontSize = eFontSize;
 	s_Color = color;
-
+	
 	s_bOutLine = true;
 	s_eBoldLevel = BL_NONE;
 
 	s_eTextAlign = DT_LEFT;
 }
 
-void cText::sTEXTINFO::Init(CsHelp::sTEXT* pHelpText)
+void cText::sTEXTINFO::Init( CsHelp::sTEXT* pHelpText )
 {
-	Init(FONT_SIZE_CAL(pHelpText->s_nTextSize), NiColor(pHelpText->s_Color[0] / 255.0f, pHelpText->s_Color[1] / 255.0f, pHelpText->s_Color[2] / 255.0f));
-	SetBoldLevel((cText::sTEXTINFO::eBOLD_LEVEL)pHelpText->s_nBold);
+	Init( FONT_SIZE_CAL( pHelpText->s_nTextSize ), NiColor( pHelpText->s_Color[ 0 ]/255.0f, pHelpText->s_Color[ 1 ]/255.0f, pHelpText->s_Color[ 2 ]/255.0f ) );
+	SetBoldLevel( (cText::sTEXTINFO::eBOLD_LEVEL)pHelpText->s_nBold );
 }
 
 int cText::sTEXTINFO::GetBoldSize() const
 {
-	switch (s_eBoldLevel)
+	switch( s_eBoldLevel )
 	{
 	case BL_NONE:	return 0;
 	case BL_1:		return 4;
@@ -275,60 +73,60 @@ int cText::sTEXTINFO::GetBoldSize() const
 	case BL_4:		return 7;
 	case BL_5:		return 8;
 	}
-	assert_csm1(false, _T("BoldLevel = %d"), s_eBoldLevel);
+	assert_csm1( false, _T( "BoldLevel = %d" ), s_eBoldLevel );
 	return 0;
+}	
+
+void cText::sTEXTINFO::SetText_Reduce( TCHAR const* szText, int nLen, int nDotNum /* = 2 */ )
+{
+//  	TCHAR t = szText[ nLen ];
+// // 	szText[ nLen ] = NULL;
+// 
+// 	TCHAR szDot[ 2 ] = _T( "." );
+// 	s_strText = szText;
+// 	szText[ nLen ] = t;
+// 
+// 	for( int i = 0; i < nDotNum; i++ )
+// 		s_strText.append( szDot );
 }
 
-void cText::sTEXTINFO::SetText_Reduce(TCHAR const* szText, int nLen, int nDotNum /* = 2 */)
-{
-	//  	TCHAR t = szText[ nLen ];
-	// // 	szText[ nLen ] = NULL;
-	// 
-	// 	TCHAR szDot[ 2 ] = _T( "." );
-	// 	s_strText = szText;
-	// 	szText[ nLen ] = t;
-	// 
-	// 	for( int i = 0; i < nDotNum; i++ )
-	// 		s_strText.append( szDot );
-}
-
-cText::sTEXTINFO& cText::sTEXTINFO::AddString(TCHAR const* szText)
-{
-	s_strText += szText;
+cText::sTEXTINFO& cText::sTEXTINFO::AddString( TCHAR const* szText )
+{ 
+	s_strText += szText; 
 	return *this;
 }
 
-cText::sTEXTINFO& cText::sTEXTINFO::SetString(TCHAR const* szText)
-{
-	s_strText = szText;
+cText::sTEXTINFO& cText::sTEXTINFO::SetString( TCHAR const* szText )
+{ 
+	s_strText = szText; 
 	return *this;
 }
 
 cText::sTEXTINFO& cText::sTEXTINFO::AddSpace()
-{
-	s_strText += L" ";
+{ 
+	s_strText += L" "; 
 	return *this;
 }
 
 cText::sTEXTINFO& cText::sTEXTINFO::AddNewLine()
-{
-	s_strText += L"\n";
+{ 
+	s_strText += L"\n"; 
 	return *this;
 }
 
 FT_Face	cText::sTEXTINFO::GetFace() const
-{
-	return s_pFont->GetFace(s_eFontSize);
+{ 
+	return s_pFont->GetFace( s_eFontSize ); 
 }
 
 int	cText::sTEXTINFO::GetHeight() const
-{
-	return s_pFont->GetHeight(s_eFontSize);
+{ 
+	return s_pFont->GetHeight( s_eFontSize ); 
 }
 
 int	cText::sTEXTINFO::GetHBase() const
-{
-	return s_pFont->GetHBase(s_eFontSize);
+{ 
+	return s_pFont->GetHBase( s_eFontSize ); 
 }
 
 int cText::sTEXTINFO::GetGabHeight() const
@@ -341,9 +139,9 @@ void cText::sTEXTINFO::SetLineGabHeight(int const& nHeight)
 	s_nLineGabHeight = nHeight;
 }
 
-void cText::sTEXTINFO::SetText(TCHAR const* szText)
-{
-	if (szText == NULL)
+void cText::sTEXTINFO::SetText( TCHAR const* szText ) 
+{ 
+	if( szText == NULL )
 	{
 		s_strText.clear();
 		return;
@@ -352,64 +150,64 @@ void cText::sTEXTINFO::SetText(TCHAR const* szText)
 	__try
 	{
 		s_strText = szText;
-		if (s_strText.length() > TEXT_INPUT_MAX_CHARS)
-			s_strText.resize(TEXT_INPUT_MAX_CHARS);
+		if( s_strText.length() > TEXT_INPUT_MAX_CHARS )
+			s_strText.resize( TEXT_INPUT_MAX_CHARS );
 	}
-	__except (EXCEPTION_EXECUTE_HANDLER)
+	__except( EXCEPTION_EXECUTE_HANDLER )
 	{
 		s_strText.clear();
 	}
 }
 
-void cText::sTEXTINFO::SetText(int nText)
-{
-	TCHAR sz[16] = { 0, };
-	_stprintf_s(sz, 16, _T("%d"), nText);
-	s_strText = sz;
+void cText::sTEXTINFO::SetText( int nText )
+{ 
+	TCHAR sz[ 16 ] = {0, }; 
+	_stprintf_s( sz, 16, _T( "%d" ), nText ); 
+	s_strText = sz; 
 }
 
 const TCHAR* cText::sTEXTINFO::GetText() const
 {
-	return s_strText.data();
+	return s_strText.data(); 
 }
 
 int	cText::sTEXTINFO::GetLen()  const
-{
-	return (int)s_strText.length();
+{ 
+	return (int)s_strText.length(); 
 }
 
-void cText::sTEXTINFO::AddText(TCHAR const* szTex)
-{
-	if (szTex == NULL)
+void cText::sTEXTINFO::AddText( TCHAR const* szTex) 
+{ 
+	if( szTex == NULL )
 		return;
 
 	__try
 	{
-		s_strText.append(szTex);
-		if (s_strText.length() > TEXT_INPUT_MAX_CHARS)
-			s_strText.resize(TEXT_INPUT_MAX_CHARS);
+		s_strText.append( szTex );
+		if( s_strText.length() > TEXT_INPUT_MAX_CHARS )
+			s_strText.resize( TEXT_INPUT_MAX_CHARS );
 	}
-	__except (EXCEPTION_EXECUTE_HANDLER)
+	__except( EXCEPTION_EXECUTE_HANDLER )
 	{
 	}
 }
 
-void cText::sTEXTINFO::SetBoldLevel(eBOLD_LEVEL Level)
-{
-	s_eBoldLevel = Level;
+void cText::sTEXTINFO::SetBoldLevel( eBOLD_LEVEL Level )
+{ 
+	s_eBoldLevel = Level; 
 }
 
 cText::sTEXTINFO::eBOLD_LEVEL cText::sTEXTINFO::GetBoldLevel() const
-{
-	return s_eBoldLevel;
+{ 
+	return s_eBoldLevel;  
 }
 
 int cText::sTEXTINFO::GetTextWidth()
 {
-	FT_Face face = g_pEngine->m_FontSystem.GetFace(s_eFontSize);
+	FT_Face face = g_pEngine->m_FontSystem.GetFace( s_eFontSize );
 
 	int nWidth = 0;
-	for (int i = 0; i < s_strText.length(); ++i)
+	for( int i = 0; i < s_strText.length(); ++i )
 		nWidth += GetCharWidth(face, s_strText[i]);
 
 	return nWidth;
@@ -421,7 +219,7 @@ int cText::sTEXTINFO::GetTextWidth()
 //
 //=======================================================================================
 
-cText::cText() :m_pTexture(NULL), m_pPixelData(NULL), m_pFTData(NULL), m_bUseMark(false)
+cText::cText():m_pTexture(NULL), m_pPixelData(NULL), m_pFTData(NULL),m_bUseMark(false)
 {
 }
 
@@ -429,61 +227,61 @@ void cText::Delete()
 {
 	m_Sprite.Delete();
 
-	m_pPixelData = 0;
-	m_pTexture = 0;
-	SAFE_DELETE_ARRAY(m_pFTData);
+	m_pPixelData	= 0;
+	m_pTexture		= 0;
+	SAFE_DELETE_ARRAY( m_pFTData );
 }
 
-void cText::Init(cWindow* pParent, CsPoint pos, sTEXTINFO* pTextInfo, bool bApplyWindowSize)
+void cText::Init( cWindow* pParent, CsPoint pos, sTEXTINFO* pTextInfo, bool bApplyWindowSize )
 {
-	if (pTextInfo->s_pFont == NULL)
+	if( pTextInfo->s_pFont == NULL )
 		return;
 
-	if (pTextInfo->s_pFont->IsInitialize() == false)
+	if( pTextInfo->s_pFont->IsInitialize() == false )
 		return;
 
 	m_TextInfo = *pTextInfo;
 	// 값 초기화
-	m_ptStrSize = CsPoint::ZERO;
+	m_ptStrSize = CsPoint::ZERO;	
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (_AllocData() == false)
+	if( _AllocData() == false )
 	{
-		m_Sprite.Init(pParent, pos, m_ptStrSize, bApplyWindowSize, m_TextInfo.s_Color);
+		m_Sprite.Init( pParent, pos, m_ptStrSize, bApplyWindowSize, m_TextInfo.s_Color );
 		return;
 	}
 
 	// 텍스쳐 생성
 	_CreateTexture();
-	m_Sprite.Init(pParent, pos, m_ptStrSize, m_pTexture, bApplyWindowSize, m_TextInfo.s_Color);
+	m_Sprite.Init( pParent, pos, m_ptStrSize, m_pTexture, bApplyWindowSize, m_TextInfo.s_Color );
 }
 
-void cText::InitStencil(cWindow* pParent, CsPoint pos, sTEXTINFO* pTextInfo, bool bApplyWindowSize, NiStencilProperty* pPropStencil)
+void cText::InitStencil( cWindow* pParent, CsPoint pos, sTEXTINFO* pTextInfo, bool bApplyWindowSize, NiStencilProperty* pPropStencil )
 {
-	if (pTextInfo->s_pFont->IsInitialize() == false)
+	if( pTextInfo->s_pFont->IsInitialize() == false )
 	{
 		return;
 	}
 
 	m_TextInfo = *pTextInfo;
 	// 값 초기화
-	m_ptStrSize = CsPoint::ZERO;
+	m_ptStrSize = CsPoint::ZERO;	
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (_AllocData() == false)
+	if( _AllocData() == false )
 	{
-		m_Sprite.InitStencil(pParent, pos, m_ptStrSize, bApplyWindowSize, pPropStencil, m_TextInfo.s_Color);
+		m_Sprite.InitStencil( pParent, pos, m_ptStrSize, bApplyWindowSize, pPropStencil, m_TextInfo.s_Color );
 		return;
 	}
 
 	// 텍스쳐 생성
 	_CreateTexture();
-	m_Sprite.InitStencil(pParent, pos, m_ptStrSize, m_pTexture, bApplyWindowSize, pPropStencil, m_TextInfo.s_Color);
+	m_Sprite.InitStencil( pParent, pos, m_ptStrSize, m_pTexture, bApplyWindowSize, pPropStencil, m_TextInfo.s_Color );
 }
 
-void cText::SetPos(CsPoint ptPos)
+void cText::SetPos( CsPoint ptPos )
 {
-	m_Sprite.SetPos(ptPos);
+	m_Sprite.SetPos( ptPos );
 }
 CsPoint cText::GetPos()
 {
@@ -496,69 +294,69 @@ void cText::SetFontSize(CFont::eFACE_SIZE FontSize)
 	m_TextInfo.s_eFontSize = FontSize;
 }
 
-void cText::Render(CsPoint pos, UINT Align)
+void cText::Render( CsPoint pos, UINT Align )
 {
-	if (m_pTexture == NULL)
+	if( m_pTexture == NULL )
 		return;
-
-	if (Align & DT_CENTER)
-		pos.x -= (int)(m_ptStrSize.x * 0.5f);
-	else if (Align & DT_RIGHT)
+	
+	if( Align & DT_CENTER )
+		pos.x -= (int)( m_ptStrSize.x*0.5f );		
+	else if( Align & DT_RIGHT )
 		pos.x -= m_ptStrSize.x;
 
-	if (Align & DT_VCENTER)
-		pos.y -= (int)(m_ptStrSize.y * 0.5f);
-	else if (Align & DT_BOTTOM)
+	if( Align & DT_VCENTER )
+		pos.y -= (int)( m_ptStrSize.y*0.5f );		
+	else if( Align & DT_BOTTOM )
 		pos.y -= m_ptStrSize.y;
 
-	m_Sprite.Render(pos);
+	m_Sprite.Render( pos );
 }
 
-void cText::Render(CsPoint pos)
+void cText::Render( CsPoint pos )
 {
-	if (m_pTexture == NULL)
+	if( m_pTexture == NULL )
 		return;
 
-	Render(pos, m_TextInfo.s_eTextAlign);
+	Render( pos, m_TextInfo.s_eTextAlign );
 }
 
 void cText::Render()
 {
-	if (m_pTexture == NULL)
+	if( m_pTexture == NULL )
 		return;
 
-	Render(CsPoint::ZERO, m_TextInfo.s_eTextAlign);
+	Render( CsPoint::ZERO, m_TextInfo.s_eTextAlign);	
 }
 
-void cText::RenderLimit(CsPoint pos, UINT Align)
+void cText::RenderLimit( CsPoint pos, UINT Align )
 {
-	if (m_pTexture == NULL)
+	if( m_pTexture == NULL )
 		return;
 
-	if (Align & DT_CENTER)
-		pos.x -= (int)(m_ptStrSize.x * 0.5f);
-	else if (Align & DT_RIGHT)
+	if( Align & DT_CENTER )
+		pos.x -= (int)( m_ptStrSize.x*0.5f );		
+	else if( Align & DT_RIGHT )
 		pos.x -= m_ptStrSize.x;
 
-	if (Align & DT_VCENTER)
-		pos.y -= (int)(m_ptStrSize.y * 0.5f);
-	else if (Align & DT_BOTTOM)
+	if( Align & DT_VCENTER )
+		pos.y -= (int)( m_ptStrSize.y*0.5f );		
+	else if( Align & DT_BOTTOM )
 		pos.y -= m_ptStrSize.y;
 
-	m_Sprite.RenderLimit(pos);
+	m_Sprite.RenderLimit( pos );
 }
 
-void cText::RenderLimit(CsPoint pos)
+void cText::RenderLimit( CsPoint pos )
 {
-	if (m_pTexture == NULL)
+	if( m_pTexture == NULL )
 		return;
 
-	m_Sprite.RenderLimit(pos);
+	m_Sprite.RenderLimit( pos );
 }
 
-void cText::SetVisible(bool bValue)
+void cText::SetVisible( bool bValue )
 {
-	m_Sprite.SetVisible(bValue);
+	m_Sprite.SetVisible( bValue );
 }
 
 bool cText::GetVisible() const
@@ -572,242 +370,369 @@ bool cText::GetVisible() const
 //
 //=======================================================================================
 
-bool cText::GetStringSize(CsPoint& size, int& hBase, TCHAR* szStr, std::wstring& wsResult, int nWidth)
+bool cText::GetStringSize( CsPoint& size, int& hBase, TCHAR* szStr, std::wstring& wsResult, int nWidth )
 {
-	if (m_TextInfo.s_pFont == NULL)
+	if( NULL == m_TextInfo.s_pFont )
 		return false;
 
-	if (m_TextInfo.s_pFont->IsInitialize() == false)
+	if( !m_TextInfo.s_pFont->IsInitialize() )
 		return false;
 
-	if (szStr == NULL)
+	FT_ULong charcode;
+	int nLen = (int)_tcslen( szStr );
+	FT_Face face = m_TextInfo.GetFace();
+	if( !IsFaceReady( face ) )
+		return false;
+	FT_GlyphSlot slot = face->glyph;
+	
+	int nLimitWidth = nWidth << 6;
+	int nMaxWidth = 0;
+	int nMaxHeight = m_TextInfo.GetHeight();
+
+	if( m_bUseMark == false )
+	{
+		int x = 0;
+		for( int i=0; i<nLen ; ++i )
+		{
+			if( szStr[ i ] == 0x000a || (szStr[ i ] == 0x000d) )// 엔터
+			{
+				wsResult += szStr[ i ];
+				if( nMaxWidth < x )
+					nMaxWidth = x;
+
+				x = 0;
+				nMaxHeight += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+				continue;
+			}
+
+			charcode = szStr[ i ];
+#if ( defined VERSION_TW || defined VERSION_HK )
+			// msjh.ttc 폰트에서 'j' 문자가 연속되면 공백이 전문자를 가리는 현상으로 'j'문자 일때 자동 힌팅 제거
+			FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#else
+			FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#endif
+			if( x + slot->advance.x > nLimitWidth )
+			{
+				wsResult += _T("\n");
+				wsResult += szStr[ i ];
+				if( nMaxWidth < x )
+					nMaxWidth = x;
+				x = slot->advance.x;
+				nMaxHeight += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+				continue;
+			}
+
+			wsResult += szStr[ i ];
+			x += slot->advance.x;
+
+			if( nMaxWidth < x )
+				nMaxWidth = x;
+		}
+	}
+	else
+	{
+		int x = 0;
+		for( int i=0; i<nLen ; ++i )
+		{
+			if( szStr[ i ] == 0x000a || szStr[ i ] == 0x000d )
+			{
+				wsResult += szStr[ i ];
+
+				if( nMaxWidth < x )
+					nMaxWidth = x;
+
+				x = 0;
+				nMaxHeight += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+				continue;
+			}
+
+			charcode = m_szMark;
+
+#if ( defined VERSION_TW || defined VERSION_HK )
+			FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#else
+			FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#endif
+			if( x + slot->advance.x > nLimitWidth )
+			{
+				wsResult += _T("\n");
+				wsResult += szStr[ i ];
+				if( nMaxWidth < x )
+					nMaxWidth = x;
+				x = slot->advance.x;
+				nMaxHeight += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+				continue;
+			}
+
+			x += slot->advance.x;
+
+			if( nMaxWidth < x )
+				nMaxWidth = x;
+		}
+	}	
+
+	size.x = ( nMaxWidth >> 6 ) + 2;
+	size.y = nMaxHeight;
+	hBase = (int)( m_TextInfo.GetHeight()*0.75f ) << 6;
+
+	return ( size.x > 2 );
+}
+
+bool cText::GetStringSize( CsPoint& size, int& hBase, TCHAR* szStr )
+{
+	if( m_TextInfo.s_pFont == NULL )
 		return false;
 
-	int fontHeight = m_TextInfo.GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
-
-	int limitWidth = nWidth;
-	if (limitWidth <= 0)
-		limitWidth = g_nScreenWidth > 0 ? g_nScreenWidth : 1024;
+	if( m_TextInfo.s_pFont->IsInitialize() == false )
+		return false;
 
 	int x = 0;
-	int maxWidth = 0;
-	int totalHeight = fontHeight;
+	FT_ULong charcode;
+	int nLen = (int)_tcslen( szStr );
+	FT_Face face = m_TextInfo.GetFace();
+	FT_GlyphSlot slot = face->glyph;
 
-	wsResult.clear();
-
-	int nLen = (int)_tcslen(szStr);
-	for (int i = 0; i < nLen; ++i)
+	if( m_bUseMark == false )
 	{
-		wchar_t ch = szStr[i];
-
-		if (ch == L'\r')
-			continue;
-
-		if (ch == L'\n')
+		for( int i=0; i<nLen ; ++i )
 		{
-			wsResult += ch;
-			if (x > maxWidth)
-				maxWidth = x;
+			if( szStr[ i ] == 0x000d )
+				continue;
 
-			x = 0;
-			totalHeight += fontHeight + m_TextInfo.GetGabHeight();
-			continue;
+			charcode = szStr[ i ];
+
+			auto p = FT_Get_Char_Index(face, charcode);
+
+			if (!p)
+				continue;
+
+#if ( defined VERSION_TW || defined VERSION_HK )
+			// msjh.ttc 폰트에서 'j' 문자가 연속되면 공백이 전문자를 가리는 현상으로 'j'문자 일때 자동 힌팅 제거
+			if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+				continue;
+#else
+			// FT_LOAD_FORCE_AUTOHINT bypasses the TrueType bytecode interpreter
+			// (TT_RunIns / Ins_MDRP, which crashes on some pack-shipped tahoma glyphs
+			// under FT 2.13) while running the autohinter — autohinter snaps glyphs
+			// algorithmically so text stays crisp. The earlier autohinter AVs were
+			// FT 2.8 bugs; 2.13 has had 5+ years of hardening and is safe.
+			if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+				continue;
+#endif
+			x += slot->advance.x;
 		}
-
-		int cw = FallbackCharWidthFromHeight(fontHeight, ch);
-
-		if (x > 0 && x + cw > limitWidth)
+	}
+	else
+	{
+		for( int i=0; i<nLen ; ++i )
 		{
-			wsResult += L'\n';
+			if( szStr[ i ] == 0x000d )
+				continue;
 
-			if (x > maxWidth)
-				maxWidth = x;
+			charcode = m_szMark;
 
-			x = 0;
-			totalHeight += fontHeight + m_TextInfo.GetGabHeight();
+
+			auto p = FT_Get_Char_Index(face, charcode);
+
+			if (!p)
+				continue;
+
+#if ( defined VERSION_TW || defined VERSION_HK )
+			if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+				continue;
+#else
+			if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+				continue;
+#endif
+			x += slot->advance.x;
 		}
+	}	
 
-		wsResult += ch;
-		x += cw;
+	size.x = ( x >> 6 ) + 2;
+	size.y = m_TextInfo.GetHeight();
+	hBase = (int)( size.y*0.75f ) << 6;
+	
+	return ( size.x > 2 );
+}
+
+void cText::GetStringSize( sTEXTINFO* TextInfo, CsPoint& size, int& hBase, const TCHAR* szStr )
+{
+	if( TextInfo->s_pFont->IsInitialize() == false )
+	{
+		return;
 	}
 
-	if (x > maxWidth)
-		maxWidth = x;
+	int x = 0;
+	FT_ULong charcode;
+	int nLen = (int)_tcslen( szStr );
+	FT_Face face = TextInfo->GetFace();
+	if( !IsFaceReady( face ) )
+		return;
+	FT_GlyphSlot slot = face->glyph;
 
-	size.x = maxWidth + 4;
-	size.y = totalHeight;
-	hBase = (int)(fontHeight * 0.75f) << 6;
+	for( int i=0; i<nLen ; ++i )
+	{
+		if( szStr[ i ] == 0x000d )
+			continue;
 
-	return (size.x > 2 && size.y > 0);
+		charcode = szStr[ i ];
+#if ( defined VERSION_TW || defined VERSION_HK )
+		if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+			continue;
+#else
+		if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+			continue;
+#endif
+		x += slot->advance.x;
+	}
+
+	size.x = ( x >> 6 ) + 2;
+	size.y = TextInfo->GetHeight();
+	hBase = (int)( size.y*0.75f ) << 6;
+
+	
 }
 
-bool cText::GetStringSize(CsPoint& size, int& hBase, TCHAR* szStr)
+int cText::GetCharWidth( FT_Face face, FT_ULong charcode )
 {
-	if (m_TextInfo.s_pFont == NULL)
-		return false;
+	if( charcode == 0x000d )
+		return 0;
+	if( !IsFaceReady( face ) )
+		return 0;
 
-	if (m_TextInfo.s_pFont->IsInitialize() == false)
-		return false;
-
-	if (szStr == NULL)
-		return false;
-
-	int fontHeight = m_TextInfo.GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
-
-	int width = FallbackStringWidth(szStr, fontHeight);
-
-	size.x = width + 4;
-	size.y = fontHeight;
-	hBase = (int)(fontHeight * 0.75f) << 6;
-
-	return (size.x > 2 && size.y > 0);
-}
-
-void cText::GetStringSize(sTEXTINFO* TextInfo, CsPoint& size, int& hBase, const TCHAR* szStr)
-{
-	if (TextInfo == NULL || TextInfo->s_pFont == NULL)
-		return;
-
-	if (TextInfo->s_pFont->IsInitialize() == false)
-		return;
-
-	if (szStr == NULL)
-		return;
-
-	int fontHeight = TextInfo->GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
-
-	int width = FallbackStringWidth(szStr, fontHeight);
-
-	size.x = width + 4;
-	size.y = fontHeight;
-	hBase = (int)(fontHeight * 0.75f) << 6;
-}
-
-int cText::GetCharWidth(FT_Face face, FT_ULong charcode)
-{
-	return FallbackCharWidthFromHeight(12, (wchar_t)charcode);
+	// FT_LOAD_FORCE_AUTOHINT — force the autohinter, bypass the TrueType
+	// bytecode interpreter (which crashes inside `Ins_MDRP` / `TT_RunIns` on
+	// some pack-shipped tahoma glyphs even after replacing the original font
+	// with a clean Windows Tahoma — see crash at `cText::_FTBmpToFTData`
+	// during server-select). The autohinter snaps glyphs algorithmically so
+	// text rendering stays crisp, AND avoids the broken bytecode path
+	// entirely. NO_AUTOHINT and FORCE_AUTOHINT are mutually exclusive — only
+	// one is set here.
+#if ( defined VERSION_TW || defined VERSION_HK )
+	if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+		return 0;
+#else
+	if( !LoadGlyphSafe( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) )
+		return 0;
+#endif
+	return face->glyph->advance.x >> 6;
 }
 // [4/21/2016 hyun] 문자열의 넓이를 가져온다
-int cText::GetStringWidth(FT_Face face, const std::wstring& str)
+int cText::GetStringWidth( FT_Face face, const std::wstring& str )
 {
 	int nWidth = 0;
 
-	for (int i = 0; i < str.length(); ++i)
+	for(int i = 0; i < str.length(); ++i)
 		nWidth += GetCharWidth(face, str[i]);
 
 	return nWidth;
 }
 // @@ 여기까지
-bool cText::SetText(int nStr)
+bool cText::SetText( int nStr )
 {
-	TCHAR szNum[16];
-	_stprintf_s(szNum, 16, _T("%d"), nStr);
-	return SetText(szNum);
+	TCHAR szNum[ 16 ];
+	_stprintf_s( szNum, 16, _T( "%d" ), nStr );
+	return SetText( szNum );
 }
 
-bool cText::SetText(TCHAR const* szStr /*부하가크다*/)
+bool cText::SetText( TCHAR const* szStr /*부하가크다*/ )
 {
-	if (NULL == m_TextInfo.s_pFont)
+	if( NULL == m_TextInfo.s_pFont )
 		return false;
 
-	if (m_TextInfo.s_pFont->IsInitialize() == false)
+	if( m_TextInfo.s_pFont->IsInitialize() == false )
 	{
 		return false;
 	}
 
 	cText::sTEXTINFO safeInfo;
-	safeInfo.SetText(szStr);
+	safeInfo.SetText( szStr );
 	std::wstring safeInput = safeInfo.s_strText;
 
-	if (safeInput.empty())
+	if( safeInput.empty() )
 	{
-		if (m_pTexture)
+		if( m_pTexture )
 		{
-			m_pPixelData = 0;
-			m_pTexture = 0;
-			m_ptStrSize = CsPoint::ZERO;
-			m_TextInfo.SetText(_T(""));
+			m_pPixelData		= 0;
+			m_pTexture			= 0;
+			m_ptStrSize			= CsPoint::ZERO;
+			m_TextInfo.SetText( _T( "" ) );
 			return true;
 		}
-		return false;
-	}
+			return false;
+	}	
 
 	// 같은 글자라면 패스
-	if (safeInput == m_TextInfo.GetText())
+	if( safeInput == m_TextInfo.GetText() )
 		return false;
 
-	m_TextInfo.SetText(safeInput.c_str());
+	m_TextInfo.SetText( safeInput.c_str() );
 
 	// 지우고 새로 생성
-	m_pPixelData = 0;
-	m_pTexture = 0;
-	SAFE_DELETE_ARRAY(m_pFTData);
+	m_pPixelData	= 0;
+	m_pTexture		= 0;
+	SAFE_DELETE_ARRAY( m_pFTData );
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (_AllocData() == false)
+	if( _AllocData() == false )
 	{
 		return false;
 	}
 	// 텍스쳐 생성
 	_CreateTexture();
 
-	m_Sprite.ChangeTexture(m_ptStrSize, m_pTexture);
-	m_Sprite.SetColor(m_TextInfo.s_Color);
+	m_Sprite.ChangeTexture( m_ptStrSize, m_pTexture );
+	m_Sprite.SetColor( m_TextInfo.s_Color );
 
 	return true;
 }
 
-bool cText::SetText(TCHAR const* szStr /*부하가크다*/, int nWidth)
+bool cText::SetText( TCHAR const* szStr /*부하가크다*/, int nWidth )
 {
-	if (NULL == m_TextInfo.s_pFont)
+	if( NULL == m_TextInfo.s_pFont )
 		return false;
 
-	if (!m_TextInfo.s_pFont->IsInitialize())
+	if( !m_TextInfo.s_pFont->IsInitialize() )
 		return false;
 
 	cText::sTEXTINFO safeInfo;
-	safeInfo.SetText(szStr);
+	safeInfo.SetText( szStr );
 	std::wstring safeInput = safeInfo.s_strText;
 
-	if (safeInput.empty())
+	if( safeInput.empty() )
 	{
-		if (m_pTexture)
+		if( m_pTexture )
 		{
-			m_pPixelData = 0;
-			m_pTexture = 0;
-			m_ptStrSize = CsPoint::ZERO;
-			m_TextInfo.SetText(_T(""));
+			m_pPixelData		= 0;
+			m_pTexture			= 0;
+			m_ptStrSize			= CsPoint::ZERO;
+			m_TextInfo.SetText( _T( "" ) );
 			return true;
 		}
-		return false;
-	}
+			return false;
+	}	
 
 	// 같은 글자라면 패스
-	if (safeInput == m_TextInfo.GetText())
+	if( safeInput == m_TextInfo.GetText() )
 		return false;
 
-	m_TextInfo.SetText(safeInput.c_str());
+	m_TextInfo.SetText( safeInput.c_str() );
 
 	// 지우고 새로 생성
-	m_pPixelData = 0;
-	m_pTexture = 0;
-	SAFE_DELETE_ARRAY(m_pFTData);
+	m_pPixelData	= 0;
+	m_pTexture		= 0;
+	SAFE_DELETE_ARRAY( m_pFTData );
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (!_AllocData(nWidth))
+	if( !_AllocData(nWidth) )
 		return false;
 
 	// 텍스쳐 생성
 	_CreateTexture();
 
-	m_Sprite.ChangeTexture(m_ptStrSize, m_pTexture);
-	m_Sprite.SetColor(m_TextInfo.s_Color);
+	m_Sprite.ChangeTexture( m_ptStrSize, m_pTexture );
+	m_Sprite.SetColor( m_TextInfo.s_Color );
 
 	return true;
 }
@@ -819,18 +744,18 @@ bool cText::SetText(TCHAR const* szStr /*부하가크다*/, int nWidth)
 
 bool cText::_AllocData()
 {
-	if (GetStringSize(m_ptStrSize, m_nFTSize_HBase, (TCHAR*)m_TextInfo.GetText()) == false)
+	if( GetStringSize( m_ptStrSize, m_nFTSize_HBase, (TCHAR*)m_TextInfo.GetText() ) == false )
 		return false;
+	
+	assert_cs( ( m_ptStrSize.x != 0 )&&( m_ptStrSize.y != 0 ) );
 
-	assert_cs((m_ptStrSize.x != 0) && (m_ptStrSize.y != 0));
+	assert_cs( m_pPixelData == NULL );
+	m_pPixelData = NiNew NiPixelData( m_ptStrSize.x, m_ptStrSize.y, NiPixelFormat::RGBA32 );
 
-	assert_cs(m_pPixelData == NULL);
-	m_pPixelData = NiNew NiPixelData(m_ptStrSize.x, m_ptStrSize.y, NiPixelFormat::RGBA32);
-
-	assert_cs(m_pFTData == NULL);
-	int nFTSize = m_ptStrSize.Mul() * 4;
-	m_pFTData = xnew BYTE[nFTSize];
-	memset(m_pFTData, 0, sizeof(BYTE) * nFTSize);
+	assert_cs( m_pFTData == NULL );
+	int nFTSize = m_ptStrSize.Mul()*4;
+	m_pFTData = xnew BYTE[ nFTSize ];
+	memset( m_pFTData, 0, sizeof( BYTE )*nFTSize );
 
 	_FTBmpToFTData();
 
@@ -840,19 +765,19 @@ bool cText::_AllocData()
 bool cText::_AllocData(int nWidth)
 {
 	std::wstring result;
-	if (!GetStringSize(m_ptStrSize, m_nFTSize_HBase, (TCHAR*)m_TextInfo.GetText(), result, nWidth))
+	if( !GetStringSize( m_ptStrSize, m_nFTSize_HBase, (TCHAR*)m_TextInfo.GetText(), result, nWidth ) )
 		return false;
 
-	assert_cs((m_ptStrSize.x != 0) && (m_ptStrSize.y != 0));
+	assert_cs( ( m_ptStrSize.x != 0 )&&( m_ptStrSize.y != 0 ) );
 
-	m_TextInfo.SetText(result.c_str());
-	assert_cs(m_pPixelData == NULL);
-	m_pPixelData = NiNew NiPixelData(m_ptStrSize.x, m_ptStrSize.y, NiPixelFormat::RGBA32);
+	m_TextInfo.SetText( result.c_str() );
+	assert_cs( m_pPixelData == NULL );
+	m_pPixelData = NiNew NiPixelData( m_ptStrSize.x, m_ptStrSize.y, NiPixelFormat::RGBA32 );
 
-	assert_cs(m_pFTData == NULL);
-	int nFTSize = m_ptStrSize.Mul() * 4;
-	m_pFTData = xnew BYTE[nFTSize];
-	memset(m_pFTData, 0, sizeof(BYTE) * nFTSize);
+	assert_cs( m_pFTData == NULL );
+	int nFTSize = m_ptStrSize.Mul()*4;
+	m_pFTData = xnew BYTE[ nFTSize ];
+	memset( m_pFTData, 0, sizeof( BYTE )*nFTSize );
 
 	_FTBmpToFTData_MultiLine();
 
@@ -861,16 +786,7 @@ bool cText::_AllocData(int nWidth)
 
 void cText::_CreateTexture()
 {
-	if (m_pPixelData == NULL)
-		return;
-
-	if (m_pFTData == NULL)
-		return;
-
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
-	if (m_TextInfo.s_bOutLine == true)
+	if( m_TextInfo.s_bOutLine == true )
 	{
 		_StringToData_OutLine();
 	}
@@ -879,88 +795,593 @@ void cText::_CreateTexture()
 		_StringToData();
 	}
 
-	if (m_pPixelData == NULL)
-		return;
-
 	NiTexture::FormatPrefs kPrefs;
 	kPrefs.m_ePixelLayout = NiTexture::FormatPrefs::TRUE_COLOR_32;
 	kPrefs.m_eMipMapped = NiTexture::FormatPrefs::NO;
 	kPrefs.m_eAlphaFmt = NiTexture::FormatPrefs::BINARY;
-
-	m_pTexture = NiSourceTexture::Create(NiDynamicCast(NiPixelData, m_pPixelData->Clone()), kPrefs);
+	m_pTexture = NiSourceTexture::Create( NiDynamicCast( NiPixelData, m_pPixelData->Clone() ), kPrefs );
 }
 
 void cText::_FTBmpToFTData()
 {
-	if (m_pFTData == NULL)
-		return;
+#ifdef VERSION_TH
+	m_nFTSize_HBase += 128;
+#endif
 
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
+	int nStartSize = 1;
 	const TCHAR* str = m_TextInfo.GetText();
-	if (str == NULL)
+	int nStrLen = (int)_tcslen( str );
+	FT_ULong charcode;
+	FT_Face face = m_TextInfo.GetFace();
+	if( !IsFaceReady( face ) )
 		return;
+	FT_GlyphSlot slot = face->glyph;
+	FT_Glyph_Metrics *pMetrics;
+	FT_Error error;
+	int By;
 
-	std::wstring drawText;
+#ifdef FREETYPE_LENGTH_OVER		// 태국 font 메모리 침범 및 일부 문자 표현 不 관련 변수 선언
+	FT_ULong _Tempcharcode;
+	FT_Face _Tempface = m_TextInfo.GetFace();
+	FT_GlyphSlot _Tempslot = _Tempface->glyph;
+	FT_Glyph_Metrics _Temp_pMetrics;
+	FT_Error _Temperror;
+	FT_Bitmap _TempBitmap;
 
-	if (m_bUseMark == false)
+	bool bTempFreeType	= false;
+	bool bOderSwap		= false;
+	TCHAR _szTemp[2]	= L"ำ";
+	TCHAR _szTemp2[2]	= L"้";
+	TCHAR _szTemp3[2]	= L"่";
+	int tempAdvance_1, tempAdvance_2, tempAdvance_3;
+#endif
+
+	if( m_bUseMark == false )
 	{
-		drawText = str;
+		if( m_TextInfo.GetBoldLevel() == sTEXTINFO::BL_NONE )
+		{
+			for( int i = 0; i<nStrLen; ++i )
+
+			{
+				// 엔터
+				if( str[ i ] == 0x000d )
+					break;
+
+#ifdef FREETYPE_LENGTH_OVER	// 태국 font 메모리 침범 관련 소스 코드
+				if(bTempFreeType == false)
+				{
+					if( ( i + 1 ) >= nStrLen )
+					{
+						bTempFreeType = true;
+					}
+					else
+					{
+					charcode = FT_Get_Char_Index( face, str[ i + 1 ] );
+					error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+					// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+
+					pMetrics =&(slot->metrics);
+
+					if( (pMetrics->horiBearingX >> 6) < 0 )
+					{
+						int _TempSize = (pMetrics->horiBearingX >> 6);
+
+						charcode = FT_Get_Char_Index( face, str[ i ] );
+
+						error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+						// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+
+						pMetrics = &(slot->metrics);
+
+						_TempSize += ( nStartSize + ( pMetrics->horiAdvance >> 6 ) );
+
+						if(_TempSize < 0)
+						{
+							_TempSize = -(_TempSize);
+							nStartSize += _TempSize;
+						}
+					}
+
+					bTempFreeType = true;					
+					}
+				}
+#endif
+
+				charcode = FT_Get_Char_Index( face, str[ i ] );
+				// 탭키
+				if( charcode == 0 )
+					continue;
+
+#if ( defined VERSION_TW || defined VERSION_HK )
+				// msjh.ttc 폰트에서 'j' 문자가 연속되면 공백이 전문자를 가리는 현상으로 'j'문자 일때 자동 힌팅 제거
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#else
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#endif
+				// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+				if( !RenderGlyphSafe( face ) )
+					continue;
+
+#ifdef FREETYPE_LENGTH_OVER	// 태국 font 일부 문자 표현 不 관련 소스 코드	lks007	12.08.02
+				const bool hasNext1 = ( i + 1 ) < nStrLen;
+				const bool hasNext2 = ( i + 2 ) < nStrLen;
+				if( hasNext2 && ((_szTemp2[0] == str[i + 1] && _szTemp[0] == str[i + 2]) || (_szTemp3[0] == str[i + 1] && _szTemp[0] == str[i + 2])) )
+				{
+					//m_nFTSize_HBase += 128;
+
+					for(int j=0; j<3; ++j)
+					{
+						if( j == 0)
+						{
+							tempAdvance_1 = nStartSize;
+							pMetrics = &(slot->metrics);
+
+							nStartSize += pMetrics->horiAdvance >> 6;
+						}
+						else if( j == 1 )
+						{
+							charcode = FT_Get_Char_Index( face, str[ i + j ] );
+							error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+							if( error != 0 || FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+								continue;
+							pMetrics = &(slot->metrics);
+							By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+							_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+
+							nStartSize += pMetrics->horiAdvance >> 6;
+						}
+						else if( j == 2 )
+						{
+							charcode = FT_Get_Char_Index( face, str[ i + j ] );
+							error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+							if( error != 0 || FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+								continue;
+							pMetrics = &(slot->metrics);
+							m_nFTSize_HBase += 64;
+							By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+							_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+
+							nStartSize += pMetrics->horiAdvance >> 6;
+						}
+					}
+					
+					charcode = FT_Get_Char_Index( face, str[ i ] );
+					error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+					if( error != 0 || FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+						continue;
+					pMetrics = &(slot->metrics);
+					m_nFTSize_HBase -= 64;
+					By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+					_ReadFTBmp( &slot->bitmap, tempAdvance_1+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+					i += 2;
+					//m_nFTSize_HBase -= 128;
+					continue;
+				}
+
+				if( hasNext1 && _szTemp[0] == str[i + 1] && bOderSwap == false )
+				{
+					_Tempcharcode = FT_Get_Char_Index( _Tempface, str[ i ] );
+					_Temperror = FT_Load_Glyph( _Tempface, _Tempcharcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+					if( _Temperror != 0 )
+						continue;
+					_Temp_pMetrics = (_Tempslot->metrics);
+					tempAdvance_1 = _Temp_pMetrics.horiAdvance >> 6;
+					tempAdvance_2 = nStartSize;
+					nStartSize += tempAdvance_1;
+					bOderSwap = true;
+					continue;
+				}
+#endif
+
+				pMetrics = &(slot->metrics);
+				By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+				
+#if ( defined VERSION_TW || defined VERSION_HK )
+				if( nStartSize == 1 )
+				{
+					if( (pMetrics->horiBearingX >> 6) < -1 )
+						nStartSize = -( pMetrics->horiBearingX >> 6 );
+				}
+#endif
+
+				_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+
+#ifdef FREETYPE_LENGTH_OVER	// 태국 font 일부 문자 표현 不 관련 소스 코드	lks007	12.08.02
+				if( bOderSwap == true )
+				{
+					tempAdvance_3 = pMetrics->horiAdvance >> 6;
+					_Tempcharcode = FT_Get_Char_Index( _Tempface, str[ i - 1 ] );
+					_Temperror = FT_Load_Glyph( _Tempface, _Tempcharcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+					if( _Temperror != 0 || FT_Render_Glyph( _Tempface->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+						continue;
+					_TempBitmap = (_Tempface->glyph->bitmap);
+
+					By = CsMax( 0, m_nFTSize_HBase - _Temp_pMetrics.horiBearingY );
+					
+					_ReadFTBmp( &_TempBitmap, tempAdvance_2+( _Temp_pMetrics.horiBearingX >> 6 ), By>>6, _Temp_pMetrics.width >> 6, _Temp_pMetrics.height >> 6 );
+
+					nStartSize += tempAdvance_3;
+					bOderSwap = false;
+					continue;
+				}
+#endif
+
+				nStartSize += ( pMetrics->horiAdvance >> 6 );		
+			}
+		}
+		else
+		{
+			int nBoldSize = m_TextInfo.GetBoldSize();
+			for( int i = 0; i<nStrLen; ++i )
+			{
+				// 엔터
+				if( str[ i ] == 0x000d )
+					break;
+
+				charcode = FT_Get_Char_Index( face, str[ i ] );
+				// 탭키
+				if( charcode == 0 )
+					continue;
+#if ( defined VERSION_TW || defined VERSION_HK )
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#else
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#endif
+				// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+				FT_Outline_Embolden( &face->glyph->outline, (face->size->metrics.x_ppem*nBoldSize/100)*64 );
+				if( FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+					continue;
+
+				pMetrics = &(slot->metrics);
+				By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+				_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+
+				nStartSize += ( pMetrics->horiAdvance >> 6 );		
+			}
+		}		
 	}
 	else
 	{
-		BuildMarkedText(drawText, str, m_szMark);
-	}
+		for( int i = 0; i<nStrLen; ++i )
+		{
+			if( str[ i ] == 0x000d )
+				break;
 
-	int fontHeight = m_TextInfo.GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
+			error = FT_Load_Char( face, m_szMark, FT_LOAD_RENDER );
+			// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
 
-	bool bold = (m_TextInfo.GetBoldLevel() != sTEXTINFO::BL_NONE);
+			pMetrics = &(slot->metrics);
+			By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+			_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
 
-	RenderTextToAlphaBuffer(drawText.c_str(), m_ptStrSize.x, m_ptStrSize.y, fontHeight, bold, false, m_pFTData);
+			nStartSize += ( pMetrics->horiAdvance >> 6 );		
+		}
+	}	
 }
 
 void cText::_FTBmpToFTData_MultiLine()
 {
-	if (m_pFTData == NULL)
-		return;
+#ifdef VERSION_TH
+	m_nFTSize_HBase += 128;
+#endif
 
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
+	int nStartSize = 1;
+	int nStartSizeY = 0;
 	const TCHAR* str = m_TextInfo.GetText();
-	if (str == NULL)
+	int nStrLen = (int)_tcslen( str );
+	FT_ULong charcode;
+	FT_Face face = m_TextInfo.GetFace();
+	if( !IsFaceReady( face ) )
 		return;
+	FT_GlyphSlot slot = face->glyph;
+	FT_Glyph_Metrics *pMetrics;
+	FT_Error error;
+	int By = 0;
 
-	std::wstring drawText;
+#ifdef FREETYPE_LENGTH_OVER		// 태국 font 메모리 침범 및 일부 문자 표현 不 관련 변수 선언
+	FT_ULong _Tempcharcode;
+	FT_Face _Tempface = m_TextInfo.GetFace();
+	FT_GlyphSlot _Tempslot = _Tempface->glyph;
+	FT_Glyph_Metrics _Temp_pMetrics;
+	FT_Error _Temperror;
+	FT_Bitmap _TempBitmap;
 
-	if (m_bUseMark == false)
+	bool bTempFreeType	= false;
+	bool bOderSwap		= false;
+	TCHAR _szTemp[2]	= L"ำ";
+	TCHAR _szTemp2[2]	= L"้";
+	TCHAR _szTemp3[2]	= L"่";
+	int tempAdvance_1, tempAdvance_2, tempAdvance_3;
+#endif
+
+	if( m_bUseMark == false )
 	{
-		drawText = str;
+		if( m_TextInfo.GetBoldLevel() == sTEXTINFO::BL_NONE )
+		{
+			for( int i = 0; i<nStrLen; ++i )
+			{
+				// 엔터
+				if( str[ i ] == 0x000d || str[ i ] == 0x000a )
+				{
+					nStartSize = 1;
+					nStartSizeY += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+					continue;
+				}
+
+#ifdef FREETYPE_LENGTH_OVER	// 태국 font 메모리 침범 관련 소스 코드
+				if(bTempFreeType == false)
+				{
+					if( ( i + 1 ) >= nStrLen )
+					{
+						bTempFreeType = true;
+					}
+					else
+					{
+					charcode = FT_Get_Char_Index( face, str[ i + 1 ] );
+					error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+					// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+
+					pMetrics =&(slot->metrics);
+
+					if( (pMetrics->horiBearingX >> 6) < 0 )
+					{
+						int _TempSize = (pMetrics->horiBearingX >> 6);
+
+						charcode = FT_Get_Char_Index( face, str[ i ] );
+
+						error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+						// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+
+						pMetrics = &(slot->metrics);
+
+						_TempSize += ( nStartSize + ( pMetrics->horiAdvance >> 6 ) );
+
+						if(_TempSize < 0)
+						{
+							_TempSize = -(_TempSize);
+							nStartSize += _TempSize;
+						}
+					}
+
+					bTempFreeType = true;					
+					}
+				}
+#endif
+
+				charcode = FT_Get_Char_Index( face, str[ i ] );
+				// 탭키
+				if( charcode == 0 )
+					continue;
+
+#if ( defined VERSION_TW || defined VERSION_HK )
+				// msjh.ttc 폰트에서 'j' 문자가 연속되면 공백이 전문자를 가리는 현상으로 'j'문자 일때 자동 힌팅 제거
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#else
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#endif
+				// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+				if( !RenderGlyphSafe( face ) )
+					continue;
+
+#ifdef FREETYPE_LENGTH_OVER	// 태국 font 일부 문자 표현 不 관련 소스 코드	lks007	12.08.02
+				const bool hasNext1 = ( i + 1 ) < nStrLen;
+				const bool hasNext2 = ( i + 2 ) < nStrLen;
+				if( hasNext2 && ((_szTemp2[0] == str[i + 1] && _szTemp[0] == str[i + 2]) || (_szTemp3[0] == str[i + 1] && _szTemp[0] == str[i + 2])) )
+				{
+					//m_nFTSize_HBase += 128;
+
+					for(int j=0; j<3; ++j)
+					{
+						if( j == 0)
+						{
+							tempAdvance_1 = nStartSize;
+							pMetrics = &(slot->metrics);
+
+							nStartSize += pMetrics->horiAdvance >> 6;
+						}
+						else if( j == 1 )
+						{
+							charcode = FT_Get_Char_Index( face, str[ i + j ] );
+								error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+								if( error != 0 || FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+									continue;
+							pMetrics = &(slot->metrics);
+							By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+							_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), nStartSizeY + (By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
+
+							nStartSize += pMetrics->horiAdvance >> 6;
+						}
+						else if( j == 2 )
+						{
+							charcode = FT_Get_Char_Index( face, str[ i + j ] );
+								error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+								if( error != 0 || FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+									continue;
+							pMetrics = &(slot->metrics);
+							m_nFTSize_HBase += 64;
+							By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+							_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), nStartSizeY + (By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
+
+							nStartSize += pMetrics->horiAdvance >> 6;
+						}
+					}
+
+					charcode = FT_Get_Char_Index( face, str[ i ] );
+						error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+						if( error != 0 || FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+							continue;
+					pMetrics = &(slot->metrics);
+					m_nFTSize_HBase -= 64;
+					By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+					_ReadFTBmp( &slot->bitmap, tempAdvance_1+( pMetrics->horiBearingX >> 6 ), nStartSizeY + (By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
+					i += 2;
+					//m_nFTSize_HBase -= 128;
+					continue;
+				}
+
+					if( hasNext1 && _szTemp[0] == str[i + 1] && bOderSwap == false )
+				{
+					_Tempcharcode = FT_Get_Char_Index( _Tempface, str[ i ] );
+						_Temperror = FT_Load_Glyph( _Tempface, _Tempcharcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+						if( _Temperror != 0 )
+							continue;
+					_Temp_pMetrics = (_Tempslot->metrics);
+					tempAdvance_1 = _Temp_pMetrics.horiAdvance >> 6;
+					tempAdvance_2 = nStartSize;
+					nStartSize += tempAdvance_1;
+					bOderSwap = true;
+					continue;
+				}
+#endif
+
+				pMetrics = &(slot->metrics);
+				By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+#if ( defined VERSION_TW || defined VERSION_HK )
+				if( nStartSize == 1 )
+				{
+					if( (pMetrics->horiBearingX >> 6) < -1 )
+						nStartSize = -( pMetrics->horiBearingX >> 6 );
+				}
+#endif
+
+				_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), nStartSizeY + (By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
+
+#ifdef FREETYPE_LENGTH_OVER	// 태국 font 일부 문자 표현 不 관련 소스 코드	lks007	12.08.02
+				if( bOderSwap == true )
+				{
+					tempAdvance_3 = pMetrics->horiAdvance >> 6;
+					_Tempcharcode = FT_Get_Char_Index( _Tempface, str[ i - 1 ] );
+					_Temperror = FT_Load_Glyph( _Tempface, _Tempcharcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+					if( _Temperror != 0 || FT_Render_Glyph( _Tempface->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+						continue;
+					_TempBitmap = (_Tempface->glyph->bitmap);
+
+					By = CsMax( 0, m_nFTSize_HBase - _Temp_pMetrics.horiBearingY );
+
+					_ReadFTBmp( &_TempBitmap, tempAdvance_2+( _Temp_pMetrics.horiBearingX >> 6 ), nStartSizeY +(By>>6), _Temp_pMetrics.width >> 6, _Temp_pMetrics.height >> 6 );
+
+					nStartSize += tempAdvance_3;
+					bOderSwap = false;
+					continue;
+				}
+#endif
+
+				nStartSize += ( pMetrics->horiAdvance >> 6 );		
+			}
+		}
+		else
+		{
+			int nBoldSize = m_TextInfo.GetBoldSize();
+			for( int i = 0; i<nStrLen; ++i )
+			{
+				// 엔터
+				if( str[ i ] == 0x000d || str[ i ] == 0x000a )
+				{
+					nStartSize = 1;
+					nStartSizeY += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+					continue;
+				}
+
+
+				charcode = FT_Get_Char_Index( face, str[ i ] );
+				// 탭키
+				if( charcode == 0 )
+					continue;
+#if ( defined VERSION_TW || defined VERSION_HK )
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#else
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+#endif
+				// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+				FT_Outline_Embolden( &face->glyph->outline, (face->size->metrics.x_ppem*nBoldSize/100)*64 );
+				if( FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+					continue;
+
+				pMetrics = &(slot->metrics);
+				By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+				_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), nStartSizeY + (By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
+
+				nStartSize += ( pMetrics->horiAdvance >> 6 );		
+			}
+		}		
 	}
 	else
 	{
-		BuildMarkedText(drawText, str, m_szMark);
-	}
+		for( int i = 0; i<nStrLen; ++i )
+		{
+			if( str[ i ] == 0x000d || str[ i ] == 0x000a )
+			{
+				nStartSize = 1;
+				nStartSizeY += (m_TextInfo.GetHeight() + m_TextInfo.GetGabHeight());
+				continue;
+			}
 
-	int fontHeight = m_TextInfo.GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
+			error = FT_Load_Char( face, m_szMark, FT_LOAD_RENDER );
+			// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
 
-	bool bold = (m_TextInfo.GetBoldLevel() != sTEXTINFO::BL_NONE);
+			pMetrics = &(slot->metrics);
+			By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+			_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), nStartSizeY + (By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
 
-	RenderTextToAlphaBuffer(drawText.c_str(), m_ptStrSize.x, m_ptStrSize.y, fontHeight, bold, true, m_pFTData);
+			nStartSize += ( pMetrics->horiAdvance >> 6 );		
+		}
+	}	
 }
 
-void cText::_ReadFTBmp(FT_Bitmap* bitmap, int x, int y, int sx, int sy)
+void cText::_ReadFTBmp( FT_Bitmap* bitmap, int x, int y, int sx, int sy )
 {
-	if (bitmap == NULL || bitmap->buffer == NULL)
+	if( bitmap == NULL || bitmap->buffer == NULL )
 		return;
-	if (sx <= 0 || sy <= 0)
+	if( sx <= 0 || sy <= 0 )
 		return;
-	if (bitmap->pixel_mode != FT_PIXEL_MODE_GRAY)
+	if( bitmap->pixel_mode != FT_PIXEL_MODE_GRAY )
 		return;
 
 	// Same defensive shape as the bitmap->buffer check above.  m_pFTData is the
@@ -970,7 +1391,7 @@ void cText::_ReadFTBmp(FT_Bitmap* bitmap, int x, int y, int sx, int sy)
 	// from the post-attack `cDigimonTalk::Print` balloon when the bark string
 	// references a missing glyph — pre-existing v487 issue, surfaces on partner
 	// skill-cast battle transitions among other places.
-	if (m_pFTData == NULL)
+	if( m_pFTData == NULL )
 		return;
 
 	int i, j, p, q;
@@ -984,129 +1405,97 @@ void cText::_ReadFTBmp(FT_Bitmap* bitmap, int x, int y, int sx, int sy)
 	// sizing, etc.).  Without this guard the read at line 1296 indexes past the FT
 	// buffer and AVs — hit while rendering the server-select screen's server-name
 	// strings on the CSelectServer::ResetServerList path.
-	if (BitWidth <= 0 || bitmap->rows <= 0)
+	if( BitWidth <= 0 || bitmap->rows <= 0 )
 		return;
-	if (Pitch < 0)
+	if( Pitch < 0 )
 		Pitch = -Pitch;
-	if (Pitch < BitWidth)
+	if( Pitch < BitWidth )
 		Pitch = BitWidth;
 	int srcTotal = Pitch * (int)bitmap->rows;
 
-	for (i = y, p = 0; p < sy; ++i, ++p)
+	for( i=y, p=0; p<sy; ++i, ++p )
 	{
-		for (j = x, q = 0; q < sx; ++j, ++q)
+		for( j = x, q = 0 ; q<sx ; ++j, ++q )
 		{
-			int destIdx = i * Width + j;
-			if (destIdx < 0 || destIdx >= TotalSize)
+			int destIdx = i*Width + j;
+			if( destIdx < 0 || destIdx >= TotalSize )
 				continue;
-			int srcIdx = p * Pitch + q;
-			if (srcIdx < 0 || srcIdx >= srcTotal)
+			int srcIdx = p*Pitch + q;
+			if( srcIdx < 0 || srcIdx >= srcTotal )
 				continue;
-			m_pFTData[destIdx] = bitmap->buffer[srcIdx];
+			m_pFTData[ destIdx ] = bitmap->buffer[ srcIdx ];
 		}
 	}
 }
 
 void cText::_StringToData_OutLine()
 {
-	if (m_pPixelData == NULL)
-		return;
-
-	if (m_pFTData == NULL)
-		return;
-
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
+	assert_cs( m_pPixelData != NULL );
 
 	DWORD* pOrgData = (DWORD*)m_pPixelData->GetPixels();
-	if (pOrgData == NULL)
-		return;
+	int nIndex, alpha;
+	D3DXCOLOR c;
+	
+
+	memset( pOrgData, 0, sizeof( DWORD )*m_ptStrSize.Mul() );
 
 	int height = m_ptStrSize.y;
 	int width = m_ptStrSize.x;
-	int totalSize = width * height;
 
-	if (totalSize <= 0)
-		return;
-
-	memset(pOrgData, 0, sizeof(DWORD) * totalSize);
-
-	for (int y = 0; y < height - 1; ++y)
+	for(int y=0; y<height-1; ++y )
 	{
-		for (int x = 0; x < width - 1; ++x)
+		for( int x=0; x<width-1 ; ++x )
 		{
-			int nIndex = y * width + x;
-
-			if (nIndex < 0 || nIndex >= totalSize)
+			nIndex = y*width + x;
+			if( nIndex < 0 )
 				continue;
 
-			int alpha = m_pFTData[nIndex];
+			alpha = m_pFTData[ nIndex ];
 
-			if (alpha > 100)
+			if( alpha > 100 )
 			{
-				int outlineIndex = (y + 1) * width + x + 1;
-
-				if (outlineIndex >= 0 && outlineIndex < totalSize)
-					pOrgData[outlineIndex] = 0xff101010;
+				pOrgData[ (y+1)*width + x + 1 ] = 0xff101010;
 			}
 		}
 	}
 
-	for (int y = 0; y < height; ++y)
+	for(int y=0; y<height; ++y )
 	{
-		for (int x = 0; x < width; ++x)
+		for( int x=0; x<width ; ++x )
 		{
-			int nIndex = y * width + x;
-
-			if (nIndex < 0 || nIndex >= totalSize)
+			nIndex = y*width + x;
+			if( nIndex < 0 )
 				continue;
 
-			int alpha = m_pFTData[nIndex];
+			alpha = m_pFTData[ nIndex ];
 
-			if (alpha > 70)
-				pOrgData[nIndex] = ((alpha) << 24) | 0x00ffffff;
+			if( alpha > 70 )
+			{
+				pOrgData[ nIndex ] = ( (alpha)<<24 )|0x00ffffff;
+			}
 		}
-	}
-
-	m_pPixelData->MarkAsChanged();
+	}	
 }
 
 void cText::_StringToData()
 {
-	if (m_pPixelData == NULL)
-		return;
+	assert_cs( m_pPixelData != NULL );
 
-	if (m_pFTData == NULL)
-		return;
-
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
-	DWORD* pData = (DWORD*)m_pPixelData->GetPixels();
-	if (pData == NULL)
-		return;
+	DWORD* pData = (DWORD*)m_pPixelData->GetPixels();	
 
 	int height = m_ptStrSize.y;
 	int width = m_ptStrSize.x;
-	int totalSize = width * height;
-
-	if (totalSize <= 0)
-		return;
-
-	for (int y = 0; y < height; ++y)
+	for( int y=0; y<height; ++y )
 	{
-		for (int x = 0; x < width; ++x)
+		for( int x=0; x<width ; ++x )
 		{
-			int nIndex = y * width + x;
-
-			if (nIndex < 0 || nIndex >= totalSize)
+			if( y*width + x < 0 )
 				continue;
 
-			pData[nIndex] = ((m_pFTData[nIndex]) << 24) | 0x00ffffff;
+			*pData = ( (m_pFTData[ y*width + x ])<<24 )|0x00ffffff;
+			++pData;
 		}
 	}
-
-	m_pPixelData->MarkAsChanged();
 }
 
 //=======================================================================================
@@ -1203,7 +1592,7 @@ void cText::_StringToData()
 //
 //
 //=======================================================================================
-cText3D::sBillboard::sBillboard() :s_pBillboard(NULL)
+cText3D::sBillboard::sBillboard():s_pBillboard(NULL)
 {
 
 }
@@ -1212,48 +1601,48 @@ cText3D::sBillboard::~sBillboard()
 	Delete();
 }
 
-cText3D::cText3D() :m_pBillBoardText(NULL)
+cText3D::cText3D():m_pBillBoardText(NULL)
 {
 }
 
 cText3D::~cText3D()
-{
-	SAFE_NIDELETE(m_pBillBoardText);
-	DeleteBillboard();
+{ 
+	SAFE_NIDELETE( m_pBillBoardText ); 	
+	DeleteBillboard();	
 }
 
 void cText3D::DeleteBillboard()
 {
-	for (int i = 0; i < m_pbBillBoard.Size(); ++i)
+	for( int i = 0; i < m_pbBillBoard.Size(); ++i )
 	{
-		if (m_pbBillBoard.IsExistElement(i))
+		if( m_pbBillBoard.IsExistElement( i ) )
 		{
-			m_pbBillBoard[i]->Delete();
-			SAFE_NIDELETE(m_pbBillBoard[i]);
+			m_pbBillBoard[ i ]->Delete();			
+			SAFE_NIDELETE( m_pbBillBoard[ i ] );
 		}
-		assert_cs(m_pbBillBoard[i] == NULL);
+		assert_cs( m_pbBillBoard[ i ] == NULL );
 	}
 	m_pbBillBoard.Destroy();
 }
 
-bool cText3D::Init3D(cText::sTEXTINFO* pTextInfo)
+bool cText3D::Init3D( cText::sTEXTINFO* pTextInfo )
 {
-	if (pTextInfo->s_pFont->IsInitialize() == false)
+	if( pTextInfo->s_pFont->IsInitialize() == false )
 	{
 		return false;
 	}
 
-	if (pTextInfo->GetText()[0] == NULL)
+	if( pTextInfo->GetText()[ 0 ] == NULL )
 	{
-		pTextInfo->SetText(_T(" "));
-		Init3D(pTextInfo);
+		pTextInfo->SetText( _T( " " ) );
+		Init3D( pTextInfo );
 		return false;
 	}
 
 	m_TextInfo = *pTextInfo;
-	assert_cs(m_pBillBoardText == NULL);
-
-
+	assert_cs( m_pBillBoardText == NULL );
+	
+	
 	// 값 초기화
 	m_ptStrSize = CsPoint::ZERO;
 	m_bUseMark = false;
@@ -1266,189 +1655,189 @@ bool cText3D::Init3D(cText::sTEXTINFO* pTextInfo)
 
 	m_pBillBoardText = NiNew CBillboard;
 
-	m_pBillBoardText->CreateTexture(m_ptStrSize.x * 0.5f, m_ptStrSize.y * 0.5f, m_pTexture);
+	m_pBillBoardText->CreateTexture( m_ptStrSize.x*0.5f, m_ptStrSize.y*0.5f, m_pTexture );	
 
-	m_pBillBoardText->SetColor(m_TextInfo.s_Color);
+	m_pBillBoardText->SetColor( m_TextInfo.s_Color );
 
 	return true;
 }
 
-void cText3D::Render(NiPoint3 vPos, float fX, float fY)
+void cText3D::Render( NiPoint3 vPos, float fX, float fY )
 {
-	if (m_pBillBoardText == NULL)
+	if( m_pBillBoardText == NULL )
 		return;
 
-	m_pBillBoardText->Render(vPos, fX, fY);
+	m_pBillBoardText->Render( vPos, fX, fY );
 
 	float PosX = m_pBillBoardText->GetSizeX();
 	float PosY = 0;
-	for (int i = 0; i < m_pbBillBoard.Size(); ++i)
-	{
-		if (m_pbBillBoard.IsExistElement(i))
-			m_pbBillBoard[i]->Render(vPos, PosX, PosY);
+	for( int i = 0; i < m_pbBillBoard.Size(); ++i )
+	{		
+		if( m_pbBillBoard.IsExistElement( i ) )
+			m_pbBillBoard[ i ]->Render( vPos, PosX, PosY );
 	}
 
 }
 
-void cText3D::Render(NiPoint3 vPos, float fX, float fY, float fScale)
+void cText3D::Render( NiPoint3 vPos, float fX, float fY, float fScale )
 {
-	if (m_pBillBoardText == NULL)
+	if( m_pBillBoardText == NULL )
 		return;
 
-	m_pBillBoardText->SetScale(fScale);
-	m_pBillBoardText->Render(vPos, fX, fY);
+	m_pBillBoardText->SetScale( fScale );
+	m_pBillBoardText->Render( vPos, fX, fY );
 
 	float PosX = m_pBillBoardText->GetSizeX();
 	float PosY = 0;
-	for (int i = 0; i < m_pbBillBoard.Size(); ++i)
+	for( int i = 0; i < m_pbBillBoard.Size(); ++i )
 	{
-		if (m_pbBillBoard.IsExistElement(i))
-			m_pbBillBoard[i]->Render(vPos, PosX, PosY, fScale);
+		if( m_pbBillBoard.IsExistElement( i ) )
+			m_pbBillBoard[ i ]->Render( vPos, PosX, PosY, fScale );
 	}
 }
 
-bool cText3D::SetText(int nStr)
+bool cText3D::SetText( int nStr )
 {
-	TCHAR szNum[16];
-	_stprintf_s(szNum, 16, _T("%d"), nStr);
-	return SetText(szNum);
+	TCHAR szNum[ 16 ];
+	_stprintf_s( szNum, 16, _T( "%d" ), nStr );
+	return SetText( szNum );
 }
 
-bool cText3D::SetText(TCHAR const* szStr)
+bool cText3D::SetText( TCHAR const* szStr )
 {
-	if (m_TextInfo.s_pFont == NULL)
+	if( m_TextInfo.s_pFont == NULL )
 		return false;
 
-	if (m_TextInfo.s_pFont->IsInitialize() == false)
+	if( m_TextInfo.s_pFont->IsInitialize() == false )
 		return false;
 
 	// 같은 글자라면 패스
-	if (_tcscmp(szStr, m_TextInfo.GetText()) == 0)
+	if( _tcscmp( szStr, m_TextInfo.GetText() ) == 0 )
 		return false;
 
-	if (szStr[0] == NULL)
+	if( szStr[ 0 ] == NULL )
 	{
-		if (m_pTexture)
+		if( m_pTexture )
 		{
-			m_pPixelData = 0;
-			m_pTexture = 0;
-			m_ptStrSize = CsPoint::ZERO;
-			m_TextInfo.SetText(_T(""));
+			m_pPixelData		= 0;
+			m_pTexture			= 0;
+			m_ptStrSize			= CsPoint::ZERO;
+			m_TextInfo.SetText( _T( "" ) );
 			return true;
 		}
 		return false;
-	}
+	}	
 
-	m_TextInfo.SetText(szStr);
+	m_TextInfo.SetText( szStr );
 
 	// 지우고 새로 생성
-	m_pPixelData = 0;
-	m_pTexture = 0;
-	SAFE_DELETE_ARRAY(m_pFTData);
+	m_pPixelData	= 0;
+	m_pTexture		= 0;
+	SAFE_DELETE_ARRAY( m_pFTData );
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (_AllocData() == false)
+	if( _AllocData() == false )
 	{
 		return false;
 	}
 
 	// 텍스쳐 생성
 	_CreateTexture();
-
-	m_pBillBoardText->ChangeTexture(m_ptStrSize * 0.5f, m_pTexture);
+	
+	m_pBillBoardText->ChangeTexture( m_ptStrSize * 0.5f, m_pTexture );
 	return true;
 }
 
-void cText3D::SetAlpha(float fAlpha)
-{
-	if (m_pBillBoardText)
-	{
-		m_pBillBoardText->SetAlpha(fAlpha);
-	}
+void cText3D::SetAlpha( float fAlpha )
+{ 
+	if( m_pBillBoardText )
+	{ 
+		m_pBillBoardText->SetAlpha( fAlpha ); 
+	} 
 
-	for (int i = 0; i < m_pbBillBoard.Size(); ++i)
+	for( int i = 0; i < m_pbBillBoard.Size(); ++i )
 	{
-		if (m_pbBillBoard.IsExistElement(i))
-			m_pbBillBoard[i]->s_pBillboard->SetAlpha(fAlpha);
-	}
-}
-
-void cText3D::SetColor(NiColor FontColor /*부하가적다*/)
-{
-	if (m_pBillBoardText)
-	{
-		m_pBillBoardText->SetColor(FontColor);
+		if( m_pbBillBoard.IsExistElement( i ) )
+			m_pbBillBoard[ i ]->s_pBillboard->SetAlpha( fAlpha );
 	}
 }
 
-void cText3D::AddBillBoard(char const* pFileName, NiPoint2 DeltaPos, NiPoint2 ptSize)
+void cText3D::SetColor( NiColor FontColor /*부하가적다*/ )
+{ 
+	if( m_pBillBoardText )
+	{ 
+		m_pBillBoardText->SetColor( FontColor ); 
+	}
+}
+
+void cText3D::AddBillBoard( char const* pFileName, NiPoint2 DeltaPos, NiPoint2 ptSize )
 {
 	sBillboard* pBillboard = NiNew sBillboard;
-	pBillboard->Init(pFileName, DeltaPos, ptSize);
-
-	m_pbBillBoard.PushBack(pBillboard);
+	pBillboard->Init( pFileName, DeltaPos, ptSize );
+		
+	m_pbBillBoard.PushBack( pBillboard );		
 }
 
-void cText3D::AddBillBoard(char const* pFileName, NiPoint2 DeltaPos, float fTexX1, float fTexX2, float fTexY1, float fTexY2, NiPoint2 ptSize)
+void cText3D::AddBillBoard( char const* pFileName, NiPoint2 DeltaPos, float fTexX1, float fTexX2, float fTexY1, float fTexY2, NiPoint2 ptSize )
 {
 	sBillboard* pBillboard = NiNew sBillboard;
-	pBillboard->Init(pFileName, fTexX1, fTexX2, fTexY1, fTexY2, DeltaPos, ptSize);
+	pBillboard->Init( pFileName, fTexX1, fTexX2, fTexY1, fTexY2, DeltaPos, ptSize );
 
-	m_pbBillBoard.PushBack(pBillboard);
+	m_pbBillBoard.PushBack( pBillboard );	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 추가 billboard
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void cText3D::sBillboard::Init(char const* pFileName, NiPoint2 DeltaPos, NiPoint2 ptSize)
-{
+void cText3D::sBillboard::Init(char const* pFileName, NiPoint2 DeltaPos, NiPoint2 ptSize )
+{ 
 	s_Size = ptSize;
 	s_DeltaPos = DeltaPos;
 
 	s_pBillboard = NiNew CBillboard;
-	s_pBillboard->CreateFile(pFileName, s_Size.x, s_Size.y);
+	s_pBillboard->CreateFile(pFileName, s_Size.x, s_Size.y);		
 }
 
-void cText3D::sBillboard::Init(char const* pFileName, float fTexX1, float fTexX2, float fTexY1, float fTexY2, NiPoint2 DeltaPos, NiPoint2 ptSize)
-{
+void cText3D::sBillboard::Init( char const* pFileName, float fTexX1, float fTexX2, float fTexY1, float fTexY2, NiPoint2 DeltaPos, NiPoint2 ptSize )
+{ 
 	s_Size = ptSize;
 	s_DeltaPos = DeltaPos;
 
 	s_pBillboard = NiNew CBillboard;
-	s_pBillboard->CreateFile(pFileName, s_Size.x, s_Size.y, fTexX1, fTexX2, fTexY1, fTexY2);
+	s_pBillboard->CreateFile( pFileName, s_Size.x, s_Size.y, fTexX1, fTexX2, fTexY1, fTexY2 );	
 }
 
-void cText3D::sBillboard::Render(NiPoint3 vPos, float& fX, float& fY)
+void cText3D::sBillboard::Render( NiPoint3 vPos, float& fX, float& fY )
 {
-	if (s_pBillboard == NULL)
+	if( s_pBillboard == NULL )
 		return;
-
-	if (s_DeltaPos.x > 0)
-		s_pBillboard->Render(vPos, (fX + s_DeltaPos.x), s_DeltaPos.y);
+	
+	if( s_DeltaPos.x > 0 )
+		s_pBillboard->Render( vPos, ( fX + s_DeltaPos.x ), s_DeltaPos.y );
 	else
-		s_pBillboard->Render(vPos, -(fX - s_DeltaPos.x), s_DeltaPos.y);
+		s_pBillboard->Render( vPos, -( fX - s_DeltaPos.x ), s_DeltaPos.y );	
 
 	fX += s_Size.x + s_DeltaPos.x;
 	fY += 0;
 }
 
-void cText3D::sBillboard::Render(NiPoint3 vPos, float& fX, float& fY, float fScale)
+void cText3D::sBillboard::Render( NiPoint3 vPos, float& fX, float& fY, float fScale )
 {
-	if (s_pBillboard == NULL)
+	if( s_pBillboard == NULL )
 		return;
-
-	s_pBillboard->SetScale(fScale);
-	if (s_DeltaPos.x > 31)
-		s_pBillboard->Render(vPos, (fX + s_DeltaPos.x), s_DeltaPos.y);
-	else if (1 < s_DeltaPos.x && s_DeltaPos.x < 31)
-		s_pBillboard->Render(vPos, (0 + s_DeltaPos.x), s_DeltaPos.y);
-	else if (s_DeltaPos.x == 0)
-		s_pBillboard->Render(vPos, (0 + s_DeltaPos.x), s_DeltaPos.y);
-	else if (-31 < s_DeltaPos.x && s_DeltaPos.x < 0)
-		s_pBillboard->Render(vPos, -(0 - s_DeltaPos.x), s_DeltaPos.y);
+		
+	s_pBillboard->SetScale( fScale );
+	if( s_DeltaPos.x > 31 )
+		s_pBillboard->Render( vPos, ( fX + s_DeltaPos.x ), s_DeltaPos.y );
+	else if( 1 < s_DeltaPos.x && s_DeltaPos.x < 31 )
+		s_pBillboard->Render( vPos, ( 0 + s_DeltaPos.x ), s_DeltaPos.y );
+	else if( s_DeltaPos.x == 0)
+		s_pBillboard->Render( vPos, ( 0 + s_DeltaPos.x ), s_DeltaPos.y );
+	else if( -31 < s_DeltaPos.x && s_DeltaPos.x < 0)
+		s_pBillboard->Render( vPos, -( 0 - s_DeltaPos.x ), s_DeltaPos.y );
 	else
-		s_pBillboard->Render(vPos, -(fX - s_DeltaPos.x), s_DeltaPos.y);
+		s_pBillboard->Render( vPos, -( fX - s_DeltaPos.x ), s_DeltaPos.y );
 
 	fX += s_Size.x + s_DeltaPos.x;
 	fY += 0;
@@ -1477,12 +1866,12 @@ void cText3D::sBillboard::Render(NiPoint3 vPos, float& fX, float& fY, float fSca
 
 
 
-void cMyText::sTEXTINFO::Init(CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/)
+void cMyText::sTEXTINFO::Init( CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/ )
 {
-	Init(&g_pEngine->m_FontSystem, eFontSize, color);
+	Init( &g_pEngine->m_FontSystem, eFontSize, color );
 }
 
-void cMyText::sTEXTINFO::Init(CFont* pFont, CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/)
+void cMyText::sTEXTINFO::Init( CFont* pFont, CFont::eFACE_SIZE eFontSize /*=CFont::FS_10*/, NiColor color /*=FONT_WHITE*/ )
 {
 	s_pFont = pFont;
 	s_eFontSize = eFontSize;
@@ -1494,15 +1883,15 @@ void cMyText::sTEXTINFO::Init(CFont* pFont, CFont::eFACE_SIZE eFontSize /*=CFont
 	s_eTextAlign = DT_LEFT;
 }
 
-void cMyText::sTEXTINFO::Init(CsHelp::sTEXT* pHelpText)
+void cMyText::sTEXTINFO::Init( CsHelp::sTEXT* pHelpText )
 {
-	Init(FONT_SIZE_CAL(pHelpText->s_nTextSize), NiColor(pHelpText->s_Color[0] / 255.0f, pHelpText->s_Color[1] / 255.0f, pHelpText->s_Color[2] / 255.0f));
-	SetBoldLevel((cMyText::sTEXTINFO::eBOLD_LEVEL)pHelpText->s_nBold);
+	Init( FONT_SIZE_CAL( pHelpText->s_nTextSize ), NiColor( pHelpText->s_Color[ 0 ]/255.0f, pHelpText->s_Color[ 1 ]/255.0f, pHelpText->s_Color[ 2 ]/255.0f ) );
+	SetBoldLevel( (cMyText::sTEXTINFO::eBOLD_LEVEL)pHelpText->s_nBold );
 }
 
 int cMyText::sTEXTINFO::GetBoldSize()
 {
-	switch (s_eBoldLevel)
+	switch( s_eBoldLevel )
 	{
 	case BL_NONE:	return 0;
 	case BL_1:		return 4;
@@ -1511,21 +1900,21 @@ int cMyText::sTEXTINFO::GetBoldSize()
 	case BL_4:		return 7;
 	case BL_5:		return 8;
 	}
-	assert_csm1(false, _T("BoldLevel = %d"), s_eBoldLevel);
+	assert_csm1( false, _T( "BoldLevel = %d" ), s_eBoldLevel );
 	return 0;
-}
+}	
 
-void cMyText::sTEXTINFO::SetText_Reduce(TCHAR* szText, int nLen, int nDotNum /* = 2 */)
+void cMyText::sTEXTINFO::SetText_Reduce( TCHAR* szText, int nLen, int nDotNum /* = 2 */ )
 {
-	TCHAR t = szText[nLen];
-	szText[nLen] = NULL;
+	TCHAR t = szText[ nLen ];
+	szText[ nLen ] = NULL;
 
-	TCHAR szDot[2] = _T(".");
+	TCHAR szDot[ 2 ] = _T( "." );
 	s_strText = szText;
-	szText[nLen] = t;
+	szText[ nLen ] = t;
 
-	for (int i = 0; i < nDotNum; i++)
-		s_strText.append(szDot);
+	for( int i = 0; i < nDotNum; i++ )
+		s_strText.append( szDot );
 }
 
 //=======================================================================================
@@ -1536,28 +1925,28 @@ void cMyText::sTEXTINFO::SetText_Reduce(TCHAR* szText, int nLen, int nDotNum /* 
 
 cMyText::cMyText()
 {
-	m_pTexture = NULL;
-	m_pPixelData = NULL;
-	m_pFTData = NULL;
+	m_pTexture		=	NULL;
+	m_pPixelData	=	NULL;
+	m_pFTData		=	NULL;
 
-	m_bUseMark = false;
+	m_bUseMark		=	false;
 }
 
 void cMyText::Delete()
 {
 
 
-	m_pPixelData = 0;
-	m_pTexture = 0;
-	SAFE_DELETE_ARRAY(m_pFTData);
+	m_pPixelData	= 0;
+	m_pTexture		= 0;
+	SAFE_DELETE_ARRAY( m_pFTData );
 }
 
-void cMyText::Init(cWindow* pParent, CsPoint pos, CsPoint pixel, sTEXTINFO* pTextInfo, bool bApplyWindowSize)
+void cMyText::Init( cWindow* pParent, CsPoint pos, CsPoint pixel, sTEXTINFO* pTextInfo, bool bApplyWindowSize )
 {
-	if (pTextInfo->s_pFont == NULL)
+	if( pTextInfo->s_pFont == NULL )
 		return;
 
-	if (pTextInfo->s_pFont->IsInitialize() == false)
+	if( pTextInfo->s_pFont->IsInitialize() == false )
 		return;
 
 	m_TextInfo = *pTextInfo;
@@ -1567,8 +1956,8 @@ void cMyText::Init(cWindow* pParent, CsPoint pos, CsPoint pixel, sTEXTINFO* pTex
 	m_ptPixelSize = pixel;
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (_AllocData() == false)
-	{
+	if( _AllocData() == false )
+	{		
 		return;
 	}
 
@@ -1585,112 +1974,143 @@ void cMyText::Init(cWindow* pParent, CsPoint pos, CsPoint pixel, sTEXTINFO* pTex
 //
 //=======================================================================================
 
-bool cMyText::GetStringSize(CsPoint& size, int& hBase, TCHAR* szStr)
+bool cMyText::GetStringSize( CsPoint& size, int& hBase, TCHAR* szStr )
 {
-	if (m_TextInfo.s_pFont == NULL)
+	if( m_TextInfo.s_pFont == NULL )
 		return false;
 
-	if (m_TextInfo.s_pFont->IsInitialize() == false)
+	if( m_TextInfo.s_pFont->IsInitialize() == false )
 		return false;
-
-	if (szStr == NULL)
-		return false;
-
-	int fontHeight = m_TextInfo.GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
 
 	int x = 0;
+	int y = m_TextInfo.GetHeight();
+
 	int fx = 0;
-	int y = fontHeight;
 
-	int nLen = (int)_tcslen(szStr);
+	FT_ULong charcode;
+	int nLen = (int)_tcslen( szStr );
+	FT_Face face = m_TextInfo.GetFace();
+	FT_GlyphSlot slot = face->glyph;
 
-	for (int i = 0; i < nLen; ++i)
+	if( m_bUseMark == false )
 	{
-		if (szStr[i] == 0x000d)
-			continue;
-
-		int cw = FallbackCharWidthFromHeight(fontHeight, m_bUseMark ? m_szMark : szStr[i]);
-		x += cw;
-
-		if (m_bSet)
+		for( int i=0; i<nLen ; ++i )
 		{
-			if ((m_ptPixelSize.x - 2) >= x)
-			{
-				if (fx < x)
-					fx = x;
+			if( szStr[ i ] == 0x000d )
+				continue;
+
+			charcode = szStr[ i ];
+				if( FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) != 0 )
+					continue;
+
+			x += (slot->advance.x >> 6);
+
+			if(m_bSet){
+				// 픽셀 x사이즈 이전값과 비교하여 큰걸 저장한다.
+				if( (m_ptPixelSize.x -2) >= x )	{ if(fx < x) fx = x; }
+				else
+				{
+					// 리셋
+					x = (slot->advance.x >> 6);
+					y += m_TextInfo.GetHeight();
+				}
 			}
-			else
-			{
-				x = cw;
-				y += fontHeight;
-			}
+			
 		}
 	}
+	else
+	{
+		for( int i=0; i<nLen ; ++i )
+		{
+			if( szStr[ i ] == 0x000d )
+				continue;
 
-	if (m_bSet)
+			charcode = m_szMark;
+				if( FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) != 0 )
+					continue;
+
+			x += (slot->advance.x >> 6);
+			if(m_bSet){
+				// 픽셀 x사이즈 이전값과 비교하여 큰걸 저장한다.
+				if( (m_ptPixelSize.x -2) >= x )	{ if(fx < x) fx = x; }
+				else
+				{
+					// 리셋
+					x = (slot->advance.x >> 6);
+					y += m_TextInfo.GetHeight();
+				}
+			}
+		}
+	}	
+
+	if(m_bSet){
 		size.x = fx + 2;
+	}
 	else
 		size.x = x + 2;
-
 	size.y = y;
-	hBase = (int)(fontHeight * 0.75f) << 6;
+	hBase = (int)( m_TextInfo.GetHeight()*0.75f ) << 6;
 
-	return (size.x > 2 && size.y > 0);
+	return ( size.x > 2 );
 }
 
-int cMyText::GetCharWidth(FT_Face face, FT_ULong charcode)
+int cMyText::GetCharWidth( FT_Face face, FT_ULong charcode )
 {
-	return FallbackCharWidthFromHeight(12, (wchar_t)charcode);
+	if( charcode == 0x000d )
+		return 0;
+
+
+	if( FT_Load_Glyph( face, FT_Get_Char_Index( face, charcode ), FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT ) != 0 )
+		return 0;
+	return face->glyph->advance.x >> 6;
 }
 
-bool cMyText::SetText(int nStr)
+bool cMyText::SetText( int nStr )
 {
-	TCHAR szNum[16];
-	_stprintf_s(szNum, 16, _T("%d"), nStr);
-	return SetText(szNum);
+	TCHAR szNum[ 16 ];
+	_stprintf_s( szNum, 16, _T( "%d" ), nStr );
+	return SetText( szNum );
 }
 
-bool cMyText::SetText(TCHAR* szStr /*부하가크다*/, bool bSet)
+bool cMyText::SetText( TCHAR* szStr /*부하가크다*/, bool bSet )
 {
-	if (m_TextInfo.s_pFont == NULL)
+	if( m_TextInfo.s_pFont == NULL )
 		return false;
 
-	if (m_TextInfo.s_pFont->IsInitialize() == false)
+	if( m_TextInfo.s_pFont->IsInitialize() == false )
 		return false;
 
 	cText::sTEXTINFO safeInfo;
-	safeInfo.SetText(szStr);
+	safeInfo.SetText( szStr );
 	std::wstring safeInput = safeInfo.s_strText;
 
-	if (safeInput.empty())
+	if( safeInput.empty() )
 	{
-		if (m_pTexture)
+		if( m_pTexture )
 		{
-			m_pPixelData = 0;
-			m_pTexture = 0;
-			m_ptStrSize = CsPoint::ZERO;
-			m_TextInfo.SetText(_T(""));
+			m_pPixelData		= 0;
+			m_pTexture			= 0;
+			m_ptStrSize			= CsPoint::ZERO;
+			m_TextInfo.SetText( _T( "" ) );
 			return true;
 		}
 		return false;
 	}
 
 	// 같은 글자라면 패스
-	if (safeInput == m_TextInfo.GetText())
+	if( safeInput == m_TextInfo.GetText() )
 		return false;
 
-	m_TextInfo.SetText(const_cast<TCHAR*>(safeInput.c_str()));
+	m_TextInfo.SetText( const_cast<TCHAR*>( safeInput.c_str() ) );
 
 	// 지우고 새로 생성
-	m_pPixelData = 0;
-	m_pTexture = 0;
-	SAFE_DELETE_ARRAY(m_pFTData);
+	m_pPixelData	= 0;
+	m_pTexture		= 0;
+	SAFE_DELETE_ARRAY( m_pFTData );
 	m_bSet = bSet;
 
 	// 데이터 메모리 할당 및 텍스트를 데이터 화
-	if (_AllocData() == false)
+	if( _AllocData() == false )
 	{
 		return false;
 	}
@@ -1708,23 +2128,23 @@ bool cMyText::SetText(TCHAR* szStr /*부하가크다*/, bool bSet)
 //1 스트링 사이즈 구하고 스트링 사이즈만큼 픽셀 데이타 설정한다.
 bool cMyText::_AllocData()
 {
-	if (GetStringSize(m_ptStrSize, m_nFTSize_HBase, (TCHAR*)m_TextInfo.GetText()) == false)
+	if( GetStringSize( m_ptStrSize, m_nFTSize_HBase, (TCHAR*)m_TextInfo.GetText() ) == false )
 		return false;
 
-	assert_cs((m_ptStrSize.x != 0) && (m_ptStrSize.y != 0));
+	assert_cs( ( m_ptStrSize.x != 0 )&&( m_ptStrSize.y != 0 ) );
 
-	assert_cs(m_pPixelData == NULL);
+	assert_cs( m_pPixelData == NULL );
 
-	if (m_ptStrSize.x > m_ptPixelSize.x) { m_ptPixelSize.x = m_ptStrSize.x; }
-	if (m_ptStrSize.y > m_ptPixelSize.y) { m_ptPixelSize.y = m_ptStrSize.y; }
+	if(m_ptStrSize.x > m_ptPixelSize.x){ m_ptPixelSize.x = m_ptStrSize.x;}
+	if(m_ptStrSize.y > m_ptPixelSize.y){ m_ptPixelSize.y = m_ptStrSize.y;}
 	//m_pPixelData = NiNew NiPixelData( m_ptStrSize.x, m_ptStrSize.y, NiPixelFormat::RGBA32 );
-	m_pPixelData = NiNew NiPixelData(m_ptPixelSize.x, m_ptPixelSize.y, NiPixelFormat::RGBA32);
+	m_pPixelData = NiNew NiPixelData( m_ptPixelSize.x, m_ptPixelSize.y, NiPixelFormat::RGBA32 );
 
-	assert_cs(m_pFTData == NULL);
+	assert_cs( m_pFTData == NULL );
 	int nFTSize = m_ptStrSize.Mul();
 	//int nFTSize = (100*50);
-	m_pFTData = xnew BYTE[nFTSize];
-	memset(m_pFTData, 0, sizeof(BYTE) * nFTSize);
+	m_pFTData = xnew BYTE[ nFTSize ];
+	memset( m_pFTData, 0, sizeof( BYTE )*nFTSize );
 
 	_FTBmpToFTData();
 
@@ -1734,46 +2154,146 @@ bool cMyText::_AllocData()
 //2  m_pFTData 에다 데이터를 넣는것 같은데..글자수 만큼
 void cMyText::_FTBmpToFTData()
 {
-	if (m_pFTData == NULL)
-		return;
-
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
+	int nStartSize = 1;
+	int nStartSizey = 0;
 	const TCHAR* str = m_TextInfo.GetText();
-	if (str == NULL)
+	int nStrLen = (int)_tcslen( str );
+	FT_ULong charcode;
+	FT_Face face = m_TextInfo.GetFace();
+	if( !IsFaceReady( face ) )
 		return;
+	FT_GlyphSlot slot = face->glyph;
+	FT_Glyph_Metrics *pMetrics;
+	FT_Error error;
+	int By;
+	int x =0;
+	int y =m_TextInfo.GetHeight();
 
-	std::wstring drawText;
-
-	if (m_bUseMark == false)
+	if( m_bUseMark == false )
 	{
-		drawText = str;
+		if( m_TextInfo.GetBoldLevel() == sTEXTINFO::BL_NONE )
+		{
+			for( int i = 0; i<nStrLen; ++i )
+			{
+				// 엔터
+				if( str[ i ] == 0x000d )
+					break;
+
+				charcode = FT_Get_Char_Index( face, str[ i ] );
+				// 탭키
+				if( charcode == 0 )
+					continue;
+
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+				// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+
+				if( FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+					continue;
+
+				pMetrics = &(slot->metrics);
+				By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );	
+
+				x += ( pMetrics->horiAdvance >> 6 );
+				if( (m_ptPixelSize.x -2 ) < x ){
+					nStartSize = 1;	
+					nStartSizey += y;
+					x = 0;
+				}		
+					
+
+				_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), nStartSizey+(By>>6), pMetrics->width >> 6, pMetrics->height >> 6 );
+				
+				nStartSize += ( pMetrics->horiAdvance >> 6 );
+				
+
+			}
+		}
+		else
+		{
+			int nBoldSize = m_TextInfo.GetBoldSize();
+			for( int i = 0; i<nStrLen; ++i )
+			{
+				// 엔터
+				if( str[ i ] == 0x000d )
+					break;
+
+				charcode = FT_Get_Char_Index( face, str[ i ] );
+				// 탭키
+				if( charcode == 0 )
+					continue;
+
+				error = FT_Load_Glyph( face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT );
+				// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
+
+				FT_Outline_Embolden( &face->glyph->outline, (face->size->metrics.x_ppem*nBoldSize/100)*64 );
+				if( FT_Render_Glyph( face->glyph, FT_RENDER_MODE_NORMAL ) != 0 )
+					continue;
+
+				pMetrics = &(slot->metrics);
+				By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
+
+				x += ( pMetrics->horiAdvance >> 6 );
+				if( (m_ptPixelSize.x -2 ) < x ){
+					nStartSize = 1;	
+					nStartSizey += y;
+					x = 0;
+				}
+
+				_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+
+				nStartSize += ( pMetrics->horiAdvance >> 6 );		
+			}
+		}		
 	}
 	else
 	{
-		BuildMarkedText(drawText, str, m_szMark);
-	}
+		for( int i = 0; i<nStrLen; ++i )
+		{
+			if( str[ i ] == 0x000d )
+				break;
 
-	int fontHeight = m_TextInfo.GetHeight();
-	if (fontHeight <= 0)
-		fontHeight = 12;
+			error = FT_Load_Char( face, m_szMark, FT_LOAD_RENDER );
+			// Removed assert_cs( error == 0 ) — FT_Load_Glyph failure on a missing-from-font
+// glyph is an expected condition, not a bug. The original assert called _log()
+// which both writes to crash.log AND pops up MessageBoxA, breaking gameplay flow.
+// Silent skip is the right behavior; the next char in the loop renders normally.
+if( error != 0 ) continue;
 
-	bool bold = (m_TextInfo.GetBoldLevel() != sTEXTINFO::BL_NONE);
+			pMetrics = &(slot->metrics);
+			By = CsMax( 0, m_nFTSize_HBase - pMetrics->horiBearingY );
 
-	RenderTextToAlphaBuffer(drawText.c_str(), m_ptStrSize.x, m_ptStrSize.y, fontHeight, bold, m_bSet, m_pFTData);
+			x += ( pMetrics->horiAdvance >> 6 );
+			if( (m_ptPixelSize.x -2 ) < x ){
+				nStartSize = 1;	
+				nStartSizey += y;
+				x = 0;
+			}
+
+			_ReadFTBmp( &slot->bitmap, nStartSize+( pMetrics->horiBearingX >> 6 ), By>>6, pMetrics->width >> 6, pMetrics->height >> 6 );
+
+			nStartSize += ( pMetrics->horiAdvance >> 6 );		
+		}
+	}	
 }
 
 //2 -2 m_pFTData 에다 데이터를 넣는거 같은데..(시작픽셀x,y)(width,height 픽셀)
-void cMyText::_ReadFTBmp(FT_Bitmap* bitmap, int x, int y, int sx, int sy)
+void cMyText::_ReadFTBmp( FT_Bitmap* bitmap, int x, int y, int sx, int sy )
 {
-	if (bitmap == NULL || bitmap->buffer == NULL)
+	if( bitmap == NULL || bitmap->buffer == NULL )
 		return;
-	if (sx <= 0 || sy <= 0)
+	if( sx <= 0 || sy <= 0 )
 		return;
-	if (bitmap->pixel_mode != FT_PIXEL_MODE_GRAY)
+	if( bitmap->pixel_mode != FT_PIXEL_MODE_GRAY )
 		return;
-	if (m_pFTData == NULL)
+	if( m_pFTData == NULL )
 		return;
 
 	int i, j, p, q;
@@ -1782,44 +2302,32 @@ void cMyText::_ReadFTBmp(FT_Bitmap* bitmap, int x, int y, int sx, int sy)
 	int Pitch = bitmap->pitch;
 	int Height = m_ptStrSize.y;
 	int TotalSize = Width * Height;
-	if (Width <= 0 || Height <= 0 || BitWidth <= 0 || bitmap->rows <= 0)
+	if( Width <= 0 || Height <= 0 || BitWidth <= 0 || bitmap->rows <= 0 )
 		return;
-	if (Pitch < 0)
+	if( Pitch < 0 )
 		Pitch = -Pitch;
-	if (Pitch < BitWidth)
+	if( Pitch < BitWidth )
 		Pitch = BitWidth;
 	int srcTotal = Pitch * (int)bitmap->rows;
 
-	for (i = y, p = 0; p < sy; ++i, ++p)
+	for( i=y, p=0; p<sy; ++i, ++p )
 	{
-		for (j = x, q = 0; q < sx; ++j, ++q)
+		for( j = x, q = 0 ; q<sx ; ++j, ++q )
 		{
-			int destIdx = i * Width + j;
-			if (destIdx < 0 || destIdx >= TotalSize)
+			int destIdx = i*Width + j;
+			if( destIdx < 0 || destIdx >= TotalSize )
 				continue;
-			int srcIdx = p * Pitch + q;
-			if (srcIdx < 0 || srcIdx >= srcTotal)
+			int srcIdx = p*Pitch + q;
+			if( srcIdx < 0 || srcIdx >= srcTotal )
 				continue;
-			m_pFTData[destIdx] = bitmap->buffer[srcIdx];
+			m_pFTData[ destIdx ] = bitmap->buffer[ srcIdx ];
 		}
 	}
 }
 
 void cMyText::_CreateTexture()
 {
-	if (m_pPixelData == NULL)
-		return;
-
-	if (m_pFTData == NULL)
-		return;
-
-	if (m_ptPixelSize.x <= 0 || m_ptPixelSize.y <= 0)
-		return;
-
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
-	if (m_TextInfo.s_bOutLine == true)
+	if( m_TextInfo.s_bOutLine == true )
 	{
 		_StringToData_OutLine();
 	}
@@ -1828,115 +2336,133 @@ void cMyText::_CreateTexture()
 		_StringToData();
 	}
 
-	if (m_pPixelData == NULL)
-		return;
-
-	NiPixelData* pClonePixelData = NiDynamicCast(NiPixelData, m_pPixelData->Clone());
-	if (pClonePixelData == NULL)
-		return;
-
 	NiTexture::FormatPrefs kPrefs;
 	kPrefs.m_ePixelLayout = NiTexture::FormatPrefs::TRUE_COLOR_32;
 	kPrefs.m_eMipMapped = NiTexture::FormatPrefs::NO;
 	kPrefs.m_eAlphaFmt = NiTexture::FormatPrefs::NONE;
-
-	m_pTexture = NiSourceTexture::Create(pClonePixelData, kPrefs);
+	m_pTexture = NiSourceTexture::Create( NiDynamicCast( NiPixelData, m_pPixelData->Clone() ), kPrefs );
 }
 
 
 // 아웃라인 픽셀을 찾아서 색을 입힌것같음.
 void cMyText::_StringToData_OutLine()
 {
-	if (m_pPixelData == NULL)
-		return;
-
-	if (m_pFTData == NULL)
-		return;
-
-	if (m_ptPixelSize.x <= 0 || m_ptPixelSize.y <= 0)
-		return;
-
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
+	assert_cs( m_pPixelData != NULL );
 
 	DWORD* pOrgData = (DWORD*)m_pPixelData->GetPixels();
-	if (pOrgData == NULL)
-		return;
+	int alpha;
+	D3DXCOLOR c;	
 
-	int pixelWidth = m_ptPixelSize.x;
-	int pixelHeight = m_ptPixelSize.y;
-	int pixelTotalSize = pixelWidth * pixelHeight;
-
-	int textWidth = m_ptStrSize.x;
-	int textHeight = m_ptStrSize.y;
-	int textTotalSize = textWidth * textHeight;
-
-	if (pixelTotalSize <= 0 || textTotalSize <= 0)
-		return;
-
-	memset(pOrgData, 0, sizeof(DWORD) * pixelTotalSize);
-
-	for (int y = 0; y < pixelHeight; ++y)
+	memset( pOrgData, 0, sizeof( DWORD )*m_ptPixelSize.Mul() );
+	
+	for(int y=0; y<m_ptPixelSize.y; ++y )
 	{
-		for (int x = 0; x < pixelWidth; ++x)
-		{
-			int idx = y * pixelWidth + x;
-			if (idx >= 0 && idx < pixelTotalSize)
-				pOrgData[idx] = 0xff6ad2c8;
+		for( int x=0; x<m_ptPixelSize.x ; ++x )
+		{	
+			//a,b,g,r
+			pOrgData[ y*m_ptPixelSize.x + x ] = 0xff6ad2c8;			
 		}
 	}
 
-	int first = 0;
 
-	if (m_TextInfo.s_eTextAlign == DT_CENTER)
-	{
-		int temp = pixelWidth - textWidth;
-		if (temp > 0)
-			first = (temp / 2) + (temp % 2);
-	}
+	int height = m_ptStrSize.y;
+	int width = m_ptStrSize.x;
 
-	for (int y = 0; y < textHeight - 1; ++y)
+	switch(m_TextInfo.s_eTextAlign)
 	{
-		for (int x = 0; x < textWidth - 1; ++x)
+	case DT_CENTER:
 		{
-			int textIdx = y * textWidth + x;
-			if (textIdx < 0 || textIdx >= textTotalSize)
-				continue;
+			
+// 			int temp = (m_ptPixelSize.x - m_ptStrSize.x);
+// 			int first = (temp / 2) + (temp % 2);
+// 			int end = (temp / 2);	
+// 
+// 
+// 
+// 			pOrgData = (DWORD*)m_pPixelData->GetPixels();
+// 
+// 			for( int y=0; y<height; ++y )
+// 			{
+// 				pOrgData+=first;
+// 				for( int x=0; x<width ; ++x )
+// 				{
+// 					alpha = m_pFTData[ y*width + x ];
+// 
+// 					if( alpha > 70 )
+// 						*pOrgData = ( (m_pFTData[ y*width + x ])<<24 )|0x00ffffff;
+// 
+// 					++pOrgData;
+// 				}
+// 				pOrgData+=end;
+// 			}
 
-			int alpha = m_pFTData[textIdx];
+			int temp = (m_ptPixelSize.x - m_ptStrSize.x);
+			int first = (temp / 2) + (temp % 2);
+			int end = (temp / 2);
 
-			if (alpha > 100)
+
+			for(int y=0; y<height-1; ++y )
 			{
-				int destX = x + 1 + first;
-				int destY = y + 1;
-				int destIdx = destY * pixelWidth + destX;
+				for( int x=0; x<width-1 ; ++x )
+				{			
+					alpha = m_pFTData[ y*width + x ];
+					end = 0;
 
-				if (destX >= 0 && destX < pixelWidth && destY >= 0 && destY < pixelHeight && destIdx >= 0 && destIdx < pixelTotalSize)
-					pOrgData[destIdx] = 0xff101010;
+					if( alpha > 100 )
+					{
+						pOrgData[ ((y+1)*m_ptPixelSize.x + (x+1)) + first + end ] = 0xff101010;
+					}
+				}
+				end = (temp / 2);
+			}
+
+
+			for(int y=0; y<height; ++y )
+			{
+				for( int x=0; x<width ; ++x )
+				{			
+					alpha = m_pFTData[ y*width + x ];
+					end = 0;
+
+					if( alpha > 70 )
+					{
+						pOrgData[ (y*m_ptPixelSize.x + x) + first + end ] = ( (alpha)<<24 )|0x00ffffff;
+					}					
+				}
+				end = (temp / 2);
+			}
+
+		}
+		break;
+	default:
+		{
+			for(int y=0; y<height-1; ++y )
+			{
+				for( int x=0; x<width-1 ; ++x )
+				{			
+					alpha = m_pFTData[ y*width + x ];
+
+					if( alpha > 100 )
+					{
+						pOrgData[ (y+1)*m_ptPixelSize.x + (x+1) ] = 0xff101010;
+					}
+				}
+			}
+
+			for(int y=0; y<height; ++y )
+			{
+				for( int x=0; x<width ; ++x )
+				{			
+					alpha = m_pFTData[ y*width + x ];
+
+					if( alpha > 70 )
+					{
+						pOrgData[ y*m_ptPixelSize.x + x ] = ( (alpha)<<24 )|0x00ffffff;
+					}
+				}
 			}
 		}
-	}
-
-	for (int y = 0; y < textHeight; ++y)
-	{
-		for (int x = 0; x < textWidth; ++x)
-		{
-			int textIdx = y * textWidth + x;
-			if (textIdx < 0 || textIdx >= textTotalSize)
-				continue;
-
-			int alpha = m_pFTData[textIdx];
-
-			if (alpha > 70)
-			{
-				int destX = x + first;
-				int destY = y;
-				int destIdx = destY * pixelWidth + destX;
-
-				if (destX >= 0 && destX < pixelWidth && destY >= 0 && destY < pixelHeight && destIdx >= 0 && destIdx < pixelTotalSize)
-					pOrgData[destIdx] = ((alpha) << 24) | 0x00ffffff;
-			}
-		}
+		break;
 	}
 
 	m_pPixelData->MarkAsChanged();
@@ -1944,65 +2470,72 @@ void cMyText::_StringToData_OutLine()
 
 void cMyText::_StringToData()
 {
-	if (m_pPixelData == NULL)
-		return;
+	assert_cs( m_pPixelData != NULL );
 
-	if (m_pFTData == NULL)
-		return;
+	DWORD* pData = (DWORD*)m_pPixelData->GetPixels();	
+	memset( pData, 0x0000ff00, sizeof( DWORD )*m_ptPixelSize.Mul() );
 
-	if (m_ptPixelSize.x <= 0 || m_ptPixelSize.y <= 0)
-		return;
+	int alpha;
+	int width = m_ptStrSize.x;
+ 	int height = m_ptStrSize.y;
 
-	if (m_ptStrSize.x <= 0 || m_ptStrSize.y <= 0)
-		return;
-
-	DWORD* pData = (DWORD*)m_pPixelData->GetPixels();
-	if (pData == NULL)
-		return;
-
-	int pixelWidth = m_ptPixelSize.x;
-	int pixelHeight = m_ptPixelSize.y;
-	int pixelTotalSize = pixelWidth * pixelHeight;
-
-	int textWidth = m_ptStrSize.x;
-	int textHeight = m_ptStrSize.y;
-	int textTotalSize = textWidth * textHeight;
-
-	if (pixelTotalSize <= 0 || textTotalSize <= 0)
-		return;
-
-	memset(pData, 0, sizeof(DWORD) * pixelTotalSize);
-
-	int first = 0;
-
-	if (m_TextInfo.s_eTextAlign == DT_CENTER)
+	switch(m_TextInfo.s_eTextAlign)
 	{
-		int temp = pixelWidth - textWidth;
-		if (temp > 0)
-			first = (temp / 2) + (temp % 2);
-	}
-
-	for (int y = 0; y < textHeight; ++y)
-	{
-		for (int x = 0; x < textWidth; ++x)
+	case DT_CENTER:
 		{
-			int textIdx = y * textWidth + x;
-			if (textIdx < 0 || textIdx >= textTotalSize)
-				continue;
-
-			int alpha = m_pFTData[textIdx];
-
-			if (alpha > 70)
+			int temp = (m_ptPixelSize.x - m_ptStrSize.x);
+			int first = (temp / 2) + (temp % 2);
+			int end = (temp / 2);
+			for( int y=0; y<height; ++y )
 			{
-				int destX = x + first;
-				int destY = y;
-				int destIdx = destY * pixelWidth + destX;
+				pData+=first;
+				for( int x=0; x<width ; ++x )
+				{
+					alpha = m_pFTData[ y*width + x ];
 
-				if (destX >= 0 && destX < pixelWidth && destY >= 0 && destY < pixelHeight && destIdx >= 0 && destIdx < pixelTotalSize)
-					pData[destIdx] = ((alpha) << 24) | 0x00ffffff;
+					if( alpha > 100 )
+						*pData = ( (m_pFTData[ y*width + x ])<<24 )|0x00ffffff;
+
+					++pData;
+				}
+				pData+=end;
 			}
-		}
-	}
 
-	m_pPixelData->MarkAsChanged();
+		}
+		break;
+	default:
+		{
+			for(int y=0; y<height; ++y )
+			{
+				for( int x=0; x<width ; ++x )
+				{			
+					alpha = m_pFTData[ y*width + x ];
+
+					if( alpha > 70 )
+					{
+						pData[ y*m_ptPixelSize.x + x ] = ( (alpha)<<24 )|0x00ffffff;
+					}
+				}
+			}	
+
+		}
+		break;
+	}
+	
+	/*
+	for( int y=0; y<height; ++y )
+	{
+		for( int x=0; x<width ; ++x )
+		{
+			alpha = m_pFTData[ y*width + x ];
+
+			if( alpha > 100 )
+				*pData = ( (m_pFTData[ y*width + x ])<<24 )|0x00ffffff;
+
+			++pData;
+		}
+		pData+=(m_ptPixelSize.x - m_ptStrSize.x);
+	}
+	*/
+
 }

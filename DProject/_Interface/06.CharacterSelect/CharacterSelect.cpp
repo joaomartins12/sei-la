@@ -23,6 +23,91 @@ namespace CharacterCreateLobbyMapCache
 namespace
 {
 	static const DWORD CHARACTER_SELECT_LOBBY_MAP_ID = 4;
+
+	// Limite final da tela Character Select.
+	static const int CHARACTER_SELECT_MAX_SLOT = 3;
+
+	// Botões do lado direito.
+	static const int RIGHT_PANEL_W = 220;
+	static const int RIGHT_PANEL_X_MARGIN = 32;
+
+	static const int START_BTN_W = 176;
+	static const int START_BTN_H = 54;
+
+	static const int SIDE_BTN_W = 137;
+	static const int SIDE_BTN_H = 46;
+
+	static const int MAIN_BTN_GAP = 14;
+
+	// Slots em baixo, lado a lado.
+	static const int SLOT_BTN_W = 296;
+	static const int SLOT_BTN_H = 84;
+	static const int SLOT_GAP = 16;
+	static const int SLOT_PANEL_SIDE_PADDING = 12;
+	static const int SLOT_PANEL_TOP_PADDING = 0;
+	static const int SLOT_BOTTOM_MARGIN = 28;
+
+	static int ClampInt(int value, int minValue)
+	{
+		return value < minValue ? minValue : value;
+	}
+
+	static int GetRightPanelX()
+	{
+		return ClampInt(g_nScreenWidth - RIGHT_PANEL_W - RIGHT_PANEL_X_MARGIN, 10);
+	}
+
+	static int GetButtonPanelY()
+	{
+		const int panelH =
+			START_BTN_H +
+			MAIN_BTN_GAP +
+			SIDE_BTN_H +
+			MAIN_BTN_GAP +
+			SIDE_BTN_H +
+			MAIN_BTN_GAP +
+			SIDE_BTN_H;
+
+		return ClampInt((g_nScreenHeight - panelH) / 2, 10);
+	}
+
+	static int GetSlotPanelWidth()
+	{
+		return SLOT_PANEL_SIDE_PADDING * 2 +
+			(SLOT_BTN_W * CHARACTER_SELECT_MAX_SLOT) +
+			(SLOT_GAP * (CHARACTER_SELECT_MAX_SLOT - 1));
+	}
+
+	static int GetSlotPanelHeight()
+	{
+		return SLOT_PANEL_TOP_PADDING * 2 + SLOT_BTN_H;
+	}
+
+	static int GetSlotPanelX()
+	{
+		return ClampInt((g_nScreenWidth - GetSlotPanelWidth()) / 2, 10);
+	}
+
+	static int GetSlotPanelY()
+	{
+		return ClampInt(g_nScreenHeight - GetSlotPanelHeight() - SLOT_BOTTOM_MARGIN, 10);
+	}
+
+	static int GetSlotOffsetX(int nSlotIndex)
+	{
+		return SLOT_PANEL_SIDE_PADDING + nSlotIndex * (SLOT_BTN_W + SLOT_GAP);
+	}
+
+	static int GetSafeSelectedIndex(int nCurrent)
+	{
+		if (nCurrent < 0)
+			return 0;
+
+		if (nCurrent >= CHARACTER_SELECT_MAX_SLOT)
+			return CHARACTER_SELECT_MAX_SLOT - 1;
+
+		return nCurrent;
+	}
 }
 
 CCharacterSelect::sCharUIControls::sCharUIControls()
@@ -244,18 +329,30 @@ void CCharacterSelect::MakeMainButtonUI()
 		m_pMapName = m_MainButtonUI.AddText(&ti, CsPoint(g_nScreenWidth / 2, 49), true);
 	}
 
-	m_pCancel = m_MainButtonUI.AddButton(CsPoint(g_nScreenWidth / 2 - 450, g_nScreenHeight - 80), CsPoint(176, 50), CsPoint(0, 50), "CommonUI\\Simple_btn_L.tga", cWindow::SD_Bu3);
-	if (m_pCancel)
+	const int nPanelX = GetRightPanelX();
+	const int nPanelY = GetButtonPanelY();
+
+	const int nStartX = nPanelX + (RIGHT_PANEL_W - START_BTN_W) / 2;
+	const int nSideX = nPanelX + (RIGHT_PANEL_W - SIDE_BTN_W) / 2;
+
+	int nCurY = nPanelY;
+
+	// 1) Start em primeiro e maior.
+	m_pOk = m_MainButtonUI.AddButton(CsPoint(nStartX, nCurY), CsPoint(START_BTN_W, START_BTN_H), CsPoint(0, 50), "CommonUI\\Simple_btn_L.tga", cWindow::SD_Bu3);
+	if (m_pOk)
 	{
 		cText::sTEXTINFO ti;
 		ti.Init(CFont::FS_14, FONT_WHITE);
 		ti.s_eTextAlign = DT_CENTER;
-		ti.SetText(UISTRING_TEXT("CHARACTER_SELECT_BACK").c_str());
-		m_pCancel->SetText(&ti);
-		m_pCancel->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::PressCancelButton);
+		ti.SetText(UISTRING_TEXT("CHARACTER_SELECT_START").c_str());
+		m_pOk->SetText(&ti);
+		m_pOk->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::PressOkButton);
 	}
 
-	m_pCreate = m_MainButtonUI.AddButton(CsPoint(g_nScreenWidth / 2 - 175, g_nScreenHeight - 76), CsPoint(137, 46), CsPoint(0, 46), "CommonUI\\Simple_btn_s.tga", cWindow::SD_Bu3);
+	nCurY += START_BTN_H + MAIN_BTN_GAP;
+
+	// 2) Create.
+	m_pCreate = m_MainButtonUI.AddButton(CsPoint(nSideX, nCurY), CsPoint(SIDE_BTN_W, SIDE_BTN_H), CsPoint(0, SIDE_BTN_H), "CommonUI\\Simple_btn_s.tga", cWindow::SD_Bu3);
 	if (m_pCreate)
 	{
 		cText::sTEXTINFO ti;
@@ -266,7 +363,10 @@ void CCharacterSelect::MakeMainButtonUI()
 		m_pCreate->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::PressCreateButton);
 	}
 
-	m_pDelete = m_MainButtonUI.AddButton(CsPoint(g_nScreenWidth / 2 + 13, g_nScreenHeight - 76), CsPoint(137, 46), CsPoint(0, 46), "CommonUI\\Simple_btn_s.tga", cWindow::SD_Bu3);
+	nCurY += SIDE_BTN_H + MAIN_BTN_GAP;
+
+	// 3) Delete.
+	m_pDelete = m_MainButtonUI.AddButton(CsPoint(nSideX, nCurY), CsPoint(SIDE_BTN_W, SIDE_BTN_H), CsPoint(0, SIDE_BTN_H), "CommonUI\\Simple_btn_s.tga", cWindow::SD_Bu3);
 	if (m_pDelete)
 	{
 		cText::sTEXTINFO ti;
@@ -277,66 +377,57 @@ void CCharacterSelect::MakeMainButtonUI()
 		m_pDelete->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::PressDeleteButton);
 	}
 
-	m_pOk = m_MainButtonUI.AddButton(CsPoint(g_nScreenWidth / 2 + 288, g_nScreenHeight - 80), CsPoint(176, 50), CsPoint(0, 50), "CommonUI\\Simple_btn_L.tga", cWindow::SD_Bu3);
-	if (m_pOk)
+	nCurY += SIDE_BTN_H + MAIN_BTN_GAP;
+
+	// 4) Back.
+	m_pCancel = m_MainButtonUI.AddButton(CsPoint(nSideX, nCurY), CsPoint(SIDE_BTN_W, SIDE_BTN_H), CsPoint(0, SIDE_BTN_H), "CommonUI\\Simple_btn_s.tga", cWindow::SD_Bu3);
+	if (m_pCancel)
 	{
 		cText::sTEXTINFO ti;
 		ti.Init(CFont::FS_14, FONT_WHITE);
 		ti.s_eTextAlign = DT_CENTER;
-		ti.SetText(UISTRING_TEXT("CHARACTER_SELECT_START").c_str());
-		m_pOk->SetText(&ti);
-		m_pOk->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::PressOkButton);
+		ti.SetText(UISTRING_TEXT("CHARACTER_SELECT_BACK").c_str());
+		m_pCancel->SetText(&ti);
+		m_pCancel->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::PressCancelButton);
 	}
 }
 
 void CCharacterSelect::MakeCharListUI()
 {
-	m_CharListUI.InitScript(NULL, CsPoint(g_nScreenWidth - 340, (g_nScreenHeight - 634) / 2), CsPoint(308, 634), false);
-	m_pListUpBtn = m_CharListUI.AddButton(CsPoint((308 - 98) / 2, 0), CsPoint(98, 62), CsPoint(0, 62), "CommonUI\\Arrow_Up_Btn.tga", cWindow::SD_Bu3);
-	if (m_pListUpBtn)
-		m_pListUpBtn->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::_ListShowUp);
+	m_mapUIControls.clear();
 
-	m_pListDownBtn = m_CharListUI.AddButton(CsPoint((308 - 98) / 2, 634 - 62), CsPoint(98, 62), CsPoint(0, 62), "CommonUI\\Arrow_Down_Btn.tga", cWindow::SD_Bu3);
-	if (m_pListDownBtn)
-		m_pListDownBtn->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::_ListShowDown);
+	m_CharListUI.InitScript(NULL, CsPoint(GetSlotPanelX(), GetSlotPanelY()), CsPoint(GetSlotPanelWidth(), GetSlotPanelHeight()), false);
 
-	int nTotalSlotCount = GetSystem()->GetMaxSlotCount();
-	if (nTotalSlotCount < 6)
-	{
-		if (m_pListUpBtn)
-			m_pListUpBtn->SetVisible(false);
-		if (m_pListDownBtn)
-			m_pListDownBtn->SetVisible(false);
-	}
+	m_pListUpBtn = NULL;
+	m_pListDownBtn = NULL;
 
 	m_pCharacterList = NiNew cListBox;
 	if (m_pCharacterList)
 	{
-		m_pCharacterList->Init(NULL, CsPoint(0, 62), CsPoint(308, 504), NULL, false);
-		m_pCharacterList->AddEvent(cListBox::LIST_SELECT_CHANGE_ITEM, this, &CCharacterSelect::ChangeCharacter);
-		m_pCharacterList->AddEvent(cListBox::LIST_SELECTED_ITEM, this, &CCharacterSelect::SeletedCharacter);
-		m_pCharacterList->SetAutoItemSelectStateChange(true);
+		m_pCharacterList->Init(NULL, CsPoint(0, 0), CsPoint(GetSlotPanelWidth(), GetSlotPanelHeight()), NULL, false);
+
+		// Não usamos seleção vertical do cListBox, porque agora os 3 slots estão na mesma linha.
+		m_pCharacterList->SetAutoItemSelectStateChange(false);
+
+		// Cria 1 item horizontal que contém os 3 cards lado a lado.
+		_makeCharacterSlot(0, m_pCharacterList);
 
 		CharacterSelectContents::LIST_CHARLIST const& pInfo = GetSystem()->GetCharacterList();
 		CharacterSelectContents::LIST_CHARLIST_CIT it = pInfo.begin();
-		for (int n = 0; it != pInfo.end(); ++it, ++n)
+		int nSlot = 0;
+
+		for (; it != pInfo.end() && nSlot < CHARACTER_SELECT_MAX_SLOT; ++it, ++nSlot)
 		{
-			_makeCharacterSlot(n, m_pCharacterList);
-			_UpdateCharacterSlotUI(n, (*it));
+			_UpdateCharacterSlotUI(nSlot, (*it));
 		}
 
 		m_CharListUI.AddChildControl(m_pCharacterList);
+	}
 
-		cScrollBar* pScrollBar = NiNew cScrollBar;
-		if (pScrollBar)
-		{
-			pScrollBar->Init(cScrollBar::TYPE_1, NULL, CsPoint(0, 0), CsPoint(16, 308), cScrollBar::GetDefaultBtnSize(), CsRect(CsPoint::ZERO, CsPoint(308, 504)), 6, false);
-			pScrollBar->SetEnableRenderFromEnableScroll(true);
-			m_pCharacterList->SetScrollBar(pScrollBar);
-			pScrollBar->SetVisible(false);
-		}
-
-		m_pCharacterList->SetSelectedItemFromIdx(GetSystem()->GetSelectCharIdx());
+	if (GetSystem())
+	{
+		int nSelectIdx = GetSafeSelectedIndex(GetSystem()->GetSelectCharIdx());
+		GetSystem()->SetChangeCharacter(nSelectIdx);
 	}
 }
 
@@ -350,66 +441,75 @@ void CCharacterSelect::_makeCharacterSlot(int const& nSlotNum, cListBox* pTree)
 	cString* pItem = NiNew cString;
 	SAFE_POINTER_RET(pItem);
 
-	sCharUIControls controls;
-
-	controls.m_pSlotBtn = NiNew cButton;
-	if (controls.m_pSlotBtn)
+	for (int i = 0; i < CHARACTER_SELECT_MAX_SLOT; ++i)
 	{
-		controls.m_pSlotBtn->Init(NULL, CsPoint::ZERO, CsPoint(296, 84), "Lobby\\CharacterSelect\\CharSelectBT.tga", false);
-		controls.m_pSlotBtn->SetTexToken(CsPoint(0, 84));
-		cString::sBUTTON* paddImg = pItem->AddButton(controls.m_pSlotBtn, 0, CsPoint(12, 0), CsPoint(296, 84));
-		if (paddImg)
-			paddImg->SetAutoPointerDelete(true);
-	}
+		sCharUIControls controls;
 
-	{
-		cText::sTEXTINFO ti2;
-		ti2.Init(&g_pEngine->m_FontText, CFont::FS_11);
-		controls.m_TamerName = pItem->AddText(&ti2, CsPoint(83, 22));
-	}
+		const int nSlotX = GetSlotOffsetX(i);
+		const int nSlotY = SLOT_PANEL_TOP_PADDING;
 
-	{
-		cText::sTEXTINFO ti2;
-		ti2.Init(&g_pEngine->m_FontText, CFont::FS_11);
-		controls.m_DigimonName = pItem->AddText(&ti2, CsPoint(83, 46));
-	}
+		controls.m_pSlotBtn = NiNew cButton;
+		if (controls.m_pSlotBtn)
+		{
+			controls.m_pSlotBtn->Init(NULL, CsPoint::ZERO, CsPoint(SLOT_BTN_W, SLOT_BTN_H), "Lobby\\CharacterSelect\\CharSelectBT.tga", false);
+			controls.m_pSlotBtn->SetTexToken(CsPoint(0, 84));
+			controls.m_pSlotBtn->AddEvent(cButton::BUTTON_LBUP_EVENT, this, &CCharacterSelect::ChangeCharacter);
 
-	{
-		cText::sTEXTINFO ti2;
-		ti2.Init(&g_pEngine->m_FontSystem, CFont::FS_11);
-		controls.m_EmptyNLockMsg = pItem->AddText(&ti2, CsPoint(83, 22));
-	}
+			cString::sBUTTON* paddImg = pItem->AddButton(controls.m_pSlotBtn, 0, CsPoint(nSlotX, nSlotY), CsPoint(SLOT_BTN_W, SLOT_BTN_H));
+			if (paddImg)
+				paddImg->SetAutoPointerDelete(true);
+		}
 
-	cImage* pTamerImage = NiNew cImage;
-	if (pTamerImage)
-	{
-		pTamerImage->Init(NULL, CsPoint::ZERO, CsPoint(74, 82), "Lobby\\CharacterSelect\\TamerIcon.tga", false);
-		pTamerImage->SetTexToken(CsPoint(74, 0));
-		controls.m_pTamerImage = pItem->AddImage(pTamerImage, 0, CsPoint::ZERO, CsPoint(74, 82));
-		if (controls.m_pTamerImage)
-			controls.m_pTamerImage->SetAutoPointerDelete(true);
-	}
+		{
+			cText::sTEXTINFO ti2;
+			ti2.Init(&g_pEngine->m_FontText, CFont::FS_11);
+			controls.m_TamerName = pItem->AddText(&ti2, CsPoint(nSlotX + 83, nSlotY + 22));
+		}
 
-	controls.m_pLockSlotImg = NiNew cSprite;
-	if (controls.m_pLockSlotImg)
-	{
-		controls.m_pLockSlotImg->Init(NULL, CsPoint::ZERO, CsPoint(74, 82), "Lobby\\CharacterSelect\\SlotLock.tga", false);
-		cString::sSPRITE* paddImg = pItem->AddSprite(controls.m_pLockSlotImg, CsPoint::ZERO, CsPoint(74, 82));
-		if (paddImg)
-			paddImg->SetAutoPointerDelete(true);
-	}
+		{
+			cText::sTEXTINFO ti2;
+			ti2.Init(&g_pEngine->m_FontText, CFont::FS_11);
+			controls.m_DigimonName = pItem->AddText(&ti2, CsPoint(nSlotX + 83, nSlotY + 46));
+		}
 
-	controls.m_pEmptySlotImg = NiNew cSprite;
-	if (controls.m_pEmptySlotImg)
-	{
-		controls.m_pEmptySlotImg->Init(NULL, CsPoint::ZERO, CsPoint(74, 82), "Lobby\\CharacterSelect\\SlotPlus.tga", false);
-		cString::sSPRITE* paddImg = pItem->AddSprite(controls.m_pEmptySlotImg, CsPoint::ZERO, CsPoint(74, 82));
-		if (paddImg)
-			paddImg->SetAutoPointerDelete(true);
+		{
+			cText::sTEXTINFO ti2;
+			ti2.Init(&g_pEngine->m_FontSystem, CFont::FS_11);
+			controls.m_EmptyNLockMsg = pItem->AddText(&ti2, CsPoint(nSlotX + 83, nSlotY + 22));
+		}
+
+		cImage* pTamerImage = NiNew cImage;
+		if (pTamerImage)
+		{
+			pTamerImage->Init(NULL, CsPoint::ZERO, CsPoint(74, 82), "Lobby\\CharacterSelect\\TamerIcon.tga", false);
+			pTamerImage->SetTexToken(CsPoint(74, 0));
+			controls.m_pTamerImage = pItem->AddImage(pTamerImage, 0, CsPoint(nSlotX, nSlotY), CsPoint(74, 82));
+			if (controls.m_pTamerImage)
+				controls.m_pTamerImage->SetAutoPointerDelete(true);
+		}
+
+		controls.m_pLockSlotImg = NiNew cSprite;
+		if (controls.m_pLockSlotImg)
+		{
+			controls.m_pLockSlotImg->Init(NULL, CsPoint::ZERO, CsPoint(74, 82), "Lobby\\CharacterSelect\\SlotLock.tga", false);
+			cString::sSPRITE* paddImg = pItem->AddSprite(controls.m_pLockSlotImg, CsPoint(nSlotX, nSlotY), CsPoint(74, 82));
+			if (paddImg)
+				paddImg->SetAutoPointerDelete(true);
+		}
+
+		controls.m_pEmptySlotImg = NiNew cSprite;
+		if (controls.m_pEmptySlotImg)
+		{
+			controls.m_pEmptySlotImg->Init(NULL, CsPoint::ZERO, CsPoint(74, 82), "Lobby\\CharacterSelect\\SlotPlus.tga", false);
+			cString::sSPRITE* paddImg = pItem->AddSprite(controls.m_pEmptySlotImg, CsPoint(nSlotX, nSlotY), CsPoint(74, 82));
+			if (paddImg)
+				paddImg->SetAutoPointerDelete(true);
+		}
+
+		m_mapUIControls.insert(std::make_pair(i, controls));
 	}
 
 	pAddItem->SetItem(pItem);
-	m_mapUIControls.insert(std::make_pair(nSlotNum, controls));
 	pTree->AddItem(pAddItem);
 }
 
@@ -474,7 +574,7 @@ void CCharacterSelect::MakeDelectWindow()
 	break;
 	}
 
-	m_DeleteWindowUI.AddTitle(title.c_str(), CsPoint(0, 20), CFont::FS_16, NiColor(1, 0.17, 0.17));
+	m_DeleteWindowUI.AddTitle(title.c_str(), CsPoint(0, 20), CFont::FS_16, NiColor(1.0f, 0.17f, 0.17f));
 
 	cText::sTEXTINFO ti;
 	ti.Init(&g_pEngine->m_FontText, CFont::FS_12);
@@ -604,25 +704,19 @@ BOOL CCharacterSelect::UpdateMouse()
 		return TRUE;
 	}
 
+	if (m_pOk && m_pOk->Update_ForMouse() == cButton::ACTION_CLICK)
+		return TRUE;
+
 	if (m_pCreate && m_pCreate->Update_ForMouse() == cButton::ACTION_CLICK)
 		return TRUE;
 
 	if (m_pDelete && m_pDelete->Update_ForMouse() == cButton::ACTION_CLICK)
 		return TRUE;
 
-	if (m_pOk && m_pOk->Update_ForMouse() == cButton::ACTION_CLICK)
-		return TRUE;
-
 	if (m_pCancel && m_pCancel->Update_ForMouse() == cButton::ACTION_CLICK)
 		return TRUE;
 
 	if (m_pCharacterList && m_pCharacterList->Update_ForMouse(CURSOR_ST.GetPos()))
-		return TRUE;
-
-	if (m_pListUpBtn && m_pListUpBtn->Update_ForMouse() == cButton::ACTION_CLICK)
-		return TRUE;
-
-	if (m_pListDownBtn && m_pListDownBtn->Update_ForMouse() == cButton::ACTION_CLICK)
 		return TRUE;
 
 	return FALSE;
@@ -907,8 +1001,32 @@ void CCharacterSelect::PressCancelButton(void* pSender, void* pData)
 
 void CCharacterSelect::PressCreateButton(void* pSender, void* pData)
 {
-	if (GetSystem())
-		GetSystem()->gotoCharCreate();
+	if (!GetSystem())
+		return;
+
+	bool bHasFreeSlot = false;
+
+	for (int i = 0; i < CHARACTER_SELECT_MAX_SLOT; ++i)
+	{
+		CharacterSelectContents::sCharacterInfo const* pInfo = GetSystem()->GetCharacterInfo(i);
+
+		if (!pInfo)
+			continue;
+
+		if (!pInfo->IsHaveCharInfo() && !pInfo->IsLockSlot())
+		{
+			bHasFreeSlot = true;
+			break;
+		}
+	}
+
+	if (!bHasFreeSlot)
+	{
+		cPrintMsg::PrintMsg(cPrintMsg::CHARSELECT_MAX_CHAR_COUNT);
+		return;
+	}
+
+	GetSystem()->gotoCharCreate();
 }
 
 void CCharacterSelect::PressDeleteButton(void* pSender, void* pData)
@@ -974,12 +1092,22 @@ void CCharacterSelect::SetCameraInfo()
 
 void CCharacterSelect::ChangeCharacter(void* pSender, void* pData)
 {
-	SAFE_POINTER_RET(m_pCharacterList);
+	for (std::map<int, sCharUIControls>::iterator it = m_mapUIControls.begin(); it != m_mapUIControls.end(); ++it)
+	{
+		if (it->second.m_pSlotBtn == pSender)
+		{
+			if (GetSystem())
+				GetSystem()->SetChangeCharacter(it->first);
 
-	int nSelIdx = m_pCharacterList->GetSelectedItemIdx();
+			return;
+		}
+	}
 
-	if (GetSystem())
+	if (m_pCharacterList && GetSystem())
+	{
+		int nSelIdx = GetSafeSelectedIndex(m_pCharacterList->GetSelectedItemIdx());
 		GetSystem()->SetChangeCharacter(nSelIdx);
+	}
 }
 
 void CCharacterSelect::SeletedCharacter(void* pSender, void* pData)
@@ -990,12 +1118,22 @@ void CCharacterSelect::SeletedCharacter(void* pSender, void* pData)
 
 void CCharacterSelect::_ListShowUp(void* pSender, void* pData)
 {
-	if (m_pCharacterList)
-		m_pCharacterList->ChangeSelectFront();
+	if (GetSystem())
+	{
+		int nSelIdx = GetSafeSelectedIndex(GetSystem()->GetSelectCharIdx());
+
+		if (nSelIdx > 0)
+			GetSystem()->SetChangeCharacter(nSelIdx - 1);
+	}
 }
 
 void CCharacterSelect::_ListShowDown(void* pSender, void* pData)
 {
-	if (m_pCharacterList)
-		m_pCharacterList->ChangeSelectNext();
+	if (GetSystem())
+	{
+		int nSelIdx = GetSafeSelectedIndex(GetSystem()->GetSelectCharIdx());
+
+		if (nSelIdx < CHARACTER_SELECT_MAX_SLOT - 1)
+			GetSystem()->SetChangeCharacter(nSelIdx + 1);
+	}
 }
