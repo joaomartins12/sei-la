@@ -704,7 +704,7 @@
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>.\;..\;..\..\..\;..\Gamebryo2.3\ThirdPartyCode\ZLib\zlib123;..\Gamebryo2.3\GB_Include;..\libproj\Freetype\include;..\ibproj\PathEngine;..\libproj\MilesSound\include;..\..\Gamebryo2.3\GB_Include\ado;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\..\..\;..\Gamebryo2.3\ThirdPartyCode\ZLib\zlib123;..\Gamebryo2.3\GB_Include;..\libproj\Freetype\include;..\ibproj\PathEngine;..\libproj\MilesSound\include;..\..\Gamebryo2.3\GB_Include\ado;..\..\..\LibProj\CsFilePack\CsFilePackSystem.h;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NIRELEASE;VERSION_USA;D3DXFX_LARGEADDRESS_HANDLE;COMPAT_487;COMPAT_487_2;PATCH_QUESTS_SPINZ;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>

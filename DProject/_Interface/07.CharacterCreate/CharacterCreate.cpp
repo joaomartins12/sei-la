@@ -7,19 +7,47 @@
 #include "../../ContentsSystem/ContentsSystemDef.h"
 #include "../../ContentsSystem/ContentsSystem.h"
 #include "../../MngCollector.h"
+#include "../../../LibProj/CsFilePack/CsFilePackSystem.h"
+
+#include <vector>
+#include <list>
+#include <string>
+#include <algorithm>
 
 namespace
 {
-	static const DWORD CHARACTER_CREATE_LOBBY_MAP_ID = 105;
+	static const DWORD CHARACTER_CREATE_LOBBY_MAP_ID = 4;
 
 	static bool g_bCharacterCreateLobbyMapPreloaded = false;
 	static bool g_bCharacterCreateLobbyMapPreloadTried = false;
 
-	// Posição ideal testada para o mapa 105.
+	// Carregamento direto do mapa 04 / DatsUnderground:
+	// 1) carrega o NIF principal:
+	//    Data\map\realworld_r\04_datsunderground\04\map_data\04.nif
+	// 2) carrega também todos os .nif dentro de:
+	//    Data\map\realworld_r\04_datsunderground\04\object_data\...
+	//
+	// Esta abordagem segue o mesmo estilo do DatsCenter: NiStream.Load(path exato),
+	// usando o FilePack para resolver os ficheiros.
+#define CHARACTER_CREATE_MAP_UNDERGROUND_ROOT "Data\\map\\realworld_r\\04_datsunderground\\04"
+#define CHARACTER_CREATE_MAIN_MAP_NIF "Data\\map\\realworld_r\\04_datsunderground\\04\\map_data\\04.nif"
+#define CHARACTER_CREATE_OBJECT_DATA_ROOT "Data\\map\\realworld_r\\04_datsunderground\\04\\object_data"
+
+#define CHARACTER_CREATE_RENDER_MAIN_MAP_NIF 1
+#define CHARACTER_CREATE_RENDER_OBJECT_DATA_ONLY 0
+#define CHARACTER_CREATE_SKIP_BACKGROUND_OBJECTS 0
+
+	static CsNodeObj g_CharacterCreateScene;
+	static bool g_bCharacterCreateSceneLoaded = false;
+
+	// Object_data do mapa 04 / DatsUnderground.
+	static std::vector<CsNodeObj*> g_vecCharacterCreateMapObjects;
+
+	// Posição ideal testada para o mapa 04 / DatsUnderground.
 	// Coordenadas do jogo: X=11378, Y=19805, Z=0.00
 	// Em NiPoint3/Gamebryo usamos: X=11378, Y(altura)=0, Z=19805.
-	static const float CHARACTER_CREATE_MAP_START_X = 11378.0f;
-	static const float CHARACTER_CREATE_MAP_START_Z = 19805.0f;
+	static const float CHARACTER_CREATE_MAP_START_X = 0.0f;
+	static const float CHARACTER_CREATE_MAP_START_Z = 0.0f;
 
 	// Ajuste temporário da câmera do CharacterCreate.
 	// Usa F1/F2/F3/F4/F5/F6 dentro da tela de criação para encontrar a posição bonita.
@@ -34,11 +62,267 @@ namespace
 	static float g_fCreateCamDistStep = 500.0f;
 	static float g_fCreateCamAngleStep = 5.0f;
 
-	// Alvo real da câmera dentro do mapa 105.
+	// Alvo real da câmera dentro do mapa 04 / DatsUnderground.
 	// Este valor tem de bater com a posição usada em CharacterCreateContents.cpp.
 	static float g_fCreateCamTargetX = CHARACTER_CREATE_MAP_START_X;
-	static float g_fCreateCamTargetY = 80.0f;
+	static float g_fCreateCamTargetY = 120.0f;
 	static float g_fCreateCamTargetZ = CHARACTER_CREATE_MAP_START_Z;
+
+
+
+
+	void CCDeleteMapObjectData()
+	{
+		for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
+		{
+			CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
+			if (pObj)
+			{
+				pObj->Delete();
+				NiDelete pObj;
+			}
+		}
+
+		g_vecCharacterCreateMapObjects.clear();
+	}
+
+	void CCNormalizePackPath(std::string& kPath)
+	{
+		std::replace(kPath.begin(), kPath.end(), '/', '\\');
+
+		for (size_t i = 0; i < kPath.size(); ++i)
+		{
+			if (kPath[i] >= 'A' && kPath[i] <= 'Z')
+				kPath[i] = (char)(kPath[i] - 'A' + 'a');
+		}
+	}
+
+
+	bool CCShouldSkipObjectDataPath(std::string const& kNormalizedPath)
+	{
+#if CHARACTER_CREATE_SKIP_BACKGROUND_OBJECTS
+		// O path já vem normalizado para minúsculas e com '\\'.
+		if (kNormalizedPath.find("\\object_data\\background\\") != std::string::npos)
+			return true;
+#endif
+		return false;
+	}
+
+	bool CCEndsWithNif(std::string const& kPath)
+	{
+		if (kPath.size() < 4)
+			return false;
+
+		std::string kTail = kPath.substr(kPath.size() - 4);
+		CCNormalizePackPath(kTail);
+
+		return kTail == ".nif";
+	}
+
+	bool CCStartsWith(std::string const& kPath, std::string const& kPrefix)
+	{
+		if (kPath.size() < kPrefix.size())
+			return false;
+
+		return kPath.compare(0, kPrefix.size(), kPrefix) == 0;
+	}
+
+	bool CCLoadNifToSceneObject(char const* pszPath, CsNodeObj& kOutObj, NiPoint3 const& kTranslate)
+	{
+		if (!pszPath || pszPath[0] == 0)
+			return false;
+
+		NiStream kStream;
+
+		if (!kStream.Load(pszPath))
+			return false;
+
+		NiNodePtr pNode = (NiNode*)kStream.GetObjectAt(0);
+		if (!pNode)
+			return false;
+
+		nsCSGBFUNC::InitAnimation(pNode, NiTimeController::APP_INIT, NiTimeController::LOOP);
+
+		// IMPORTANTE:
+		// O mapa carregado diretamente não passa pelo shader/lighting normal do terrain.
+		// Sem emittance, muitos NIFs aparecem totalmente pretos nesta tela.
+		nsCSGBFUNC::Set_Emittance(pNode, NiColor(1.0f, 1.0f, 1.0f));
+
+		kOutObj.SetNiObject(pNode, CGeometry::Normal);
+
+		if (kOutObj.m_pNiNode)
+		{
+			kOutObj.m_pNiNode->SetTranslate(kTranslate);
+			NiTimeController::StartAnimations(kOutObj.m_pNiNode, (float)g_fAccumTime);
+			kOutObj.m_pNiNode->UpdateEffects();
+			kOutObj.m_pNiNode->Update(0.0f);
+		}
+
+		return true;
+	}
+
+	bool CCLoadNifToNewSceneObject(char const* pszPath)
+	{
+		if (!pszPath || pszPath[0] == 0)
+			return false;
+
+		CsNodeObj* pObj = NiNew CsNodeObj;
+		if (!pObj)
+			return false;
+
+		if (!CCLoadNifToSceneObject(pszPath, *pObj, NiPoint3::ZERO))
+		{
+			pObj->Delete();
+			NiDelete pObj;
+			return false;
+		}
+
+		g_vecCharacterCreateMapObjects.push_back(pObj);
+		return true;
+	}
+
+	int CCLoadMap04ObjectDataFromPackIndex(int nPackIndex)
+	{
+		std::list<std::string> kFiles;
+		CsFPS::CsFPSystem::GetFileList(nPackIndex, kFiles);
+
+		char szLog[512] = { 0, };
+		sprintf_s(szLog, 512, "[UI][CharacterCreate][MAP04] PackIndex=%d FileList count=%d\n", nPackIndex, (int)kFiles.size());
+		OutputDebugStringA(szLog);
+
+		if (kFiles.empty())
+			return 0;
+
+		std::string kObjectRoot = CHARACTER_CREATE_OBJECT_DATA_ROOT;
+		CCNormalizePackPath(kObjectRoot);
+
+		// Garantir barra final para não apanhar caminhos parecidos.
+		if (!kObjectRoot.empty() && kObjectRoot[kObjectRoot.size() - 1] != '\\')
+			kObjectRoot += "\\";
+
+		int nLoaded = 0;
+		int nFound = 0;
+		int nFailed = 0;
+		int nSampleLogged = 0;
+
+		for (std::list<std::string>::iterator it = kFiles.begin(); it != kFiles.end(); ++it)
+		{
+			std::string kOriginal = *it;
+			std::string kNormalized = kOriginal;
+			CCNormalizePackPath(kNormalized);
+
+			if (!CCStartsWith(kNormalized, kObjectRoot))
+				continue;
+
+			if (!CCEndsWithNif(kNormalized))
+				continue;
+
+			if (CCShouldSkipObjectDataPath(kNormalized))
+			{
+				if (nSampleLogged < 20)
+				{
+					char szSkip[MAX_PATH + 256] = { 0, };
+					sprintf_s(szSkip, sizeof(szSkip), "[UI][CharacterCreate][MAP04] skipped background nif=%s\n", kOriginal.c_str());
+					OutputDebugStringA(szSkip);
+					++nSampleLogged;
+				}
+				continue;
+			}
+
+			++nFound;
+
+			// Usar o path original devolvido pelo pack, porque pode preservar maiúsculas/minúsculas.
+			if (CCLoadNifToNewSceneObject(kOriginal.c_str()))
+			{
+				++nLoaded;
+
+				if (nSampleLogged < 20)
+				{
+					char szSample[MAX_PATH + 256] = { 0, };
+					sprintf_s(szSample, sizeof(szSample), "[UI][CharacterCreate][MAP04] loaded pack nif=%s\n", kOriginal.c_str());
+					OutputDebugStringA(szSample);
+					++nSampleLogged;
+				}
+			}
+			else
+			{
+				++nFailed;
+
+				if (nFailed <= 20)
+				{
+					char szFail[MAX_PATH + 256] = { 0, };
+					sprintf_s(szFail, sizeof(szFail), "[UI][CharacterCreate][MAP04] failed pack nif=%s\n", kOriginal.c_str());
+					OutputDebugStringA(szFail);
+				}
+			}
+		}
+
+		sprintf_s(
+			szLog,
+			512,
+			"[UI][CharacterCreate][MAP04] PackIndex=%d object_data found=%d loaded=%d failed=%d\n",
+			nPackIndex,
+			nFound,
+			nLoaded,
+			nFailed
+		);
+		OutputDebugStringA(szLog);
+
+		return nLoaded;
+	}
+
+	int CCLoadMap04ObjectDataFromPacks()
+	{
+		int nTotalLoaded = 0;
+
+		// IMPORTANTE:
+		// O log mostrou que PackIndex=0 carregou corretamente:
+		//   FileList count=55211
+		//   object_data found=... loaded=... failed=...
+		//
+		// O crash acontece logo depois, ao tentar enumerar PackIndex=1/Pack03.
+		// Como o mapa 04 / DatsUnderground e os object_data já estão todos no Pack01, não precisamos
+		// tocar no Pack03 aqui.
+		nTotalLoaded += CCLoadMap04ObjectDataFromPackIndex(0);
+
+		char szLog[256] = { 0, };
+		sprintf_s(szLog, 256, "[UI][CharacterCreate][MAP04] DatsUnderground object_data pack01-only total loaded=%d\n", nTotalLoaded);
+		OutputDebugStringA(szLog);
+
+		return nTotalLoaded;
+	}
+
+
+	void CCLogObjectDataBoundsSample()
+	{
+		int nLogged = 0;
+
+		for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
+		{
+			CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
+			if (!pObj || !pObj->m_pNiNode)
+				continue;
+
+			NiBound kBound = pObj->m_pNiNode->GetWorldBound();
+
+			char szLog[512] = { 0, };
+			sprintf_s(
+				szLog,
+				512,
+				"[UI][CharacterCreate][MAP04] object sample idx=%d center=(%.2f, %.2f, %.2f) radius=%.2f\n",
+				(int)i,
+				kBound.GetCenter().x,
+				kBound.GetCenter().y,
+				kBound.GetCenter().z,
+				kBound.GetRadius()
+			);
+			OutputDebugStringA(szLog);
+
+			++nLogged;
+			if (nLogged >= 10)
+				break;
+		}
+	}
 
 	void CCLogCamera()
 	{
@@ -160,14 +444,9 @@ void CCharacterCreate::Destory()
 
 bool CCharacterCreate::PreloadLobbyMapStatic()
 {
-	// O mapa 105 agora é carregado no startup pelo GameApp.cpp com a sequência completa:
-	// DeleteChar + ReleaseConnetTerrain + ResetMap + LoadTerrain + ApplyConnetTerrain
-	// + LoadChar + LoadCompleate.
-	//
-	// Esta função fica só por compatibilidade, caso algum Flow antigo ainda a chame.
-	CCLog("PreloadLobbyMapStatic skipped - GameApp owns full startup preload");
+	CCLog("PreloadLobbyMapStatic skipped - DatsUnderground 04 loads directly in CharacterCreate");
 
-	g_bCharacterCreateLobbyMapPreloaded = true;
+	g_bCharacterCreateLobbyMapPreloaded = false;
 	g_bCharacterCreateLobbyMapPreloadTried = true;
 
 	return true;
@@ -188,33 +467,53 @@ void CCharacterCreate::ResetLobbyMapPreloadStatic()
 
 bool CCharacterCreate::LoadLobbyMap()
 {
-	CCLog("LoadLobbyMap begin");
+	CCLog("LoadLobbyMap begin - DatsUnderground 04 main map NIF + object_data");
 
-	if (m_bLobbyMapLoaded)
+	if (m_bLobbyMapLoaded && g_bCharacterCreateSceneLoaded && !g_vecCharacterCreateMapObjects.empty())
 	{
-		CCLog("LoadLobbyMap skipped - already attached by this instance");
+		CCLog("LoadLobbyMap skipped - map already loaded by this instance");
 		return true;
 	}
 
-	if (!g_pMngCollector)
+	g_CharacterCreateScene.Delete();
+	g_bCharacterCreateSceneLoaded = false;
+	CCDeleteMapObjectData();
+
+	// 1) Carrega o NIF principal do mapa:
+	// Data\map\realworld_r\04_datsunderground\04\map_data\04.nif
+	CCLog("LoadLobbyMap - load main map NIF begin: " CHARACTER_CREATE_MAIN_MAP_NIF);
+
+	if (!CCLoadNifToSceneObject(CHARACTER_CREATE_MAIN_MAP_NIF, g_CharacterCreateScene, NiPoint3::ZERO))
 	{
-		CCLog("LoadLobbyMap failed - g_pMngCollector is NULL");
+		CCLog("LoadLobbyMap failed - could not load main map04 NIF");
+		CsMessageBoxA(MB_OK, "%s 경로\n에서 오브젝트를 찾지 못했습니다.", CHARACTER_CREATE_MAIN_MAP_NIF);
 		return false;
 	}
 
-	m_dwLobbyMapID = CHARACTER_CREATE_LOBBY_MAP_ID;
+	g_bCharacterCreateSceneLoaded = true;
+	CCLog("LoadLobbyMap - main map NIF loaded");
 
-	// IMPORTANTE:
-	// Não carregar o mapa aqui.
-	// O GameApp.cpp faz o preload completo no startup para evitar travar quando o jogador clica em Create.
-	//
-	// Se chamarmos ResetMap/LoadTerrain aqui, o client volta a congelar nesta tela.
-	// Portanto aqui só "anexamos" o CharacterCreate ao mapa 105 já carregado.
+	// 2) Carrega os objetos do mapa pelo FilePack.
+	// CsFPSystem::GetFileList(0) lista o Pack01; depois filtramos:
+	// Data\map\realworld_r\04_datsunderground\04\object_data\*.nif
+	int nObjectDataLoaded = CCLoadMap04ObjectDataFromPacks();
+
+	char szLog[256] = { 0, };
+	sprintf_s(szLog, 256, "LoadLobbyMap - object_data pack loaded count=%d", nObjectDataLoaded);
+	CCLog(szLog);
+	CCLogObjectDataBoundsSample();
+
+	if (nObjectDataLoaded <= 0)
+	{
+		CCLog("LoadLobbyMap warning - object_data loaded count is 0");
+		// Não falhar aqui: o NIF principal já carregou.
+	}
+
+	m_bLobbyMapLoaded = true;
 	g_bCharacterCreateLobbyMapPreloaded = true;
 	g_bCharacterCreateLobbyMapPreloadTried = true;
-	m_bLobbyMapLoaded = true;
 
-	CCLog("LoadLobbyMap attached to startup-preloaded full world");
+	CCLog("LoadLobbyMap ok - DatsUnderground 04 main map NIF + object_data loaded");
 	CCLogCamera();
 
 	return true;
@@ -224,17 +523,19 @@ void CCharacterCreate::ReleaseLobbyMap()
 {
 	CCLog("ReleaseLobbyMap begin");
 
-	if (!m_bLobbyMapLoaded)
+	if (!m_bLobbyMapLoaded && g_vecCharacterCreateMapObjects.empty())
 	{
 		CCLog("ReleaseLobbyMap skipped - not loaded");
 		return;
 	}
 
-	// Não chamar ResetMap aqui.
-	// O mapa 105 pertence ao preload do GameApp.cpp e deve ficar em memória.
+	g_CharacterCreateScene.Delete();
+	CCDeleteMapObjectData();
+
+	g_bCharacterCreateSceneLoaded = false;
 	m_bLobbyMapLoaded = false;
 
-	CCLog("ReleaseLobbyMap end - startup-preloaded world kept in memory");
+	CCLog("ReleaseLobbyMap end - DatsUnderground 04 main map NIF/object_data deleted");
 }
 
 void CCharacterCreate::RenderLobbyMap()
@@ -251,23 +552,32 @@ void CCharacterCreate::RenderLobbyMap()
 		return;
 	}
 
-	if (!g_pMngCollector)
-	{
-		if (++s_nRenderLobbyMapLogCounter >= 120)
-		{
-			s_nRenderLobbyMapLogCounter = 0;
-			CCLog("RenderLobbyMap failed - g_pMngCollector is NULL");
-		}
-		return;
-	}
-
 	if (++s_nRenderLobbyMapLogCounter >= 120)
 	{
 		s_nRenderLobbyMapLogCounter = 0;
-		CCLog("RenderLobbyMap - g_pMngCollector->Render(true)");
+
+		char szLog[256] = { 0, };
+		sprintf_s(
+			szLog,
+			256,
+			"RenderLobbyMap - main=%d object_data count=%d",
+			CHARACTER_CREATE_RENDER_MAIN_MAP_NIF,
+			(int)g_vecCharacterCreateMapObjects.size()
+		);
+		CCLog(szLog);
 	}
 
-	g_pMngCollector->Render(true);
+#if CHARACTER_CREATE_RENDER_MAIN_MAP_NIF
+	if (g_bCharacterCreateSceneLoaded && g_CharacterCreateScene.m_pNiNode)
+		g_CharacterCreateScene.Render();
+#endif
+
+	for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
+	{
+		CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
+		if (pObj && pObj->m_pNiNode)
+			pObj->Render();
+	}
 }
 
 bool CCharacterCreate::Init()
@@ -989,6 +1299,16 @@ BOOL CCharacterCreate::UpdateKeyboard(const MSG& p_kMsg)
 
 void CCharacterCreate::Update(float fDeltaTime)
 {
+	if (g_bCharacterCreateSceneLoaded && g_CharacterCreateScene.m_pNiNode)
+		g_CharacterCreateScene.m_pNiNode->Update((float)g_fAccumTime);
+
+	for (size_t i = 0; i < g_vecCharacterCreateMapObjects.size(); ++i)
+	{
+		CsNodeObj* pObj = g_vecCharacterCreateMapObjects[i];
+		if (pObj && pObj->m_pNiNode)
+			pObj->m_pNiNode->Update((float)g_fAccumTime);
+	}
+
 	Update3DModel(fDeltaTime);
 	UpdateSound();
 }
@@ -1008,10 +1328,12 @@ void CCharacterCreate::Render3DModel()
 		CCLog("Render3DModel alive");
 	}
 
+	// O Flow chama g_pEngine->ResetRendererCamera() antes deste Render3DModel().
+	// Por isso a câmera tem de ser aplicada antes dos object_data e antes do Tamer.
+	SetCameraInfo();
+
 	RenderLobbyMap();
 
-	// Repõe a câmera do Tamer depois do terrain.
-	// Sem isto, o Tamer pode aparecer visto de cima/deitado.
 	SetCameraInfo();
 
 	if (GetSystem())

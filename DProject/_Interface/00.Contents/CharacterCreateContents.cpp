@@ -8,19 +8,18 @@
 
 namespace
 {
-	// Posição inicial visual dentro do mapa 105.
-	// Não usamos o centro matemático do XML porque no teste caiu numa zona branca/skybox.
-	// Este ponto é mais próximo de uma zona inicial/playable candidate.
-	// Depois podemos afinar X/Y/Z com base no Output e nas tuas prints.
+	// Posição ideal testada para o mapa 04 / DatsUnderground.
+	// Coordenadas do jogo: X=0, Y=0, Z=0.00
+	// Em NiPoint3/Gamebryo usamos: X=0, Y(altura)=0, Z=0.
 	//
-	// Nesta engine, AddTempTamer/AddTempDigimon usa NiPoint3(x, y, z).
-	// Y é tratado como altura. X/Z são posição no mapa.
-	static float g_fCreateMapPosX = 6000.0f;
-	static float g_fCreateMapPosY = -750.0f;
-	static float g_fCreateMapPosZ = 12000.0f;
+	// IMPORTANTE:
+	// Estes valores têm de bater com o target da câmera no CharacterCreate.cpp.
+	static float g_fCreateMapPosX = 0.0f;
+	static float g_fCreateMapPosY = 0.0f;
+	static float g_fCreateMapPosZ = 0.0f;
 
-	static float g_fCreateDigimonOffsetX = 220.0f;
-	static float g_fCreateDigimonOffsetZ = 180.0f;
+	static float g_fCreateDigimonOffsetX = -420.0f;
+	static float g_fCreateDigimonOffsetZ = 160.0f;
 
 	static float g_fCreateModelYaw = 0.0f;
 
@@ -497,7 +496,7 @@ void CharacterCreateContents::SetSelectTamerIdx(unsigned int const& nSelIdx)
 	// Agora o Tamer deixa de usar a posição antiga de preview:
 	// NiPoint3(fPos, 0, -110.0f)
 	//
-	// E passa a nascer num ponto real do mapa 105.
+	// E passa a nascer no centro lógico do mapa 04 / DatsUnderground.
 	NiPoint3 kCreatePos(g_fCreateMapPosX, g_fCreateMapPosY, g_fCreateMapPosZ);
 
 	CCContentLogCurrentCreatePos();

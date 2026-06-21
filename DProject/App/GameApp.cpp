@@ -210,90 +210,16 @@ namespace
 
 	void StartupPreloadCharacterCreateLobbyMap()
 	{
-		if (g_bStartupCharacterCreateLobbyMapLoaded)
-		{
-			StartupLobbyLog("skipped - already loaded");
-			return;
-		}
-
-		if (!g_pMngCollector)
-		{
-			StartupLobbyLog("failed - g_pMngCollector is NULL");
-			return;
-		}
-
-		// O loading normal do client usa net::next_map_no para saber qual mapa carregar.
-		// Como esta tela é um lobby offline/preview, forçamos o mapa 105 aqui.
-		net::prev_map_no = 0;
-		net::next_map_no = STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID;
-
-		StartupLobbyLogInt("full preload begin mapID=", (int)STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-
-		// Sequência baseada no LoadingContents::_DataProcess_Update().
-		// Só LoadTerrain não chega: faltam Release/ApplyConnetTerrain, LoadChar e LoadCompleate.
-		StartupLobbyLog("DeleteChar begin");
-		g_pMngCollector->DeleteChar(STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		StartupLobbyLog("DeleteChar end");
-
-		if (g_pThread && g_pThread->GetResMng())
-		{
-			StartupLobbyLog("ReleaseImmediatelyResource begin");
-			g_pThread->GetResMng()->ReleaseImmediatelyResource();
-			StartupLobbyLog("ReleaseImmediatelyResource end");
-
-			StartupLobbyLog("ReleaseConnetTerrain begin");
-			g_pThread->GetResMng()->ReleaseConnetTerrain();
-			StartupLobbyLog("ReleaseConnetTerrain end");
-		}
-		else
-		{
-			StartupLobbyLog("warning - g_pThread/GetResMng is NULL before ReleaseConnetTerrain");
-		}
-
-		StartupLobbyLog("ResetMap begin");
-		g_pMngCollector->ResetMap();
-		StartupLobbyLog("ResetMap end");
-
-		if (g_pThread && g_pThread->GetResMng())
-		{
-			StartupLobbyLog("ReleaseImmediatelyResource after ResetMap begin");
-			g_pThread->GetResMng()->ReleaseImmediatelyResource();
-			StartupLobbyLog("ReleaseImmediatelyResource after ResetMap end");
-		}
-
-		StartupLobbyLogInt("LoadTerrain begin mapID=", (int)STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		g_pMngCollector->LoadTerrain(STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		StartupLobbyLog("LoadTerrain end");
-
-		if (g_pThread && g_pThread->GetResMng())
-		{
-			StartupLobbyLog("ApplyConnetTerrain begin");
-			g_pThread->GetResMng()->ApplyConnetTerrain();
-			StartupLobbyLog("ApplyConnetTerrain end");
-		}
-		else
-		{
-			StartupLobbyLog("warning - g_pThread/GetResMng is NULL before ApplyConnetTerrain");
-		}
-
-		StartupLobbyLogInt("LoadChar begin mapID=", (int)STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		g_pMngCollector->LoadChar(STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		StartupLobbyLog("LoadChar end");
-
-		if (g_pThread && g_pThread->GetResMng())
-		{
-			StartupLobbyLog("ReleaseImmediatelyResource after LoadChar begin");
-			g_pThread->GetResMng()->ReleaseImmediatelyResource();
-			StartupLobbyLog("ReleaseImmediatelyResource after LoadChar end");
-		}
-
-		StartupLobbyLogInt("LoadCompleate begin mapID=", (int)STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		g_pMngCollector->LoadCompleate(STARTUP_CHARACTER_CREATE_LOBBY_MAP_ID);
-		StartupLobbyLog("LoadCompleate end");
-
-		g_bStartupCharacterCreateLobbyMapLoaded = true;
-
-		StartupLobbyLog("full preload ok");
+		// Desativado de propósito.
+		//
+		// O preload no GameApp::OnInitialize() acontece cedo demais:
+		// - cGameInterface::GlobalInit() aqui rebenta em HotKey.cpp;
+		// - sem GameInterface/flow carregado, o terrain 105 fica só com skybox/fundo branco.
+		//
+		// A solução segura é fazer o preload completo alguns frames depois de entrar no
+		// CharacterSelectFlow, antes do jogador clicar em Create.
+		OutputDebugStringA("[STARTUP][LobbyMap] skipped - preload moved to CharacterSelectFlow\n");
+		g_bStartupCharacterCreateLobbyMapLoaded = false;
 	}
 }
 
@@ -428,19 +354,9 @@ namespace App
 		g_pWeather->SetPerformance(g_pResist->m_Global.s_nWeather);
 		CsC_AvObject::g_bEnableVoice = g_pResist->m_Global.s_bEnableVoice;
 
-		// Preload completo do mapa usado no CharacterCreate.
-		// Aqui já temos:
-		// - Engine criado
-		// - FilePack callbacks ligados
-		// - CMngCollector inicializado
-		// - FileTables carregadas
-		// - Icon/Data managers inicializados
-		// - Terrain globals configurados
-		// E ainda não entrámos nos flows/login.
-		//
-		// Este preload usa a sequência do LoadingContents:
-		// ReleaseConnetTerrain + ResetMap + LoadTerrain + ApplyConnetTerrain
-		// + LoadChar + LoadCompleate.
+		// O preload real do mapa 105 foi movido para CharacterSelectFlow.
+		// Aqui fica apenas um log/no-op para garantir que o GameApp já não tenta
+		// carregar mundo cedo demais no ciclo do client.
 		StartupPreloadCharacterCreateLobbyMap();
 
 		CREATE_SINGLETON(CToolTipMng);

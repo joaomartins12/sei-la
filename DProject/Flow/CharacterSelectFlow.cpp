@@ -12,6 +12,7 @@
 #include "../_Interface/06.CharacterSelect/CharacterSelect.h"
 #include "../_Interface/Game/Fade.h"
 #include "../ContentsSystem/ContentsSystem.h"
+#include "../MngCollector.h"
 
 //---------------------------------------------------------------------------
 
@@ -33,6 +34,84 @@ namespace
 		sprintf_s(szBuffer, 256, "[FLOW][CharacterSelect] %s%d\n", pszText ? pszText : "", nValue);
 		OutputDebugStringA(szBuffer);
 	}
+	static const DWORD CHARACTER_CREATE_PRELOAD_MAP_ID = 105;
+
+	bool CSFlowPreloadCharacterCreateMap105()
+	{
+		CSFlowLog("CharacterCreate map105 preload begin");
+
+		if (!g_pMngCollector)
+		{
+			CSFlowLog("CharacterCreate map105 preload failed - g_pMngCollector is NULL");
+			return false;
+		}
+
+		net::prev_map_no = 0;
+		net::next_map_no = CHARACTER_CREATE_PRELOAD_MAP_ID;
+
+		CSFlowLogInt("CharacterCreate map105 DeleteChar mapID=", (int)CHARACTER_CREATE_PRELOAD_MAP_ID);
+		g_pMngCollector->DeleteChar(CHARACTER_CREATE_PRELOAD_MAP_ID);
+
+		if (g_pThread && g_pThread->GetResMng())
+		{
+			CSFlowLog("CharacterCreate map105 ReleaseImmediatelyResource begin");
+			g_pThread->GetResMng()->ReleaseImmediatelyResource();
+			CSFlowLog("CharacterCreate map105 ReleaseImmediatelyResource end");
+
+			CSFlowLog("CharacterCreate map105 ReleaseConnetTerrain begin");
+			g_pThread->GetResMng()->ReleaseConnetTerrain();
+			CSFlowLog("CharacterCreate map105 ReleaseConnetTerrain end");
+		}
+		else
+		{
+			CSFlowLog("CharacterCreate map105 warning - g_pThread/GetResMng is NULL before ReleaseConnetTerrain");
+		}
+
+		CSFlowLog("CharacterCreate map105 ResetMap begin");
+		g_pMngCollector->ResetMap();
+		CSFlowLog("CharacterCreate map105 ResetMap end");
+
+		if (g_pThread && g_pThread->GetResMng())
+		{
+			CSFlowLog("CharacterCreate map105 ReleaseImmediatelyResource after ResetMap begin");
+			g_pThread->GetResMng()->ReleaseImmediatelyResource();
+			CSFlowLog("CharacterCreate map105 ReleaseImmediatelyResource after ResetMap end");
+		}
+
+		CSFlowLogInt("CharacterCreate map105 LoadTerrain begin mapID=", (int)CHARACTER_CREATE_PRELOAD_MAP_ID);
+		g_pMngCollector->LoadTerrain(CHARACTER_CREATE_PRELOAD_MAP_ID);
+		CSFlowLog("CharacterCreate map105 LoadTerrain end");
+
+		if (g_pThread && g_pThread->GetResMng())
+		{
+			CSFlowLog("CharacterCreate map105 ApplyConnetTerrain begin");
+			g_pThread->GetResMng()->ApplyConnetTerrain();
+			CSFlowLog("CharacterCreate map105 ApplyConnetTerrain end");
+		}
+		else
+		{
+			CSFlowLog("CharacterCreate map105 warning - g_pThread/GetResMng is NULL before ApplyConnetTerrain");
+		}
+
+		CSFlowLogInt("CharacterCreate map105 LoadChar begin mapID=", (int)CHARACTER_CREATE_PRELOAD_MAP_ID);
+		g_pMngCollector->LoadChar(CHARACTER_CREATE_PRELOAD_MAP_ID);
+		CSFlowLog("CharacterCreate map105 LoadChar end");
+
+		if (g_pThread && g_pThread->GetResMng())
+		{
+			CSFlowLog("CharacterCreate map105 ReleaseImmediatelyResource after LoadChar begin");
+			g_pThread->GetResMng()->ReleaseImmediatelyResource();
+			CSFlowLog("CharacterCreate map105 ReleaseImmediatelyResource after LoadChar end");
+		}
+
+		CSFlowLogInt("CharacterCreate map105 LoadCompleate begin mapID=", (int)CHARACTER_CREATE_PRELOAD_MAP_ID);
+		g_pMngCollector->LoadCompleate(CHARACTER_CREATE_PRELOAD_MAP_ID);
+		CSFlowLog("CharacterCreate map105 LoadCompleate end");
+
+		CSFlowLog("CharacterCreate map105 preload ok");
+		return true;
+	}
+
 }
 
 //---------------------------------------------------------------------------
@@ -273,6 +352,32 @@ namespace Flow
 
 		if (TOOLTIPMNG_STPTR)
 			TOOLTIPMNG_STPTR->Update(g_fDeltaTime);
+
+		// Preload real do mapa 105 usado no CharacterCreate.
+		// Foi movido do GameApp para aqui porque no GameApp era cedo demais.
+		// Aqui o CharacterSelect já entrou, ContentSystem já inicializou/entrou,
+		// engine/filetables/resources já estão prontos, e ainda estamos antes do clique no Create.
+		static bool s_bMap105PreloadDone = false;
+		static bool s_bMap105PreloadTried = false;
+		static int s_nMap105PreloadDelayFrame = 0;
+
+		if (!s_bMap105PreloadDone && !s_bMap105PreloadTried)
+		{
+			++s_nMap105PreloadDelayFrame;
+
+			if (s_nMap105PreloadDelayFrame == 60)
+				CSFlowLog("CharacterCreate map105 preload scheduled");
+
+			if (s_nMap105PreloadDelayFrame > 120)
+			{
+				s_bMap105PreloadTried = true;
+
+				if (CSFlowPreloadCharacterCreateMap105())
+					s_bMap105PreloadDone = true;
+				else
+					CSFlowLog("CharacterCreate map105 preload failed");
+			}
+		}
 
 		CURSOR_ST.LoopReset();
 	}
