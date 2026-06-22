@@ -678,11 +678,7 @@ namespace App
 
 		net::start();
 
-#ifndef SKIP_LOGO
-		FLOWMGR_ST.StartFlow(Flow::CFlow::FLW_LOGO);
-#else
 		FLOWMGR_ST.StartFlow(Flow::CFlow::FLW_LOGIN);
-#endif
 
 #ifdef DEF_CORE_NPROTECT
 		m_fCheckGameGuardTimer = CHECK_NPROTECT_TIME;
