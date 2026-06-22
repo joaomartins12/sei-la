@@ -6,6 +6,47 @@
 #include "../../Flow/Flow.h"
 #include "../../ContentsSystem/ContentsSystemDef.h"
 
+#include <Windows.h>
+#include <sstream>
+
+//////////////////////////////////////////////////////////////////////////
+// DEBUG HELPERS
+//////////////////////////////////////////////////////////////////////////
+
+static void DebugSecondPassW(const wchar_t* message)
+{
+    OutputDebugStringW(L"[2PASS][CONTENTS] ");
+    OutputDebugStringW(message);
+    OutputDebugStringW(L"\n");
+}
+
+static void DebugSecondPassValueW(const wchar_t* label, const std::wstring& value)
+{
+    std::wstringstream ss;
+    ss << L"[2PASS][CONTENTS] "
+        << label
+        << L"=["
+        << value
+        << L"] len="
+        << value.length()
+        << L"\n";
+
+    OutputDebugStringW(ss.str().c_str());
+}
+
+static void DebugSecondPassIntW(const wchar_t* label, int value)
+{
+    wchar_t buffer[256] = { 0, };
+
+    swprintf_s(
+        buffer,
+        L"[2PASS][CONTENTS] %s=%d\n",
+        label,
+        value);
+
+    OutputDebugStringW(buffer);
+}
+
 // 하루 동안 2차 비밀번호 설정 페이지가 안보이게
 //#define SKIP_TIME_CHECK_DAY (24 * 60 * 60)
 
@@ -17,6 +58,8 @@ int const SecondPasswordContents::IsContentsIdentity(void)
 SecondPasswordContents::SecondPasswordContents(void)
     : m_ePassWindowType(eEnd)
 {
+    DebugSecondPassW(L"Constructor");
+
     m_strCurrPW.clear();
     m_strPrePW.clear();
     m_strConfirmPW.clear();
@@ -30,6 +73,8 @@ SecondPasswordContents::SecondPasswordContents(void)
 
 SecondPasswordContents::~SecondPasswordContents(void)
 {
+    DebugSecondPassW(L"Destructor");
+
     GAME_EVENT_ST.DeleteEventAll(this);
 
     if (EventRouter())
@@ -43,6 +88,8 @@ int const SecondPasswordContents::GetContentsIdentity(void) const
 
 bool SecondPasswordContents::Initialize(void)
 {
+    DebugSecondPassW(L"Initialize");
+
     m_strCurrPW.clear();
     m_strPrePW.clear();
     m_strConfirmPW.clear();
@@ -52,10 +99,13 @@ bool SecondPasswordContents::Initialize(void)
 
 void SecondPasswordContents::UnInitialize(void)
 {
+    DebugSecondPassW(L"UnInitialize");
 }
 
 bool SecondPasswordContents::IntraConnection(ContentsSystem& System)
 {
+    DebugSecondPassW(L"IntraConnection");
+
     return true;
 }
 
@@ -69,6 +119,8 @@ void SecondPasswordContents::NotifyEvent(int const& iNotifiedEvt)
 
 void SecondPasswordContents::NotifyEventStream(int const& iNotifiedEvt, ContentsStream const& kStream)
 {
+    DebugSecondPassIntW(L"NotifyEventStream event", iNotifiedEvt);
+
     switch (iNotifiedEvt)
     {
     case CONTENTS_EVENT::EStreamEvt_SecondPassword_Type:
@@ -76,16 +128,20 @@ void SecondPasswordContents::NotifyEventStream(int const& iNotifiedEvt, Contents
         u1 nType;
         kStream >> nType;
 
+        DebugSecondPassIntW(L"SecondPassword stream type", nType);
+
         switch (nType)
         {
         case nsLogin::eLOGINSUBTYPE::CHECK2NDPASS:
         {
+            DebugSecondPassW(L"WindowType = AskPW / CHECK2NDPASS");
             m_ePassWindowType = eWindowType_AskPW;
         }
         break;
 
         case nsLogin::eLOGINSUBTYPE::SET2NDPASS:
         {
+            DebugSecondPassW(L"WindowType = Regist / SET2NDPASS");
             m_ePassWindowType = eWindowType_Regist;
         }
         break;
@@ -109,6 +165,8 @@ void SecondPasswordContents::MakeMainActorData(void)
 
 void SecondPasswordContents::ClearMainActorData(void)
 {
+    DebugSecondPassW(L"ClearMainActorData");
+
     ClearAllRegistered();
 }
 
@@ -116,13 +174,22 @@ bool SecondPasswordContents::AddPasswordData(TCHAR const& pNumber)
 {
 #ifndef SDM_SECONDPASSWORD_REINFORCE_20180330
     if (pNumber < _T('0') || pNumber > _T('9'))
+    {
+        DebugSecondPassW(L"AddPasswordData blocked: invalid non-numeric key");
         return false;
+    }
 #endif
 
     if (m_strCurrPW.length() >= 8)
+    {
+        DebugSecondPassW(L"AddPasswordData blocked: max length reached");
+        DebugSecondPassValueW(L"CurrPW", m_strCurrPW);
         return false;
+    }
 
     m_strCurrPW += pNumber;
+
+    DebugSecondPassValueW(L"AddPasswordData CurrPW", m_strCurrPW);
 
     Notify(eSet_ConversionStr);
 
@@ -136,13 +203,23 @@ std::wstring SecondPasswordContents::GetCurrPassword() const
 
 void SecondPasswordContents::ClearPasswordData()
 {
+    DebugSecondPassValueW(L"ClearPasswordData before CurrPW", m_strCurrPW);
+
     m_strCurrPW.clear();
+
+    DebugSecondPassW(L"ClearPasswordData done");
 }
 
 bool SecondPasswordContents::_CheckPasswordUnabled(std::wstring const& pw, size_t nMinSize, size_t nMaxSize)
 {
+    DebugSecondPassW(L"_CheckPasswordUnabled called");
+    DebugSecondPassValueW(L"_CheckPasswordUnabled pw", pw);
+    DebugSecondPassIntW(L"_CheckPasswordUnabled min", (int)nMinSize);
+    DebugSecondPassIntW(L"_CheckPasswordUnabled max", (int)nMaxSize);
+
     if (pw.empty())
     {
+        DebugSecondPassW(L"_CheckPasswordUnabled failed: empty password");
         cPrintMsg::PrintMsg(20054);
         return false;
     }
@@ -152,12 +229,11 @@ bool SecondPasswordContents::_CheckPasswordUnabled(std::wstring const& pw, size_
     bool bCheck = true;
 
     if (!(nLen >= nMinSize && nLen <= nMaxSize))
+    {
+        DebugSecondPassW(L"_CheckPasswordUnabled failed: invalid length");
         bCheck = false;
+    }
 
-    /*
-     * Não permite passwords com todos os caracteres iguais.
-     * Exemplo: 111111, 222222, aaaaaa.
-     */
     if (bCheck && nLen > 1)
     {
         bool bAllSame = true;
@@ -172,33 +248,45 @@ bool SecondPasswordContents::_CheckPasswordUnabled(std::wstring const& pw, size_
         }
 
         if (bAllSame)
+        {
+            DebugSecondPassW(L"_CheckPasswordUnabled failed: all characters are equal");
             bCheck = false;
+        }
     }
 
     if (!bCheck)
         cPrintMsg::PrintMsg(20054);
+    else
+        DebugSecondPassW(L"_CheckPasswordUnabled success");
 
     return bCheck;
 }
 
-//////////////////////////////////////////////////////////////////////////
-// 2차 비밀 번호 확인 요청
-//////////////////////////////////////////////////////////////////////////
 bool SecondPasswordContents::SendCurrent2ndPassword()
 {
+    DebugSecondPassW(L"SendCurrent2ndPassword called");
+
     if (!net::account)
+    {
+        DebugSecondPassW(L"SendCurrent2ndPassword failed: net::account is NULL");
         return false;
+    }
 
     std::wstring currentPassword = m_strCurrPW;
 
+    DebugSecondPassValueW(L"SendCurrent2ndPassword currentPassword", currentPassword);
+
     if (!_CheckPasswordUnabled(currentPassword, 4, 8))
     {
+        DebugSecondPassW(L"SendCurrent2ndPassword failed: invalid password");
         ClearInputPassword();
         return false;
     }
 
     std::string pw;
     DmCS::StringFn::ToMB(currentPassword, pw);
+
+    DebugSecondPassW(L"SendCurrent2ndPassword sending SendSecondPassCertified");
 
     GLOBALDATA_ST.Set2ndPassword(pw);
     GLOBALDATA_ST.Set2ndPassType(GData::e2ndNumberPass);
@@ -210,52 +298,62 @@ bool SecondPasswordContents::SendCurrent2ndPassword()
     return true;
 }
 
-//////////////////////////////////////////////////////////////////////////
-// 2차 비밀 번호 등록 - primeira janela
-//////////////////////////////////////////////////////////////////////////
 void SecondPasswordContents::SaveRegistPassword()
 {
+    DebugSecondPassW(L"SaveRegistPassword called");
+
     std::wstring firstPassword = m_strCurrPW;
+
+    DebugSecondPassValueW(L"SaveRegistPassword firstPassword", firstPassword);
+    DebugSecondPassValueW(L"SaveRegistPassword old PrePW", m_strPrePW);
+    DebugSecondPassValueW(L"SaveRegistPassword old ConfirmPW", m_strConfirmPW);
 
     if (!_CheckPasswordUnabled(firstPassword, 6, 8))
     {
+        DebugSecondPassW(L"SaveRegistPassword failed: invalid first password");
         ClearInputPassword();
         return;
     }
 
-    /*
-     * Guarda a primeira password.
-     * Não envia nada ao server ainda.
-     */
     m_strPrePW = firstPassword;
     m_strConfirmPW.clear();
 
+    DebugSecondPassValueW(L"SaveRegistPassword saved PrePW", m_strPrePW);
+
     ClearInputPassword();
+
+    DebugSecondPassW(L"SaveRegistPassword Notify(eCreate_RegistConfirmWindow)");
 
     Notify(eCreate_RegistConfirmWindow);
 }
 
-//////////////////////////////////////////////////////////////////////////
-// 2차 비밀 번호 등록 - confirmação
-//////////////////////////////////////////////////////////////////////////
 void SecondPasswordContents::CheckRegistPasswordAndSend()
 {
-    SAFE_POINTER_RET(net::account);
+    DebugSecondPassW(L"CheckRegistPasswordAndSend called");
+
+    if (!net::account)
+    {
+        DebugSecondPassW(L"CheckRegistPasswordAndSend failed: net::account is NULL");
+        return;
+    }
 
     std::wstring confirmPassword = m_strCurrPW;
 
+    DebugSecondPassValueW(L"CheckRegistPasswordAndSend PrePW", m_strPrePW);
+    DebugSecondPassValueW(L"CheckRegistPasswordAndSend CurrPW", m_strCurrPW);
+    DebugSecondPassValueW(L"CheckRegistPasswordAndSend ConfirmPassword", confirmPassword);
+
     if (!_CheckPasswordUnabled(confirmPassword, 6, 8))
     {
+        DebugSecondPassW(L"CheckRegistPasswordAndSend failed: invalid confirm password");
         ClearInputPassword();
         return;
     }
 
-    /*
-     * Se por algum motivo a primeira password se perdeu,
-     * volta ao início do registo.
-     */
     if (m_strPrePW.empty())
     {
+        DebugSecondPassW(L"CheckRegistPasswordAndSend ERROR: PrePW is empty");
+
         ClearInputPassword();
 
         cPrintMsg::PrintMsg(cPrintMsg::SECOND_PASS_DISACCORD);
@@ -264,21 +362,16 @@ void SecondPasswordContents::CheckRegistPasswordAndSend()
         return;
     }
 
-    /*
-     * Comparação local limpa:
-     * primeira password == confirmação.
-     */
     if (m_strPrePW != confirmPassword)
     {
+        DebugSecondPassW(L"CheckRegistPasswordAndSend ERROR: PrePW != ConfirmPassword");
+        DebugSecondPassValueW(L"Mismatch PrePW", m_strPrePW);
+        DebugSecondPassValueW(L"Mismatch ConfirmPassword", confirmPassword);
+
         ClearInputPassword();
 
         cPrintMsg::PrintMsg(cPrintMsg::SECOND_PASS_DISACCORD);
 
-        /*
-         * Mantém na janela de confirmação.
-         * Assim o jogador só precisa repetir a confirmação,
-         * não voltar ao primeiro passo.
-         */
         Notify(eCreate_RegistConfirmWindow);
         return;
     }
@@ -286,12 +379,8 @@ void SecondPasswordContents::CheckRegistPasswordAndSend()
     std::string pw;
     DmCS::StringFn::ToMB(confirmPassword, pw);
 
-    /*
-     * Envia o packet original:
-     *
-     * pPass2::Register = 9801
-     * payload = md5 da password em 32 bytes ASCII
-     */
+    DebugSecondPassW(L"CheckRegistPasswordAndSend SUCCESS: calling SendRegister2ndPass");
+
     net::account->SendRegister2ndPass(const_cast<char*>(pw.c_str()));
 
     if (g_pResist)
@@ -299,18 +388,19 @@ void SecondPasswordContents::CheckRegistPasswordAndSend()
 
     GLOBALDATA_ST.Set2ndPassType(GData::e2ndNumberPass);
 
+    DebugSecondPassW(L"CheckRegistPasswordAndSend waiting server response 9801");
+
     /*
-     * Não mudamos já para AskPasswordWindow aqui.
-     * Agora esperamos pela resposta do server em Recv2ndPasswordRegister().
+     * Não muda já para AskPasswordWindow.
+     * Espera pela resposta 9801 do server em Recv2ndPasswordRegister().
      */
     ClearInputPassword();
 }
 
-//////////////////////////////////////////////////////////////////////////
-// 2차 비밀 번호 변경
-//////////////////////////////////////////////////////////////////////////
 void SecondPasswordContents::OpendChangeWindow()
 {
+    DebugSecondPassW(L"OpendChangeWindow called");
+
     ClearInputPassword();
 
     m_strPrePW.clear();
@@ -321,16 +411,23 @@ void SecondPasswordContents::OpendChangeWindow()
 
 void SecondPasswordContents::SaveCurrentPassword()
 {
+    DebugSecondPassW(L"SaveCurrentPassword called");
+
     std::wstring currentPassword = m_strCurrPW;
+
+    DebugSecondPassValueW(L"SaveCurrentPassword currentPassword", currentPassword);
 
     if (!_CheckPasswordUnabled(currentPassword, 4, 8))
     {
+        DebugSecondPassW(L"SaveCurrentPassword failed: invalid current password");
         ClearInputPassword();
         return;
     }
 
     m_strPrePW = currentPassword;
     m_strConfirmPW.clear();
+
+    DebugSecondPassValueW(L"SaveCurrentPassword saved PrePW", m_strPrePW);
 
     ClearInputPassword();
 
@@ -339,19 +436,24 @@ void SecondPasswordContents::SaveCurrentPassword()
 
 void SecondPasswordContents::SaveChangePassword()
 {
+    DebugSecondPassW(L"SaveChangePassword called");
+
     std::wstring newPassword = m_strCurrPW;
+
+    DebugSecondPassValueW(L"SaveChangePassword newPassword", newPassword);
+    DebugSecondPassValueW(L"SaveChangePassword PrePW", m_strPrePW);
 
     if (!_CheckPasswordUnabled(newPassword, 6, 8))
     {
+        DebugSecondPassW(L"SaveChangePassword failed: invalid new password");
         ClearInputPassword();
         return;
     }
 
-    /*
-     * Não permite a nova second password igual à atual.
-     */
     if (m_strPrePW == newPassword)
     {
+        DebugSecondPassW(L"SaveChangePassword failed: new password equals current password");
+
         ClearInputPassword();
 
         cPrintMsg::PrintMsg(20054);
@@ -360,6 +462,8 @@ void SecondPasswordContents::SaveChangePassword()
 
     m_strConfirmPW = newPassword;
 
+    DebugSecondPassValueW(L"SaveChangePassword saved ConfirmPW", m_strConfirmPW);
+
     ClearInputPassword();
 
     Notify(eCreate_PwChangeConfirmWindow);
@@ -367,18 +471,31 @@ void SecondPasswordContents::SaveChangePassword()
 
 void SecondPasswordContents::CheckChangePasswordAndSend()
 {
-    SAFE_POINTER_RET(net::account);
+    DebugSecondPassW(L"CheckChangePasswordAndSend called");
+
+    if (!net::account)
+    {
+        DebugSecondPassW(L"CheckChangePasswordAndSend failed: net::account is NULL");
+        return;
+    }
 
     std::wstring confirmPassword = m_strCurrPW;
 
+    DebugSecondPassValueW(L"CheckChangePasswordAndSend PrePW", m_strPrePW);
+    DebugSecondPassValueW(L"CheckChangePasswordAndSend ConfirmPW", m_strConfirmPW);
+    DebugSecondPassValueW(L"CheckChangePasswordAndSend CurrentConfirm", confirmPassword);
+
     if (!_CheckPasswordUnabled(confirmPassword, 6, 8))
     {
+        DebugSecondPassW(L"CheckChangePasswordAndSend failed: invalid confirm password");
         ClearInputPassword();
         return;
     }
 
     if (m_strConfirmPW.empty() || m_strConfirmPW != confirmPassword)
     {
+        DebugSecondPassW(L"CheckChangePasswordAndSend ERROR: ConfirmPW mismatch");
+
         ClearInputPassword();
 
         cPrintMsg::PrintMsg(cPrintMsg::SECOND_PASS_DISACCORD);
@@ -393,6 +510,8 @@ void SecondPasswordContents::CheckChangePasswordAndSend()
     std::string changePass;
     DmCS::StringFn::ToMB(confirmPassword, changePass);
 
+    DebugSecondPassW(L"CheckChangePasswordAndSend SUCCESS: calling SendChange2ndPass");
+
     net::account->SendChange2ndPass(
         const_cast<char*>(prevPass.c_str()),
         const_cast<char*>(changePass.c_str()));
@@ -402,6 +521,8 @@ void SecondPasswordContents::CheckChangePasswordAndSend()
 
 void SecondPasswordContents::ClearInputPassword()
 {
+    DebugSecondPassW(L"ClearInputPassword called");
+
     ClearPasswordData();
 
     Notify(eSet_ConversionStr);
@@ -409,12 +530,19 @@ void SecondPasswordContents::ClearInputPassword()
 
 void SecondPasswordContents::DeleteOnePassNumber()
 {
+    DebugSecondPassW(L"DeleteOnePassNumber called");
+
     if (m_strCurrPW.empty())
+    {
+        DebugSecondPassW(L"DeleteOnePassNumber ignored: CurrPW empty");
         return;
+    }
 
     std::wstring::size_type length = m_strCurrPW.length();
 
     m_strCurrPW.erase(length - 1);
+
+    DebugSecondPassValueW(L"DeleteOnePassNumber CurrPW", m_strCurrPW);
 
     Notify(eSet_ConversionStr);
 }
@@ -426,6 +554,9 @@ const int SecondPasswordContents::GetPassWindowType() const
 
 void SecondPasswordContents::SkipInputSecondPassword(bool bHideOneDay)
 {
+    DebugSecondPassW(L"SkipInputSecondPassword called");
+    DebugSecondPassIntW(L"SkipInputSecondPassword bHideOneDay", bHideOneDay ? 1 : 0);
+
     if (g_pResist)
     {
         g_pResist->m_Global.SetSkip2ndPassword(bHideOneDay);
@@ -434,17 +565,28 @@ void SecondPasswordContents::SkipInputSecondPassword(bool bHideOneDay)
     }
 
     if (net::account)
+    {
+        DebugSecondPassW(L"SkipInputSecondPassword sending SendSkipSecondPass");
         net::account->SendSkipSecondPass();
+    }
+    else
+    {
+        DebugSecondPassW(L"SkipInputSecondPassword failed: net::account is NULL");
+    }
 }
 
 void SecondPasswordContents::GotoBackFromAskWindow()
 {
+    DebugSecondPassW(L"GotoBackFromAskWindow called");
+
     if (GLOBALDATA_ST.IsLoginSkiped())
     {
+        DebugSecondPassW(L"GotoBackFromAskWindow PostQuitMessage");
         PostQuitMessage(0);
     }
     else
     {
+        DebugSecondPassW(L"GotoBackFromAskWindow ChangeFlow Login");
         GLOBALDATA_ST.ResetAccountInfo();
         FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_LOGIN);
     }
@@ -452,6 +594,8 @@ void SecondPasswordContents::GotoBackFromAskWindow()
 
 void SecondPasswordContents::Cancel2ndPassChange()
 {
+    DebugSecondPassW(L"Cancel2ndPassChange called");
+
     m_strPrePW.clear();
     m_strConfirmPW.clear();
 
@@ -462,6 +606,8 @@ void SecondPasswordContents::Cancel2ndPassChange()
 
 void SecondPasswordContents::Cancel2ndPassChangingWindow()
 {
+    DebugSecondPassW(L"Cancel2ndPassChangingWindow called");
+
     std::string str2Pss = GLOBALDATA_ST.Get2ndPassword();
 
     m_strPrePW.clear();
@@ -469,18 +615,24 @@ void SecondPasswordContents::Cancel2ndPassChangingWindow()
 
     if (str2Pss.empty())
     {
+        DebugSecondPassW(L"Cancel2ndPassChangingWindow Notify AskPasswordWindow");
+
         ClearInputPassword();
 
         Notify(eCreate_AskPasswordWindow);
     }
     else
     {
+        DebugSecondPassW(L"Cancel2ndPassChangingWindow ChangeFlow ServerSelect");
+
         FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_SERVERSEL);
     }
 }
 
 void SecondPasswordContents::Cancel2ndPassRegistWindow()
 {
+    DebugSecondPassW(L"Cancel2ndPassRegistWindow called");
+
     m_strPrePW.clear();
     m_strConfirmPW.clear();
 
@@ -488,24 +640,28 @@ void SecondPasswordContents::Cancel2ndPassRegistWindow()
 
     if (GLOBALDATA_ST.IsLoginSkiped())
     {
+        DebugSecondPassW(L"Cancel2ndPassRegistWindow PostQuitMessage");
         PostQuitMessage(0);
     }
     else
     {
+        DebugSecondPassW(L"Cancel2ndPassRegistWindow ChangeFlow Login");
         GLOBALDATA_ST.ResetAccountInfo();
         FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_LOGIN);
     }
 }
 
-//////////////////////////////////////////////////////////////////////////
-// 3D Object 맵 로드
-//////////////////////////////////////////////////////////////////////////
 bool SecondPasswordContents::Load3DEffect(std::string const& loadFileName)
 {
+    DebugSecondPassW(L"Load3DEffect called");
+
     NiStream kStream;
 
     if (!kStream.Load(loadFileName.c_str()))
+    {
+        DebugSecondPassW(L"Load3DEffect failed");
         return false;
+    }
 
     NiNodePtr pNode = (NiNode*)kStream.GetObjectAt(0);
 
@@ -517,6 +673,8 @@ bool SecondPasswordContents::Load3DEffect(std::string const& loadFileName)
 
     pNode->UpdateEffects();
     pNode->Update(0.0f);
+
+    DebugSecondPassW(L"Load3DEffect success");
 
     return true;
 }
@@ -538,6 +696,8 @@ void SecondPasswordContents::UpdateBackgroundMap(float const& fAccumTime)
 
 void SecondPasswordContents::Load3DBackgroundData()
 {
+    DebugSecondPassW(L"Load3DBackgroundData called");
+
     sCAMERAINFO ci;
 
     ci.s_fDist = 2800.0f;
@@ -555,47 +715,60 @@ void SecondPasswordContents::Load3DBackgroundData()
 
 void SecondPasswordContents::Remove3DBackgroundData()
 {
+    DebugSecondPassW(L"Remove3DBackgroundData called");
+
     m_Effect.Delete();
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Server responses
-//////////////////////////////////////////////////////////////////////////
 void SecondPasswordContents::Recv2ndPasswordCheck(void* pData)
 {
+    DebugSecondPassW(L"Recv2ndPasswordCheck called");
+
     SAFE_POINTER_RET(pData);
 
     GS2C_RECV_2ndPass_Certify* result = static_cast<GS2C_RECV_2ndPass_Certify*>(pData);
+
+    DebugSecondPassIntW(L"Recv2ndPasswordCheck result", result->nResult);
 
     cMessageBox::DelMsg(10019, false);
 
     if (0 != result->nResult)
     {
+        DebugSecondPassW(L"Recv2ndPasswordCheck ERROR result != 0");
+
         cPrintMsg::PrintMsg(result->nResult);
         GLOBALDATA_ST.Clear2ndPass();
         return;
     }
 
+    DebugSecondPassW(L"Recv2ndPasswordCheck SUCCESS result == 0");
+
     if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_SERVERSEL))
     {
+        DebugSecondPassW(L"Recv2ndPasswordCheck current flow ServerSelect: SendReqClusterList");
         net::account->SendReqClusterList();
     }
     else if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_LOGIN))
     {
+        DebugSecondPassW(L"Recv2ndPasswordCheck current flow Login: ChangeFlow ServerSelect");
         FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_SERVERSEL);
     }
     else if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_SECURITY))
     {
+        DebugSecondPassW(L"Recv2ndPasswordCheck current flow Security");
+
         cPrintMsg::PrintMsg(cPrintMsg::SECOND_PASS_CONFIRM);
 
         std::string strPw = GLOBALDATA_ST.Get2ndPassword();
 
         if (!strPw.empty() && strPw.size() < 6)
         {
+            DebugSecondPassW(L"Recv2ndPasswordCheck password size < 6: Notify AskPwChangeWindow");
             Notify(eCreate_AskPwChangeWindow);
         }
         else
         {
+            DebugSecondPassW(L"Recv2ndPasswordCheck ChangeFlow ServerSelect");
             FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_SERVERSEL);
         }
     }
@@ -603,14 +776,20 @@ void SecondPasswordContents::Recv2ndPasswordCheck(void* pData)
 
 void SecondPasswordContents::Recv2ndPasswordChange(void* pData)
 {
+    DebugSecondPassW(L"Recv2ndPasswordChange called");
+
     cMessageBox::DelMsg(10019, false);
 
     SAFE_POINTER_RET(pData);
 
     GS2C_RECV_2ndPass_Change* result = static_cast<GS2C_RECV_2ndPass_Change*>(pData);
 
+    DebugSecondPassIntW(L"Recv2ndPasswordChange result", result->nResult);
+
     if (0 != result->nResult)
     {
+        DebugSecondPassW(L"Recv2ndPasswordChange ERROR result != 0");
+
         cPrintMsg::PrintMsg(result->nResult);
 
         m_strPrePW.clear();
@@ -620,6 +799,8 @@ void SecondPasswordContents::Recv2ndPasswordChange(void* pData)
     }
     else
     {
+        DebugSecondPassW(L"Recv2ndPasswordChange SUCCESS result == 0");
+
         cPrintMsg::PrintMsg(cPrintMsg::SECOND_PASS_SET_COMPLETE);
 
         m_strPrePW.clear();
@@ -631,23 +812,27 @@ void SecondPasswordContents::Recv2ndPasswordChange(void* pData)
 
 void SecondPasswordContents::Recv2ndPasswordRegister(void* pData)
 {
+    DebugSecondPassW(L"Recv2ndPasswordRegister called");
+
     cMessageBox::DelMsg(10019, false);
 
     SAFE_POINTER_RET(pData);
 
     GS2C_RECV_2ndPass_Register* result = static_cast<GS2C_RECV_2ndPass_Register*>(pData);
 
+    DebugSecondPassIntW(L"Recv2ndPasswordRegister result", result->nResult);
+
     if (0 != result->nResult)
     {
-        /*
-         * Se isto aparecer, o erro veio do server.
-         * O registo local já foi enviado.
-         */
+        DebugSecondPassW(L"Recv2ndPasswordRegister ERROR result != 0");
+
         cPrintMsg::PrintMsg(result->nResult);
 
         Notify(eCreate_RegistConfirmWindow);
         return;
     }
+
+    DebugSecondPassW(L"Recv2ndPasswordRegister SUCCESS result == 0");
 
     cPrintMsg::PrintMsg(cPrintMsg::SECOND_PASS_SET_COMPLETE);
 
