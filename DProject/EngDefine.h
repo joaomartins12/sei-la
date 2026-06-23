@@ -4,7 +4,7 @@
 #define	ACCOUNT_PORT				7029
 
 #define	NAME_MIN_LEN				3
-#define NAME_MAX_LEN				12
+#define NAME_MAX_LEN				16
 #define NAME_GUILD_MAX_LEN			14
 #define NAME_FRIEND_COMMENT_LEN		23		//cCreateName::Init 에서 m_nMaxLengthByte 도 같이 수정 되야 한다
 #define NAME_BLOCK_COMMENT_LEN		23		//cCreateName::Init 에서 m_nMaxLengthByte 도 같이 수정 되야 한다

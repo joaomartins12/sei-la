@@ -24,6 +24,8 @@ namespace
 {
 	static const DWORD CHARACTER_SELECT_LOBBY_MAP_ID = 4;
 
+	static bool g_bCharacterDeleteWaitingServer = false;
+
 	// Limite final da tela Character Select.
 	static const int CHARACTER_SELECT_MAX_SLOT = 3;
 
@@ -643,26 +645,40 @@ void CCharacterSelect::MakeDelectWindow()
 
 void CCharacterSelect::showAndhideDeleteWindow(bool bVisible)
 {
+	/*
+	 * Enquanto aguardamos resposta do server para delete,
+	 * não deixa reabrir/fechar a popup nem editar novamente.
+	 */
+	if (g_bCharacterDeleteWaitingServer && bVisible == false)
+		return;
+
 	m_DeleteWindowUI.SetVisible(bVisible);
 
 	if (bVisible)
 	{
 		if (m_pDeleteCharOkBtn)
 			m_pDeleteCharOkBtn->SetEnable(false);
+
 		if (m_pEditResistNumber)
+		{
+			m_pEditResistNumber->SetText(L"");
 			m_pEditResistNumber->SetFocus();
+		}
 
 		switch (GLOBALDATA_ST.Get2ndPassType())
 		{
 		case GData::eAccountPass:
 			g_IME.SetNumberOnly(false);
 			break;
+
 		case GData::eStringPass:
 			g_IME.SetNumberOnly(false);
 			break;
+
 		case GData::eEmail:
 			g_IME.SetNumberOnly(false);
 			break;
+
 #ifdef SDM_SECONDPASSWORD_REINFORCE_20180330
 		case GData::e2ndNumberPass:
 			g_IME.SetNumberOnly(false);
@@ -678,6 +694,7 @@ void CCharacterSelect::showAndhideDeleteWindow(bool bVisible)
 	{
 		if (m_pEditResistNumber)
 			m_pEditResistNumber->ReleaseFocus();
+
 		g_IME.SetNumberOnly(false);
 	}
 }
@@ -693,6 +710,18 @@ void CCharacterSelect::_ResetCharacterSlot(int const& nResetSlotNum)
 
 BOOL CCharacterSelect::UpdateMouse()
 {
+	/*
+	 * Enquanto o delete está pendente no server, bloqueia todos os cliques.
+	 * Isto evita:
+	 * - clicar Start
+	 * - clicar Create
+	 * - clicar Delete outra vez
+	 * - mudar slot
+	 * - voltar ao server select
+	 */
+	if (g_bCharacterDeleteWaitingServer)
+		return TRUE;
+
 	if (m_DeleteWindowUI.IsVisible())
 	{
 		if (m_pDeleteCharCloseBtn && m_pDeleteCharCloseBtn->Update_ForMouse() == cButton::ACTION_CLICK)
@@ -724,6 +753,12 @@ BOOL CCharacterSelect::UpdateMouse()
 
 BOOL CCharacterSelect::UpdateKeyboard(const MSG& p_kMsg)
 {
+	/*
+	 * Enquanto está a apagar, bloqueia teclado também.
+	 */
+	if (g_bCharacterDeleteWaitingServer)
+		return TRUE;
+
 	if (m_DeleteWindowUI.IsVisible())
 		return FALSE;
 
@@ -742,6 +777,7 @@ BOOL CCharacterSelect::UpdateKeyboard(const MSG& p_kMsg)
 				if (m_pCharacterList)
 					m_pCharacterList->ChangeSelectFront();
 			}
+
 			return TRUE;
 		}
 		break;
@@ -768,6 +804,7 @@ BOOL CCharacterSelect::UpdateKeyboard(const MSG& p_kMsg)
 					GetSystem()->SendGameStart();
 				}
 			}
+
 			return TRUE;
 		}
 		break;
@@ -789,6 +826,7 @@ BOOL CCharacterSelect::UpdateKeyboard(const MSG& p_kMsg)
 					}
 				}
 			}
+
 			return TRUE;
 		}
 		break;
@@ -931,8 +969,19 @@ void CCharacterSelect::Notify(int const& iNotifiedEvt, ContentsStream const& kSt
 
 	case SystemType::eCHAR_DELETE_SUCCESS:
 	{
+		/*
+		 * O server já respondeu ao delete.
+		 * Neste ponto o CharacterSelectContents já mostrou a mensagem de sucesso
+		 * e limpou os dados do personagem.
+		 *
+		 * Agora podemos desbloquear a UI.
+		 */
+		g_bCharacterDeleteWaitingServer = false;
+
 		int nDelSlot = 0;
+
 		kStream >> nDelSlot;
+
 		_ResetCharacterSlot(nDelSlot);
 
 		if (m_pCharacterList)
@@ -952,7 +1001,9 @@ void CCharacterSelect::Notify(int const& iNotifiedEvt, ContentsStream const& kSt
 				{
 					std::wstring wsMsg;
 					NiColor fontColor = FONT_WHITE;
+
 					wsMsg = L"";
+
 					m_pMapName->SetColor(fontColor);
 					m_pMapName->SetText(wsMsg.c_str());
 				}
@@ -960,6 +1011,12 @@ void CCharacterSelect::Notify(int const& iNotifiedEvt, ContentsStream const& kSt
 
 			m_pCharacterList->UnSelectionItem(nDelSlot);
 		}
+
+		if (m_pDeleteCharCloseBtn)
+			m_pDeleteCharCloseBtn->SetEnable(true);
+
+		if (m_pDeleteCharOkBtn)
+			m_pDeleteCharOkBtn->SetEnable(false);
 	}
 	break;
 
@@ -1036,22 +1093,55 @@ void CCharacterSelect::PressDeleteButton(void* pSender, void* pData)
 
 void CCharacterSelect::PressCharDelCloseButton(void* pSender, void* pData)
 {
+	if (g_bCharacterDeleteWaitingServer)
+		return;
+
 	showAndhideDeleteWindow(false);
 }
 
 void CCharacterSelect::PressCharDelOkButton(void* pSender, void* pData)
 {
+	if (g_bCharacterDeleteWaitingServer)
+		return;
+
 	SAFE_POINTER_RET(m_pEditResistNumber);
+
 	cText* pText = m_pEditResistNumber->GetText();
+
 	SAFE_POINTER_RET(pText);
 
 	cText::sTEXTINFO* pTextInfo = pText->GetTextInfo();
+
 	SAFE_POINTER_RET(pTextInfo);
 
-	if (GetSystem())
-		GetSystem()->SendDeleteCharacter(pTextInfo->GetText());
+	if (!GetSystem())
+		return;
 
-	showAndhideDeleteWindow(false);
+	/*
+	 * Envia o pedido.
+	 * Se o pedido foi aceite localmente, bloqueia a UI até vir resposta do server.
+	 */
+	if (GetSystem()->SendDeleteCharacter(pTextInfo->GetText()))
+	{
+		g_bCharacterDeleteWaitingServer = true;
+
+		if (m_pDeleteCharOkBtn)
+			m_pDeleteCharOkBtn->SetEnable(false);
+
+		if (m_pDeleteCharCloseBtn)
+			m_pDeleteCharCloseBtn->SetEnable(false);
+
+		if (m_pEditResistNumber)
+			m_pEditResistNumber->ReleaseFocus();
+
+		g_IME.SetNumberOnly(false);
+
+		/*
+		 * Fecha a janela de password, mas a UI fica bloqueada
+		 * até receber RECV_CHAR_DELETE_RESULT.
+		 */
+		m_DeleteWindowUI.SetVisible(false);
+	}
 }
 
 void CCharacterSelect::CheckEditBoxText(void* pSender, void* pData)

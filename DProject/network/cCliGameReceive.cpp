@@ -86,505 +86,450 @@ void cCliGame::RecvInitDigimonSkillPoint(void)
 // Inicialize Game
 void cCliGame::RecvInitGameData(void)
 {
-	DBG("\n--------- Init Game Data ---------\n\n");
+	OutputDebugStringA("[RECV_INIT] RecvInitGameData begin\n");
 
-	g_pDataMng->GetTactics()->Init();
+	try
+	{
+		DBG("\n--------- Init Game Data ---------\n\n");
 
-	cData_PostLoad* pPostLoad = g_pDataMng->GetPostLoad();
+		OutputDebugStringA("[RECV_INIT] Init tactics\n");
+		g_pDataMng->GetTactics()->Init();
 
-	cData_PostLoad::sDATA* pTamerData = pPostLoad->GetTamerData();
-	cData_PostLoad::sDATA* pDigimonData = pPostLoad->GetDigimonData();
+		cData_PostLoad* pPostLoad = g_pDataMng->GetPostLoad();
 
-	cData_Inven* pInven = g_pDataMng->GetInven();
-	cData_TEquip* pTEquip = g_pDataMng->GetTEquip();
-	cData_Digivice* pDigivice = g_pDataMng->GetDigivice();
-	//cData_Warehouse* pWarehouse = g_pDataMng->GetWarehouse();
+		cData_PostLoad::sDATA* pTamerData = pPostLoad->GetTamerData();
+		cData_PostLoad::sDATA* pDigimonData = pPostLoad->GetDigimonData();
 
-	nLIB::eType LibType = nLIB::SVR_GAME;
-	pop(LibType);
+		cData_Inven* pInven = g_pDataMng->GetInven();
+		cData_TEquip* pTEquip = g_pDataMng->GetTEquip();
+		cData_Digivice* pDigivice = g_pDataMng->GetDigivice();
 
-	nsCsGBTerrain::g_nSvrLibType = LibType;
+		OutputDebugStringA("[RECV_INIT] before LibType\n");
 
-	nSync::Pos pos;
-	pop(pos);
-	pPostLoad->SetPos(pos);
+		nLIB::eType LibType = nLIB::SVR_GAME;
+		pop(LibType);
+
+		nsCsGBTerrain::g_nSvrLibType = LibType;
+
+		OutputDebugStringA("[RECV_INIT] before position\n");
+
+		nSync::Pos pos;
+		pop(pos);
+		pPostLoad->SetPos(pos);
 
 #ifdef SDM_TAMER_SERVERRELOCATE_20170911
-	u4 nServerRelocateCompleteTime = 0;
-	pop(nServerRelocateCompleteTime);
-	pPostLoad->SetServerRelocateCompletedTime(nServerRelocateCompleteTime);
+		u4 nServerRelocateCompleteTime = 0;
+		pop(nServerRelocateCompleteTime);
+		pPostLoad->SetServerRelocateCompletedTime(nServerRelocateCompleteTime);
 #endif
 
-	//int TamerHandle = 0;
-	//pop(TamerHandle);
+		OutputDebugStringA("[RECV_INIT] before Tamer type/name\n");
 
-	//pTamerData->s_Type.m_nUID = TamerHandle;
-	sizeof(pTamerData->s_Type);
-	//int TamerModel = 0;
-	pop(pTamerData->s_Type);
-	/*pTamerData->s_Type.m_nType = TamerModel;
-	pTamerData->s_Type.m_nClass = nClass::Tamer;*/
+		pop(pTamerData->s_Type);
 
-	char szName[Language::pLength::name + 1] = "";
-	pop(szName);
+		char szName[Language::pLength::name + 1] = "";
+		pop(szName);
 
-	_tcscpy_s(pTamerData->s_szName, Language::pLength::name + 1, LanConvertT(szName));
+		_tcscpy_s(pTamerData->s_szName, Language::pLength::name + 1, LanConvertT(szName));
 
-	memset(szName, 0, sizeof(szName));
+		memset(szName, 0, sizeof(szName));
 
 #ifndef UI_INVENTORY_RENEWAL
-	n8 nMoney;
-	pop(nMoney);
-	pInven->SetMoney(nMoney, false);
+		OutputDebugStringA("[RECV_INIT] before money/inventory size\n");
 
-	u2 nInvenSlotCount;
-	u2 nWarehouseSlotCount;
+		n8 nMoney;
+		pop(nMoney);
+		pInven->SetMoney(nMoney, false);
 
-	#ifdef NEW_SHARESTASH
+		u2 nInvenSlotCount;
+		u2 nWarehouseSlotCount;
+
+#ifdef NEW_SHARESTASH
 		u2 nShareSlotSlotCount;
-	#endif
-
-	pop(nInvenSlotCount);		
-	pop(nWarehouseSlotCount);
-	#ifdef NEW_SHARESTASH
-		pop(nShareSlotSlotCount);
-	//	nShareSlotSlotCount = 14;
-	#endif
-
-	pInven->SetInvenSlotCount(nInvenSlotCount);
-
-	//	pWarehouse->SetSlotCount( nWarehouseSlotCount );	
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_NORMAL_SLOTCOUNT, &nWarehouseSlotCount);
-
-	#ifdef NEW_SHARESTASH
-		//	pWarehouse->SetShareSlotCount( nShareSlotSlotCount );
-		GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_SHARE_SLOTCOUNT, &nShareSlotSlotCount);
-	#endif
 #endif
 
-	pop(pTamerData->s_nExp);
-	pTamerData->s_nExp = pTamerData->s_nExp / 100;
+		pop(nInvenSlotCount);
+		pop(nWarehouseSlotCount);
 
-	pop(pTamerData->s_nLevel);
+#ifdef NEW_SHARESTASH
+		pop(nShareSlotSlotCount);
+#endif
 
-	pop(pTamerData->s_Attribute[MHP]);
-	pop(pTamerData->s_Attribute[MDS]);
-	pop(pTamerData->s_Attribute[HP]);
-	pop(pTamerData->s_Attribute[DS]);
-	pop(pTamerData->s_Attribute[FP]);
-	pop(pTamerData->s_Attribute[AP]);
-	pop(pTamerData->s_Attribute[DP]);
-	pop(pTamerData->s_Attribute[MS]);
+		pInven->SetInvenSlotCount(nInvenSlotCount);
 
-	cItemInfo* pItemInfo = NULL;
- 
-	// Tamer Equipament
-	for (int i = 0; i < nLimit::Equip; ++i)
-	{
-		pItemInfo = pTEquip->GetData(i);
-		pop(*pItemInfo);
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_NORMAL_SLOTCOUNT, &nWarehouseSlotCount);
 
-		if (pItemInfo->IsEnable())	// Verifica se é diferente de 0 (0 nao esta usando)
+#ifdef NEW_SHARESTASH
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_SHARE_SLOTCOUNT, &nShareSlotSlotCount);
+#endif
+#endif
+
+		OutputDebugStringA("[RECV_INIT] before Tamer stats\n");
+
+		pop(pTamerData->s_nExp);
+		pTamerData->s_nExp = pTamerData->s_nExp / 100;
+
+		pop(pTamerData->s_nLevel);
+
+		pop(pTamerData->s_Attribute[MHP]);
+		pop(pTamerData->s_Attribute[MDS]);
+		pop(pTamerData->s_Attribute[HP]);
+		pop(pTamerData->s_Attribute[DS]);
+		pop(pTamerData->s_Attribute[FP]);
+		pop(pTamerData->s_Attribute[AP]);
+		pop(pTamerData->s_Attribute[DP]);
+		pop(pTamerData->s_Attribute[MS]);
+
+		cItemInfo* pItemInfo = NULL;
+
+		OutputDebugStringA("[RECV_INIT] before Tamer Equipment\n");
+
+		for (int i = 0; i < nLimit::Equip; ++i)
 		{
-			DBG("Item no slot %d em uso\n", i);
+			pItemInfo = pTEquip->GetData(i);
+			pop(*pItemInfo);
 
-			if (nsCsFileTable::g_pItemMng->IsItem(pItemInfo->GetType()) == false)
+			if (pItemInfo->IsEnable())
 			{
-				CsMessageBox(MB_OK, _ONLY_ENG("You have one item that does not exist on Tamer equipament.\nEquipIndex = %d, ID = %d"), i, pItemInfo->GetType());
-				//PostQuitMessage(0);//SetNextGameStep( GAME_EXIT );
+				if (nsCsFileTable::g_pItemMng->IsItem(pItemInfo->GetType()) == false)
+				{
+					char log[256];
+					sprintf_s(log, "[RECV_INIT][WARN] Invalid Tamer Equipment skipped. EquipIndex=%d ID=%d\n", i, pItemInfo->GetType());
+					OutputDebugStringA(log);
+
+					memset(pItemInfo, 0, sizeof(cItemInfo));
+				}
 			}
 		}
-	}
 
-	// Tamer Chipset
-	for (int i = 0; i < nLimit::Chipset; ++i)
-	{
-		pItemInfo = pDigivice->GetChipset(i);
-		pop(*pItemInfo);
+		OutputDebugStringA("[RECV_INIT] after Tamer Equipment\n");
+		OutputDebugStringA("[RECV_INIT] before Tamer Chipset\n");
 
-		if (pItemInfo->IsEnable())	// Verifica se é diferente de 0 (0 nao esta usando)
+		for (int i = 0; i < nLimit::Chipset; ++i)
 		{
-			if (nsCsFileTable::g_pItemMng->IsItem(pItemInfo->GetType()) == false)
+			pItemInfo = pDigivice->GetChipset(i);
+			pop(*pItemInfo);
+
+			if (pItemInfo->IsEnable())
 			{
-				CsMessageBox(MB_OK, _ONLY_ENG("You have one item that does not exist on Tamer Chipset.\nChipsetIndex = %d, ID = %d"), i, pItemInfo->GetType());
-				//PostQuitMessage(0);//SetNextGameStep( GAME_EXIT );
+				if (nsCsFileTable::g_pItemMng->IsItem(pItemInfo->GetType()) == false)
+				{
+					char log[256];
+					sprintf_s(log, "[RECV_INIT][WARN] Invalid Tamer Chipset skipped. ChipsetIndex=%d ID=%d\n", i, pItemInfo->GetType());
+					OutputDebugStringA(log);
+
+					memset(pItemInfo, 0, sizeof(cItemInfo));
+				}
 			}
 		}
-	}
 
-	assert(nLimit::Digivice == 1);
-	cItemData digiviceItem;
-	pop(digiviceItem);
-	pTEquip->SetDigiviceItem(&digiviceItem);
+		OutputDebugStringA("[RECV_INIT] after Tamer Chipset\n");
+		OutputDebugStringA("[RECV_INIT] before Digivice\n");
 
-	for (int i = 0; i < nLimit::SkillSlot; ++i)
-		pop(pDigivice->GetTamerSkill(i), sizeof(cItemData));
+		assert(nLimit::Digivice == 1);
+		cItemData digiviceItem;
+		pop(digiviceItem);
+		pTEquip->SetDigiviceItem(&digiviceItem);
+
+		OutputDebugStringA("[RECV_INIT] after Digivice\n");
+		OutputDebugStringA("[RECV_INIT] before TamerSkill\n");
+
+		for (int i = 0; i < nLimit::SkillSlot; ++i)
+			pop(pDigivice->GetTamerSkill(i), sizeof(cItemData));
+
+		OutputDebugStringA("[RECV_INIT] after TamerSkill\n");
 
 #ifdef INVEN_WRITE_FILE
-	FILE* fp;
-	fp = fopen("인벤토리정보.txt", "wt");
-	for (int i = 0; i < nLimit::Inven; ++i)
-	{
-		pItemInfo = pInven->GetData(i);
-		pop(*pItemInfo);
+		FILE* fp;
+		fp = fopen("인벤토리정보.txt", "wt");
+		for (int i = 0; i < nLimit::Inven; ++i)
+		{
+			pItemInfo = pInven->GetData(i);
+			pop(*pItemInfo);
 
-		char msg[256];
-		_stprintf_s(msg, 256, _T("\nIndex = %d, ID = %d, count = %d"), i, pItemInfo->GetType(), pItemInfo->GetCount());
-		fwrite(msg, sizeof(char), _tcslen(msg), fp);
-	}
-	fclose(fp);
+			char msg[256];
+			_stprintf_s(msg, 256, _T("\nIndex = %d, ID = %d, count = %d"), i, pItemInfo->GetType(), pItemInfo->GetCount());
+			fwrite(msg, sizeof(char), _tcslen(msg), fp);
+		}
+		fclose(fp);
 #else
 
 #ifndef UI_INVENTORY_RENEWAL
-	for (int i = 0; i < nLimit::Inven; ++i)
-	{
-		pItemInfo = pInven->GetData(i);
-		pop(*pItemInfo);
+		OutputDebugStringA("[RECV_INIT] before Inventory\n");
 
-		if (pItemInfo->IsEnable())	// Verifica se é diferente de 0 (0 nao esta usando)
+		for (int i = 0; i < nLimit::Inven; ++i)
 		{
-			if (nsCsFileTable::g_pItemMng->IsItem(pItemInfo->GetType()) == false)
+			pItemInfo = pInven->GetData(i);
+			pop(*pItemInfo);
+
+			if (pItemInfo->IsEnable())
 			{
-				CsMessageBox(MB_OK, _ONLY_ENG("You have one item that does not exist on inventory.\nInvenIndex = %d, ID = %d \n"), i, pItemInfo->GetType());
-				//PostQuitMessage(0);//SetNextGameStep( GAME_EXIT );
+				if (nsCsFileTable::g_pItemMng->IsItem(pItemInfo->GetType()) == false)
+				{
+					char log[256];
+					sprintf_s(log, "[RECV_INIT][WARN] Invalid Inventory item skipped. InvenIndex=%d ID=%d\n", i, pItemInfo->GetType());
+					OutputDebugStringA(log);
+
+					memset(pItemInfo, 0, sizeof(cItemInfo));
+				}
 			}
 		}
-	}
+
+		OutputDebugStringA("[RECV_INIT] after Inventory\n");
 #endif
 
 #endif
 
 #ifndef UI_INVENTORY_RENEWAL
-	int nMaxWareHouse = nsCsFileTable::g_pBaseMng->GetLimit()->s_nMaxWareHouse;
+		OutputDebugStringA("[RECV_INIT] before Warehouse\n");
 
-	map<int, cItemInfo> mapNormalWareHouse;
+		int nMaxWareHouse = nsCsFileTable::g_pBaseMng->GetLimit()->s_nMaxWareHouse;
 
-	for (int i = 0; i < nMaxWareHouse; ++i)
-	{
-		//		pItemInfo = pWarehouse->GetData( i );
-		cItemInfo pwItemInfo;
-		pop(pwItemInfo);
+		map<int, cItemInfo> mapNormalWareHouse;
 
-		mapNormalWareHouse.insert(make_pair(i, pwItemInfo));
-
-		if (pwItemInfo.IsEnable())
+		for (int i = 0; i < nMaxWareHouse; ++i)
 		{
-			if (nsCsFileTable::g_pItemMng->IsItem(pwItemInfo.m_nType) == false)
+			cItemInfo pwItemInfo;
+			pop(pwItemInfo);
+
+			mapNormalWareHouse.insert(make_pair(i, pwItemInfo));
+
+			if (pwItemInfo.IsEnable())
 			{
-				CsMessageBox(MB_OK, _ONLY_KOR("창고에 존재하지 않는 아이템을 가지고 있습니다.\nWareHouseIndex = %d, ID = %d"), i, pItemInfo->GetType());
-				PostQuitMessage(0);//SetNextGameStep( GAME_EXIT );
+				if (nsCsFileTable::g_pItemMng->IsItem(pwItemInfo.m_nType) == false)
+				{
+					char log[256];
+					sprintf_s(log, "[RECV_INIT][WARN] Invalid Warehouse item skipped. WareHouseIndex=%d ID=%d\n", i, pwItemInfo.m_nType);
+					OutputDebugStringA(log);
+				}
 			}
 		}
-	}
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_SET_NORMAL, &mapNormalWareHouse);
 
-	#ifdef NEW_SHARESTASH
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_SET_NORMAL, &mapNormalWareHouse);
 
+#ifdef NEW_SHARESTASH
 		int nMaxShareStash = nsCsFileTable::g_pBaseMng->GetLimit()->s_nMaxShareStash;
 
 		map<int, cItemInfo> mapShareWareHouse;
 
 		for (int i = 0; i < nMaxShareStash; ++i)
 		{
-			//		pItemInfo = pWarehouse->GetShareData( i );
 			cItemInfo pwItemInfo;
 			pop(pwItemInfo);
+
 			mapShareWareHouse.insert(make_pair(i, pwItemInfo));
 
 			if (pwItemInfo.IsEnable())
 			{
 				if (nsCsFileTable::g_pItemMng->IsItem(pwItemInfo.m_nType) == false)
 				{
-					CsMessageBox(MB_OK, _ONLY_KOR("공유 창고에 존재하지 않는 아이템을 가지고 있습니다.\nShareStashIndex = %d, ID = %d"), i, pItemInfo->GetType());
-					PostQuitMessage(0);//SetNextGameStep( GAME_EXIT );
+					char log[256];
+					sprintf_s(log, "[RECV_INIT][WARN] Invalid ShareWarehouse item skipped. ShareStashIndex=%d ID=%d\n", i, pwItemInfo.m_nType);
+					OutputDebugStringA(log);
 				}
 			}
 		}
+
 		GAME_EVENT_ST.OnEvent(EVENT_CODE::WAREHOUSE_SET_SHARE, &mapShareWareHouse);
+#endif
 
-	#endif
+		OutputDebugStringA("[RECV_INIT] after Warehouse\n");
+#endif
 
-#endif //UI_INVENTORY_RENEWAL
+		OutputDebugStringA("[RECV_INIT] before QuestInfo\n");
 
-	// todo:: quest
-	pop(*g_pDataMng->GetQuest()->GetInfo());
-	DBG("Quests em progresso: %d\n", g_pDataMng->GetQuest()->GetInfo()->GetExecuteCount());
-	DBG("Quests completadas: %d\n", g_pDataMng->GetQuest()->GetInfo()->GetQuestCompletionInfo());
-	for (int i = 0; i < g_pDataMng->GetQuest()->GetInfo()->GetExecuteCount(); i++) {
-		DBG("Quest ativada com index: %d\n", g_pDataMng->GetQuest()->GetInfo()->GetExeInfo(i).m_nIDX);
-		for (int j = 0; j < 5; j++) {
-			DBG("Condicao %d da quest: ", g_pDataMng->GetQuest()->GetInfo()->GetExeInfo(i).m_nCondition[j]);
-		}
-	}
+		pop(*g_pDataMng->GetQuest()->GetInfo());
 
-	GAME_EVENT_ST.OnEvent( EVENT_CODE::RECV_QUEST_INFO_INIT );
+		DBG("Quests em progresso: %d\n", g_pDataMng->GetQuest()->GetInfo()->GetExecuteCount());
+		DBG("Quests completadas: %d\n", g_pDataMng->GetQuest()->GetInfo()->GetQuestCompletionInfo());
 
-	// --------------- Digimon hatching information ---------------
-	
-	GS2C_RECV_MAKE_DIGITAMA recv;
-	pop(recv.m_nEggType);
-	pop(recv.m_nEggLevel);
-	pop(recv.m_nEggTradeLimitTime);
-	
-	pop(recv.m_nBackupDisk);
-	pop(recv.m_nBackupdiskTradeLimitTime);
-
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::MAKETACTICS_DIGITAMA_DATA, &recv);
-	
-	// -----------------------------------------------------------------------------------
-
-	u2 nBuffCount = 0;
-	cData_PostLoad::sPostBuff pInfo;
-
-	pop(nBuffCount);
-
-	if (nBuffCount > 1000)
-	{
-		nBuffCount = 0;
-	}
-
-	if (nBuffCount != 0)
-	{
-		for (int i = 0; i < nBuffCount; i++)
+		for (int i = 0; i < g_pDataMng->GetQuest()->GetInfo()->GetExecuteCount(); i++)
 		{
-			pop(pInfo.s_nBuffCode);			// 버프 코드
-			pop(pInfo.s_nBuffClassLevel);	// 버프 클래스 레벨
-			pop(pInfo.s_nBuffEndTS);		// 버프 만료 시간	
-			pop(pInfo.s_dwSkillCode);		// 버프코드가 같은 것이 있어 구분을 위해 스킬코드 저장
-			g_pDataMng->GetPostLoad()->GetTBuffList()->push_back(pInfo);
+			DBG("Quest ativada com index: %d\n", g_pDataMng->GetQuest()->GetInfo()->GetExeInfo(i).m_nIDX);
+
+			for (int j = 0; j < 5; j++)
+			{
+				DBG("Condicao %d da quest: ", g_pDataMng->GetQuest()->GetInfo()->GetExeInfo(i).m_nCondition[j]);
+			}
 		}
-	}
+
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_QUEST_INFO_INIT);
+
+		OutputDebugStringA("[RECV_INIT] after QuestInfo\n");
+		OutputDebugStringA("[RECV_INIT] before Incubator\n");
+
+		GS2C_RECV_MAKE_DIGITAMA recv;
+		pop(recv.m_nEggType);
+		pop(recv.m_nEggLevel);
+		pop(recv.m_nEggTradeLimitTime);
+
+		pop(recv.m_nBackupDisk);
+		pop(recv.m_nBackupdiskTradeLimitTime);
+
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::MAKETACTICS_DIGITAMA_DATA, &recv);
+
+		OutputDebugStringA("[RECV_INIT] after Incubator\n");
+		OutputDebugStringA("[RECV_INIT] before Tamer Buffs\n");
+
+		u2 nBuffCount = 0;
+		cData_PostLoad::sPostBuff pInfo;
+
+		pop(nBuffCount);
+
+		{
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] Tamer BuffCount=%d\n", nBuffCount);
+			OutputDebugStringA(log);
+		}
+
+		if (nBuffCount > 1000)
+		{
+			OutputDebugStringA("[RECV_INIT][WARN] Tamer BuffCount > 1000, forcing 0\n");
+			nBuffCount = 0;
+		}
+
+		if (nBuffCount != 0)
+		{
+			for (int i = 0; i < nBuffCount; i++)
+			{
+				pop(pInfo.s_nBuffCode);
+				pop(pInfo.s_nBuffClassLevel);
+				pop(pInfo.s_nBuffEndTS);
+				pop(pInfo.s_dwSkillCode);
+				g_pDataMng->GetPostLoad()->GetTBuffList()->push_back(pInfo);
+			}
+		}
+
+		OutputDebugStringA("[RECV_INIT] after Tamer Buffs\n");
 
 #ifdef BATTLE_MATCH
-	u4 nPoint = 0;
-	u4 nWin = 0;
-	u4 nLose = 0;
-	u4 nDraw = 0;
-	u4 nTotal = 0;
+		u4 nPoint = 0;
+		u4 nWin = 0;
+		u4 nLose = 0;
+		u4 nDraw = 0;
+		u4 nTotal = 0;
 
-	pop(nPoint);
-	pop(nWin);
-	pop(nLose);
-	pop(nDraw);
-	pop(nTotal);
+		pop(nPoint);
+		pop(nWin);
+		pop(nLose);
+		pop(nDraw);
+		pop(nTotal);
 #endif
 
-	n1 nTacticsOpenSlot = 2;
-	pop(nTacticsOpenSlot);
-	g_pDataMng->GetTactics()->_SetOpenSlot(nTacticsOpenSlot - 1);		//	-1 to remove partner
+		OutputDebugStringA("[RECV_INIT] before TacticsOpenSlot\n");
 
-	if (nsCsGBTerrain::g_nSvrLibType == nLIB::SVR_BATTLE)
-	{
-		u4 nIDX;		// 경기 IDX
-		pop(pDigimonData->s_nBattleTeam);
-		pop(nIDX);
-		//g_pDataMng->GetBattle()->SetBattleRoomIDX( nIDX );
-	}
+		n1 nTacticsOpenSlot = 2;
+		pop(nTacticsOpenSlot);
+		g_pDataMng->GetTactics()->_SetOpenSlot(nTacticsOpenSlot - 1);
 
-//	uint MonHandle = 0;
-
-//	pop(MonHandle);
-//	pDigimonData->s_Type.m_nUID = MonHandle;
-
-//	int MonModel = 0;
-	pop(pDigimonData->s_Type);
-
-	//pDigimonData->s_Type.m_nType = MonModel;
-	//pDigimonData->s_Type.m_nClass = nClass::Digimon;
-
-	pop(szName);
-	_tcscpy_s(pDigimonData->s_szName, Language::pLength::name + 1, LanConvertT(szName));
-
-	u1 nPartnerHatchLevel;
-	pop(nPartnerHatchLevel);
-	pDigimonData->s_HatchLevel = nPartnerHatchLevel;
-
-	u2 nScale;
-	pop(nScale);
-	pDigimonData->s_fScale = nScale * 0.0001f;
-
-	pop(pDigimonData->s_nExp);
-
-#ifdef COMPAT_487
-	u8 ExpPt2 = 0;
-	pop(ExpPt2);
-#endif
-
-#ifdef SDM_DIGIMON_TRANSCENDENCE_CONTENTS_20190507
-	pop(pDigimonData->s_nTranscendenceExp);
-#endif
-
-	pDigimonData->s_nExp = pDigimonData->s_nExp / 100;
-	pop(pDigimonData->s_nLevel);
-
-	DBG("Level: %d\n", pDigimonData->s_nLevel);
-	//	pop( pDigimonData->s_Attribute[] );
-	pop(pDigimonData->s_Attribute, sizeof(pDigimonData->s_Attribute));
-
-	pop(pDigimonData->s_dwBaseDigimonID);
-	
-	DBG("nBaseEvoUnitIDX : %d\n", pDigimonData->s_dwBaseDigimonID);
-
-	// 서버로부터 현재 디지몬 진화 정보를 얻는다.
-	pop(pDigimonData->s_nMaxEvoUnit);
-	pop(&pDigimonData->s_EvoUnit[1], sizeof(cEvoUnit) * pDigimonData->s_nMaxEvoUnit);
-
-	// 디지몬 확장 능력치 수신
-	// 수신 순서 1: AP(AT) 공격 2: DE 방어 3: CR 크리티컬 확률 4: AS 공격 스피드 5: EV 회피 6: HT 공격 성공률 1
-	pop(pDigimonData->s_nEnchantLevel);
-
-	DBG("Enchant Level -> %d\n", pDigimonData->s_nEnchantLevel);
-
-	pop(pDigimonData->s_ExtendAttribute, sizeof(pDigimonData->s_ExtendAttribute));
-	pop(pDigimonData->s_ExtendAttributeLV, sizeof(pDigimonData->s_ExtendAttributeLV) );
-
-	for (int i = 0; i < sizeof(pDigimonData->s_ExtendAttribute) / 2; i++) {
-		DBG("Extended attribute val %d \n", pDigimonData->s_ExtendAttribute[i]);
-		DBG("Extended attribut LV val %d \n", pDigimonData->s_ExtendAttributeLV[i]);
-	}
-
-	pop(nBuffCount);
-
-	if (nBuffCount > 1000)
-	{
-		assert_csm(false, L"버프 개수가 1000개넘음");
-		nBuffCount = 0;
-	}
-	
-	if (nBuffCount != 0)
-	{
-		for (int i = 0; i < nBuffCount; i++)
+		if (nsCsGBTerrain::g_nSvrLibType == nLIB::SVR_BATTLE)
 		{
-			pop(pInfo.s_nBuffCode);			// 버프 코드
-
-#ifndef COMPAT_487
-			pop(pInfo.s_nBuffClassLevel);	// 버프 클래스 레벨
-#endif
-			pop(pInfo.s_nBuffEndTS);		// 버프 만료 시간	
-			pop(pInfo.s_dwSkillCode);
-					// 버프코드가 같은 것이 있어 구분을 위해 스킬코드 저장
-			g_pDataMng->GetPostLoad()->GetDBuffList()->push_back(pInfo);
+			u4 nIDX;
+			pop(pDigimonData->s_nBattleTeam);
+			pop(nIDX);
 		}
-	}
 
-#ifdef BATTLE_MATCH
-	u1 nBattleGrade;
-	u4 nBattlePoint;
-	u4 nBattleScore[eBattleMatchScore::eEnd] = { 0, };
+		OutputDebugStringA("[RECV_INIT] before Partner Digimon\n");
 
-	pop(nBattleGrade);
-	pop(nBattlePoint);
-	pop(nBattleScore[eBattleMatchScore::MatchWin]);
-	pop(nBattleScore[eBattleMatchScore::MatchLose]);
-	pop(nBattleScore[eBattleMatchScore::MatchDraw]);
-	pop(nBattleScore[eBattleMatchScore::MatchTotal]);
-#endif
+		pop(pDigimonData->s_Type);
 
-	// 기본 속성 경험치
-	for (int i = 0; i < NewAttribute::MaxDigitalType; i++)
-	{
-		n2 AttributeExp;
-		pop(AttributeExp);
-		pDigimonData->s_AttributeExp[i] = AttributeExp;
-	}
-
-	// 디지몬 자연속성 경험치
-	for (int i = 0; i < NewAttribute::MaxNatualType; i++)
-	{
-		n2 NatureExp;
-		pop(NatureExp);
-		pDigimonData->s_NatureExp[i] = NatureExp;
-	}
-
-	// 파트너 디지몬의 캐쉬 스킬 정보를 받자
-	// Data 초기화
-	for (int i = 0; i < nLimit::EvoUnit; ++i)
-	{
-		pDigimonData->s_DCashSkill[i].s_nDigimonEvoStatus = 0;
-		for (int j = 0; j < nLimit::MAX_ItemSkillDigimon; ++j)
-		{
-			pDigimonData->s_DCashSkill[i].s_nDigimonCashSkillCode[j] = 0;
-			pDigimonData->s_DCashSkill[i].s_nSkillCoolTime[j] = 0;
-		}
-	}
-
-	u1 nDSkillCnt;
-
-	pop(pDigimonData->s_nUID);
-	pop(nDSkillCnt);
-
-	assert_cs(nDSkillCnt <= (nLimit::EvoUnit * nLimit::MAX_ItemSkillDigimon));
-
-	for (int i = 0; i < nDSkillCnt; ++i)
-	{
-		pop(pDigimonData->s_DCashSkill[i].s_nDigimonEvoStatus);
-		pop(pDigimonData->s_DCashSkill[i].s_nDigimonCashSkillCode, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
-		pop(pDigimonData->s_DCashSkill[i].s_nSkillCoolTime, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
-	}
-
-	u1 slot;
-	pop(slot);
-
-	cData_Tactics* pTacticsData = g_pDataMng->GetTactics();
-
-	while (slot != 99)
-	{
-		cData_PostLoad::sDATA* pTactics = pTacticsData->GetTactics(slot - 1);
-//#ifdef COMPAT_487
-//	
-//		uint MonHandle = 0;
-//		pop(MonHandle);
-//#endif
-//		pop(MonModel);
-//		
-//		pTactics->s_Type.m_nType = MonModel;
-//		pTactics->s_Type.m_nClass = nClass::Digimon;
-		pop(pTactics->s_Type);
 		pop(szName);
-		_tcscpy_s(pTactics->s_szName, Language::pLength::name + 1, LanConvertT(szName));
+		_tcscpy_s(pDigimonData->s_szName, Language::pLength::name + 1, LanConvertT(szName));
 
-		u1 nTacticsHatchLevel;
-		pop(nTacticsHatchLevel);
-		pTactics->s_HatchLevel = nTacticsHatchLevel;
-#ifndef _GIVE
-		TCHAR msg[222];
-		swprintf_s(msg, _T("%s : %d"), pTactics->s_szName, nTacticsHatchLevel);
-		ContentsStream kStream;
-		wstring str = msg;
-		bool bParcing = true;	bool bCheckSameString = false;
-		kStream << str << bParcing << bCheckSameString;
-		GAME_EVENT_STPTR->OnEvent(EVENT_CODE::EVENT_SYSTEM_PROCESS, &kStream);
-#endif //_GIVE
+		u1 nPartnerHatchLevel;
+		pop(nPartnerHatchLevel);
+		pDigimonData->s_HatchLevel = nPartnerHatchLevel;
 
+		u2 nScale;
 		pop(nScale);
-		pTactics->s_fScale = nScale * 0.0001f;
-		pop(pTactics->s_nExp);
+		pDigimonData->s_fScale = nScale * 0.0001f;
+
+		pop(pDigimonData->s_nExp);
 
 #ifdef COMPAT_487
-		ExpPt2 = 0;
+		u8 ExpPt2 = 0;
 		pop(ExpPt2);
 #endif
 
 #ifdef SDM_DIGIMON_TRANSCENDENCE_CONTENTS_20190507
-		pop(pTactics->s_nTranscendenceExp);
+		pop(pDigimonData->s_nTranscendenceExp);
 #endif
 
-		pTactics->s_nExp = pTactics->s_nExp / 100;
-		pop(pTactics->s_nLevel);
-		pop(pTactics->s_Attribute, sizeof(pTactics->s_Attribute));
+		pDigimonData->s_nExp = pDigimonData->s_nExp / 100;
+		pop(pDigimonData->s_nLevel);
 
-		pop(pTactics->s_dwBaseDigimonID);
-		DBG("nBaseEvoUnitIDX : %d\n", pTactics->s_dwBaseDigimonID);
+		pop(pDigimonData->s_Attribute, sizeof(pDigimonData->s_Attribute));
 
-		pop(pTactics->s_nMaxEvoUnit);
+		pop(pDigimonData->s_dwBaseDigimonID);
 
-		pop(&pTactics->s_EvoUnit[1], sizeof(cEvoUnit) * pTactics->s_nMaxEvoUnit);
+		pop(pDigimonData->s_nMaxEvoUnit);
 
-		// 디지몬 확장 능력치 수신
-		// 수신 순서 1: AP(AT) 공격 2: DE 방어 3: CR 크리티컬 확률 4: AS 공격 스피드 5: EV 회피 6: HT 공격 성공률 1
-		pop(pTactics->s_nEnchantLevel);
-		pop(pTactics->s_ExtendAttribute, sizeof(pTactics->s_ExtendAttribute));
-		pop(pTactics->s_ExtendAttributeLV, sizeof(pTactics->s_ExtendAttributeLV));
+		{
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] Partner EvoUnitCount=%d\n", pDigimonData->s_nMaxEvoUnit);
+			OutputDebugStringA(log);
+		}
+
+		{
+			const int nRecvEvoUnitCount = static_cast<int>(pDigimonData->s_nMaxEvoUnit);
+			const int nMaxSafeEvoUnitCount = nLimit::EvoUnit - 1;
+			const int nSafeEvoUnitCount =
+				(nRecvEvoUnitCount > nMaxSafeEvoUnitCount) ? nMaxSafeEvoUnitCount : nRecvEvoUnitCount;
+
+			if (nSafeEvoUnitCount > 0)
+			{
+				pop(&pDigimonData->s_EvoUnit[1], sizeof(cEvoUnit) * nSafeEvoUnitCount);
+			}
+
+			for (int i = nSafeEvoUnitCount; i < nRecvEvoUnitCount; ++i)
+			{
+				cEvoUnit kDummyEvoUnit;
+				memset(&kDummyEvoUnit, 0, sizeof(cEvoUnit));
+
+				pop(&kDummyEvoUnit, sizeof(cEvoUnit));
+			}
+
+			pDigimonData->s_nMaxEvoUnit = nSafeEvoUnitCount;
+		}
+
+		pop(pDigimonData->s_nEnchantLevel);
+
+		pop(pDigimonData->s_ExtendAttribute, sizeof(pDigimonData->s_ExtendAttribute));
+		pop(pDigimonData->s_ExtendAttributeLV, sizeof(pDigimonData->s_ExtendAttributeLV));
+
+		OutputDebugStringA("[RECV_INIT] before Partner Buffs\n");
+
+		pop(nBuffCount);
+
+		{
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] Partner BuffCount=%d\n", nBuffCount);
+			OutputDebugStringA(log);
+		}
+
+		if (nBuffCount > 1000)
+		{
+			OutputDebugStringA("[RECV_INIT][WARN] Partner BuffCount > 1000, forcing 0\n");
+			nBuffCount = 0;
+		}
+
+		if (nBuffCount != 0)
+		{
+			for (int i = 0; i < nBuffCount; i++)
+			{
+				pop(pInfo.s_nBuffCode);
+
+#ifndef COMPAT_487
+				pop(pInfo.s_nBuffClassLevel);
+#endif
+				pop(pInfo.s_nBuffEndTS);
+				pop(pInfo.s_dwSkillCode);
+
+				g_pDataMng->GetPostLoad()->GetDBuffList()->push_back(pInfo);
+			}
+		}
+
+		OutputDebugStringA("[RECV_INIT] after Partner Buffs\n");
 
 #ifdef BATTLE_MATCH
 		u1 nBattleGrade;
@@ -598,479 +543,752 @@ void cCliGame::RecvInitGameData(void)
 		pop(nBattleScore[eBattleMatchScore::MatchDraw]);
 		pop(nBattleScore[eBattleMatchScore::MatchTotal]);
 #endif
-		// 기본 속성 경험치
+
+		OutputDebugStringA("[RECV_INIT] before Partner AttributeExp\n");
+
 		for (int i = 0; i < NewAttribute::MaxDigitalType; i++)
 		{
 			n2 AttributeExp;
 			pop(AttributeExp);
-			pTactics->s_AttributeExp[i] = AttributeExp;
+			pDigimonData->s_AttributeExp[i] = AttributeExp;
 		}
 
-		// 가지고 있는 용병들 자연속성 경험치
 		for (int i = 0; i < NewAttribute::MaxNatualType; i++)
 		{
 			n2 NatureExp;
 			pop(NatureExp);
-			pTactics->s_NatureExp[i] = NatureExp;
+			pDigimonData->s_NatureExp[i] = NatureExp;
 		}
 
-		// 용병 디지몬의 캐쉬 스킬 정보를 받자
-		// Data 초기화
+		OutputDebugStringA("[RECV_INIT] after Partner AttributeExp\n");
+		OutputDebugStringA("[RECV_INIT] before Partner CashSkill\n");
+
 		for (int i = 0; i < nLimit::EvoUnit; ++i)
 		{
-			pTactics->s_DCashSkill[i].s_nDigimonEvoStatus = 0;
+			pDigimonData->s_DCashSkill[i].s_nDigimonEvoStatus = 0;
+
 			for (int j = 0; j < nLimit::MAX_ItemSkillDigimon; ++j)
 			{
-				pTactics->s_DCashSkill[i].s_nDigimonCashSkillCode[j] = 0;
-				pTactics->s_DCashSkill[i].s_nSkillCoolTime[j] = 0;
+				pDigimonData->s_DCashSkill[i].s_nDigimonCashSkillCode[j] = 0;
+				pDigimonData->s_DCashSkill[i].s_nSkillCoolTime[j] = 0;
 			}
 		}
 
 		u1 nDSkillCnt;
 
-		pop(pTactics->s_nUID);
+		pop(pDigimonData->s_nUID);
 		pop(nDSkillCnt);
 
-		assert_cs(nDSkillCnt <= (nLimit::EvoUnit * nLimit::MAX_ItemSkillDigimon));
-
-		for (int i = 0; i < nDSkillCnt; ++i)
 		{
-			pop(pTactics->s_DCashSkill[i].s_nDigimonEvoStatus);
-			pop(pTactics->s_DCashSkill[i].s_nDigimonCashSkillCode, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
-			pop(pTactics->s_DCashSkill[i].s_nSkillCoolTime, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] Partner DSkillCnt=%d\n", nDSkillCnt);
+			OutputDebugStringA(log);
 		}
 
+		{
+			const int nRecvDSkillCount = static_cast<int>(nDSkillCnt);
+			const int nSafeDSkillCount =
+				(nRecvDSkillCount > nLimit::EvoUnit) ? nLimit::EvoUnit : nRecvDSkillCount;
+
+			for (int i = 0; i < nSafeDSkillCount; ++i)
+			{
+				pop(pDigimonData->s_DCashSkill[i].s_nDigimonEvoStatus);
+				pop(pDigimonData->s_DCashSkill[i].s_nDigimonCashSkillCode, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+				pop(pDigimonData->s_DCashSkill[i].s_nSkillCoolTime, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+			}
+
+			for (int i = nSafeDSkillCount; i < nRecvDSkillCount; ++i)
+			{
+				u1 nDummyEvoStatus = 0;
+				u4 nDummyCashSkillCode[nLimit::MAX_ItemSkillDigimon] = { 0, };
+				u4 nDummySkillCoolTime[nLimit::MAX_ItemSkillDigimon] = { 0, };
+
+				pop(nDummyEvoStatus);
+				pop(nDummyCashSkillCode, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+				pop(nDummySkillCoolTime, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+			}
+		}
+
+		OutputDebugStringA("[RECV_INIT] after Partner CashSkill\n");
+		OutputDebugStringA("[RECV_INIT] before Active Digimons\n");
+
+		u1 slot;
 		pop(slot);
-	}
+
+		{
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] First active digimon slot marker=%d\n", slot);
+			OutputDebugStringA(log);
+		}
+
+		cData_Tactics* pTacticsData = g_pDataMng->GetTactics();
+
+		int nActiveDigimonSafeCounter = 0;
+
+		while (slot != 99)
+		{
+			if (++nActiveDigimonSafeCounter > 20)
+			{
+				OutputDebugStringA("[RECV_INIT][ERROR] Active digimon loop exceeded 20 entries. Breaking to avoid bad_alloc.\n");
+				break;
+			}
+
+			if (slot == 0)
+			{
+				OutputDebugStringA("[RECV_INIT][WARN] Active digimon slot 0 received. This may be invalid. Continuing with slot-1 protection.\n");
+			}
+
+			cData_PostLoad::sDATA* pTactics = pTacticsData->GetTactics(slot - 1);
+
+			pop(pTactics->s_Type);
+
+			pop(szName);
+			_tcscpy_s(pTactics->s_szName, Language::pLength::name + 1, LanConvertT(szName));
+
+			u1 nTacticsHatchLevel;
+			pop(nTacticsHatchLevel);
+			pTactics->s_HatchLevel = nTacticsHatchLevel;
+
+#ifndef _GIVE
+			TCHAR msg[222];
+			swprintf_s(msg, _T("%s : %d"), pTactics->s_szName, nTacticsHatchLevel);
+			ContentsStream kStream;
+			wstring str = msg;
+			bool bParcing = true;
+			bool bCheckSameString = false;
+			kStream << str << bParcing << bCheckSameString;
+			GAME_EVENT_STPTR->OnEvent(EVENT_CODE::EVENT_SYSTEM_PROCESS, &kStream);
+#endif
+
+			pop(nScale);
+			pTactics->s_fScale = nScale * 0.0001f;
+
+			pop(pTactics->s_nExp);
+
+#ifdef COMPAT_487
+			ExpPt2 = 0;
+			pop(ExpPt2);
+#endif
+
+#ifdef SDM_DIGIMON_TRANSCENDENCE_CONTENTS_20190507
+			pop(pTactics->s_nTranscendenceExp);
+#endif
+
+			pTactics->s_nExp = pTactics->s_nExp / 100;
+
+			pop(pTactics->s_nLevel);
+			pop(pTactics->s_Attribute, sizeof(pTactics->s_Attribute));
+
+			pop(pTactics->s_dwBaseDigimonID);
+
+			pop(pTactics->s_nMaxEvoUnit);
+
+			{
+				const int nRecvEvoUnitCount = static_cast<int>(pTactics->s_nMaxEvoUnit);
+				const int nMaxSafeEvoUnitCount = nLimit::EvoUnit - 1;
+				const int nSafeEvoUnitCount =
+					(nRecvEvoUnitCount > nMaxSafeEvoUnitCount) ? nMaxSafeEvoUnitCount : nRecvEvoUnitCount;
+
+				if (nSafeEvoUnitCount > 0)
+				{
+					pop(&pTactics->s_EvoUnit[1], sizeof(cEvoUnit) * nSafeEvoUnitCount);
+				}
+
+				for (int i = nSafeEvoUnitCount; i < nRecvEvoUnitCount; ++i)
+				{
+					cEvoUnit kDummyEvoUnit;
+					memset(&kDummyEvoUnit, 0, sizeof(cEvoUnit));
+
+					pop(&kDummyEvoUnit, sizeof(cEvoUnit));
+				}
+
+				pTactics->s_nMaxEvoUnit = nSafeEvoUnitCount;
+			}
+
+			pop(pTactics->s_nEnchantLevel);
+			pop(pTactics->s_ExtendAttribute, sizeof(pTactics->s_ExtendAttribute));
+			pop(pTactics->s_ExtendAttributeLV, sizeof(pTactics->s_ExtendAttributeLV));
+
+#ifdef BATTLE_MATCH
+			u1 nBattleGrade;
+			u4 nBattlePoint;
+			u4 nBattleScore[eBattleMatchScore::eEnd] = { 0, };
+
+			pop(nBattleGrade);
+			pop(nBattlePoint);
+			pop(nBattleScore[eBattleMatchScore::MatchWin]);
+			pop(nBattleScore[eBattleMatchScore::MatchLose]);
+			pop(nBattleScore[eBattleMatchScore::MatchDraw]);
+			pop(nBattleScore[eBattleMatchScore::MatchTotal]);
+#endif
+
+			for (int i = 0; i < NewAttribute::MaxDigitalType; i++)
+			{
+				n2 AttributeExp;
+				pop(AttributeExp);
+				pTactics->s_AttributeExp[i] = AttributeExp;
+			}
+
+			for (int i = 0; i < NewAttribute::MaxNatualType; i++)
+			{
+				n2 NatureExp;
+				pop(NatureExp);
+				pTactics->s_NatureExp[i] = NatureExp;
+			}
+
+			for (int i = 0; i < nLimit::EvoUnit; ++i)
+			{
+				pTactics->s_DCashSkill[i].s_nDigimonEvoStatus = 0;
+
+				for (int j = 0; j < nLimit::MAX_ItemSkillDigimon; ++j)
+				{
+					pTactics->s_DCashSkill[i].s_nDigimonCashSkillCode[j] = 0;
+					pTactics->s_DCashSkill[i].s_nSkillCoolTime[j] = 0;
+				}
+			}
+
+			u1 nTacticsDSkillCnt;
+
+			pop(pTactics->s_nUID);
+			pop(nTacticsDSkillCnt);
+
+			{
+				const int nRecvDSkillCount = static_cast<int>(nTacticsDSkillCnt);
+				const int nSafeDSkillCount =
+					(nRecvDSkillCount > nLimit::EvoUnit) ? nLimit::EvoUnit : nRecvDSkillCount;
+
+				for (int i = 0; i < nSafeDSkillCount; ++i)
+				{
+					pop(pTactics->s_DCashSkill[i].s_nDigimonEvoStatus);
+					pop(pTactics->s_DCashSkill[i].s_nDigimonCashSkillCode, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+					pop(pTactics->s_DCashSkill[i].s_nSkillCoolTime, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+				}
+
+				for (int i = nSafeDSkillCount; i < nRecvDSkillCount; ++i)
+				{
+					u1 nDummyEvoStatus = 0;
+					u4 nDummyCashSkillCode[nLimit::MAX_ItemSkillDigimon] = { 0, };
+					u4 nDummySkillCoolTime[nLimit::MAX_ItemSkillDigimon] = { 0, };
+
+					pop(nDummyEvoStatus);
+					pop(nDummyCashSkillCode, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+					pop(nDummySkillCoolTime, sizeof(u4) * nLimit::MAX_ItemSkillDigimon);
+				}
+			}
+
+			pop(slot);
+
+			{
+				char log[256];
+				sprintf_s(log, "[RECV_INIT] Next active digimon slot marker=%d\n", slot);
+				OutputDebugStringA(log);
+			}
+		}
+
+		OutputDebugStringA("[RECV_INIT] after Active Digimons\n");
 
 #ifdef SDM_DIGIMON_PARTSSYSTEM_20200115
-	u4 nPartsEffectType = 0;			// 디지몬 파츠 이펙트 타입
-	pop(nPartsEffectType);
-	pPostLoad->AddPartsInfo(pDigimonData->s_Type.m_nType, nPartsEffectType);
+		u4 nPartsEffectType = 0;
+		pop(nPartsEffectType);
+		pPostLoad->AddPartsInfo(pDigimonData->s_Type.m_nType, nPartsEffectType);
 #endif
 
 #ifdef CROSSWARS_SYSTEM
-	cData_CrossTactics* pCrossTactics = g_pDataMng->GetCrossTatics();
+		OutputDebugStringA("[RECV_INIT] before CrossWars block\n");
 
-	u1 slot2;
-	pop(slot2);
+		cData_CrossTactics* pCrossTactics = g_pDataMng->GetCrossTatics();
 
-	while (slot2 != 99) // 크로스 용병 데이타
-	{
-		cData_CrossTactics::sCross* pTactics = pCrossTactics->GetTactics(slot2);
+		u1 slot2;
+		pop(slot2);
 
-		pop(pTactics->s_nEnable);
-		pop(pTactics->s_Type);
+		int nCrossSafeCounter = 0;
 
-		pop(szName);
-		_tcscpy_s(pTactics->s_szName, Language::pLength::name + 1, LanConvertT(szName));
+		while (slot2 != 99)
+		{
+			if (++nCrossSafeCounter > 20)
+			{
+				OutputDebugStringA("[RECV_INIT][ERROR] CrossWars loop exceeded 20 entries. Breaking.\n");
+				break;
+			}
 
-		u1 nTacticsHatchLevel;
-		pop(nTacticsHatchLevel);
-		pTactics->s_HatchLevel = nTacticsHatchLevel;
+			cData_CrossTactics::sCross* pTactics = pCrossTactics->GetTactics(slot2);
+
+			pop(pTactics->s_nEnable);
+			pop(pTactics->s_Type);
+
+			pop(szName);
+			_tcscpy_s(pTactics->s_szName, Language::pLength::name + 1, LanConvertT(szName));
+
+			u1 nTacticsHatchLevel;
+			pop(nTacticsHatchLevel);
+			pTactics->s_HatchLevel = nTacticsHatchLevel;
+
 #ifndef _GIVE
-		TCHAR msg[222];
-		swprintf_s(msg, _T("%s : %d"), pTactics->s_szName, nTacticsHatchLevel);
-		ContentsStream kStream;
-		wstring str = msg;
-		bool bParcing = true;	bool bCheckSameString = false;
-		kStream << str << bParcing << bCheckSameString;
-		GAME_EVENT_STPTR->OnEvent(EVENT_CODE::EVENT_SYSTEM_PROCESS, &kStream);
-#endif //_GIVE
-
-		pop(nScale);
-		pTactics->s_fScale = nScale * 0.0001f;
-		pop(pTactics->s_nExp);
-#ifdef SDM_DIGIMON_TRANSCENDENCE_CONTENTS_20190507
-		pop(pTactics->s_nTranscendenceExp);
+			TCHAR msg[222];
+			swprintf_s(msg, _T("%s : %d"), pTactics->s_szName, nTacticsHatchLevel);
+			ContentsStream kStream;
+			wstring str = msg;
+			bool bParcing = true;
+			bool bCheckSameString = false;
+			kStream << str << bParcing << bCheckSameString;
+			GAME_EVENT_STPTR->OnEvent(EVENT_CODE::EVENT_SYSTEM_PROCESS, &kStream);
 #endif
-		pTactics->s_nExp = pTactics->s_nExp / 100;
-		pop(pTactics->s_nLevel);
-		pop(pTactics->s_Attribute, sizeof(pTactics->s_Attribute));
 
-		pop(pTactics->s_dwBaseDigimonID);
-		DBG("nBaseEvoUnitIDX : %d", pTactics->s_dwBaseDigimonID);
+			pop(nScale);
+			pTactics->s_fScale = nScale * 0.0001f;
 
-		pop(pTactics->s_nMaxEvoUnit);
-		pop(&pTactics->s_EvoUnit[1], sizeof(cEvoUnit) * pTactics->s_nMaxEvoUnit);
+			pop(pTactics->s_nExp);
 
-		// 디지몬 확장 능력치 수신
-		// 수신 순서 1: AP(AT) 공격 2: DE 방어 3: CR 크리티컬 확률 4: AS 공격 스피드 5: EV 회피 6: HT 공격 성공률 1
-		pop(pTactics->s_nEnchantLevel);
-		pop(pTactics->s_ExtendAttribute, sizeof(pTactics->s_ExtendAttribute));
-		pop(pTactics->s_ExtendAttributeLV, sizeof(pTactics->s_ExtendAttributeLV));
+#ifdef SDM_DIGIMON_TRANSCENDENCE_CONTENTS_20190507
+			pop(pTactics->s_nTranscendenceExp);
+#endif
+
+			pTactics->s_nExp = pTactics->s_nExp / 100;
+
+			pop(pTactics->s_nLevel);
+			pop(pTactics->s_Attribute, sizeof(pTactics->s_Attribute));
+
+			pop(pTactics->s_dwBaseDigimonID);
+
+			pop(pTactics->s_nMaxEvoUnit);
+			pop(&pTactics->s_EvoUnit[1], sizeof(cEvoUnit) * pTactics->s_nMaxEvoUnit);
+
+			pop(pTactics->s_nEnchantLevel);
+			pop(pTactics->s_ExtendAttribute, sizeof(pTactics->s_ExtendAttribute));
+			pop(pTactics->s_ExtendAttributeLV, sizeof(pTactics->s_ExtendAttributeLV));
 
 #ifdef BATTLE_MATCH
-		u1 nBattleGrade;
-		u4 nBattlePoint;
-		u4 nBattleScore[eBattleMatchScore::eEnd] = { 0, };
+			u1 nBattleGrade;
+			u4 nBattlePoint;
+			u4 nBattleScore[eBattleMatchScore::eEnd] = { 0, };
 
-		pop(nBattleGrade);
-		pop(nBattlePoint);
-		pop(nBattleScore[eBattleMatchScore::MatchWin]);
-		pop(nBattleScore[eBattleMatchScore::MatchLose]);
-		pop(nBattleScore[eBattleMatchScore::MatchDraw]);
-		pop(nBattleScore[eBattleMatchScore::MatchTotal]);
+			pop(nBattleGrade);
+			pop(nBattlePoint);
+			pop(nBattleScore[eBattleMatchScore::MatchWin]);
+			pop(nBattleScore[eBattleMatchScore::MatchLose]);
+			pop(nBattleScore[eBattleMatchScore::MatchDraw]);
+			pop(nBattleScore[eBattleMatchScore::MatchTotal]);
 #endif
 
-		// 기본 속성 경험치
-		for (int i = 0; i < NewAttribute::MaxDigitalType; i++)
-		{
-			n2 AttributeExp;
-			pop(AttributeExp);
-			pTactics->s_AttributeExp[i] = AttributeExp;
+			for (int i = 0; i < NewAttribute::MaxDigitalType; i++)
+			{
+				n2 AttributeExp;
+				pop(AttributeExp);
+				pTactics->s_AttributeExp[i] = AttributeExp;
+			}
+
+			for (int i = 0; i < NewAttribute::MaxNatualType; i++)
+			{
+				n2 NatureExp;
+				pop(NatureExp);
+				pTactics->s_NatureExp[i] = NatureExp;
+			}
+
+			pop(slot2);
 		}
 
-		// 가지고 있는 용병들 자연속성 경험치
-		for (int i = 0; i < NewAttribute::MaxNatualType; i++)
-		{
-			n2 NatureExp;
-			pop(NatureExp);
-			pTactics->s_NatureExp[i] = NatureExp;
-		}
-
-		pop(slot2);
-	}
+		OutputDebugStringA("[RECV_INIT] after CrossWars block\n");
 #endif
 
 #ifdef COMPAT_487
-	int IntBeforeChannel = 0;
-	pop(IntBeforeChannel);
-	//pPostLoad->AddPartsInfo(pDigimonData->s_Type.m_nType, IntBeforeChannel);
+		int IntBeforeChannel = 0;
+		pop(IntBeforeChannel);
 #endif
 
-	GS2C_RECV_CURRENT_CHANNEL CurrentChannel;
-	pop(CurrentChannel.channel_idx);
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_CURRENT_CHANNELINDEX, &CurrentChannel.channel_idx);
+		OutputDebugStringA("[RECV_INIT] before CurrentChannel\n");
 
-	// -----------------------------------------------------------------------------------
+		GS2C_RECV_CURRENT_CHANNEL CurrentChannel;
+		pop(CurrentChannel.channel_idx);
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_CURRENT_CHANNELINDEX, &CurrentChannel.channel_idx);
 
-	g_pDataMng->GetMapRegion()->ToBackup();
-	pop(*g_pDataMng->GetMapRegion()->GetMapRegion());
-	sizeof(*g_pDataMng->GetMapRegion()->GetMapRegion());
+		OutputDebugStringA("[RECV_INIT] after CurrentChannel\n");
+		OutputDebugStringA("[RECV_INIT] before MapRegion\n");
 
-	if (g_pDataMng->GetMapRegion()->IsFirstLoad() == true)
-	{
 		g_pDataMng->GetMapRegion()->ToBackup();
-		g_pDataMng->GetMapRegion()->FirstLoadComp();
-	}
+		pop(*g_pDataMng->GetMapRegion()->GetMapRegion());
 
-	// -----------------------------------------------------------------------------------
-
-	GS2C_RECV_EXTEND_ARCHIVE kRecvArchiveData;
-	int  iOpenedSlotCnt;
-	pop(iOpenedSlotCnt);
-
-	kRecvArchiveData.SetExtendArchiveCnt(iOpenedSlotCnt);
-	//cData_TacticsHouse* pDataTH = g_pDataMng->GetTacticsHouse();
-	//pDataTH->SetUseSlotCount( nDigimonCareSlotSize );
-	//DBG( "%s (%d,%d)", nBase::w2m( pTamerData->s_szName), pPostLoad->GetPos().m_nX, pPostLoad->GetPos().m_nY );
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_ARCHIVE_OPENCNT, &kRecvArchiveData);
-
-	// -----------------------------------------------------------------------------------
-	
-	//////////////////////////////////////////////////////////////////////////
-	// 파티 정보 받는 곳
-	//////////////////////////////////////////////////////////////////////////
-
-	GS2C_RECV_PARTY_INFO recvPartyInfo;
-	pop(recvPartyInfo.m_nPartyIDX);
-
-	u4 nPartyIDX = recvPartyInfo.m_nPartyIDX;
-
-	u4 nCropType;
-	pop(nCropType);
-	recvPartyInfo.m_lootingInfo.m_nCropType = nCropType;
-	pop(recvPartyInfo.m_lootingInfo.m_nRareRate);
-	pop(recvPartyInfo.m_lootingInfo.m_nDispRareGrade);
-
-	u1 nMasterSlotNo;
-	pop(nMasterSlotNo);
-	recvPartyInfo.m_nMasterSlotNo = nMasterSlotNo;
-
-#ifdef COMPAT_487
-	u2 shortBeforeSlot = 0;
-	pop(shortBeforeSlot);
-#endif
-
-	u1 nSlotNo;
-	pop(nSlotNo);
-	while (nSlotNo < 99) //88 ^
-	{
-		TPartyMember addPartyMember;
-		addPartyMember.m_nSlotNo = nSlotNo;
-		pop(addPartyMember.m_TamerInfo.m_nUID);		// party tamer's uid,	0이면 다른 맵에 존재
-		pop(addPartyMember.m_DigimonInfo.m_nUID);	// party digimon's uid,	0이면 다른 맵에 존재
-
-		pop(addPartyMember.m_TamerInfo.m_nType);	//
-		pop(addPartyMember.m_TamerInfo.m_nLevel);
-		pop(addPartyMember.m_TamerInfo.m_Name);
-
-		if (0 == addPartyMember.m_TamerInfo.m_Name.compare(pTamerData->s_szName))
-			recvPartyInfo.m_nMySlotNo = nSlotNo;
-
-		pop(addPartyMember.m_DigimonInfo.m_nType);
-		pop(addPartyMember.m_DigimonInfo.m_nLevel);
-		pop(addPartyMember.m_DigimonInfo.m_Name);
-
-		pop(addPartyMember.m_nMapNo);
-		pop(addPartyMember.m_nChannelNo);
-
-		recvPartyInfo.m_listMemberInfo.push_back(addPartyMember);
-		pop(nSlotNo);
-	}
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_PARTY_INFO_INIT, &recvPartyInfo);
-
-	//////////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////
-
-	u2 nAchievement;
-	pop(nAchievement);	// 테이머 업적 처리
-
-	GS2C_RECV_DISPTITLE recvTitle;
-	recvTitle.dispTitle = nAchievement;
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_DISPTITLE, &recvTitle);
-
-	u4 nCoolDownEndTimeTS[nLimit::CoolDown];	// 0~31 ==> 1~32 번으로 사용, nCoolDownEndTick[0] ==> DM_Item_List-Time_Group 시간그룹(Time_Group) 1번을 의미
-	pop(nCoolDownEndTimeTS);
-
-	for (int i = 0; i < nLimit::CoolDown; ++i)
-	{
-		if (nsCsFileTable::g_pItemMng->IsCoolTime(i + 1) == false)
-			continue;
-
-		CsCoolTimeSeq* pSeq = nsCsFileTable::g_pItemMng->GetCoolTime(i + 1)->GetSeq();
-		if (nCoolDownEndTimeTS[i] < _TIME_TS + 1)
+		if (g_pDataMng->GetMapRegion()->IsFirstLoad() == true)
 		{
-			pSeq->Reset();
-			continue;
+			g_pDataMng->GetMapRegion()->ToBackup();
+			g_pDataMng->GetMapRegion()->FirstLoadComp();
 		}
 
-		double fOffset = pSeq->GetEndTime() - (nCoolDownEndTimeTS[i] - _TIME_TS) - 1;
-		if (fOffset < 0)
-			fOffset = 0;
-		pSeq->Start(fOffset);
-	}
+		OutputDebugStringA("[RECV_INIT] after MapRegion\n");
+		OutputDebugStringA("[RECV_INIT] before Archive\n");
 
-	u4 nOption;
-	pop(nOption);	// nTamer::Option 참조
-	pPostLoad->SetSyncOption(nOption);
+		GS2C_RECV_EXTEND_ARCHIVE kRecvArchiveData;
+		int iOpenedSlotCnt;
+		pop(iOpenedSlotCnt);
 
-	n4 nWorkDayHistory;
-	pop(nWorkDayHistory);
-	u4 nTodayAttendanceTimeTS;
-	pop(nTodayAttendanceTimeTS);
+		kRecvArchiveData.SetExtendArchiveCnt(iOpenedSlotCnt);
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_ARCHIVE_OPENCNT, &kRecvArchiveData);
+
+		OutputDebugStringA("[RECV_INIT] after Archive\n");
+		OutputDebugStringA("[RECV_INIT] before PartyInfo\n");
+
+		GS2C_RECV_PARTY_INFO recvPartyInfo;
+		pop(recvPartyInfo.m_nPartyIDX);
+
+		u4 nPartyIDX = recvPartyInfo.m_nPartyIDX;
+
+		u4 nCropType;
+		pop(nCropType);
+		recvPartyInfo.m_lootingInfo.m_nCropType = nCropType;
+		pop(recvPartyInfo.m_lootingInfo.m_nRareRate);
+		pop(recvPartyInfo.m_lootingInfo.m_nDispRareGrade);
+
+		u1 nMasterSlotNo;
+		pop(nMasterSlotNo);
+		recvPartyInfo.m_nMasterSlotNo = nMasterSlotNo;
+
+#ifdef COMPAT_487
+		u2 shortBeforeSlot = 0;
+		pop(shortBeforeSlot);
+#endif
+
+		u1 nSlotNo;
+		pop(nSlotNo);
+
+		int nPartySafeCounter = 0;
+
+		while (nSlotNo < 99)
+		{
+			if (++nPartySafeCounter > 8)
+			{
+				OutputDebugStringA("[RECV_INIT][ERROR] Party loop exceeded 8 entries. Breaking.\n");
+				break;
+			}
+
+			TPartyMember addPartyMember;
+			addPartyMember.m_nSlotNo = nSlotNo;
+			pop(addPartyMember.m_TamerInfo.m_nUID);
+			pop(addPartyMember.m_DigimonInfo.m_nUID);
+
+			pop(addPartyMember.m_TamerInfo.m_nType);
+			pop(addPartyMember.m_TamerInfo.m_nLevel);
+			pop(addPartyMember.m_TamerInfo.m_Name);
+
+			if (0 == addPartyMember.m_TamerInfo.m_Name.compare(pTamerData->s_szName))
+				recvPartyInfo.m_nMySlotNo = nSlotNo;
+
+			pop(addPartyMember.m_DigimonInfo.m_nType);
+			pop(addPartyMember.m_DigimonInfo.m_nLevel);
+			pop(addPartyMember.m_DigimonInfo.m_Name);
+
+			pop(addPartyMember.m_nMapNo);
+			pop(addPartyMember.m_nChannelNo);
+
+			recvPartyInfo.m_listMemberInfo.push_back(addPartyMember);
+			pop(nSlotNo);
+		}
+
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_PARTY_INFO_INIT, &recvPartyInfo);
+
+		OutputDebugStringA("[RECV_INIT] after PartyInfo\n");
+		OutputDebugStringA("[RECV_INIT] before Achievement/Cooldown\n");
+
+		u2 nAchievement;
+		pop(nAchievement);
+
+		GS2C_RECV_DISPTITLE recvTitle;
+		recvTitle.dispTitle = nAchievement;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_DISPTITLE, &recvTitle);
+
+		u4 nCoolDownEndTimeTS[nLimit::CoolDown];
+		pop(nCoolDownEndTimeTS);
+
+		for (int i = 0; i < nLimit::CoolDown; ++i)
+		{
+			if (nsCsFileTable::g_pItemMng->IsCoolTime(i + 1) == false)
+				continue;
+
+			CsCoolTimeSeq* pSeq = nsCsFileTable::g_pItemMng->GetCoolTime(i + 1)->GetSeq();
+
+			if (nCoolDownEndTimeTS[i] < _TIME_TS + 1)
+			{
+				pSeq->Reset();
+				continue;
+			}
+
+			double fOffset = pSeq->GetEndTime() - (nCoolDownEndTimeTS[i] - _TIME_TS) - 1;
+
+			if (fOffset < 0)
+				fOffset = 0;
+
+			pSeq->Start(fOffset);
+		}
+
+		u4 nOption;
+		pop(nOption);
+		pPostLoad->SetSyncOption(nOption);
+
+		n4 nWorkDayHistory;
+		pop(nWorkDayHistory);
+
+		u4 nTodayAttendanceTimeTS;
+		pop(nTodayAttendanceTimeTS);
 
 #ifndef REWARD_SYSTEM_UI
-	g_pDataMng->GetAttendance()->SetWorkDayHistory(nWorkDayHistory);
-	g_pDataMng->GetAttendance()->SetTodayAttendanceTimeTS(nTodayAttendanceTimeTS);
+		g_pDataMng->GetAttendance()->SetWorkDayHistory(nWorkDayHistory);
+		g_pDataMng->GetAttendance()->SetTodayAttendanceTimeTS(nTodayAttendanceTimeTS);
 #endif
 
-	RecvBossGenInfo();
+		OutputDebugStringA("[RECV_INIT] before BossGenInfo\n");
 
-	bool bIsPCbang = false;
-	uint nCostumeNo = 0;
-	pop(bIsPCbang);	// PC방 여부
+		RecvBossGenInfo();
 
-	g_pDataMng->GetPCbang()->SetPcBang(bIsPCbang);
-	g_pDataMng->GetPCbang()->SetCostume(0);
+		OutputDebugStringA("[RECV_INIT] after BossGenInfo\n");
 
-	if (bIsPCbang == true)
-	{
-		pop(nCostumeNo);	// 코스튬을 입고 있을 경우 해당 아이템 번호
-		g_pDataMng->GetPCbang()->SetCostume(nCostumeNo);
-	}
+		bool bIsPCbang = false;
+		uint nCostumeNo = 0;
+		pop(bIsPCbang);
 
-	if (nPartyIDX > 0)
-	{
-		uint nPCBangExpBuffRate = 0;
-		uint nPCBangMemberCount = 0;
-		pop(nPCBangMemberCount);	// pc방 멤버 인원수
-		pop(nPCBangExpBuffRate);	// PC방 인원에 따른 파티 경험치 비율 
-		//g_pDataMng->GetPCbang()->SetPartyExp( ( nPCBangMemberCount * 1000 ) + nPCBangExpBuffRate );
-	}
+		g_pDataMng->GetPCbang()->SetPcBang(bIsPCbang);
+		g_pDataMng->GetPCbang()->SetCostume(0);
 
-	uint nShopData[5] = { 0, };
+		if (bIsPCbang == true)
+		{
+			pop(nCostumeNo);
+			g_pDataMng->GetPCbang()->SetCostume(nCostumeNo);
+		}
 
-	pop(nShopData[0]);		// 맵 ID	
-	if (nShopData[0] != 0)		// 맵 ID가 0이 아니면
-	{
-		pop(nShopData[1]);	// 채널
-		pop(nShopData[2]);	// X좌표
-		pop(nShopData[3]);	// Y좌표
-		pop(nShopData[4]);	// 사용된 아이템 타입
+		if (nPartyIDX > 0)
+		{
+			uint nPCBangExpBuffRate = 0;
+			uint nPCBangMemberCount = 0;
+			pop(nPCBangMemberCount);
+			pop(nPCBangExpBuffRate);
+		}
 
-		GS2C_RECV_SHOP_DATA pRecv;
-		pRecv.iCharMapID = nShopData[0];
-		pRecv.iCharChannel = nShopData[1];
-		pRecv.iCharModelID = nShopData[4];
-		pRecv.iCharPos = NiPoint2((float)nShopData[2], (float)nShopData[3]);
-		GAME_EVENT_ST.OnEvent(EVENT_CODE::UNION_SET_SHOPDATA, &pRecv);
-	}
-	else
-	{
-		GAME_EVENT_ST.OnEvent(EVENT_CODE::UNION_RELEASE_DATA, NULL);
-	}
+		OutputDebugStringA("[RECV_INIT] before ShopData\n");
 
-	u4 nClientOption = 0;
-	pop(nClientOption);
-	pPostLoad->SetServerOption(nClientOption);
+		uint nShopData[5] = { 0, };
 
-	u4 nRank = 0;
-	pop(nRank);
+		pop(nShopData[0]);
 
-	GS2C_RECV_RANKACHIEVE recvRank;
-	recvRank.rankAchieve = nRank;
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_RANKACHIEVE, &recvRank);
+		if (nShopData[0] != 0)
+		{
+			pop(nShopData[1]);
+			pop(nShopData[2]);
+			pop(nShopData[3]);
+			pop(nShopData[4]);
+
+			GS2C_RECV_SHOP_DATA pRecv;
+			pRecv.iCharMapID = nShopData[0];
+			pRecv.iCharChannel = nShopData[1];
+			pRecv.iCharModelID = nShopData[4];
+			pRecv.iCharPos = NiPoint2((float)nShopData[2], (float)nShopData[3]);
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::UNION_SET_SHOPDATA, &pRecv);
+		}
+		else
+		{
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::UNION_RELEASE_DATA, NULL);
+		}
+
+		OutputDebugStringA("[RECV_INIT] after ShopData\n");
+
+		u4 nClientOption = 0;
+		pop(nClientOption);
+		pPostLoad->SetServerOption(nClientOption);
+
+		u4 nRank = 0;
+		pop(nRank);
+
+		GS2C_RECV_RANKACHIEVE recvRank;
+		recvRank.rankAchieve = nRank;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_RANKACHIEVE, &recvRank);
 
 #ifdef PLAY_PANELTY
-	// 플레이 타임 변경
-	// 패널티 타입 nPlayTime::NO_PANELTY = 0 (패널티 없음) nPlayTime::LEVEL1_PANELTY = 1 (경험치 30 감소) nPlayTime::LEVEL2_PANELTY = 2 (경험치x)
-	u2 nPaneltyType = 0;		// 패널티 타입
-	u4 CashTime = 0;			// 유료 플레이 시간
-	u4 NormalTime = 0;			// 일반 플레이 시간
-	u4 nBasePenaltyTime = 0;	// 기본 패널티 적용 시간
-	u4 nBaseFullTime = 0;
+		u2 nPaneltyType = 0;
+		u4 CashTime = 0;
+		u4 NormalTime = 0;
+		u4 nBasePenaltyTime = 0;
+		u4 nBaseFullTime = 0;
 
-	pop(nBaseFullTime);
-	pop(nBasePenaltyTime);
-	pop(nPaneltyType);
-	pop(CashTime);
-	pop(NormalTime); // 금일 플레이 가능한 남은 시간(단위-초)
+		pop(nBaseFullTime);
+		pop(nBasePenaltyTime);
+		pop(nPaneltyType);
+		pop(CashTime);
+		pop(NormalTime);
 
-	g_pDataMng->PlayTime_Set_PaneltyType(nPaneltyType);
-	g_pDataMng->PlayTime_Set_BaseFullTime(nBaseFullTime);
-	g_pDataMng->PlayTime_Set_BasePaneltyTime(nBasePenaltyTime);
-	g_pDataMng->PlayTime_Set_CashTime(CashTime);
-	g_pDataMng->PlayTime_Set_NormalTime(NormalTime);
-#endif	
-
-#ifdef BATTLE_MATCH
-	u4 nBattleCoin = 0;
-	u4 nBattleTamerScore[eBattleMatchScore::eEnd] = { 0, };
-	pop(nBattleCoin);
-	pop(nBattleTamerScore[eBattleMatchScore::MatchWin]);
-	pop(nBattleTamerScore[eBattleMatchScore::MatchLose]);
-	pop(nBattleTamerScore[eBattleMatchScore::MatchDraw]);
-	pop(nBattleTamerScore[eBattleMatchScore::MatchTotal]);
-#endif	
-#ifdef MINIGAME
-	u1	nIsgame;		//미니게임 했냐 true면 했고 false면 아직 안한거
-	u2		nSuccessCnt;	//성공 횟수
-	pop(nIsgame);
-	bool nResult = false;
-	if (nIsgame == 1)
-		nResult = true;
-	else
-		nResult = false;
-	pop(nSuccessCnt);
-
-	GS2C_RECV_MAKE_DIGITAMA_MINIGAME_INIT kRecv;
-	kRecv.nResult = nResult;
-	kRecv.nSuccessCnt = nSuccessCnt;
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_MAKETACTICS_MINIGAME_INIT, &kRecv);
+		g_pDataMng->PlayTime_Set_PaneltyType(nPaneltyType);
+		g_pDataMng->PlayTime_Set_BaseFullTime(nBaseFullTime);
+		g_pDataMng->PlayTime_Set_BasePaneltyTime(nBasePenaltyTime);
+		g_pDataMng->PlayTime_Set_CashTime(CashTime);
+		g_pDataMng->PlayTime_Set_NormalTime(NormalTime);
 #endif
 
-	u1 nSkill_Count;		// 테이머 스킬 개수(기본 스킬 제외)
+#ifdef BATTLE_MATCH
+		u4 nBattleCoin = 0;
+		u4 nBattleTamerScore[eBattleMatchScore::eEnd] = { 0, };
+		pop(nBattleCoin);
+		pop(nBattleTamerScore[eBattleMatchScore::MatchWin]);
+		pop(nBattleTamerScore[eBattleMatchScore::MatchLose]);
+		pop(nBattleTamerScore[eBattleMatchScore::MatchDraw]);
+		pop(nBattleTamerScore[eBattleMatchScore::MatchTotal]);
+#endif
 
-	pop(nSkill_Count);
-	assert_cs(nSkill_Count <= 5);		// nSkill_count 는 5를 넘을 수 없다.
+#ifdef MINIGAME
+		u1 nIsgame;
+		u2 nSuccessCnt;
+		pop(nIsgame);
 
-	for (int i = 0; i < nSkill_Count; ++i)
-	{
-		pop(pTamerData->s_nTamerSkillCode[i]);		// 사용된 테이머 스킬 코드
-		pop(pTamerData->s_nTamerSkillCoolTime[i]);	// 사용된 테이머 스킬의 남은 쿨타임
-	}
+		bool nResult = false;
 
-	u1 nCashCount;					// 테이머 캐쉬 스킬 개수
-	pop(nCashCount);
-	assert_cs(nCashCount < 3);	// 현재 캐쉬 스킬 개수는 2를 넘을 수 없다
+		if (nIsgame == 1)
+			nResult = true;
+		else
+			nResult = false;
 
-	for (int i = 0; i < nCashCount; ++i)
-	{
-		pop(pTamerData->s_nTamerCashSkill_Index[i]);		// 캐쉬 스킬 인덱스 (Tamer_Skill.xls 의 인덱스 값)
-		pop(pTamerData->s_nTamerCashSkill_LifeTime[i]);	// 기간 만료까지 시간
-		pop(pTamerData->s_nTamerCashSkill_CoolTime[i]);	// 쿨 타임
-	}
+		pop(nSuccessCnt);
+
+		GS2C_RECV_MAKE_DIGITAMA_MINIGAME_INIT kRecv;
+		kRecv.nResult = nResult;
+		kRecv.nSuccessCnt = nSuccessCnt;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_MAKETACTICS_MINIGAME_INIT, &kRecv);
+#endif
+
+		OutputDebugStringA("[RECV_INIT] before Tamer Active Skills\n");
+
+		u1 nSkill_Count;
+		pop(nSkill_Count);
+
+		{
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] Tamer NormalSkillCount=%d\n", nSkill_Count);
+			OutputDebugStringA(log);
+		}
+
+		if (nSkill_Count > 5)
+		{
+			OutputDebugStringA("[RECV_INIT][WARN] Tamer NormalSkillCount > 5. Forcing 5.\n");
+			nSkill_Count = 5;
+		}
+
+		for (int i = 0; i < nSkill_Count; ++i)
+		{
+			pop(pTamerData->s_nTamerSkillCode[i]);
+			pop(pTamerData->s_nTamerSkillCoolTime[i]);
+		}
+
+		u1 nCashCount;
+		pop(nCashCount);
+
+		{
+			char log[256];
+			sprintf_s(log, "[RECV_INIT] Tamer CashSkillCount=%d\n", nCashCount);
+			OutputDebugStringA(log);
+		}
+
+		if (nCashCount > 2)
+		{
+			OutputDebugStringA("[RECV_INIT][WARN] Tamer CashSkillCount > 2. Forcing 2.\n");
+			nCashCount = 2;
+		}
+
+		for (int i = 0; i < nCashCount; ++i)
+		{
+			pop(pTamerData->s_nTamerCashSkill_Index[i]);
+			pop(pTamerData->s_nTamerCashSkill_LifeTime[i]);
+			pop(pTamerData->s_nTamerCashSkill_CoolTime[i]);
+		}
+
+		OutputDebugStringA("[RECV_INIT] after Tamer Active Skills\n");
 
 #ifdef CHAT_BAN
-	bool bIsChatBan = true;	//	현재 채팅 금지 중인지 확인
+		bool bIsChatBan = true;
 
-	pop(bIsChatBan);
-	if (bIsChatBan)//채팅금지 중이라면
-	{
-		u4 nBanSecond = 0;			//	채팅 금지 남은 시간
-		pop(nBanSecond);
+		pop(bIsChatBan);
 
-		std::wstring banMsg = UISTRING_TEXT("CHAT_LIMIT_MESSAGE");
-		std::wstring wsHour;
-		DmCS::StringFn::From(wsHour, nBanSecond / 3600);
-		DmCS::StringFn::Replace(banMsg, L"#Hour#", wsHour);
+		if (bIsChatBan)
+		{
+			u4 nBanSecond = 0;
+			pop(nBanSecond);
 
-		std::wstring wsMin;
-		DmCS::StringFn::From(wsMin, (nBanSecond / 60) % 60);
-		DmCS::StringFn::Replace(banMsg, L"#Min#", wsMin);
+			std::wstring banMsg = UISTRING_TEXT("CHAT_LIMIT_MESSAGE");
+			std::wstring wsHour;
+			DmCS::StringFn::From(wsHour, nBanSecond / 3600);
+			DmCS::StringFn::Replace(banMsg, L"#Hour#", wsHour);
 
-		std::wstring wsSec;
-		DmCS::StringFn::From(wsSec, nBanSecond % 60);
-		DmCS::StringFn::Replace(banMsg, L"#Sec#", wsSec);
+			std::wstring wsMin;
+			DmCS::StringFn::From(wsMin, (nBanSecond / 60) % 60);
+			DmCS::StringFn::Replace(banMsg, L"#Min#", wsMin);
 
-		CsMessageBox(MB_OK, banMsg.c_str());
+			std::wstring wsSec;
+			DmCS::StringFn::From(wsSec, nBanSecond % 60);
+			DmCS::StringFn::Replace(banMsg, L"#Sec#", wsSec);
 
-		// 채팅 금지 남은시간 저장		
-		ST_CHAT_PROTOCOL	CProtocol;
-		CProtocol.m_Type = NS_CHAT::SET_BANTIME;
-		CProtocol.m_value = nBanSecond;
-		GAME_EVENT_STPTR->OnEvent(EVENT_CODE::EVENT_CHAT_PROCESS, &CProtocol);
-	}
+			CsMessageBox(MB_OK, banMsg.c_str());
+
+			ST_CHAT_PROTOCOL CProtocol;
+			CProtocol.m_Type = NS_CHAT::SET_BANTIME;
+			CProtocol.m_value = nBanSecond;
+			GAME_EVENT_STPTR->OnEvent(EVENT_CODE::EVENT_CHAT_PROCESS, &CProtocol);
+		}
 #endif
 
 #ifdef MASTERS_MATCHING
-	u1 nMyTeam = 0;//0 = 팀없음, 1 = A팀, 2 = B
-	pop(nMyTeam);
-	g_pGameIF->m_sMyInfo.s_eMyTeam = (eTEAM)nMyTeam;//본인의 마스터즈매칭 팀
+		u1 nMyTeam = 0;
+		pop(nMyTeam);
+		g_pGameIF->m_sMyInfo.s_eMyTeam = (eTEAM)nMyTeam;
 #endif
 
 #ifndef UI_INVENTORY_RENEWAL
-	// 인벤토리 갯수에 맞게 오픈
-	g_pDataMng->GetInven()->LoadApply();
+		g_pDataMng->GetInven()->LoadApply();
 #endif
-	if (true == g_pGameIF->IsActiveWindow(cBaseWindow::WT_CARDINVENTORY))
-		g_pGameIF->CloseDynamicIF(cBaseWindow::WT_CARDINVENTORY);
 
-	// Modified so that seal master can be used when moving map / channel regardless of whether seal master is locked or not
-	//if (g_pGameIF->IsActiveWindow(cBaseWindow::WT_MAIN_BAR))
-		//g_pGameIF->GetMainBar()->SetButtonEnable(cMainBar::MAIN_BT_SEAL, true);
+		if (true == g_pGameIF->IsActiveWindow(cBaseWindow::WT_CARDINVENTORY))
+			g_pGameIF->CloseDynamicIF(cBaseWindow::WT_CARDINVENTORY);
 
-	u4 nDeck = 0;
-	pop(nDeck);
+		OutputDebugStringA("[RECV_INIT] before DeckBuff\n");
 
-	GS2C_RECV_ENCYCLOPEDIA_USEDECK ency_recv;
+		u4 nDeck = 0;
+		pop(nDeck);
 
-	if (nDeck != 0)
-	{
-		ency_recv.iDeckIdx = nDeck;
-		ency_recv.bUse = true;
-	}
-	else
-	{
-		ency_recv.iDeckIdx = 0;
-		ency_recv.bUse = false;
-	}
+		GS2C_RECV_ENCYCLOPEDIA_USEDECK ency_recv;
 
-	GAME_EVENT_STPTR->OnEvent(EVENT_CODE::ENCYCLOPEDIA_USE_DECK, &ency_recv);
+		if (nDeck != 0)
+		{
+			ency_recv.iDeckIdx = nDeck;
+			ency_recv.bUse = true;
+		}
+		else
+		{
+			ency_recv.iDeckIdx = 0;
+			ency_recv.bUse = false;
+		}
+
+		GAME_EVENT_STPTR->OnEvent(EVENT_CODE::ENCYCLOPEDIA_USE_DECK, &ency_recv);
 
 #ifdef MEGAPHONE_BAN
-	u1 nMegaphone = 0;
-	pop(nMegaphone);	// 1이면 차단 가능. 0이면 차단 불가
+		u1 nMegaphone = 0;
+		pop(nMegaphone);
 
-	pTamerData->s_bMegaPhoneBan = (nMegaphone == 0) ? false : true;
+		pTamerData->s_bMegaPhoneBan = (nMegaphone == 0) ? false : true;
 #endif
 
-	// 현재는 던전일 경우에만 오브젝트 ID 받음		// 20150914 GameServer일때도 오브젝트 ID 받게 변경
-	RecvActorObjectFactor_Init();
+		OutputDebugStringA("[RECV_INIT] before RecvActorObjectFactor_Init\n");
 
-	GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_PLAYER_DATA_LOAD_COMPLETE, NULL);
+		RecvActorObjectFactor_Init();
+
+		OutputDebugStringA("[RECV_INIT] after RecvActorObjectFactor_Init\n");
+
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_PLAYER_DATA_LOAD_COMPLETE, NULL);
+
+		OutputDebugStringA("[RECV_INIT] RecvInitGameData end OK\n");
+	}
+	catch (const std::bad_alloc&)
+	{
+		OutputDebugStringA("[RECV_INIT][ERROR] std::bad_alloc inside RecvInitGameData\n");
+		CsMessageBox(MB_OK, _ONLY_ENG("RecvInitGameData failed: std::bad_alloc. Packet may be misaligned."));
+		return;
+	}
+	catch (...)
+	{
+		OutputDebugStringA("[RECV_INIT][ERROR] unknown exception inside RecvInitGameData\n");
+		CsMessageBox(MB_OK, _ONLY_ENG("RecvInitGameData failed: unknown exception. Packet may be misaligned."));
+		return;
+	}
 }
  
 void cCliGame::RecvSetMoney(void)

@@ -30,21 +30,42 @@ namespace Flow
 	//---------------------------------------------------------------------------
 	BOOL CServerSelectFlow::Initialize()
 	{
+		OutputDebugStringA("[FLOW] ServerSelectFlow::Initialize begin\n");
+
 		if (g_pSoundMgr)
 			g_pSoundMgr->PlayMusic("Game_opening.mp3", 0.0f);
+
+		if (!CONTENTSSYSTEM_PTR)
+		{
+			OutputDebugStringA("[FLOW] ServerSelectFlow::Initialize failed: CONTENTSSYSTEM_PTR NULL\n");
+			return FALSE;
+		}
 
 		m_pServerSelect = NiNew CSelectServer;
 
 		if (!m_pServerSelect)
+		{
+			OutputDebugStringA("[FLOW] ServerSelectFlow::Initialize failed: m_pServerSelect NULL\n");
 			return FALSE;
+		}
+
+		OutputDebugStringA("[FLOW] ServerSelectFlow::Construct begin\n");
 
 		if (!m_pServerSelect->Construct())
 		{
+			OutputDebugStringA("[FLOW] ServerSelectFlow::Construct failed\n");
 			SAFE_NIDELETE(m_pServerSelect);
 			return FALSE;
 		}
 
-		m_pServerSelect->Init();
+		OutputDebugStringA("[FLOW] ServerSelectFlow::Init begin\n");
+
+		if (!m_pServerSelect->Init())
+		{
+			OutputDebugStringA("[FLOW] ServerSelectFlow::Init failed\n");
+			SAFE_NIDELETE(m_pServerSelect);
+			return FALSE;
+		}
 
 		m_pFadeUI = NiNew CFade;
 
@@ -54,18 +75,30 @@ namespace Flow
 		if (g_pEngine)
 			g_pEngine->SetGaussianBlurVal(0.9f, 0.25f, 0.3f);
 
+		OutputDebugStringA("[FLOW] ServerSelectFlow::Initialize ok\n");
+
 		return TRUE;
 	}
 	//---------------------------------------------------------------------------
 	void CServerSelectFlow::OnEnter(void)
 	{
+		OutputDebugStringA("[FLOW] ServerSelectFlow::OnEnter begin\n");
+
+		if (CONTENTSSYSTEM_PTR)
+		{
+			OutputDebugStringA("[FLOW] ServerSelectFlow::InitializeContents SERVER_SELECT\n");
+			CONTENTSSYSTEM_PTR->InitializeContents(eContentsType::E_CT_SERVER_SELECT);
+		}
+
 		CFlow::OnEnter();
 
 		if (CONTENTSSYSTEM_PTR)
 		{
-			CONTENTSSYSTEM_PTR->InitializeContents(eContentsType::E_CT_SERVER_SELECT);
+			OutputDebugStringA("[FLOW] ServerSelectFlow::EnterContents SERVER_SELECT\n");
 			CONTENTSSYSTEM_PTR->EnterContents(eContentsType::E_CT_SERVER_SELECT);
 		}
+
+		OutputDebugStringA("[FLOW] ServerSelectFlow::OnEnter end\n");
 	}
 	//---------------------------------------------------------------------------
 	void CServerSelectFlow::OnExit(int p_iNextFlowID)

@@ -33,6 +33,26 @@ namespace
 		}
 	}
 
+	static bool IsValidCreateName_2_16(std::wstring const& name)
+	{
+		if (name.length() < 2 || name.length() > 16)
+			return false;
+
+		for (size_t i = 0; i < name.length(); ++i)
+		{
+			wchar_t c = name[i];
+
+			const bool isNumber = (c >= L'0' && c <= L'9');
+			const bool isUpper = (c >= L'A' && c <= L'Z');
+			const bool isLower = (c >= L'a' && c <= L'z');
+
+			if (!isNumber && !isUpper && !isLower)
+				return false;
+		}
+
+		return true;
+	}
+
 	void CCContentLogPos(const char* pszTag, const NiPoint3& kPos)
 	{
 		char szBuffer[256] = { 0, };
@@ -632,25 +652,20 @@ bool CharacterCreateContents::SendCheckTamerName(std::wstring const& pCheckName)
 		return false;
 	}
 
+	if (!IsValidCreateName_2_16(pCheckName))
+	{
+		cPrintMsg::PrintMsg(cPrintMsg::CHARCREATE_NAME_LEN_ERROR);
+		return false;
+	}
+
 	if (!nsCsFileTable::g_pCuidMng->CheckID(pCheckName.c_str()))
 	{
 		cPrintMsg::PrintMsg(10029);
 		return false;
 	}
 
-	switch (Language::CheckTamerName(std::wstring(pCheckName)))
-	{
-	case Language::STRING_EMPTY:
-	case Language::STRING_SIZE_MIN:
-	case Language::STRING_SIZE_MAX:		cPrintMsg::PrintMsg(cPrintMsg::CHARCREATE_NAME_LEN_ERROR); return false;
-	case Language::STRING_UNKNOWN_TYPE:	cPrintMsg::PrintMsg(10029); return false;
-	case Language::SUCCEEDED:
-		break;
-	default:
-		return false;
-	}
-
 	bool bSuccess = net::gate->SendCheckDoubleName(pCheckName.c_str());
+
 	assert_cs(bSuccess == true);
 
 	if (bSuccess)
@@ -670,26 +685,22 @@ bool CharacterCreateContents::SendCreate(std::wstring const& pCheckName)
 		return false;
 	}
 
+	if (!IsValidCreateName_2_16(pCheckName))
+	{
+		cPrintMsg::PrintMsg(cPrintMsg::CHARCREATE_NAME_LEN_ERROR);
+		return false;
+	}
+
 	if (!nsCsFileTable::g_pCuidMng->CheckID(pCheckName.c_str()))
 	{
 		cPrintMsg::PrintMsg(10029);
 		return false;
 	}
 
-	switch (Language::CheckTamerName(std::wstring(pCheckName)))
-	{
-	case Language::STRING_EMPTY:
-	case Language::STRING_SIZE_MIN:
-	case Language::STRING_SIZE_MAX:		cPrintMsg::PrintMsg(cPrintMsg::CHARCREATE_NAME_LEN_ERROR); return false;
-	case Language::STRING_UNKNOWN_TYPE:	cPrintMsg::PrintMsg(10029); return false;
-	case Language::SUCCEEDED:
-		break;
-	default:
-		return false;
-	}
-
 	int nEmptySlot = 0;
+
 	GAME_EVENT_ST.OnEvent(EVENT_CODE::GET_SELETECT_LIST_EMPTY_SLOT_NUMBER, &nEmptySlot);
+
 	if (nEmptySlot == -1)
 	{
 		cPrintMsg::PrintMsg(cPrintMsg::CHARSELECT_MAX_CHAR_COUNT);
@@ -699,9 +710,12 @@ bool CharacterCreateContents::SendCreate(std::wstring const& pCheckName)
 	wcscpy(&m_szDigimonName[0], pCheckName.c_str());
 
 	nNet::CreateData data;
-	data.m_nSlotNo = nEmptySlot;// 생성할 슬롯 번호
+
+	data.m_nSlotNo = nEmptySlot;
+
 	strcpy_s(data.m_szTamerName, Language::pLength::name, (char*)LanConvert(m_szTamerName));
 	strcpy_s(data.m_szDigimonName, Language::pLength::name, (char*)LanConvert(m_szDigimonName));
+
 	data.m_nTamerType = m_nSelectedTamerTID;
 	data.m_nDigimonType = m_nSelectedDigimonTID;
 
@@ -709,6 +723,7 @@ bool CharacterCreateContents::SendCreate(std::wstring const& pCheckName)
 		return false;
 
 	cPrintMsg::PrintMsg(10019);
+
 	return true;
 }
 
