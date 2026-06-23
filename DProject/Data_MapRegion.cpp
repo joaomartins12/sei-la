@@ -31,92 +31,153 @@ void cData_MapRegion::InitNetOff()
 		m_MapRegion.m_nOpenRegion[ i ] = 0;
 }
 
-void cData_MapRegion::InRegion( int nRegionIndex )
+void cData_MapRegion::InRegion(int nRegionIndex)
 {
-	DWORD nMapRegionID = nsCsMapTable::g_pMapListMng->GetList( nsCsGBTerrain::g_pCurRoot->GetInfo()->s_dwMapID )->GetInfo()->s_nMapRegionID;
-	// 원래 오픈되어 있지 않은 맵이라면
-	if( m_MapRegionBackup.IsOpened( nMapRegionID ) == false )
-	{
-		//==========================================================================================================
-		// 업적
-		//==========================================================================================================
-		GS2C_RECV_CHECKTYPE recv;
-		recv.nType = AchieveContents::CA_MAP_1;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-
-		recv.nType = AchieveContents::CA_MAP_2;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-
-		recv.nType = AchieveContents::CA_MAP_3;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-
-		recv.nType = AchieveContents::CA_MAP_4;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-
-		recv.nType = AchieveContents::CA_MAP_5;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-
-		recv.nType = AchieveContents::CA_MAP_6;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-
-		recv.nType = AchieveContents::CA_MAP_ALL;
-		GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
-	}
-
-	if( nRegionIndex >= nLimit::Region )
+	if (nRegionIndex >= nLimit::Region)
 		return;
 
-	switch( nRegionIndex )
+	if (!nsCsGBTerrain::g_pCurRoot)
+		return;
+
+	if (!nsCsGBTerrain::g_pCurRoot->GetInfo())
+		return;
+
+	if (!nsCsMapTable::g_pMapListMng)
+		return;
+
+	const int nMapIDX = nsCsGBTerrain::g_pCurRoot->GetInfo()->s_dwMapID;
+
+	CsMapList* pMapList = nsCsMapTable::g_pMapListMng->GetList(nMapIDX);
+	if (!pMapList)
+		return;
+
+	CsMapList::sINFO* pMapInfo = pMapList->GetInfo();
+	if (!pMapInfo)
+		return;
+
+	DWORD nMapRegionID = pMapInfo->s_nMapRegionID;
+
+	// Se o RegionID vier inválido do server/tabela, não deixa corromper array.
+	if (nMapRegionID >= nLimit::Map)
+		return;
+
+	// 원래 오픈되어 있지 않은 맵이라면
+	if (m_MapRegionBackup.IsOpened(nMapRegionID) == false)
+	{
+		GS2C_RECV_CHECKTYPE recv;
+
+		recv.nType = AchieveContents::CA_MAP_1;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+
+		recv.nType = AchieveContents::CA_MAP_2;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+
+		recv.nType = AchieveContents::CA_MAP_3;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+
+		recv.nType = AchieveContents::CA_MAP_4;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+
+		recv.nType = AchieveContents::CA_MAP_5;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+
+		recv.nType = AchieveContents::CA_MAP_6;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+
+		recv.nType = AchieveContents::CA_MAP_ALL;
+		GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
+	}
+
+	switch (nRegionIndex)
 	{
 	case CsGBTerrainRoot::CR_INVALIDE:
 		break;
+
 	case CsGBTerrainRoot::CR_WORLD:
-		{
-			assert_cs( IsNetOff() ||( m_MapRegion.IsOpened( nMapRegionID ) == true ) );
-		}
-		break;
+	{
+		// Em debug antigo isto podia rebentar se o server ainda não abriu a região.
+		// Mantemos seguro para localhost/emulador.
+		if (!IsNetOff() && m_MapRegion.IsOpened(nMapRegionID) == false)
+			return;
+	}
+	break;
+
 	default:
+	{
+		int nSafeMapRegionID = nsCsMapTable::g_pMapListMng->MapIDToMapRegionID(nMapIDX);
+
+		if (nSafeMapRegionID < 0 || nSafeMapRegionID >= nLimit::Map)
+			return;
+
+		if (m_MapRegion.SetOpenRegion(nSafeMapRegionID, nRegionIndex) == true)
 		{
-			int nMapIDX = nsCsGBTerrain::g_pCurRoot->GetInfo()->s_dwMapID;
-			int nMapRegionID = nsCsMapTable::g_pMapListMng->MapIDToMapRegionID( nMapIDX );
-			if( m_MapRegion.SetOpenRegion( nMapRegionID, nRegionIndex ) == true )
+			if (net::game)
 			{
-				if( net::game )
+				net::game->SendOpenRegion(nRegionIndex);
+
+				if (g_pDataMng && g_pDataMng->GetQuest())
 				{
-					net::game->SendOpenRegion( nRegionIndex );
 					g_pDataMng->GetQuest()->RevQuestCheck();
 					g_pDataMng->GetQuest()->CalProcess();
 				}
 			}
-		}		
+		}
+	}
+	break;
 	}
 }
 
-bool cData_MapRegion::IsOpenedWorld( int nWorldID )
+bool cData_MapRegion::IsOpenedWorld(int nWorldID)
 {
-	std::list< CsAreaMap* >* pList = nsCsFileTable::g_pWorldMapMng->GetWorld( nWorldID )->GetAreaList();
+	if (!nsCsFileTable::g_pWorldMapMng)
+		return false;
+
+	CsWorldMap* pWorld = nsCsFileTable::g_pWorldMapMng->GetWorld(nWorldID);
+	if (!pWorld)
+		return false;
+
+	std::list< CsAreaMap* >* pList = pWorld->GetAreaList();
+	if (!pList)
+		return false;
+
 	std::list< CsAreaMap* >::iterator it = pList->begin();
 	std::list< CsAreaMap* >::iterator itEnd = pList->end();
-	CsAreaMap::sINFO* pFTArea = NULL;
-	for( ; it!=itEnd; ++it )
+
+	for (; it != itEnd; ++it)
 	{
-		pFTArea = (*it)->GetInfo();
-		if( IsOpenedMap( pFTArea->s_nMapID ) == true )
+		CsAreaMap* pArea = (*it);
+		if (!pArea)
+			continue;
+
+		CsAreaMap::sINFO* pFTArea = pArea->GetInfo();
+		if (!pFTArea)
+			continue;
+
+		if (IsOpenedMap(pFTArea->s_nMapID) == true)
 			return true;
 	}
-	return false;	
+
+	return false;
 }
 
-bool cData_MapRegion::IsOpenedMap( int nMapID )
+bool cData_MapRegion::IsOpenedMap(int nMapID)
 {
-	CsMapList*	pList =nsCsMapTable::g_pMapListMng->GetList( nMapID );
+	if (!nsCsMapTable::g_pMapListMng)
+		return false;
 
-	SAFE_POINTER_RETVAL(pList, false);
+	CsMapList* pList = nsCsMapTable::g_pMapListMng->GetList(nMapID);
+	if (!pList)
+		return false;
 
-	CsMapList::sINFO*	pInfo = pList->GetInfo();
-	SAFE_POINTER_RETVAL(pInfo, false);
+	CsMapList::sINFO* pInfo = pList->GetInfo();
+	if (!pInfo)
+		return false;
 
-	USHORT	ID = pInfo->s_nMapRegionID;
-	return m_MapRegion.IsOpened( ID );
+	USHORT ID = pInfo->s_nMapRegionID;
+
+	if (ID >= nLimit::Map)
+		return false;
+
+	return m_MapRegion.IsOpened(ID);
 }
 

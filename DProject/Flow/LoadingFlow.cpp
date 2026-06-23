@@ -1,9 +1,9 @@
 //---------------------------------------------------------------------------
 //
 // 파일명 : LoadingFlow.cpp
-// 작성일 : 
-// 작성자 : 
-// 설  명 : 
+// 작성일 :
+// 작성자 :
+// 설  명 :
 //
 //---------------------------------------------------------------------------
 #include "StdAfx.h"
@@ -27,12 +27,14 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	CLoadingFlow::~CLoadingFlow()
 	{
 		OutputDebugStringA("[FLOW][Loading] Destructor\n");
 	}
 
 	//---------------------------------------------------------------------------
+
 	BOOL CLoadingFlow::Initialize()
 	{
 		OutputDebugStringA("[FLOW][Loading] Initialize begin\n");
@@ -48,44 +50,19 @@ namespace Flow
 
 			/*
 				IMPORTANTE:
-				Este bloco é perigoso durante a transição CharacterSelect -> Loading.
-				Se g_pGameIF existir mas estiver parcialmente inicializado ou já destruído,
-				ResetMap/PreResetMap/DeleteWindowUpdate podem rebentar ou tentar alocar memória absurda.
+				Não fazemos ResetMap/PreResetMap/DeleteWindowUpdate aqui de forma agressiva.
+				Esse bloco pode causar stutter/travamento na transição CharacterSelect -> Loading -> Game,
+				principalmente quando o GameIF está parcialmente inicializado ou quando acabou de carregar
+				recursos pesados do lobby/mapa.
 			*/
+
 			if (g_pGameIF)
 			{
-				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF cleanup begin\n");
-
-				try
-				{
-					OutputDebugStringA("[FLOW][Loading] Initialize - before g_pGameIF->ResetMap\n");
-					g_pGameIF->ResetMap();
-					OutputDebugStringA("[FLOW][Loading] Initialize - after g_pGameIF->ResetMap\n");
-
-					OutputDebugStringA("[FLOW][Loading] Initialize - before g_pGameIF->PreResetMap\n");
-					g_pGameIF->PreResetMap();
-					OutputDebugStringA("[FLOW][Loading] Initialize - after g_pGameIF->PreResetMap\n");
-
-					OutputDebugStringA("[FLOW][Loading] Initialize - before g_pGameIF->DeleteWindowUpdate\n");
-					g_pGameIF->DeleteWindowUpdate();
-					OutputDebugStringA("[FLOW][Loading] Initialize - after g_pGameIF->DeleteWindowUpdate\n");
-				}
-				catch (const std::bad_alloc&)
-				{
-					OutputDebugStringA("[FLOW][Loading] Initialize - bad_alloc inside g_pGameIF cleanup\n");
-					return FALSE;
-				}
-				catch (...)
-				{
-					OutputDebugStringA("[FLOW][Loading] Initialize - exception inside g_pGameIF cleanup\n");
-					return FALSE;
-				}
-
-				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF cleanup ok\n");
+				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF exists, heavy cleanup skipped for perf test\n");
 			}
 			else
 			{
-				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF NULL, cleanup skipped\n");
+				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF NULL\n");
 			}
 
 			OutputDebugStringA("[FLOW][Loading] Initialize - fade allocation begin\n");
@@ -176,14 +153,11 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::OnEnter(void)
 	{
 		OutputDebugStringA("[FLOW][Loading] OnEnter begin\n");
 
-		/*
-			Mesma correção que fizemos no ServerSelect:
-			primeiro inicializa o ContentsSystem, depois deixa o CFlow chamar Initialize().
-		*/
 		if (CONTENTSSYSTEM_PTR)
 		{
 			OutputDebugStringA("[FLOW][Loading] OnEnter - InitializeContents begin\n");
@@ -208,6 +182,7 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::OnExit(int p_iNextFlowID)
 	{
 		OutputDebugStringA("[FLOW][Loading] OnExit begin\n");
@@ -225,6 +200,7 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::Terminate()
 	{
 		OutputDebugStringA("[FLOW][Loading] Terminate begin\n");
@@ -235,13 +211,22 @@ namespace Flow
 		SAFE_NIDELETE(m_pFadeUI);
 		OutputDebugStringA("[FLOW][Loading] Terminate - m_pFadeUI deleted\n");
 
-		RESOURCEMGR_ST.CleanUpResource();
-		OutputDebugStringA("[FLOW][Loading] Terminate - CleanUpResource done\n");
+		/*
+			TESTE DE PERFORMANCE:
+			Esta chamada estava a limpar recursos logo ao terminar o LoadingFlow.
+			Isso pode causar stutter/freeze quando o mapa começa, porque o client pode
+			precisar recarregar/recriar texturas, shaders, nif, UI e outros recursos.
+
+			Se o lag desaparecer com isto comentado, depois fazemos uma limpeza seletiva.
+		*/
+		// RESOURCEMGR_ST.CleanUpResource();
+		OutputDebugStringA("[FLOW][Loading] Terminate - CleanUpResource skipped for perf test\n");
 
 		OutputDebugStringA("[FLOW][Loading] Terminate end\n");
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::ReservedChangeFlow(int p_iNextFlowID)
 	{
 		OutputDebugStringA("[FLOW][Loading] ReservedChangeFlow\n");
@@ -251,23 +236,27 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	bool CLoadingFlow::LostDevice(void* p_pvData)
 	{
 		return true;
 	}
 
 	//---------------------------------------------------------------------------
+
 	bool CLoadingFlow::ResetDevice(bool p_bBeforeReset, void* p_pvData)
 	{
 		return true;
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::InputFrame()
 	{
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::UpdateFrame()
 	{
 		if (CONTENTSSYSTEM_PTR)
@@ -281,11 +270,13 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::CullFrame()
 	{
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::RenderSceneFrame()
 	{
 		if (g_pEngine)
@@ -293,6 +284,7 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	BOOL CLoadingFlow::OnMsgHandler(const MSG& p_kMsg)
 	{
 		CURSOR_ST.Input(p_kMsg);
@@ -304,16 +296,19 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::RenderBackScreenFrame()
 	{
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::RenderScreenFrame()
 	{
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::RenderUIFrame()
 	{
 		if (g_pEngine)
@@ -329,6 +324,7 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	BOOL CLoadingFlow::LoadResource()
 	{
 		OutputDebugStringA("[FLOW][Loading] LoadResource\n");
@@ -336,9 +332,11 @@ namespace Flow
 	}
 
 	//---------------------------------------------------------------------------
+
 	void CLoadingFlow::ReleaseResource()
 	{
 		OutputDebugStringA("[FLOW][Loading] ReleaseResource\n");
 	}
 }
+
 //---------------------------------------------------------------------------

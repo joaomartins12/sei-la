@@ -1360,56 +1360,116 @@ void cCliGame::RecvTamerMessage(void)
 
 void cCliGame::RecvBossGenInfo(void)
 {
-	if( g_pGameIF )
+	OutputDebugStringA("[BOSS_GEN] RecvBossGenInfo begin\n");
+
+	cBossScene* pBossScene = NULL;
+
+	if (g_pGameIF)
 	{
-		cBossScene* pBossScene = g_pGameIF->GetBossScene();
-		if(pBossScene)
+		pBossScene = g_pGameIF->GetBossScene();
+
+		if (pBossScene)
 			pBossScene->PreResetMap();
 	}
 
-	n4 nBossMonsterType;	// 
-	n1 nBossMonsterCount;	// 해당 맵에 생성되어 있는 보스 몬스터 수
-
-	n4 nSeedMonsterType;	//
-	n1 nSeedMonsterCount;	// 보스 생성을 위해 잡아야할 몬스터의 남은 수
+	n4 nBossMonsterType = 0;
+	n1 nBossMonsterCount = 0;
+	n4 nSeedMonsterType = 0;
+	n1 nSeedMonsterCount = 0;
 
 	pop(nBossMonsterType);
-	while(nBossMonsterType)
+
 	{
-		pop(nBossMonsterCount);	// 
+		char log[256];
+		sprintf_s(log, "[BOSS_GEN] first BossMonsterType=%d\n", nBossMonsterType);
+		OutputDebugStringA(log);
+	}
 
-		if(nBossMonsterCount)	// 보스 몬스터가 있다면 
+	int nSafeCounter = 0;
+
+	while (nBossMonsterType != 0)
+	{
+		if (++nSafeCounter > 32)
 		{
-			//현재 생성되어 있는 보스 몬스터에 대한 정보 처리 필요
-			nBossMonsterType;	// 생성되어 있는 보스몹 타입
-			nBossMonsterCount;	// 생성되어 있는 보스몹 개체수
-
-			g_pGameIF->GetBossScene()->SetBossInfo( nBossMonsterType, nBossMonsterCount, 0, 0 );
+			OutputDebugStringA("[BOSS_GEN][ERROR] BossGenInfo loop exceeded 32 entries. Breaking to avoid loading lock.\n");
+			break;
 		}
-		else	// 보스 몬스터가 생성되어 있지 아니하다면
+
+		pop(nBossMonsterCount);
+
+		{
+			char log[256];
+			sprintf_s(
+				log,
+				"[BOSS_GEN] BossMonsterType=%d BossMonsterCount=%d\n",
+				nBossMonsterType,
+				nBossMonsterCount
+			);
+			OutputDebugStringA(log);
+		}
+
+		if (nBossMonsterCount != 0)
+		{
+			if (pBossScene)
+			{
+				pBossScene->SetBossInfo(
+					nBossMonsterType,
+					nBossMonsterCount,
+					0,
+					0
+				);
+			}
+		}
+		else
 		{
 			pop(nSeedMonsterType);
 
-			if(nSeedMonsterType)
+			{
+				char log[256];
+				sprintf_s(
+					log,
+					"[BOSS_GEN] SeedMonsterType=%d\n",
+					nSeedMonsterType
+				);
+				OutputDebugStringA(log);
+			}
+
+			if (nSeedMonsterType != 0)
 			{
 				pop(nSeedMonsterCount);
 
-				//잡아야할 몬스터의 수 처리
-				nBossMonsterType;	// 생성될 보스 몬스터 타입
-				nSeedMonsterType;	// 잡아야할 시드 몬스터 타입
-				nSeedMonsterCount;	// 앞으로 잡아야할 시드 몬스터 개체수
+				{
+					char log[256];
+					sprintf_s(
+						log,
+						"[BOSS_GEN] SeedMonsterCount=%d\n",
+						nSeedMonsterCount
+					);
+					OutputDebugStringA(log);
+				}
 
-				g_pGameIF->GetBossScene()->SetBossInfo( nBossMonsterType, 0, nSeedMonsterType, nSeedMonsterCount );
-			}
-			else
-			{
-				// 정보 출력 없음
-				// 잡은 seed monster의 수가 미미한 경우
+				if (pBossScene)
+				{
+					pBossScene->SetBossInfo(
+						nBossMonsterType,
+						0,
+						nSeedMonsterType,
+						nSeedMonsterCount
+					);
+				}
 			}
 		}
-	
+
 		pop(nBossMonsterType);
+
+		{
+			char log[256];
+			sprintf_s(log, "[BOSS_GEN] next BossMonsterType=%d\n", nBossMonsterType);
+			OutputDebugStringA(log);
+		}
 	}
+
+	OutputDebugStringA("[BOSS_GEN] RecvBossGenInfo end\n");
 }
 
 void cCliGame::RecvTamerAchievement(void)

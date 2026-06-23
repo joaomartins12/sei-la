@@ -485,8 +485,18 @@ void CharacterSelectContents::RestData()
 
 void CharacterSelectContents::gotoBack()
 {
+	OutputDebugStringA("[CHARSEL][BACK] Returning to ServerSelect\n");
+
+	// Limpa a seleção/lista atual do CharacterSelect.
+	// Assim, quando voltares a entrar no CharacterSelect depois,
+	// ele vai depender novamente da lista enviada pelo server.
+	RestData();
+
+	// Remove popup de "a verificar..." caso tenha ficado aberta.
+	cMessageBox::DelMsg(10019, false);
+
+	// Volta para o ServerSelect.
 	FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_SERVERSEL);
-	//RestData();
 }
 
 bool CharacterSelectContents::gotoCharCreate()

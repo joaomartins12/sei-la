@@ -1,9 +1,9 @@
 //---------------------------------------------------------------------------
 //
 // 파일명 : CharacterSelectFlow.cpp
-// 작성일 : 
-// 작성자 : 
-// 설  명 : 
+// 작성일 :
+// 작성자 :
+// 설  명 :
 //
 //---------------------------------------------------------------------------
 #include "StdAfx.h"
@@ -48,28 +48,35 @@ namespace Flow
 		CSFlowLog("Constructor");
 		CSFlowLogInt("FlowID=", p_iID);
 	}
+
 	//---------------------------------------------------------------------------
+
 	CCharacterSelectFlow::~CCharacterSelectFlow()
 	{
 		CSFlowLog("Destructor");
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::OnOverride(int p_iNextFlowID)
 	{
 		CSFlowLogInt("OnOverride. nextFlowID=", p_iNextFlowID);
 		SetPaused(true);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::OnResume(int p_iNextFlowID)
 	{
 		CSFlowLogInt("OnResume. nextFlowID=", p_iNextFlowID);
-
 		SetPaused(false);
 
 		if (m_pFadeUI)
 			m_pFadeUI->Reset(CFade::FADE_IN, 0.5f);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::ReservedChangeFlow(int p_iNextFlowID)
 	{
 		CSFlowLogInt("ReservedChangeFlow. nextFlowID=", p_iNextFlowID);
@@ -77,7 +84,9 @@ namespace Flow
 		if (m_pFadeUI)
 			m_pFadeUI->Reset(CFade::FADE_OUT, 0.5f);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::ReservedPushFlow(int p_iNextFlowID)
 	{
 		CSFlowLogInt("ReservedPushFlow. nextFlowID=", p_iNextFlowID);
@@ -85,7 +94,9 @@ namespace Flow
 		if (m_pFadeUI)
 			m_pFadeUI->Reset(CFade::FADE_OUT, 0.5f);
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CCharacterSelectFlow::Initialize()
 	{
 		CSFlowLog("Initialize begin");
@@ -146,10 +157,11 @@ namespace Flow
 		}
 
 		CSFlowLog("Initialize ok");
-
 		return TRUE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::OnEnter(void)
 	{
 		CSFlowLog("OnEnter begin");
@@ -175,7 +187,9 @@ namespace Flow
 
 		CSFlowLog("OnEnter end");
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::OnExit(int p_iNextFlowID)
 	{
 		CSFlowLogInt("OnExit begin. nextFlowID=", p_iNextFlowID);
@@ -195,7 +209,9 @@ namespace Flow
 
 		CSFlowLog("OnExit end");
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::Terminate()
 	{
 		CSFlowLog("Terminate begin");
@@ -206,24 +222,49 @@ namespace Flow
 		SAFE_NIDELETE(m_pCharSelect);
 		CSFlowLog("Terminate - m_pCharSelect deleted");
 
-		RESOURCEMGR_ST.CleanUpResource();
-		CSFlowLog("Terminate - CleanUpResource done");
+		/*
+			IMPORTANTE:
+			Não limpar RESOURCEMGR_ST aqui.
+
+			O teu log mostra:
+			  CharacterSelectFlow::Terminate
+			  CleanUpResource done
+			  LoadingFlow
+			  RecvInitGameData end OK
+			  tela preta / AV write 0x42FE2020
+
+			Isto indica que o CharacterSelect estava a destruir recursos globais
+			antes do Game/Map começar a usar os dados carregados. Como o lobby
+			usa mapa/cache 3D, esta limpeza pode invalidar ponteiros/texturas/NIFs
+			ainda referenciados pelo próximo flow.
+
+			Depois de estabilizar, fazemos limpeza seletiva por tipo de recurso,
+			mas por agora não pode limpar tudo aqui.
+		*/
+		// RESOURCEMGR_ST.CleanUpResource();
+		CSFlowLog("Terminate - CleanUpResource skipped for stability");
 
 		CSFlowLog("Terminate end");
 	}
+
 	//---------------------------------------------------------------------------
+
 	bool CCharacterSelectFlow::LostDevice(void* p_pvData)
 	{
 		CSFlowLog("LostDevice");
 		return true;
 	}
+
 	//---------------------------------------------------------------------------
+
 	bool CCharacterSelectFlow::ResetDevice(bool p_bBeforeReset, void* p_pvData)
 	{
 		CSFlowLogInt("ResetDevice. beforeReset=", p_bBeforeReset ? 1 : 0);
 		return true;
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CCharacterSelectFlow::OnMsgHandler(const MSG& p_kMsg)
 	{
 		CURSOR_ST.Input(p_kMsg);
@@ -236,7 +277,9 @@ namespace Flow
 
 		return FALSE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::InputFrame()
 	{
 		if (cMessageBox::UpdateList())
@@ -245,10 +288,13 @@ namespace Flow
 		if (m_pCharSelect)
 			m_pCharSelect->UpdateMouse();
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::UpdateFrame()
 	{
 		static int s_nUpdateLogCounter = 0;
+
 		if (++s_nUpdateLogCounter >= 120)
 		{
 			s_nUpdateLogCounter = 0;
@@ -274,21 +320,21 @@ namespace Flow
 		if (TOOLTIPMNG_STPTR)
 			TOOLTIPMNG_STPTR->Update(g_fDeltaTime);
 
-		// O mapa do lobby CharacterSelect/CharacterCreate agora é carregado no GameApp.cpp
-		// através do CharacterCreateLobbyMapCache.
-		// Não carregar terreno aqui: ResetMap/DeleteChar/LoadTerrain durante o CharacterSelect
-		// causa travada e apaga/invalida os modelos temporários do Tamer/Digimon.
-
 		CURSOR_ST.LoopReset();
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::CullFrame()
 	{
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::RenderSceneFrame()
 	{
 		static int s_nRenderSceneLogCounter = 0;
+
 		if (++s_nRenderSceneLogCounter >= 120)
 		{
 			s_nRenderSceneLogCounter = 0;
@@ -308,10 +354,13 @@ namespace Flow
 		if (g_pEngine)
 			g_pEngine->Render();
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::RenderBackScreenFrame()
 	{
 		static int s_nRenderBackLogCounter = 0;
+
 		if (++s_nRenderBackLogCounter >= 120)
 		{
 			s_nRenderBackLogCounter = 0;
@@ -323,14 +372,19 @@ namespace Flow
 		else
 			CSFlowLog("RenderBackScreenFrame warning - m_pCharSelect is NULL");
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::RenderScreenFrame()
 	{
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::RenderUIFrame()
 	{
 		static int s_nRenderUILogCounter = 0;
+
 		if (++s_nRenderUILogCounter >= 120)
 		{
 			s_nRenderUILogCounter = 0;
@@ -358,16 +412,21 @@ namespace Flow
 		if (m_pFadeUI)
 			m_pFadeUI->Render();
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CCharacterSelectFlow::LoadResource()
 	{
 		CSFlowLog("LoadResource");
 		return TRUE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CCharacterSelectFlow::ReleaseResource()
 	{
 		CSFlowLog("ReleaseResource");
 	}
 }
+
 //---------------------------------------------------------------------------

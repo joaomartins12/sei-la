@@ -79,15 +79,22 @@ CSelectServer::~CSelectServer()
 {
     if (GetSystem())
     {
-        GetSystem()->ServerListClear();
+        /*
+            Não limpar a lista aqui.
+
+            Quando saímos do ServerSelect para o CharacterSelect,
+            a lista pode continuar em cache no ServerSelectContents.
+            A lista será atualizada novamente quando o ServerSelect pedir RECV_SERVER_LIST.
+        */
+
+        // GetSystem()->ServerListClear();
+
         GetSystem()->UnRegisterAll(this);
         GetSystem()->Remove3DBackgroundData();
     }
 
     m_Copyright.Delete();
-
     DeleteScript();
-
     m_SelectListWindow.DeleteScript();
     m_SelectBack.DeleteScript();
 }
@@ -132,13 +139,29 @@ bool CSelectServer::Init()
         return false;
     }
 
+    /*
+        IMPORTANTE:
+        Não pedir a server list antes de criar a UI.
+
+        Antes estava assim:
+            GetSystem()->CheckConnectAccountSever();
+            InitScript(...)
+            _MakeServerList()
+
+        Se o packet RECV_SERVER_LIST chegar cedo, o Notify tenta fazer ResetServerList()
+        antes de m_pServerListBox/m_SelectListWindow estarem prontos.
+
+        Agora criamos a UI primeiro e só depois pedimos a lista.
+    */
+
     InitScript(NULL, CsPoint::ZERO, CsPoint(g_nScreenWidth, g_nScreenHeight), false);
 
     AddSprite(
         CsPoint::ZERO,
         CsPoint(g_nScreenWidth, g_nScreenHeight),
         "Lobby\\SelectServer\\background.dds",
-        true);
+        true
+    );
 
     _MakeCopyright();
     _MakeServerListBack();
@@ -146,18 +169,9 @@ bool CSelectServer::Init()
 
     GetSystem()->Load3DBackgroundData();
 
-    /*
-        IMPORTANTE:
-        Antes estava no início:
-            GetSystem()->CheckConnectAccountSever();
+    OutputDebugStringA("[SelectServer] CheckConnectAccountSever begin\n");
 
-        Isso crashava porque era chamado antes da UI/lista estar pronta.
-
-        Agora pedimos a lista só depois da UI estar criada.
-    */
-    OutputDebugStringA("[SelectServer] RequestServerList begin\n");
-    GetSystem()->RequestServerList();
-    OutputDebugStringA("[SelectServer] RequestServerList end\n");
+    GetSystem()->CheckConnectAccountSever();
 
     OutputDebugStringA("[SelectServer] Init ok\n");
 
