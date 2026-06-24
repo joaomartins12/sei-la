@@ -257,6 +257,109 @@ namespace Flow
 		OutputDebugStringA("[FLOWMGR] ChangeFlow queued\n");
 	}
 
+	BOOL CFlowMgr::ForceChangeFlowNow(int p_iID)
+	{
+		char log[256] = { 0 };
+		sprintf_s(
+			log,
+			"[FLOWMGR] ForceChangeFlowNow request id=%d current=%d lock=%d processing=%d\n",
+			p_iID,
+			GetCurTopFlowID(),
+			m_bFlowLock,
+			m_bProcessingLock
+		);
+		OutputDebugStringA(log);
+
+		if (!m_pkFlowCmdQueue || !m_pkFlowStack || !m_pkFlowInstMgr)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] ForceChangeFlowNow failed: manager pointers NULL\n");
+			return FALSE;
+		}
+
+		if (p_iID <= CFlow::FLW_NONE)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] ForceChangeFlowNow failed: invalid target flow id\n");
+			return FALSE;
+		}
+
+		/*
+			Limpa qualquer comando pendente.
+			No caso atual, já existe CMD_CHANGE para FLW_MAINGAME preso na queue.
+			Se não limparmos, o FlowMgr pode tentar processar a troca duplicada depois.
+		*/
+		if (m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - clearing pending queue\n");
+			m_pkFlowCmdQueue->Clear();
+		}
+
+		/*
+			Ignora qualquer LockFlow pendente.
+			O lock/fade estava a impedir a troca Loading -> InGame.
+		*/
+		m_bFlowLock = FALSE;
+		m_bProcessingLock = TRUE;
+
+		int iCurrentID = GetCurTopFlowID();
+
+		if (iCurrentID == p_iID)
+		{
+			OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow ignored: already current flow\n");
+			m_bProcessingLock = FALSE;
+			return TRUE;
+		}
+
+		if (iCurrentID != CFlow::FLW_NONE)
+		{
+			if (IsCurTopFlow())
+			{
+				OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - OnExit begin\n");
+				GetCurTopFlow()->OnExit(p_iID);
+				OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - OnExit end\n");
+			}
+			else
+			{
+				OutputDebugStringA("[FLOWMGR][WARN] ForceChangeFlowNow - current top flow NULL before OnExit\n");
+			}
+
+			if (EraseFlow(iCurrentID))
+			{
+				OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - EraseFlow ok\n");
+			}
+			else
+			{
+				OutputDebugStringA("[FLOWMGR][WARN] ForceChangeFlowNow - EraseFlow failed\n");
+			}
+		}
+
+		if (!RegisterFlow(p_iID))
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] ForceChangeFlowNow - RegisterFlow failed\n");
+			m_bProcessingLock = FALSE;
+			return FALSE;
+		}
+
+		OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - RegisterFlow ok\n");
+
+		if (IsCurTopFlow())
+		{
+			OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - OnEnter begin\n");
+			GetCurTopFlow()->OnEnter();
+			OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow - OnEnter end\n");
+		}
+		else
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] ForceChangeFlowNow - top flow NULL after RegisterFlow\n");
+			m_bProcessingLock = FALSE;
+			return FALSE;
+		}
+
+		m_bProcessingLock = FALSE;
+
+		OutputDebugStringA("[FLOWMGR] ForceChangeFlowNow end OK\n");
+		return TRUE;
+	}
+
 	//---------------------------------------------------------------------------
 
 	void CFlowMgr::PopFlow(int p_iID)

@@ -1294,23 +1294,19 @@ void cCliGame::RecvInitGameData(void)
 			Loading para o MainGame. O FlowMgr chama ReservedChangeFlow no flow atual
 			e processa a troca no próximo OnIdle.
 		*/
-		if (FLOWMGR_STPTR)
-		{
-			if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_MAINGAME) == FALSE)
-			{
-				OutputDebugStringA("[RECV_INIT] ChangeFlow FLW_MAINGAME requested directly\n");
-				FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_MAINGAME);
-			}
-			else
-			{
-				OutputDebugStringA("[RECV_INIT] already in FLW_MAINGAME\n");
-			}
-		}
-		else
-		{
-			OutputDebugStringA("[RECV_INIT][ERROR] FLOWMGR_STPTR NULL, cannot ChangeFlow FLW_MAINGAME\n");
-		}
+		/*
+	IMPORTANTE:
+	Não trocar para InGame diretamente aqui.
+	RecvInitGameData corre no contexto do network/packet.
+	PostLoad, MakeWorldData, Render/Engine e criação do mundo precisam acontecer
+	no loop principal do client.
 
+	Por isso só marcamos a flag.
+	O LoadingFlow::UpdateFrame() vai consumir isto e trocar para FLW_MAINGAME.
+*/
+		net::bInitGameDataReady = true;
+
+		OutputDebugStringA("[RECV_INIT] InitGameData ready flag set. Waiting LoadingFlow main-thread transition.\n");
 		OutputDebugStringA("[RECV_INIT] RecvInitGameData end OK\n");
 	}
 	catch (const std::bad_alloc&)

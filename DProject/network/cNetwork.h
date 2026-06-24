@@ -53,7 +53,8 @@ namespace net
 
 	extern cClient *net;
 	extern bool receive_active;
-	
+	extern bool bInitGameDataReady;
+
 	extern char ip[Language::pLength::ip+1];
 	extern uint port;	// tmp ip and port
 	extern uint cmd;

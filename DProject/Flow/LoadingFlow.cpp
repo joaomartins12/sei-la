@@ -10,7 +10,7 @@
 #include "LoadingFlow.h"
 
 #include "FlowMgr.h"
-
+#include "../network/cNetwork.h"
 #include "../_Interface/08.Loading/Loading.h"
 #include "../_Interface/Game/Fade.h"
 #include "../ContentsSystem/ContentsSystem.h"
@@ -293,14 +293,49 @@ namespace Flow
 		if (m_pFadeUI)
 			m_pFadeUI->Update(g_fDeltaTime);
 
+		/*
+			Transição correta:
+			O network só marca net::bInitGameDataReady.
+			A troca real para InGame acontece aqui, no main loop/render thread.
+		*/
+		if (net::bInitGameDataReady)
+		{
+			OutputDebugStringA("[FLOW][Loading] net::bInitGameDataReady detected in UpdateFrame\n");
+
+			net::bInitGameDataReady = false;
+
+			if (FLOWMGR_STPTR)
+			{
+				if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_MAINGAME) == FALSE)
+				{
+					OutputDebugStringA("[FLOW][Loading] ForceChangeFlowNow FLW_MAINGAME from main thread begin\n");
+
+					if (FLOWMGR_ST.ForceChangeFlowNow(Flow::CFlow::FLW_MAINGAME))
+					{
+						OutputDebugStringA("[FLOW][Loading] ForceChangeFlowNow FLW_MAINGAME from main thread ok\n");
+					}
+					else
+					{
+						OutputDebugStringA("[FLOW][Loading][ERROR] ForceChangeFlowNow FLW_MAINGAME from main thread failed\n");
+					}
+				}
+				else
+				{
+					OutputDebugStringA("[FLOW][Loading] already in FLW_MAINGAME\n");
+				}
+			}
+			else
+			{
+				OutputDebugStringA("[FLOW][Loading][ERROR] FLOWMGR_STPTR NULL\n");
+			}
+
+			return;
+		}
+
 		if (m_bReservedMainGameChange)
 		{
 			m_fReservedChangeTime += g_fDeltaTime;
 
-			/*
-				O fade-out foi iniciado em ReservedChangeFlow com 0.5f.
-				Depois de 0.55f desbloqueamos o FlowMgr para processar CMD_CHANGE.
-			*/
 			if (m_fReservedChangeTime >= 0.55f)
 			{
 				char log[256] = { 0 };

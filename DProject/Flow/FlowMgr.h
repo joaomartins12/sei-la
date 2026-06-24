@@ -35,7 +35,7 @@ namespace Flow
 		void PopFlow(int p_iID);
 		void ChangePopAllFlow( int p_iID );
 		void PopAllFlow();
-
+		BOOL ForceChangeFlowNow(int p_iID);
 		// 각 게임 Flowd 의 
 		// OnIdle, OnMsgHandler
 		void OnIdle();

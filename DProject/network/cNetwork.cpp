@@ -125,6 +125,8 @@ namespace net
 
 	uint nIsMoveMapByCommand = true;
 
+	bool bInitGameDataReady = false;
+
 	uint account_idx = 0;
 	uint access_code = 0;
 	//bool IsAeria = false;
