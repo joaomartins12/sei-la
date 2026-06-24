@@ -14,6 +14,7 @@
 #include "../_Interface/08.Loading/Loading.h"
 #include "../_Interface/Game/Fade.h"
 #include "../ContentsSystem/ContentsSystem.h"
+#include "../../common_vs2019/pEvent.h"
 
 //---------------------------------------------------------------------------
 
@@ -294,39 +295,23 @@ namespace Flow
 			m_pFadeUI->Update(g_fDeltaTime);
 
 		/*
-			Transição correta:
-			O network só marca net::bInitGameDataReady.
-			A troca real para InGame acontece aqui, no main loop/render thread.
+			IMPORTANTE:
+			RecvInitGameData corre no contexto do network/packet.
+			A transição para o jogo deve acontecer aqui, no main thread.
+			Usamos InterlockedCompareExchange para evitar cópias/bugs de bool entre translation units.
 		*/
-		if (net::bInitGameDataReady)
+		if (InterlockedCompareExchange(&net::g_lInitGameDataReady, 0, 1) == 1)
 		{
-			OutputDebugStringA("[FLOW][Loading] net::bInitGameDataReady detected in UpdateFrame\n");
-
-			net::bInitGameDataReady = false;
+			OutputDebugStringA("[FLOW][Loading] g_lInitGameDataReady detected. ChangeFlow FLW_MAINGAME on main thread.\n");
 
 			if (FLOWMGR_STPTR)
 			{
-				if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_MAINGAME) == FALSE)
-				{
-					OutputDebugStringA("[FLOW][Loading] ForceChangeFlowNow FLW_MAINGAME from main thread begin\n");
-
-					if (FLOWMGR_ST.ForceChangeFlowNow(Flow::CFlow::FLW_MAINGAME))
-					{
-						OutputDebugStringA("[FLOW][Loading] ForceChangeFlowNow FLW_MAINGAME from main thread ok\n");
-					}
-					else
-					{
-						OutputDebugStringA("[FLOW][Loading][ERROR] ForceChangeFlowNow FLW_MAINGAME from main thread failed\n");
-					}
-				}
-				else
-				{
-					OutputDebugStringA("[FLOW][Loading] already in FLW_MAINGAME\n");
-				}
+				FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_MAINGAME);
+				OutputDebugStringA("[FLOW][Loading] ChangeFlow FLW_MAINGAME requested.\n");
 			}
 			else
 			{
-				OutputDebugStringA("[FLOW][Loading][ERROR] FLOWMGR_STPTR NULL\n");
+				OutputDebugStringA("[FLOW][Loading][ERROR] FLOWMGR_STPTR NULL. Cannot ChangeFlow FLW_MAINGAME.\n");
 			}
 
 			return;
@@ -357,7 +342,6 @@ namespace Flow
 			}
 		}
 	}
-
 	//---------------------------------------------------------------------------
 
 	void CLoadingFlow::CullFrame()

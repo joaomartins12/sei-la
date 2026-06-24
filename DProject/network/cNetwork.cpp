@@ -126,6 +126,7 @@ namespace net
 	uint nIsMoveMapByCommand = true;
 
 	bool bInitGameDataReady = false;
+	volatile LONG g_lInitGameDataReady = 0;
 
 	uint account_idx = 0;
 	uint access_code = 0;
