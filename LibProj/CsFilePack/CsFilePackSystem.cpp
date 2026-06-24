@@ -33,6 +33,78 @@ namespace
 		msg += packName;
 		PackLogA(msg.c_str());
 	}
+
+	std::string NormalizePackPathForCompareA(const char* path)
+	{
+		std::string result;
+
+		if (path == NULL)
+			return result;
+
+		result = path;
+
+		for (size_t i = 0; i < result.size(); ++i)
+		{
+			if (result[i] == '/')
+				result[i] = '\\';
+
+			if (result[i] >= 'A' && result[i] <= 'Z')
+				result[i] = result[i] - 'A' + 'a';
+		}
+
+		return result;
+	}
+
+	bool IsSamePackPathA(const char* left, const char* right)
+	{
+		return NormalizePackPathForCompareA(left) == NormalizePackPathForCompareA(right);
+	}
+
+	bool PackSystemFileExistsA(const std::string& fileName)
+	{
+		if (fileName.empty())
+			return false;
+
+		DWORD dwAttr = ::GetFileAttributesA(fileName.c_str());
+		if (dwAttr == INVALID_FILE_ATTRIBUTES)
+			return false;
+
+		return (dwAttr & FILE_ATTRIBUTE_DIRECTORY) ? false : true;
+	}
+
+	bool PackSystemPairExistsA(const std::string& packName)
+	{
+		if (packName.empty())
+			return false;
+
+		std::string hashFile = packName;
+		hashFile += HASH_EX_NAME;
+
+		std::string packFile = packName;
+		packFile += PACK_EX_NAME;
+
+		return PackSystemFileExistsA(hashFile) && PackSystemFileExistsA(packFile);
+	}
+
+	bool ShouldAutoEnablePackageListA(const std::list<std::string>& packageList)
+	{
+		if (packageList.empty())
+			return false;
+
+		std::list<std::string>::const_iterator it = packageList.begin();
+		for (; it != packageList.end(); ++it)
+		{
+			if (!PackSystemPairExistsA(*it))
+				return false;
+		}
+
+		return true;
+	}
+
+	bool ShouldAutoEnablePackageSingleA(const std::string& packageName)
+	{
+		return PackSystemPairExistsA(packageName);
+	}
 }
 
 namespace CsFPS
@@ -184,19 +256,48 @@ namespace CsFPS
 				SAFE_DELETE(s_pFileHash);
 			}
 
-			bool IsExistFile(LPCSTR szFileName) const
+			CsFileHash::sINFO* GetHashInfoByPath(LPCSTR szFileName) const
 			{
 				if (NULL == szFileName || 0 == lstrlenA(szFileName))
-					return false;
-
-				size_t hashCode = GetHashCode(szFileName);
-				if (0 == hashCode)
-					return false;
+					return NULL;
 
 				if (NULL == s_pFileHash)
-					return false;
+					return NULL;
 
-				return s_pFileHash->IsExist(hashCode);
+				size_t hashCode = GetHashCode(szFileName);
+				if (hashCode != 0 && s_pFileHash->IsExist(hashCode))
+					return s_pFileHash->GetHashInfo(hashCode);
+
+				// Fallback importante:
+				// Alguns callers usam Data/EtcObject/... e o pack pode ter data\etcobject\...
+				// ou outra capitalização. O hash original é sensível ao caminho, então tentamos
+				// resolver pelo caminho real gravado nos chunks.
+				if (NULL == s_pFilePack)
+					return NULL;
+
+				std::map<size_t, CsFileHash::sINFO*>* pMap = s_pFileHash->GetHashMap();
+				if (NULL == pMap)
+					return NULL;
+
+				std::map<size_t, CsFileHash::sINFO*>::iterator it = pMap->begin();
+				for (; it != pMap->end(); ++it)
+				{
+					if (NULL == it->second)
+						continue;
+
+					CsFPS::sCHUNK Chunk;
+					s_pFilePack->_GetChunk(&Chunk, it->second->s_nOffset);
+
+					if (IsSamePackPathA(Chunk.s_szPath, szFileName))
+						return it->second;
+				}
+
+				return NULL;
+			}
+
+			bool IsExistFile(LPCSTR szFileName) const
+			{
+				return GetHashInfoByPath(szFileName) != NULL;
 			}
 
 			bool IsExistFile(size_t HashCode) const
@@ -223,6 +324,58 @@ namespace CsFPS
 					return 0;
 
 				return s_pFilePack->_GetFileHandle(pInfo->s_nOffset);
+			}
+
+			int GetFileHandle(LPCSTR szFileName)
+			{
+				if (NULL == s_pFilePack)
+					return 0;
+
+				CsFileHash::sINFO* pInfo = GetHashInfoByPath(szFileName);
+				if (NULL == pInfo)
+					return 0;
+
+				return s_pFilePack->_GetFileHandle(pInfo->s_nOffset);
+			}
+
+			size_t GetData(char** ppData, LPCSTR szFileName)
+			{
+				if (NULL == ppData)
+					return 0;
+
+				*ppData = NULL;
+
+				if (NULL == s_pFilePack)
+					return 0;
+
+				CsFileHash::sINFO* pInfo = GetHashInfoByPath(szFileName);
+				if (NULL == pInfo || 0 == pInfo->s_nDataSize)
+					return 0;
+
+				*ppData = new char[pInfo->s_nDataSize];
+				if (NULL == *ppData)
+					return 0;
+
+				s_pFilePack->_GetData(ppData, pInfo->s_nOffset, pInfo->s_nDataSize);
+
+				return pInfo->s_nDataSize;
+			}
+
+			size_t GetData(std::vector<unsigned char>& pData, LPCSTR szFileName)
+			{
+				pData.clear();
+
+				if (NULL == s_pFilePack)
+					return 0;
+
+				CsFileHash::sINFO* pInfo = GetHashInfoByPath(szFileName);
+				if (NULL == pInfo || 0 == pInfo->s_nDataSize)
+					return 0;
+
+				pData.resize(pInfo->s_nDataSize);
+				s_pFilePack->_GetData(pData, pInfo->s_nOffset, pInfo->s_nDataSize);
+
+				return pInfo->s_nDataSize;
 			}
 
 			size_t GetData(char** ppData, size_t HashCode)
@@ -416,6 +569,17 @@ namespace CsFPS
 			return m_PackageVec[nIndex].GetData(pData, FileHashCode);
 		}
 
+		size_t ReadData(int nIndex, LPCSTR sFileName, char** pData)
+		{
+			if (nIndex < 0)
+				return 0;
+
+			if ((int)m_PackageVec.size() <= nIndex)
+				return 0;
+
+			return m_PackageVec[nIndex].GetData(pData, sFileName);
+		}
+
 		size_t ReadData(int nIndex, size_t FileHashCode, std::vector<unsigned char>& pData)
 		{
 			if (nIndex < 0)
@@ -427,6 +591,17 @@ namespace CsFPS
 			return m_PackageVec[nIndex].GetData(pData, FileHashCode);
 		}
 
+		size_t ReadData(int nIndex, LPCSTR sFileName, std::vector<unsigned char>& pData)
+		{
+			if (nIndex < 0)
+				return 0;
+
+			if ((int)m_PackageVec.size() <= nIndex)
+				return 0;
+
+			return m_PackageVec[nIndex].GetData(pData, sFileName);
+		}
+
 		bool IsExistFile(int nIdx, LPCSTR sFileName) const
 		{
 			if (nIdx < 0)
@@ -435,12 +610,10 @@ namespace CsFPS
 			if (NULL == sFileName || 0 == lstrlenA(sFileName))
 				return false;
 
-			size_t HashCode = GetHashCode(sFileName);
-
-			if (0 == HashCode)
+			if ((int)m_PackageVec.size() <= nIdx)
 				return false;
 
-			return IsExistFile(nIdx, HashCode);
+			return m_PackageVec[nIdx].IsExistFile(sFileName);
 		}
 
 		bool IsExistFile(int nIdx, size_t HashCode) const
@@ -462,11 +635,14 @@ namespace CsFPS
 			if (NULL == sFileName || 0 == lstrlenA(sFileName))
 				return false;
 
-			size_t HashCode = GetHashCode(sFileName);
-			if (0 == HashCode)
-				return false;
+			CONT_PACKAGE_VEC::const_iterator it = m_PackageVec.begin();
+			for (; it != m_PackageVec.end(); ++it)
+			{
+				if ((*it).IsExistFile(sFileName))
+					return true;
+			}
 
-			return IsExistFile(HashCode);
+			return false;
 		}
 
 		bool IsExistFile(size_t HashCode) const
@@ -492,11 +668,10 @@ namespace CsFPS
 			if (NULL == sFileName || 0 == lstrlenA(sFileName))
 				return 0;
 
-			size_t HashCode = GetHashCode(sFileName);
-			if (0 == HashCode)
+			if ((int)m_PackageVec.size() <= nIdx)
 				return 0;
 
-			return GetFileHandle(nIdx, HashCode);
+			return m_PackageVec[nIdx].GetFileHandle(sFileName);
 		}
 
 		int GetFileHandle(int nIdx, size_t HashCode)
@@ -650,14 +825,7 @@ namespace CsFPS
 			if (NULL == m_PackageVec[nIdx].s_pFileHash)
 				return NULL;
 
-			size_t hashCode = GetHashCode(szName);
-			if (0 == hashCode)
-				return NULL;
-
-			if (!m_PackageVec[nIdx].IsExistFile(hashCode))
-				return NULL;
-
-			return m_PackageVec[nIdx].s_pFileHash->GetHashInfo(hashCode);
+			return m_PackageVec[nIdx].GetHashInfoByPath(szName);
 		}
 
 		void GetFileData(int nIdx, char** ppData, UINT64 nOffset, size_t nSize)
@@ -843,19 +1011,18 @@ namespace CsFPS
 			return false;
 		}
 
-		ms_bUsePackage = bUsePackage;
+		ms_bUsePackage = true;
 
-		if (!ms_bUsePackage)
+		std::list<std::string> packageList = cnPkgNamevec;
+
+		if (packageList.empty())
 		{
-			PackLogA("Initialize(list): file pack disabled");
-			return true;
+			PackLogA("Initialize(list): package list empty, using default Data\\Pack01 and Data\\Pack03");
+			packageList.push_back("Data\\Pack01");
+			packageList.push_back("Data\\Pack03");
 		}
 
-		if (cnPkgNamevec.empty())
-		{
-			PackLogA("Initialize(list) failed: package list is empty");
-			return false;
-		}
+		PackLogA("Initialize(list): forced file pack enabled");
 
 		ms_pImpl = new ResSupplierImpl;
 		if (!ms_pImpl)
@@ -864,8 +1031,8 @@ namespace CsFPS
 			return false;
 		}
 
-		std::list<std::string>::const_iterator it = cnPkgNamevec.begin();
-		while (it != cnPkgNamevec.end())
+		std::list<std::string>::const_iterator it = packageList.begin();
+		while (it != packageList.end())
 		{
 			PackLogPackageA("Initialize(list): loading package: ", (*it));
 
@@ -901,19 +1068,17 @@ namespace CsFPS
 			return false;
 		}
 
-		ms_bUsePackage = bUsePackage;
+		ms_bUsePackage = true;
 
-		if (!ms_bUsePackage)
+		std::string packageName = cnPkgNamevec;
+
+		if (packageName.empty())
 		{
-			PackLogA("Initialize(single): file pack disabled");
-			return true;
+			PackLogA("Initialize(single): package name empty, using default Data\\Pack01");
+			packageName = "Data\\Pack01";
 		}
 
-		if (0 == cnPkgNamevec.length())
-		{
-			PackLogA("Initialize(single) failed: package name is empty");
-			return false;
-		}
+		PackLogA("Initialize(single): forced file pack enabled");
 
 		ms_pImpl = new ResSupplierImpl;
 		if (!ms_pImpl)
@@ -922,12 +1087,12 @@ namespace CsFPS
 			return false;
 		}
 
-		PackLogPackageA("Initialize(single): loading package: ", cnPkgNamevec);
+		PackLogPackageA("Initialize(single): loading package: ", packageName);
 
-		if (!ms_pImpl->LoadPackage(cnPkgNamevec, bWrite))
+		if (!ms_pImpl->LoadPackage(packageName, bWrite))
 		{
 			std::string msgA = "Failed to load pack: ";
-			msgA += cnPkgNamevec;
+			msgA += packageName;
 			PackLogA(msgA.c_str());
 
 			CsMessageBox(MB_OK, _T("Failed to load pack! Check Data\\Pack01.pf/.hf and Data\\Pack03.pf/.hf"));
@@ -1064,7 +1229,7 @@ namespace CsFPS
 		if (NULL == ms_pImpl)
 			return 0;
 
-		return ms_pImpl->ReadData(nFilePackIndex, GetHashCode(szPath), ppData);
+		return ms_pImpl->ReadData(nFilePackIndex, szPath, ppData);
 	}
 
 	size_t CsFPSystem::GetTotalFileCount(int nIdx)
@@ -1187,7 +1352,7 @@ namespace CsFPS
 		if (NULL == ms_pImpl)
 			return 0;
 
-		return ms_pImpl->ReadData(nIdx, GetHashCode(szName), vecData);
+		return ms_pImpl->ReadData(nIdx, szName, vecData);
 	}
 
 	void CsFPSystem::GetFileList(int nIdx, std::list<std::string>& files)

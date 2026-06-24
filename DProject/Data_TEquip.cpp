@@ -4,28 +4,71 @@
 
 namespace
 {
-void CopyItemInfoFields( cItemInfo& dest, const cItemInfo& src )
-{
-	dest.m_nAll = src.m_nAll;
-	dest.m_nRate = src.m_nRate;
-	dest.m_nLevel = src.m_nLevel;
-	dest.m_nLimited = src.m_nLimited;
-	for( int i = 0; i < nLimit::SocketSlot; ++i )
+	void CopyItemInfoFields(cItemInfo& dest, const cItemInfo& src)
 	{
-		dest.m_nSockItemType[i] = src.m_nSockItemType[i];
-		dest.m_nSockAppRate[i] = src.m_nSockAppRate[i];
-	}
-	for( int i = 0; i < nLimit::MAX_ACCESSORY_OPTION; ++i )
-	{
-		dest.m_nAccOption[i] = src.m_nAccOption[i];
-		dest.m_nAccValues[i] = src.m_nAccValues[i];
-	}
-	dest.m_nEndTime = src.m_nEndTime;
-	dest.m_nRemainTradeLimitTime = src.m_nRemainTradeLimitTime;
+		dest.m_nAll = src.m_nAll;
+		dest.m_nRate = src.m_nRate;
+		dest.m_nLevel = src.m_nLevel;
+		dest.m_nLimited = src.m_nLimited;
+
+		for (int i = 0; i < nLimit::SocketSlot; ++i)
+		{
+			dest.m_nSockItemType[i] = src.m_nSockItemType[i];
+			dest.m_nSockAppRate[i] = src.m_nSockAppRate[i];
+		}
+
+		for (int i = 0; i < nLimit::MAX_ACCESSORY_OPTION; ++i)
+		{
+			dest.m_nAccOption[i] = src.m_nAccOption[i];
+			dest.m_nAccValues[i] = src.m_nAccValues[i];
+		}
+
+		dest.m_nEndTime = src.m_nEndTime;
+		dest.m_nRemainTradeLimitTime = src.m_nRemainTradeLimitTime;
+
 #ifdef COMPAT_487
-	dest.ExtraBytes = src.ExtraBytes;
+		dest.ExtraBytes = src.ExtraBytes;
 #endif
-}
+	}
+
+	CsItem::sINFO* GetItemInfoSafe(int nItemType)
+	{
+		if (nItemType <= 0)
+			return NULL;
+
+		if (nsCsFileTable::g_pItemMng == NULL)
+			return NULL;
+
+		CsItem* pItem = nsCsFileTable::g_pItemMng->GetItem(nItemType);
+		if (pItem == NULL)
+			return NULL;
+
+		return pItem->GetInfo();
+	}
+
+	bool IsValidEquipSlot(int nEquipIndex)
+	{
+		return (nEquipIndex >= 0 && nEquipIndex < nLimit::Equip);
+	}
+
+	void SafeChangePart(int nPartIndex, int nFileTableID, int nRemainTime)
+	{
+		if (g_pCharMng == NULL)
+			return;
+
+		CTamerUser* pTamer = g_pCharMng->GetTamerUser();
+		if (pTamer == NULL)
+			return;
+
+		CsC_PartObject::sCHANGE_PART_INFO cp;
+		memset(&cp, 0, sizeof(cp));
+
+		cp.s_nFileTableID = nFileTableID;
+		cp.s_nPartIndex = nPartIndex;
+		cp.s_nRemainTime = nRemainTime;
+
+		pTamer->ChangePart(&cp);
+	}
 }
 
 cData_TEquip::cData_TEquip()
@@ -104,71 +147,65 @@ void cData_TEquip::SetDigiviceItem( cItemData* pDigiviceItem )
 	GAME_EVENT_ST.OnEvent( EVENT_CODE::UPDATE_TAMERSTATUS, NULL );
 }
 
-void cData_TEquip::SetData( int nIndex, cItemInfo* pItem, bool bCallChangePart )
+void cData_TEquip::SetData(int nIndex, cItemInfo* pItem, bool bCallChangePart)
 {
-	assert_cs( nIndex < nLimit::Equip );
-	cItemInfo* pEquip = GetData( nIndex );
+	if (IsValidEquipSlot(nIndex) == false)
+		return;
 
-	if( pItem != NULL )
+	cItemInfo* pEquip = GetData(nIndex);
+	if (pEquip == NULL)
+		return;
+
+	if (pItem != NULL && pItem->IsEnable() == true && pItem->GetCount() == 1)
 	{
-		assert_cs( ( pItem->IsEnable() == true ) && ( pItem->GetCount() == 1 ) );		
-		CopyItemInfoFields( *pEquip, *pItem );
+		CopyItemInfoFields(*pEquip, *pItem);
 
-		if( nIndex == nTamer::Costume )
+		if (nIndex == nTamer::Costume)
 		{
-			//==========================================================================================================
-			// 업적 체크
-			//==========================================================================================================
 			GS2C_RECV_CHECKTYPE recv;
-			recv.nType = AchieveContents::CA_Equip_Costume_1;
 			recv.nValue1 = pItem->m_nType;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+
+			recv.nType = AchieveContents::CA_Equip_Costume_1;
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 
 			recv.nType = AchieveContents::CA_Equip_Costume_2;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 
 			recv.nType = AchieveContents::CA_Equip_Costume_3;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 
 			recv.nType = AchieveContents::CA_Equip_Costume_4;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 
 			recv.nType = AchieveContents::CA_Equip_Costume_5;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 
 			recv.nType = AchieveContents::CA_Equip_Costume_6;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 
 			recv.nType = AchieveContents::CA_Equip_Costume_7;
-			GAME_EVENT_ST.OnEvent( EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv );
+			GAME_EVENT_ST.OnEvent(EVENT_CODE::ACHIEVE_SET_CHECKTYPE, &recv);
 		}
 
-		if( bCallChangePart || ( net::game == NULL ) )
+		if (bCallChangePart || (net::game == NULL))
 		{
-			CsC_PartObject::sCHANGE_PART_INFO cp;
-			cp.s_nFileTableID = pItem->GetType();
-			cp.s_nPartIndex = nIndex;
-			cp.s_nRemainTime = pItem->m_nEndTime;
+			CsItem::sINFO* pInfo = GetItemInfoSafe(pItem->GetType());
 
-			if( g_pCharMng && g_pCharMng->GetTamerUser() )
-				g_pCharMng->GetTamerUser()->ChangePart( &cp );			
+			// Se o item não existir no FileTable do client, não chamar ChangePart.
+			// Isto evita crash ao equipar itens que o client não conhece.
+			if (pInfo != NULL)
+				SafeChangePart(nIndex, pItem->GetType(), pItem->m_nEndTime);
 		}
 	}
 	else
 	{
 		pEquip->Reset();
-		if( bCallChangePart || ( net::game == NULL ) )
-		{
-			CsC_PartObject::sCHANGE_PART_INFO cp;
-			cp.s_nFileTableID = 0;
-			cp.s_nPartIndex = nIndex;
-			cp.s_nRemainTime = 0;
-			if( g_pCharMng && g_pCharMng->GetTamerUser() )
-				g_pCharMng->GetTamerUser()->ChangePart( &cp );
-		}
+
+		if (bCallChangePart || (net::game == NULL))
+			SafeChangePart(nIndex, 0, 0);
 	}
 
-	GAME_EVENT_ST.OnEvent( EVENT_CODE::UPDATE_TAMERSTATUS, NULL );
+	GAME_EVENT_ST.OnEvent(EVENT_CODE::UPDATE_TAMERSTATUS, NULL);
 }
 cItemInfo* cData_TEquip::GetData( int nIndex )
 { 
@@ -184,126 +221,142 @@ bool cData_TEquip::IsExistItem( int nIndex )
 	return false;
 }
 
-void cData_TEquip::ToInven( int nEquipIndex, int nInvenIndex )
+void cData_TEquip::ToInven(int nEquipIndex, int nInvenIndex)
 {
-	//=============================================================================================================
-	//	쿨타임
-	//=============================================================================================================
-	CsItem::sINFO* pFTItemInfo = NULL;
-	if( GetData( nEquipIndex )->IsEnable() == true )
-	{
-		pFTItemInfo = nsCsFileTable::g_pItemMng->GetItem( GetData( nEquipIndex )->GetType() )->GetInfo();
-	}
-	else
-	{
-		assert_cs( g_pDataMng->GetInven()->GetData( nInvenIndex )->IsEnable() == true );
-		pFTItemInfo = nsCsFileTable::g_pItemMng->GetItem( g_pDataMng->GetInven()->GetData( nInvenIndex )->GetType() )->GetInfo();		
-	}
-	assert_cs( pFTItemInfo != NULL );
-	assert_cs( pFTItemInfo->s_nUseTimeGroup != 0 );
-	// 쿨타임 적용
-	pFTItemInfo->GetCoolTimeSeq()->Start();
+	if (IsValidEquipSlot(nEquipIndex) == false)
+		return;
 
-	// 비여있는 인벤토리인가
+	if (g_pDataMng == NULL || g_pDataMng->GetInven() == NULL)
+		return;
+
 	cData_Inven* pInven = g_pDataMng->GetInven();
-	if( pInven->GetData( nInvenIndex )->IsEnable() == false )
+
+	cItemInfo* pEquipItem = GetData(nEquipIndex);
+	cItemInfo* pInvenItem = pInven->GetData(nInvenIndex);
+
+	if (pEquipItem == NULL || pInvenItem == NULL)
+		return;
+
+	CsItem::sINFO* pFTItemInfo = NULL;
+
+	if (pEquipItem->IsEnable() == true)
+		pFTItemInfo = GetItemInfoSafe(pEquipItem->GetType());
+	else if (pInvenItem->IsEnable() == true)
+		pFTItemInfo = GetItemInfoSafe(pInvenItem->GetType());
+
+	// Item desconhecido no client. Não continuar, senão crasha em GetInfo().
+	if (pFTItemInfo == NULL)
+		return;
+
+	if (pFTItemInfo->s_nUseTimeGroup != 0 && pFTItemInfo->GetCoolTimeSeq() != NULL)
+		pFTItemInfo->GetCoolTimeSeq()->Start();
+
+	// Inventário vazio: tira do equipamento e mete no inventário.
+	if (pInvenItem->IsEnable() == false)
 	{
-		assert_cs( GetData( nEquipIndex )->IsEnable() );
+		if (pEquipItem->IsEnable() == false)
+			return;
 
-		// 인벤토리에 넣어주고
-		CopyItemInfoFields( *pInven->GetData( nInvenIndex ), *GetData( nEquipIndex ) );
-
-		// 장비 창에서 빼주자
-		SetData( nEquipIndex, NULL, false );
+		CopyItemInfoFields(*pInvenItem, *pEquipItem);
+		SetData(nEquipIndex, NULL, false);
 	}
-	// 차 있는 인벤 인가
 	else
 	{
-		// 인벤에 있는거와 파츠타입이 동일 해야만 한다.
-		if(nsCsFileTable::g_pItemMng->GetItem( pInven->GetData( nInvenIndex )->GetType() )->GetInfo()->s_nType_L != nItem::EquipAura) //오라 추가 chu8820
-		{
-			assert_cs( nsCsFileTable::g_pItemMng->GetItem( pInven->GetData( nInvenIndex )->GetType() )->GetInfo()->s_nType_L - nItem::Head == nEquipIndex );
-		}
-		else //오라장비일 경우 Head(21)을 빼도 type값이 10이 되기때문에 1 더 빼줘
-		{
-			assert_cs( ((nsCsFileTable::g_pItemMng->GetItem( pInven->GetData( nInvenIndex )->GetType() )->GetInfo()->s_nType_L - nItem::Head)) == nEquipIndex );
-		}
+		CsItem::sINFO* pInvenFTInfo = GetItemInfoSafe(pInvenItem->GetType());
+		if (pInvenFTInfo == NULL)
+			return;
 
-		// 임시보관
+		// Validar se o item do inventário pode ir para este slot.
+		bool bValidPart = false;
+
+		if (pInvenFTInfo->s_nType_L != nItem::EquipAura)
+			bValidPart = (pInvenFTInfo->s_nType_L - nItem::Head == nEquipIndex);
+		else
+			bValidPart = ((pInvenFTInfo->s_nType_L - nItem::Head) == nEquipIndex);
+
+		if (bValidPart == false)
+			return;
+
 		cItemInfo Temp;
-		CopyItemInfoFields( Temp, *pInven->GetData( nInvenIndex ) );
+		Temp.Reset();
 
-		// 인벤토리에 넣어주고
-		CopyItemInfoFields( *pInven->GetData( nInvenIndex ), *GetData( nEquipIndex ) );
+		CopyItemInfoFields(Temp, *pInvenItem);
 
-		//착귀템귀속여부
-		SetImpute( &Temp );
+		if (pEquipItem->IsEnable() == true)
+			CopyItemInfoFields(*pInvenItem, *pEquipItem);
+		else
+			pInvenItem->Reset();
 
-		// 장비 창에 넣어주자		
-		SetData( nEquipIndex, &Temp, false );
+		SetImpute(&Temp);
+		SetData(nEquipIndex, &Temp, false);
 	}
 
 #ifdef UI_INVENTORY_RENEWAL
-	std::pair< int, bool > pairInfo( nInvenIndex, false );
-	GAME_EVENT_ST.OnEvent( EVENT_CODE::ADD_NEWITEM_INVENTORY, &pairInfo );
+	std::pair< int, bool > pairInfo(nInvenIndex, false);
+	GAME_EVENT_ST.OnEvent(EVENT_CODE::ADD_NEWITEM_INVENTORY, &pairInfo);
 #endif
 }
 
 
-void cData_TEquip::ToInven_Digivice( int nInvenIndex )
+void cData_TEquip::ToInven_Digivice(int nInvenIndex)
 {
-	//=============================================================================================================
-	//	쿨타임
-	//=============================================================================================================
-	CsItem::sINFO* pFTItemInfo = NULL;
-	if( GetDigiviceItem()->IsEnable() == true )
-	{
-		pFTItemInfo = nsCsFileTable::g_pItemMng->GetItem( GetDigiviceItem()->GetType() )->GetInfo();
-	}
-	else
-	{
-		assert_cs( g_pDataMng->GetInven()->GetData( nInvenIndex )->IsEnable() == true );
-		pFTItemInfo = nsCsFileTable::g_pItemMng->GetItem( g_pDataMng->GetInven()->GetData( nInvenIndex )->GetType() )->GetInfo();		
-	}
-	assert_cs( pFTItemInfo != NULL );
-	assert_cs( pFTItemInfo->s_nUseTimeGroup != 0 );
-	// 쿨타임 적용
-	pFTItemInfo->GetCoolTimeSeq()->Start();
+	if (g_pDataMng == NULL || g_pDataMng->GetInven() == NULL)
+		return;
 
-	// 비여있는 인벤토리인가
 	cData_Inven* pInven = g_pDataMng->GetInven();
-	if( pInven->GetData( nInvenIndex )->IsEnable() == false )
+
+	cItemInfo* pDigiviceItem = GetDigiviceItem();
+	cItemInfo* pInvenItem = pInven->GetData(nInvenIndex);
+
+	if (pDigiviceItem == NULL || pInvenItem == NULL)
+		return;
+
+	CsItem::sINFO* pFTItemInfo = NULL;
+
+	if (pDigiviceItem->IsEnable() == true)
+		pFTItemInfo = GetItemInfoSafe(pDigiviceItem->GetType());
+	else if (pInvenItem->IsEnable() == true)
+		pFTItemInfo = GetItemInfoSafe(pInvenItem->GetType());
+
+	if (pFTItemInfo == NULL)
+		return;
+
+	if (pFTItemInfo->s_nUseTimeGroup != 0 && pFTItemInfo->GetCoolTimeSeq() != NULL)
+		pFTItemInfo->GetCoolTimeSeq()->Start();
+
+	if (pInvenItem->IsEnable() == false)
 	{
-		assert_cs( GetDigiviceItem()->IsEnable() );
+		if (pDigiviceItem->IsEnable() == false)
+			return;
 
-		// 인벤토리에 넣어주고
-		CopyItemInfoFields( *pInven->GetData( nInvenIndex ), *GetDigiviceItem() );
-
-		// 장비 창에서 빼주자
-		SetDigiviceItem( NULL );
+		CopyItemInfoFields(*pInvenItem, *pDigiviceItem);
+		SetDigiviceItem(NULL);
 	}
-	// 차 있는 인벤 인가
 	else
 	{
-		// 인벤에 있는거와 파츠타입이 동일 해야만 한다.
-		assert_cs( nsCsFileTable::g_pItemMng->GetItem( pInven->GetData( nInvenIndex )->GetType() )->GetInfo()->s_nType_L == nItem::Digivice );
+		CsItem::sINFO* pInvenFTInfo = GetItemInfoSafe(pInvenItem->GetType());
+		if (pInvenFTInfo == NULL)
+			return;
 
-		// 임시보관
+		if (pInvenFTInfo->s_nType_L != nItem::Digivice)
+			return;
+
 		cItemInfo Temp;
-		CopyItemInfoFields( Temp, *pInven->GetData( nInvenIndex ) );
+		Temp.Reset();
 
-		// 인벤토리에 넣어주고
-		CopyItemInfoFields( *pInven->GetData( nInvenIndex ), *GetDigiviceItem() );
+		CopyItemInfoFields(Temp, *pInvenItem);
 
-		//착귀템귀속여부
-		//SetImpute( &Temp );	//	RecvChangeItemLimitedAttribute() 함수에서 디지바이스 착귀여부 결정.
+		if (pDigiviceItem->IsEnable() == true)
+			CopyItemInfoFields(*pInvenItem, *pDigiviceItem);
+		else
+			pInvenItem->Reset();
 
-		// 장비 창에 넣어주자
-		SetDigiviceItem( &Temp );
+		SetDigiviceItem(&Temp);
 	}
+
 #ifdef UI_INVENTORY_RENEWAL
-	std::pair< int, bool > pairInfo( nInvenIndex, false );
-	GAME_EVENT_ST.OnEvent( EVENT_CODE::ADD_NEWITEM_INVENTORY, &pairInfo );
+	std::pair< int, bool > pairInfo(nInvenIndex, false);
+	GAME_EVENT_ST.OnEvent(EVENT_CODE::ADD_NEWITEM_INVENTORY, &pairInfo);
 #endif
 }
 

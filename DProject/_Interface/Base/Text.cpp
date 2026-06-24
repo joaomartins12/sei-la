@@ -72,27 +72,21 @@ namespace
 
 		__try
 		{
+			if (face->num_faces <= 0)
+				return false;
+
 			if (face->glyph == NULL)
 				return false;
 
 			if (face->size == NULL)
 				return false;
 
-			if (face->num_faces <= 0 || face->num_faces > 64)
-				return false;
-
-			if (face->face_index < 0 || face->face_index >= face->num_faces)
-				return false;
-
-			if (face->num_glyphs <= 0 || face->num_glyphs > 300000)
-				return false;
+			return true;
 		}
 		__except (EXCEPTION_EXECUTE_HANDLER)
 		{
 			return false;
 		}
-
-		return true;
 	}
 
 	static bool IsWhiteChar(FT_ULong charcode)
@@ -175,49 +169,84 @@ namespace
 		if (!IsFaceReady(face))
 			return false;
 
-		FT_Error error = 1;
+		// Não tentar carregar caracteres de controlo.
+		// Isto evita chamadas perigosas ao FreeType.
+		if (charcode == 0x0000 ||
+			charcode == 0x0008 ||
+			charcode == 0x0009 ||
+			charcode == 0x000a ||
+			charcode == 0x000d)
+		{
+			return false;
+		}
+
+		FT_UInt glyphIndex = 0;
 
 		__try
 		{
-			error = FT_Load_Char(face, charcode, flags);
+			glyphIndex = FT_Get_Char_Index(face, charcode);
 		}
 		__except (EXCEPTION_EXECUTE_HANDLER)
 		{
 			return false;
 		}
 
-		return error == 0 && IsFaceReady(face);
+		// Se a font não tem este glyph, não chamar FT_Load_Char/FT_Load_Glyph.
+		if (glyphIndex == 0)
+			return false;
+
+		FT_Error error = 1;
+
+		__try
+		{
+			// Mais seguro do que FT_Load_Char porque já validámos o glyphIndex.
+			error = FT_Load_Glyph(face, glyphIndex, flags);
+		}
+		__except (EXCEPTION_EXECUTE_HANDLER)
+		{
+			return false;
+		}
+
+		if (error != 0)
+			return false;
+
+		if (!IsFaceReady(face))
+			return false;
+
+		if (face->glyph == NULL)
+			return false;
+
+		return true;
 	}
 
 	static int GetCharAdvancePxSafe(FT_Face face, FT_ULong charcode)
 	{
-		if (charcode == 0x000d || charcode == 0x000a)
+		if (!IsFaceReady(face))
 			return 0;
 
-		if (!IsFaceReady(face))
-			return GetFallbackCharWidthPx(face, charcode);
+		if (charcode == 0x0000 ||
+			charcode == 0x0008 ||
+			charcode == 0x0009 ||
+			charcode == 0x000a ||
+			charcode == 0x000d)
+		{
+			return 0;
+		}
 
-		if (!LoadGlyphSafe(face, charcode, FT_LOAD_DEFAULT | FT_LOAD_FORCE_AUTOHINT))
-			return GetFallbackCharWidthPx(face, charcode);
-
-		if (!IsFaceReady(face) || face->glyph == NULL)
-			return GetFallbackCharWidthPx(face, charcode);
-
-		int adv = 0;
+		if (!LoadCharSafe(face, charcode, FT_LOAD_DEFAULT))
+			return 0;
 
 		__try
 		{
-			adv = face->glyph->advance.x >> 6;
+			if (face == NULL || face->glyph == NULL)
+				return 0;
+
+			return (int)(face->glyph->advance.x >> 6);
 		}
 		__except (EXCEPTION_EXECUTE_HANDLER)
 		{
-			adv = 0;
+			return 0;
 		}
-
-		if (adv <= 0 || adv > 256)
-			adv = GetFallbackCharWidthPx(face, charcode);
-
-		return adv;
 	}
 
 	static int GetCharAdvance26Safe(FT_Face face, FT_ULong charcode)
