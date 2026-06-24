@@ -134,7 +134,25 @@ void cCliGate::RecvTamerSelectSuccess(void)
 	pop(net::port);
 	pop(net::next_map_no);
 
-	GAME_EVENT_STPTR->OnEvent( EVENT_CODE::RECV_CHAR_SELECT_RESULT );
+	char log[512] = { 0 };
+	sprintf_s(
+		log,
+		"[GATE][RECV] RecvTamerSelectSuccess ip=%s port=%d next_map_no=%d\n",
+		net::ip,
+		net::port,
+		net::next_map_no
+	);
+	OutputDebugStringA(log);
+
+	// IMPORTANTE:
+	// O server atual envia o IP/porta do GameServer neste packet, mas pode não enviar
+	// o packet separado RecvChangeServer(). Sem isto, o client muda para Loading,
+	// mas nunca tenta abrir socket para o GameServer.
+	net::cmd = Cmd::ConnectGameServer;
+
+	OutputDebugStringA("[GATE][RECV] RecvTamerSelectSuccess set net::cmd = Cmd::ConnectGameServer\n");
+
+	GAME_EVENT_STPTR->OnEvent(EVENT_CODE::RECV_CHAR_SELECT_RESULT);
 }
 
 void cCliGate::RecvTamerSelectFailure(void)

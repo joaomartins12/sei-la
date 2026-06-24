@@ -52,6 +52,38 @@ namespace
 			OutputDebugStringA(szBuffer);
 		}
 	}
+
+	bool SafePostLoad(cData_PostLoad* pPostLoad, bool bTutorial)
+	{
+		if (pPostLoad == NULL)
+		{
+			IGLog("SafePostLoad failed - pPostLoad NULL");
+			return false;
+		}
+
+		__try
+		{
+			if (bTutorial)
+			{
+				IGLog("SafePostLoad - PostLoad_Tutorial begin");
+				pPostLoad->PostLoad_Tutorial();
+				IGLog("SafePostLoad - PostLoad_Tutorial end");
+			}
+			else
+			{
+				IGLog("SafePostLoad - PostLoad begin");
+				pPostLoad->PostLoad();
+				IGLog("SafePostLoad - PostLoad end");
+			}
+
+			return true;
+		}
+		__except (EXCEPTION_EXECUTE_HANDLER)
+		{
+			IGLog("[EXCEPTION] SafePostLoad - PostLoad/PostLoad_Tutorial crashed and was skipped");
+			return false;
+		}
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -99,17 +131,20 @@ namespace Flow
 
 			if (pPostLoad)
 			{
+				bool bTutorialPostLoad = false;
+
 				if (g_pMngCollector && g_pMngCollector->IsSceneState(CMngCollector::eSCENE_TUTORIAL_EVENT))
+					bTutorialPostLoad = true;
+
+				IGLog("Initialize - SafePostLoad begin");
+
+				if (SafePostLoad(pPostLoad, bTutorialPostLoad))
 				{
-					IGLog("Initialize - PostLoad_Tutorial begin");
-					pPostLoad->PostLoad_Tutorial();
-					IGLog("Initialize - PostLoad_Tutorial end");
+					IGLog("Initialize - SafePostLoad ok");
 				}
 				else
 				{
-					IGLog("Initialize - PostLoad begin call");
-					pPostLoad->PostLoad();
-					IGLog("Initialize - PostLoad end call");
+					IGLog("Initialize warning - SafePostLoad failed/skipped");
 				}
 			}
 			else

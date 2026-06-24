@@ -1269,11 +1269,47 @@ void cCliGame::RecvInitGameData(void)
 
 		OutputDebugStringA("[RECV_INIT] before RecvActorObjectFactor_Init\n");
 
-		RecvActorObjectFactor_Init();
+		try
+		{
+			RecvActorObjectFactor_Init();
+		}
+		catch (...)
+		{
+			OutputDebugStringA("[RECV_INIT][WARN] RecvActorObjectFactor_Init exception ignored\n");
+		}
 
 		OutputDebugStringA("[RECV_INIT] after RecvActorObjectFactor_Init\n");
 
-		GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_PLAYER_DATA_LOAD_COMPLETE, NULL);
+		/*
+			IMPORTANTE:
+			Não chamar GAME_EVENT_ST.OnEvent(EVENT_CODE::RECV_PLAYER_DATA_LOAD_COMPLETE)
+			aqui no estado atual do teu client.
+
+			O teu log mostra uma access violation exatamente depois de
+			RecvActorObjectFactor_Init e antes de sair do Loading. Esse evento
+			está a passar por algum handler que ainda espera objetos do MainGame/UI
+			já criados, mas nesta fase o Loading ainda tem g_pGameIF == NULL.
+
+			A correção estável é avisar diretamente o FlowMgr para trocar do
+			Loading para o MainGame. O FlowMgr chama ReservedChangeFlow no flow atual
+			e processa a troca no próximo OnIdle.
+		*/
+		if (FLOWMGR_STPTR)
+		{
+			if (FLOWMGR_ST.IsCurrentFlow(Flow::CFlow::FLW_MAINGAME) == FALSE)
+			{
+				OutputDebugStringA("[RECV_INIT] ChangeFlow FLW_MAINGAME requested directly\n");
+				FLOWMGR_ST.ChangeFlow(Flow::CFlow::FLW_MAINGAME);
+			}
+			else
+			{
+				OutputDebugStringA("[RECV_INIT] already in FLW_MAINGAME\n");
+			}
+		}
+		else
+		{
+			OutputDebugStringA("[RECV_INIT][ERROR] FLOWMGR_STPTR NULL, cannot ChangeFlow FLW_MAINGAME\n");
+		}
 
 		OutputDebugStringA("[RECV_INIT] RecvInitGameData end OK\n");
 	}
@@ -8022,33 +8058,90 @@ void cCliGame::RecvSpirit_AncientSpiritEvolution()
 
 void cCliGame::RecvActorObjectFactor_Init()
 {
+	OutputDebugStringA("[ACTOR_FACTOR_INIT] begin\n");
+
+	if (g_pDataMng == NULL)
+	{
+		OutputDebugStringA("[ACTOR_FACTOR_INIT][WARN] g_pDataMng NULL\n");
+
+		u4 nDummyCnt = 0;
+		pop(nDummyCnt);
+
+		for (u4 i = 0; i < nDummyCnt && i < 1024; ++i)
+		{
+			u4 nDummyFactID = 0;
+			pop(nDummyFactID);
+		}
+
+		OutputDebugStringA("[ACTOR_FACTOR_INIT] end skipped g_pDataMng NULL\n");
+		return;
+	}
+
+	if (g_pDataMng->GetMapObject() == NULL)
+	{
+		OutputDebugStringA("[ACTOR_FACTOR_INIT][WARN] MapObject NULL\n");
+
+		u4 nDummyCnt = 0;
+		pop(nDummyCnt);
+
+		for (u4 i = 0; i < nDummyCnt && i < 1024; ++i)
+		{
+			u4 nDummyFactID = 0;
+			pop(nDummyFactID);
+		}
+
+		OutputDebugStringA("[ACTOR_FACTOR_INIT] end skipped MapObject NULL\n");
+		return;
+	}
+
 	// 문 다 열려있는것 처럼 초기화
-	g_pDataMng->GetMapObject()->Init( true );
+	g_pDataMng->GetMapObject()->Init(true);
 
-	// 해당되는 Factor( 몬스터라면 살아있는 몬스터 ) 들만 문 닫기
-	u4 nCnt = 2;
-	pop( nCnt );
+	u4 nCnt = 0;
+	pop(nCnt);
 
-	ST_CHAT_PROTOCOL	CProtocol;
-	CProtocol.m_Type = NS_CHAT::DEBUG_TEXT;
-	//CProtocol.m_wStr = GetVAString( _T("ActorObject_Init - Count : %d"), nCnt );
-	DmCS::StringFn::Format(CProtocol.m_wStr ,  _T("ActorObject_Init - Count : %d"), nCnt);
-	GAME_EVENT_STPTR->OnEvent( EVENT_CODE::EVENT_CHAT_PROCESS, &CProtocol );
+	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[ACTOR_FACTOR_INIT] Count=%u\n", nCnt);
+		OutputDebugStringA(log);
+	}
 
-	for( u4 i = 0 ; i < nCnt ; i++ )
+	/*
+		Proteção:
+		Se o packet vier desalinhado, nCnt pode vir absurdo.
+		Não deixamos isto bloquear/crashar o loading.
+	*/
+	if (nCnt > 1024)
+	{
+		OutputDebugStringA("[ACTOR_FACTOR_INIT][WARN] Count > 1024, forcing 0\n");
+		nCnt = 0;
+	}
+
+	for (u4 i = 0; i < nCnt; ++i)
 	{
 		u4 nFactID = 0;
-		pop( nFactID );		// 20150914 nFactID = MonsterID -> ObjectID로 변경
+		pop(nFactID);
 
-		ST_CHAT_PROTOCOL	CProtocol;
-		CProtocol.m_Type = NS_CHAT::DEBUG_TEXT;
-		//CProtocol.m_wStr = GetVAString( _T("ActorObject_Init - MonsterID : %d"), nFactID );
-		DmCS::StringFn::Format(CProtocol.m_wStr, _T("ActorObject_Init - MonsterID : %d"), nFactID);
-		GAME_EVENT_STPTR->OnEvent( EVENT_CODE::EVENT_CHAT_PROCESS, &CProtocol );
-		
-		g_pDataMng->GetMapObject()->OpenAndCloseObject( nFactID, false );
+		{
+			char log[256] = { 0 };
+			sprintf_s(log, "[ACTOR_FACTOR_INIT] FactID=%u\n", nFactID);
+			OutputDebugStringA(log);
+		}
+
+		if (nFactID == 0)
+			continue;
+
+		try
+		{
+			g_pDataMng->GetMapObject()->OpenAndCloseObject(nFactID, false);
+		}
+		catch (...)
+		{
+			OutputDebugStringA("[ACTOR_FACTOR_INIT][WARN] OpenAndCloseObject exception ignored\n");
+		}
 	}
-	//g_pDataMng->GetMapObject()->CheckActorFlag();
+
+	OutputDebugStringA("[ACTOR_FACTOR_INIT] end\n");
 }
 
 

@@ -24,13 +24,19 @@ namespace Flow
 		, m_bProcessingLock(FALSE)
 	{
 	}
+
 	//---------------------------------------------------------------------------
+
 	CFlowMgr::~CFlowMgr()
 	{
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::Create()
 	{
+		OutputDebugStringA("[FLOWMGR] Create begin\n");
+
 		if (!m_pkFlowCmdQueue)
 			m_pkFlowCmdQueue = NiNew CFlowCmdQueue;
 
@@ -42,17 +48,24 @@ namespace Flow
 
 		if (!m_pkFlowCmdQueue || !m_pkFlowStack || !m_pkFlowInstMgr)
 		{
+			OutputDebugStringA("[FLOWMGR][ERROR] Create failed: allocation failed\n");
+
 			SAFE_NIDELETE(m_pkFlowCmdQueue);
 			SAFE_NIDELETE(m_pkFlowStack);
 			SAFE_NIDELETE(m_pkFlowInstMgr);
 			return FALSE;
 		}
 
+		OutputDebugStringA("[FLOWMGR] Create ok\n");
 		return TRUE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::Destroy()
 	{
+		OutputDebugStringA("[FLOWMGR] Destroy begin\n");
+
 		CurFlowImmediatelyDestroy();
 
 		if (m_pkFlowCmdQueue)
@@ -67,45 +80,86 @@ namespace Flow
 		SAFE_NIDELETE(m_pkFlowCmdQueue);
 		SAFE_NIDELETE(m_pkFlowStack);
 		SAFE_NIDELETE(m_pkFlowInstMgr);
+
+		m_bFlowLock = FALSE;
+		m_bProcessingLock = FALSE;
+
+		OutputDebugStringA("[FLOWMGR] Destroy end\n");
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::CurFlowImmediatelyDestroy()
 	{
+		OutputDebugStringA("[FLOWMGR] CurFlowImmediatelyDestroy begin\n");
+
 		int iID = GetCurTopFlowID();
 
 		while (iID != CFlow::FLW_NONE)
 		{
 			if (IsCurTopFlow())
+			{
+				char log[256] = { 0 };
+				sprintf_s(log, "[FLOWMGR] CurFlowImmediatelyDestroy OnExit flow=%d\n", iID);
+				OutputDebugStringA(log);
+
 				GetCurTopFlow()->OnExit(-1);
+			}
 
 			EraseFlow(iID);
 
 			iID = GetCurTopFlowID();
 		}
+
+		OutputDebugStringA("[FLOWMGR] CurFlowImmediatelyDestroy end\n");
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::StartFlow(int p_iID)
 	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] StartFlow id=%d\n", p_iID);
+		OutputDebugStringA(log);
+
 		if (!m_pkFlowStack || !m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] StartFlow failed: queue/stack NULL\n");
 			return FALSE;
+		}
 
 		assert(m_pkFlowStack->IsEmpty() && "StartFlow Failed!");
 
 		if (!m_pkFlowStack->IsEmpty())
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] StartFlow failed: stack not empty\n");
 			return FALSE;
+		}
 
 		PushFlow(p_iID);
 
 		return TRUE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::PushFlow(int p_iID)
 	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] PushFlow request id=%d\n", p_iID);
+		OutputDebugStringA(log);
+
 		if (!m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] PushFlow failed: queue NULL\n");
 			return;
+		}
 
 		if (!m_pkFlowCmdQueue->IsEmpty())
+		{
+			OutputDebugStringA("[FLOWMGR][WARN] PushFlow ignored: queue not empty\n");
 			return;
+		}
 
 		int iSize = GetCurFlowSize();
 
@@ -117,14 +171,26 @@ namespace Flow
 
 		m_pkFlowCmdQueue->PushFlow(p_iID);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::ChangePopAllFlow(int p_iID)
 	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] ChangePopAllFlow request id=%d\n", p_iID);
+		OutputDebugStringA(log);
+
 		if (!m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] ChangePopAllFlow failed: queue NULL\n");
 			return;
+		}
 
 		if (!m_pkFlowCmdQueue->IsEmpty())
+		{
+			OutputDebugStringA("[FLOWMGR][WARN] ChangePopAllFlow ignored: queue not empty\n");
 			return;
+		}
 
 		int iSize = GetCurFlowSize();
 
@@ -136,44 +202,80 @@ namespace Flow
 
 		m_pkFlowCmdQueue->ChangePopAllFlow(p_iID);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::ChangeFlow(int p_iID)
 	{
-#ifdef DEBUG_NETWORK
-		DBG("Changing flow\n");
-#endif
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] ChangeFlow request id=%d current=%d lock=%d processing=%d\n",
+			p_iID,
+			GetCurTopFlowID(),
+			m_bFlowLock,
+			m_bProcessingLock
+		);
+		OutputDebugStringA(log);
 
 		if (!m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] ChangeFlow failed: queue NULL\n");
 			return;
+		}
 
 		if (!m_pkFlowCmdQueue->IsEmpty())
+		{
+			OutputDebugStringA("[FLOWMGR][WARN] ChangeFlow ignored: queue not empty\n");
 			return;
+		}
 
 		if (m_pkFlowCmdQueue->IsFrontChange(p_iID))
+		{
+			OutputDebugStringA("[FLOWMGR][WARN] ChangeFlow ignored: same front change\n");
 			return;
+		}
 
 		int iSize = GetCurFlowSize();
-
-#ifdef DEBUG_NETWORK
-		DBG("Flow size -> %d\n", iSize);
-#endif
 
 		for (int i = 0; i < iSize; ++i)
 		{
 			if (IsCurPosFlow(i))
+			{
+				char log2[256] = { 0 };
+				sprintf_s(log2, "[FLOWMGR] ChangeFlow ReservedChangeFlow pos=%d flowID=%d next=%d\n",
+					i,
+					GetCurPosFlowID(i),
+					p_iID
+				);
+				OutputDebugStringA(log2);
+
 				GetCurPosFlow(i)->ReservedChangeFlow(p_iID);
+			}
 		}
 
 		m_pkFlowCmdQueue->ChangeFlow(p_iID);
+
+		OutputDebugStringA("[FLOWMGR] ChangeFlow queued\n");
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::PopFlow(int p_iID)
 	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] PopFlow request id=%d\n", p_iID);
+		OutputDebugStringA(log);
+
 		if (!m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] PopFlow failed: queue NULL\n");
 			return;
+		}
 
 		if (!m_pkFlowCmdQueue->IsEmpty())
+		{
+			OutputDebugStringA("[FLOWMGR][WARN] PopFlow ignored: queue not empty\n");
 			return;
+		}
 
 		int iSize = GetCurFlowSize();
 
@@ -185,27 +287,91 @@ namespace Flow
 
 		m_pkFlowCmdQueue->PopFlow(p_iID);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::PopAllFlow()
 	{
+		OutputDebugStringA("[FLOWMGR] PopAllFlow request\n");
+
 		if (!m_pkFlowCmdQueue)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] PopAllFlow failed: queue NULL\n");
 			return;
+		}
 
 		if (m_pkFlowCmdQueue->IsFrontPopAll())
+		{
+			OutputDebugStringA("[FLOWMGR][WARN] PopAllFlow ignored: already front pop all\n");
 			return;
+		}
 
 		m_pkFlowCmdQueue->PopAllFlow();
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::CMDUpdate()
 	{
 		if (!m_pkFlowCmdQueue)
 			return;
 
+		/*
+			Fallback global:
+			Quando um flow chama ReservedChangeFlow(), normalmente o fade faz LockFlow()
+			e depois chama UnLockFlow() quando termina.
+
+			No teu caso, ao sair do Loading para InGame:
+				[FLOW][Loading] FadeOut begin
+				[FLOWMGR] LockFlow
+				[FLOWMGR] ChangeFlow queued
+
+			Mas depois o unlock não vem, então o CMD fica preso.
+			Este contador deixa o fade aparecer, mas não deixa ficar preso para sempre.
+		*/
+		static int s_nFlowLockWaitFrames = 0;
+
+		int nSafeCounter = 0;
+
 		while (!m_pkFlowCmdQueue->IsEmpty())
 		{
+			if (++nSafeCounter > 16)
+			{
+				OutputDebugStringA("[FLOWMGR][ERROR] CMDUpdate safe counter exceeded. Breaking.\n");
+				break;
+			}
+
 			if (m_bFlowLock)
-				return;
+			{
+				++s_nFlowLockWaitFrames;
+
+				if ((s_nFlowLockWaitFrames % 30) == 0)
+				{
+					char log[256] = { 0 };
+					sprintf_s(log, "[FLOWMGR] CMDUpdate waiting: FlowLock=TRUE frames=%d\n", s_nFlowLockWaitFrames);
+					OutputDebugStringA(log);
+				}
+
+				/*
+					60 frames dá tempo ao fade para escurecer.
+					Se mesmo assim ninguém chamar UnLockFlow(), desbloqueamos.
+				*/
+				if (s_nFlowLockWaitFrames >= 60)
+				{
+					OutputDebugStringA("[FLOWMGR][WARN] CMDUpdate FlowLock timeout. Force UnLockFlow.\n");
+					UnLockFlow();
+					s_nFlowLockWaitFrames = 0;
+				}
+				else
+				{
+					m_bProcessingLock = FALSE;
+					return;
+				}
+			}
+			else
+			{
+				s_nFlowLockWaitFrames = 0;
+			}
 
 			m_bProcessingLock = TRUE;
 
@@ -213,9 +379,15 @@ namespace Flow
 			ZeroMemory(&kCmd, sizeof(kCmd));
 			kCmd = m_pkFlowCmdQueue->GetAt();
 
-#ifdef DEBUG_NETWORK
-			DBG("Flow changing CMD to -> %d\n", kCmd.eCmdType);
-#endif
+			{
+				char log[256] = { 0 };
+				sprintf_s(log, "[FLOWMGR] CMDUpdate cmd=%d target=%d current=%d\n",
+					kCmd.eCmdType,
+					kCmd.iID,
+					GetCurTopFlowID()
+				);
+				OutputDebugStringA(log);
+			}
 
 			switch (kCmd.eCmdType)
 			{
@@ -226,13 +398,29 @@ namespace Flow
 				if (iID != kCmd.iID)
 				{
 					if (IsCurTopFlow())
+					{
+						OutputDebugStringA("[FLOWMGR] CMD_PUSH OnOverride begin\n");
 						GetCurTopFlow()->OnOverride(kCmd.iID);
+						OutputDebugStringA("[FLOWMGR] CMD_PUSH OnOverride end\n");
+					}
 
 					if (RegisterFlow(kCmd.iID))
 					{
 						if (IsCurTopFlow())
+						{
+							OutputDebugStringA("[FLOWMGR] CMD_PUSH OnEnter begin\n");
 							GetCurTopFlow()->OnEnter();
+							OutputDebugStringA("[FLOWMGR] CMD_PUSH OnEnter end\n");
+						}
 					}
+					else
+					{
+						OutputDebugStringA("[FLOWMGR][ERROR] CMD_PUSH RegisterFlow failed\n");
+					}
+				}
+				else
+				{
+					OutputDebugStringA("[FLOWMGR][WARN] CMD_PUSH ignored: same current flow\n");
 				}
 			}
 			break;
@@ -241,24 +429,67 @@ namespace Flow
 			{
 				int iID = GetCurTopFlowID();
 
+				{
+					char log[256] = { 0 };
+					sprintf_s(log, "[FLOWMGR] CMD_CHANGE begin current=%d target=%d\n", iID, kCmd.iID);
+					OutputDebugStringA(log);
+				}
+
 				if (iID != kCmd.iID)
 				{
 					if (IsCurTopFlow())
+					{
+						OutputDebugStringA("[FLOWMGR] CMD_CHANGE OnExit begin\n");
 						GetCurTopFlow()->OnExit(kCmd.iID);
+						OutputDebugStringA("[FLOWMGR] CMD_CHANGE OnExit end\n");
+					}
+					else
+					{
+						OutputDebugStringA("[FLOWMGR][WARN] CMD_CHANGE current top flow NULL before OnExit\n");
+					}
 
-					EraseFlow(iID);
+					if (EraseFlow(iID))
+					{
+						OutputDebugStringA("[FLOWMGR] CMD_CHANGE EraseFlow ok\n");
+					}
+					else
+					{
+						OutputDebugStringA("[FLOWMGR][WARN] CMD_CHANGE EraseFlow failed\n");
+					}
 
 					if (RegisterFlow(kCmd.iID))
 					{
+						OutputDebugStringA("[FLOWMGR] CMD_CHANGE RegisterFlow ok\n");
+
 						if (IsCurTopFlow())
+						{
+							OutputDebugStringA("[FLOWMGR] CMD_CHANGE OnEnter begin\n");
 							GetCurTopFlow()->OnEnter();
+							OutputDebugStringA("[FLOWMGR] CMD_CHANGE OnEnter end\n");
+						}
+						else
+						{
+							OutputDebugStringA("[FLOWMGR][ERROR] CMD_CHANGE top flow NULL after RegisterFlow\n");
+						}
+					}
+					else
+					{
+						OutputDebugStringA("[FLOWMGR][ERROR] CMD_CHANGE RegisterFlow failed\n");
 					}
 				}
+				else
+				{
+					OutputDebugStringA("[FLOWMGR][WARN] CMD_CHANGE ignored: already current flow\n");
+				}
+
+				OutputDebugStringA("[FLOWMGR] CMD_CHANGE end\n");
 			}
 			break;
 
 			case CFlowCmdQueue::CMD_CHANGE_POP_ALL:
 			{
+				OutputDebugStringA("[FLOWMGR] CMD_CHANGE_POP_ALL begin\n");
+
 				int iID = GetCurTopFlowID();
 
 				while (iID != CFlow::FLW_NONE)
@@ -276,11 +507,19 @@ namespace Flow
 					if (IsCurTopFlow())
 						GetCurTopFlow()->OnEnter();
 				}
+				else
+				{
+					OutputDebugStringA("[FLOWMGR][ERROR] CMD_CHANGE_POP_ALL RegisterFlow failed\n");
+				}
+
+				OutputDebugStringA("[FLOWMGR] CMD_CHANGE_POP_ALL end\n");
 			}
 			break;
 
 			case CFlowCmdQueue::CMD_POP:
 			{
+				OutputDebugStringA("[FLOWMGR] CMD_POP begin\n");
+
 				if (!m_pkFlowStack)
 					break;
 
@@ -304,11 +543,15 @@ namespace Flow
 
 					iID = GetCurTopFlowID();
 				}
+
+				OutputDebugStringA("[FLOWMGR] CMD_POP end\n");
 			}
 			break;
 
 			case CFlowCmdQueue::CMD_POP_ALL:
 			{
+				OutputDebugStringA("[FLOWMGR] CMD_POP_ALL begin\n");
+
 				int iID = GetCurTopFlowID();
 
 				while (iID != CFlow::FLW_NONE)
@@ -320,6 +563,16 @@ namespace Flow
 
 					iID = GetCurTopFlowID();
 				}
+
+				OutputDebugStringA("[FLOWMGR] CMD_POP_ALL end\n");
+			}
+			break;
+
+			default:
+			{
+				char log[256] = { 0 };
+				sprintf_s(log, "[FLOWMGR][ERROR] CMDUpdate unknown cmd=%d target=%d\n", kCmd.eCmdType, kCmd.iID);
+				OutputDebugStringA(log);
 			}
 			break;
 			}
@@ -327,7 +580,9 @@ namespace Flow
 			m_bProcessingLock = FALSE;
 		}
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::OnIdle()
 	{
 		CMDUpdate();
@@ -343,7 +598,9 @@ namespace Flow
 			}
 		}
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::OnMsgHandler(const MSG& p_kMsg)
 	{
 		BOOL bResult = FALSE;
@@ -359,7 +616,9 @@ namespace Flow
 
 		return bResult;
 	}
+
 	//---------------------------------------------------------------------------
+
 	bool CFlowMgr::LostDevice(void* p_pvData)
 	{
 		int iSize = GetCurFlowSize();
@@ -372,7 +631,9 @@ namespace Flow
 
 		return true;
 	}
+
 	//---------------------------------------------------------------------------
+
 	bool CFlowMgr::ResetDevice(bool p_bBeforeReset, void* p_pvData)
 	{
 		int iSize = GetCurFlowSize();
@@ -385,25 +646,30 @@ namespace Flow
 
 		return true;
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::RegisterFlow(int p_iID)
 	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] RegisterFlow begin id=%d\n", p_iID);
+		OutputDebugStringA(log);
+
 		if (!m_pkFlowStack || !m_pkFlowInstMgr)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] RegisterFlow failed: stack/instmgr NULL\n");
 			return FALSE;
+		}
 
 		if (p_iID <= CFlow::FLW_NONE)
 		{
-#ifdef DEBUG_FLOW
-			DBG("RegisterFlow failed: invalid flow id %d\n", p_iID);
-#endif
+			OutputDebugStringA("[FLOWMGR][ERROR] RegisterFlow failed: invalid flow id\n");
 			return FALSE;
 		}
 
 		if (m_pkFlowInstMgr->GetInst(p_iID))
 		{
-#ifdef DEBUG_FLOW
-			DBG("RegisterFlow failed: flow already exists %d\n", p_iID);
-#endif
+			OutputDebugStringA("[FLOWMGR][ERROR] RegisterFlow failed: flow already exists\n");
 			return FALSE;
 		}
 
@@ -411,59 +677,61 @@ namespace Flow
 
 		if (!pkFlow)
 		{
-#ifdef DEBUG_FLOW
-			DBG("RegisterFlow failed: factory returned NULL. flow id %d\n", p_iID);
-#endif
+			OutputDebugStringA("[FLOWMGR][ERROR] RegisterFlow failed: factory returned NULL\n");
 			return FALSE;
 		}
 
 		if (!m_pkFlowStack->Push(p_iID))
 		{
-#ifdef DEBUG_FLOW
-			DBG("RegisterFlow failed: stack push failed. flow id %d\n", p_iID);
-#endif
+			OutputDebugStringA("[FLOWMGR][ERROR] RegisterFlow failed: stack push failed\n");
 			SAFE_NIDELETE(pkFlow);
 			return FALSE;
 		}
 
 		m_pkFlowInstMgr->AddInst(p_iID, pkFlow);
 
-#ifdef DEBUG_FLOW
-		DBG("RegisterFlow success. flow id %d\n", p_iID);
-#endif
-
+		OutputDebugStringA("[FLOWMGR] RegisterFlow ok\n");
 		return TRUE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::EraseFlow(int p_iID)
 	{
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOWMGR] EraseFlow begin id=%d top=%d\n", p_iID, GetCurTopFlowID());
+		OutputDebugStringA(log);
+
 		if (!m_pkFlowStack || !m_pkFlowInstMgr)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] EraseFlow failed: stack/instmgr NULL\n");
 			return FALSE;
+		}
 
 		if (p_iID == CFlow::FLW_NONE)
+		{
+			OutputDebugStringA("[FLOWMGR][ERROR] EraseFlow failed: FLW_NONE\n");
 			return FALSE;
+		}
 
 		int iID = m_pkFlowStack->Top();
 
 		if (iID != p_iID)
 		{
-#ifdef DEBUG_FLOW
-			DBG("EraseFlow failed: top flow mismatch. top %d, erase %d\n", iID, p_iID);
-#endif
+			OutputDebugStringA("[FLOWMGR][ERROR] EraseFlow failed: top flow mismatch\n");
 			return FALSE;
 		}
 
 		m_pkFlowStack->Pop();
 
-#ifdef DEBUG_FLOW
-		DBG("EraseFlow success. flow id %d\n", p_iID);
-#endif
-
 		m_pkFlowInstMgr->DelInst(p_iID);
 
+		OutputDebugStringA("[FLOWMGR] EraseFlow ok\n");
 		return TRUE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	int CFlowMgr::GetCurFlowSize() const
 	{
 		if (!m_pkFlowStack)
@@ -471,18 +739,18 @@ namespace Flow
 
 		return m_pkFlowStack->GetSize();
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::IsCurTopFlow() const
 	{
 		return GetCurTopFlow() != NULL ? TRUE : FALSE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	CFlow* CFlowMgr::GetCurTopFlow() const
 	{
-#ifdef DEBUG_FLOW
-		DBG("GetCurTopFlow\n");
-#endif
-
 		if (!m_pkFlowStack || !m_pkFlowInstMgr)
 			return NULL;
 
@@ -493,7 +761,9 @@ namespace Flow
 
 		return m_pkFlowInstMgr->GetInst(iID);
 	}
+
 	//---------------------------------------------------------------------------
+
 	int CFlowMgr::GetCurTopFlowID() const
 	{
 		if (!m_pkFlowStack)
@@ -501,16 +771,16 @@ namespace Flow
 
 		return m_pkFlowStack->GetTopAt();
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::IsCurPosFlow(int p_iPos) const
 	{
-#ifdef DEBUG_FLOW
-		DBG("IsCurPosFlow\n");
-#endif
-
 		return GetCurPosFlow(p_iPos) != NULL ? TRUE : FALSE;
 	}
+
 	//---------------------------------------------------------------------------
+
 	CFlow* CFlowMgr::GetCurPosFlow(int p_iPos) const
 	{
 		if (!m_pkFlowStack || !m_pkFlowInstMgr)
@@ -523,7 +793,9 @@ namespace Flow
 
 		return m_pkFlowInstMgr->GetInst(iID);
 	}
+
 	//---------------------------------------------------------------------------
+
 	int CFlowMgr::GetCurPosFlowID(int p_iPos) const
 	{
 		if (!m_pkFlowStack)
@@ -531,9 +803,13 @@ namespace Flow
 
 		return m_pkFlowStack->GetPosAt(p_iPos);
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::LockFlow()
 	{
+		OutputDebugStringA("[FLOWMGR] LockFlow\n");
+
 		m_bFlowLock = TRUE;
 
 		int iSize = GetCurFlowSize();
@@ -544,9 +820,13 @@ namespace Flow
 				GetCurPosFlow(i)->SetInputLock();
 		}
 	}
+
 	//---------------------------------------------------------------------------
+
 	void CFlowMgr::UnLockFlow()
 	{
+		OutputDebugStringA("[FLOWMGR] UnLockFlow\n");
+
 		m_bFlowLock = FALSE;
 
 		int iSize = GetCurFlowSize();
@@ -557,7 +837,9 @@ namespace Flow
 				GetCurPosFlow(i)->SetInputUnLock();
 		}
 	}
+
 	//---------------------------------------------------------------------------
+
 	BOOL CFlowMgr::IsCurrentFlow(int p_iID) const
 	{
 		int iSize = GetCurFlowSize();

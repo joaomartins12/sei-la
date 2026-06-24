@@ -21,6 +21,9 @@
 //---------------------------------------------------------------------------
 NiGeometryBufferData::~NiGeometryBufferData()
 {
+    if (this == NULL)
+        return;
+
     if (m_pkGeometryGroup)
     {
         for (unsigned int i = 0; i < m_uiStreamCount; i++)
@@ -29,12 +32,22 @@ NiGeometryBufferData::~NiGeometryBufferData()
 
     RemoveIB();
 
-    NiFree(m_ppkVBChip);
-    NiFree(m_puiVertexStride);
+    if (m_ppkVBChip)
+    {
+        NiFree(m_ppkVBChip);
+        m_ppkVBChip = NULL;
+    }
+
+    if (m_puiVertexStride)
+    {
+        NiFree(m_puiVertexStride);
+        m_puiVertexStride = NULL;
+    }
 
     if (m_hDeclaration)
     {
         NiD3DRenderer::ReleaseVertexDecl(m_hDeclaration);
+        m_hDeclaration = NULL;
     }
 }
 //---------------------------------------------------------------------------
@@ -56,11 +69,15 @@ bool NiGeometryBufferData::IsVBChipValid() const
 //---------------------------------------------------------------------------
 void NiGeometryBufferData::RemoveIB()
 {
+    if (this == NULL)
+        return;
+
     if (m_pkIB)
     {
         NiD3DRenderer::ReleaseIBResource(m_pkIB);
         m_pkIB = NULL;
     }
+
     m_uiIBSize = 0;
 }
 //---------------------------------------------------------------------------
@@ -122,11 +139,21 @@ void NiGeometryBufferData::SetFVF(unsigned int uiFVF)
 void NiGeometryBufferData::SetVertexDeclaration(
     NiD3DVertexDeclaration hDecl)
 {
+    // Proteção para NIFs/geometry buffers inválidos.
+    // Em alguns recursos antigos o renderer pode tentar chamar isto com this == NULL.
+    // Sem este guard, crasha logo no acesso a m_hDeclaration.
+    if (this == NULL)
+    {
+        OutputDebugStringA("[NiGeometryBufferData] SetVertexDeclaration skipped: this == NULL\n");
+        return;
+    }
+
     if (hDecl != m_hDeclaration)
     {
         if (m_hDeclaration)
         {
             NiD3DRenderer::ReleaseVertexDecl(m_hDeclaration);
+            m_hDeclaration = NULL;
         }
 
         m_hDeclaration = hDecl;
@@ -136,6 +163,7 @@ void NiGeometryBufferData::SetVertexDeclaration(
             D3D_POINTER_REFERENCE(m_hDeclaration);
         }
     }
+
     m_uiFVF = 0;
 }
 //---------------------------------------------------------------------------

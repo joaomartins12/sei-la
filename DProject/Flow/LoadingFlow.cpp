@@ -9,6 +9,8 @@
 #include "StdAfx.h"
 #include "LoadingFlow.h"
 
+#include "FlowMgr.h"
+
 #include "../_Interface/08.Loading/Loading.h"
 #include "../_Interface/Game/Fade.h"
 #include "../ContentsSystem/ContentsSystem.h"
@@ -22,6 +24,9 @@ namespace Flow
 		, m_bBgmPlay(false)
 		, m_pFadeUI(NULL)
 		, m_pLoadingUI(NULL)
+		, m_bReservedMainGameChange(false)
+		, m_iReservedNextFlowID(0)
+		, m_fReservedChangeTime(0.0f)
 	{
 		OutputDebugStringA("[FLOW][Loading] Constructor\n");
 	}
@@ -50,15 +55,13 @@ namespace Flow
 
 			/*
 				IMPORTANTE:
-				Não fazemos ResetMap/PreResetMap/DeleteWindowUpdate aqui de forma agressiva.
-				Esse bloco pode causar stutter/travamento na transição CharacterSelect -> Loading -> Game,
-				principalmente quando o GameIF está parcialmente inicializado ou quando acabou de carregar
-				recursos pesados do lobby/mapa.
+				Não fazemos ResetMap / PreResetMap / DeleteWindowUpdate aqui.
+				Este flow acontece entre CharacterSelect -> Loading -> Game.
+				Limpezas pesadas aqui podem prender ou quebrar a entrada no mundo.
 			*/
-
 			if (g_pGameIF)
 			{
-				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF exists, heavy cleanup skipped for perf test\n");
+				OutputDebugStringA("[FLOW][Loading] Initialize - g_pGameIF exists, heavy cleanup skipped\n");
 			}
 			else
 			{
@@ -109,7 +112,6 @@ namespace Flow
 			}
 
 			OutputDebugStringA("[FLOW][Loading] Initialize - CLoading::Construct ok\n");
-
 			OutputDebugStringA("[FLOW][Loading] Initialize - CLoading::Create begin\n");
 
 			try
@@ -136,6 +138,10 @@ namespace Flow
 				g_pEngine->SetClearColor(NiColorA::BLACK);
 				OutputDebugStringA("[FLOW][Loading] Initialize - SetClearColor ok\n");
 			}
+
+			m_bReservedMainGameChange = false;
+			m_iReservedNextFlowID = 0;
+			m_fReservedChangeTime = 0.0f;
 
 			OutputDebugStringA("[FLOW][Loading] Initialize ok\n");
 			return TRUE;
@@ -187,6 +193,10 @@ namespace Flow
 	{
 		OutputDebugStringA("[FLOW][Loading] OnExit begin\n");
 
+		m_bReservedMainGameChange = false;
+		m_iReservedNextFlowID = 0;
+		m_fReservedChangeTime = 0.0f;
+
 		if (CONTENTSSYSTEM_PTR)
 		{
 			OutputDebugStringA("[FLOW][Loading] OnExit - ExitContents begin\n");
@@ -205,6 +215,10 @@ namespace Flow
 	{
 		OutputDebugStringA("[FLOW][Loading] Terminate begin\n");
 
+		m_bReservedMainGameChange = false;
+		m_iReservedNextFlowID = 0;
+		m_fReservedChangeTime = 0.0f;
+
 		SAFE_NIDELETE(m_pLoadingUI);
 		OutputDebugStringA("[FLOW][Loading] Terminate - m_pLoadingUI deleted\n");
 
@@ -212,16 +226,12 @@ namespace Flow
 		OutputDebugStringA("[FLOW][Loading] Terminate - m_pFadeUI deleted\n");
 
 		/*
-			TESTE DE PERFORMANCE:
-			Esta chamada estava a limpar recursos logo ao terminar o LoadingFlow.
-			Isso pode causar stutter/freeze quando o mapa começa, porque o client pode
-			precisar recarregar/recriar texturas, shaders, nif, UI e outros recursos.
-
-			Se o lag desaparecer com isto comentado, depois fazemos uma limpeza seletiva.
+			Não limpar recursos aqui.
+			O mapa/game flow pode precisar deles logo depois do loading.
 		*/
 		// RESOURCEMGR_ST.CleanUpResource();
-		OutputDebugStringA("[FLOW][Loading] Terminate - CleanUpResource skipped for perf test\n");
 
+		OutputDebugStringA("[FLOW][Loading] Terminate - CleanUpResource skipped\n");
 		OutputDebugStringA("[FLOW][Loading] Terminate end\n");
 	}
 
@@ -229,10 +239,25 @@ namespace Flow
 
 	void CLoadingFlow::ReservedChangeFlow(int p_iNextFlowID)
 	{
-		OutputDebugStringA("[FLOW][Loading] ReservedChangeFlow\n");
+		char log[256] = { 0 };
+		sprintf_s(log, "[FLOW][Loading] ReservedChangeFlow. nextFlowID=%d\n", p_iNextFlowID);
+		OutputDebugStringA(log);
+
+		m_bReservedMainGameChange = true;
+		m_iReservedNextFlowID = p_iNextFlowID;
+		m_fReservedChangeTime = 0.0f;
 
 		if (m_pFadeUI)
+		{
+			OutputDebugStringA("[FLOW][Loading] FadeOut begin\n");
 			m_pFadeUI->Reset(CFade::FADE_OUT, 0.5f);
+		}
+		else
+		{
+			OutputDebugStringA("[FLOW][Loading][WARN] FadeOut skipped - m_pFadeUI NULL\n");
+		}
+
+		CFlow::ReservedChangeFlow(p_iNextFlowID);
 	}
 
 	//---------------------------------------------------------------------------
@@ -267,6 +292,35 @@ namespace Flow
 
 		if (m_pFadeUI)
 			m_pFadeUI->Update(g_fDeltaTime);
+
+		if (m_bReservedMainGameChange)
+		{
+			m_fReservedChangeTime += g_fDeltaTime;
+
+			/*
+				O fade-out foi iniciado em ReservedChangeFlow com 0.5f.
+				Depois de 0.55f desbloqueamos o FlowMgr para processar CMD_CHANGE.
+			*/
+			if (m_fReservedChangeTime >= 0.55f)
+			{
+				char log[256] = { 0 };
+				sprintf_s(
+					log,
+					"[FLOW][Loading] FadeOut complete - UnLockFlow. nextFlowID=%d elapsed=%.2f\n",
+					m_iReservedNextFlowID,
+					m_fReservedChangeTime
+				);
+				OutputDebugStringA(log);
+
+				m_bReservedMainGameChange = false;
+				m_fReservedChangeTime = 0.0f;
+
+				if (FLOWMGR_STPTR)
+					FLOWMGR_ST.UnLockFlow();
+				else
+					OutputDebugStringA("[FLOW][Loading][ERROR] FLOWMGR_STPTR NULL on FadeOut complete\n");
+			}
+		}
 	}
 
 	//---------------------------------------------------------------------------
